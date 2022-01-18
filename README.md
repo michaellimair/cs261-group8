@@ -32,6 +32,9 @@ The following section contains the steps to perform backend development along wi
 - All models can be placed in `models.py` for now. Refactoring will be done in the near future.
 - After creating a model, make a migration by performing `python manage.py makemigrations <model_name>`, followed by performing the migration with `python manage.py migrate <model_name>`
 
+### Generating an OpenAPI Schema
+API schemas are useful for external users or for the frontend team to be able to link the application to the backend. Detailed instructions are available in the official Django REST Framework website [here](https://www.django-rest-framework.org/api-guide/schemas).
+
 ## References (WIP)
 Tutorials followed:
 - https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
