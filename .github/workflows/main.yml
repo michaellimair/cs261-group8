@@ -25,4 +25,5 @@ jobs:
         yarn
     - name: Run tests with Jest
       run: |
+        cd frontend
         yarn test
