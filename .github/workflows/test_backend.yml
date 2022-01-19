@@ -20,8 +20,8 @@ jobs:
         cd backend
         python -m pip install --upgrade pipenv wheel
         pipenv install --deploy --dev
-        coverage run --source='.' manage.py test
-        coverage xml
+        pipenv run coverage run --source='.' manage.py test
+        pipenv run coverage xml
     - name: Generate coverage report and check
       uses: orgoro/coverage@v2.1
       with:
