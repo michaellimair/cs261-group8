@@ -33,4 +33,4 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         threshold: 90 # Require at least 90% code coverage
         working-directory: 'frontend'
-        test-script: "yarn test:ci"
+        test-script: "yarn test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\" --watchAll=false"
