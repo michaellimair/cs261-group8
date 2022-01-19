@@ -17,6 +17,7 @@ jobs:
         python-version: '3.10'
     - name: Check backend code coverage
       uses: dc740/django-coveragepy-github-action@0.9
+      working-directory: ./backend
       with:
-        django-app: 'backend'
+        django-app: 'dbcampus'
         minimum-coverage: '90'
