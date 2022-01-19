@@ -18,8 +18,8 @@ jobs:
     - name: Run test and generate coverage results
       run: |
         cd backend
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        python -m pip install --upgrade pipenv wheel
+        pipenv install --deploy --dev
         coverage run --source='.' manage.py test
         coverage xml
     - name: Generate coverage report and check
