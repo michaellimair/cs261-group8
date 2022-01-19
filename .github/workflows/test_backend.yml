@@ -18,6 +18,8 @@ jobs:
     - name: Run test and generate coverage results
       working-directory: backend
       run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
         coverage run --source='.' manage.py test
         coverage xml
     - name: Generate coverage report and check
