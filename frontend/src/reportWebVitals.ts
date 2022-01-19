@@ -1,7 +1,6 @@
 import { ReportHandler } from 'web-vitals';
 
 const reportWebVitals = async (onPerfEntry?: ReportHandler) => {
-  console.log('onPerfEntry', onPerfEntry instanceof Function);
   if (onPerfEntry && onPerfEntry instanceof Function) {
     await import('web-vitals').then(({
       getCLS, getFID, getFCP, getLCP, getTTFB,
