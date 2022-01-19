@@ -31,5 +31,6 @@ jobs:
       uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        threshold: 80 # optional parameter
-        working-directory: frontend
+        threshold: 90 # Require at least 90% code coverage
+        working-directory: 'frontend'
+        test-script: "yarn test:ci"

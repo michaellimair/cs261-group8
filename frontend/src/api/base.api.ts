@@ -18,16 +18,19 @@ export const isIsoDateString = (value: any): boolean => value && typeof value ==
  * @param body Response body from requests
  * @returns A body with all dates parsed as JavaScript date objects.
  */
-export const handleDates = (body: Record<any, any>) => {
+export const handleDates = (body: any) => {
   if (body === null || body === undefined || typeof body !== 'object') return body;
 
   // eslint-disable-next-line no-restricted-syntax
   for (const key of Object.keys(body)) {
     const value = body[key];
-    // eslint-disable-next-line no-param-reassign
-    if (isIsoDateString(value)) body[key] = parseISO(value);
-    // eslint-disable-next-line
-    else if (typeof value === 'object') handleDates(value);
+
+    if (isIsoDateString(value)) {
+      // eslint-disable-next-line no-param-reassign
+      body[key] = parseISO(value);
+    } else if (typeof value === 'object') {
+      handleDates(value);
+    }
   }
 
   return body;
