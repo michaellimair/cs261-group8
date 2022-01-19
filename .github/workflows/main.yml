@@ -37,7 +37,7 @@ jobs:
         skip-step: install
         test-script: "yarn test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\" --watchAll=false"
     - name: Check backend code coverage
-      uses: actions/python-django-coverage-gitHub-action@0.9
+      uses: dc740/django-coveragepy-github-action@0.9
       with:
         django-app: 'dbcampus'
         minimum-coverage: '90'
