@@ -27,3 +27,8 @@ jobs:
       run: |
         cd frontend
         yarn test
+    - name: Check code coverage
+    - uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        threshold: 80 # optional parameter
