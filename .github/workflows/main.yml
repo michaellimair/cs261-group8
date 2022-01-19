@@ -1,15 +1,38 @@
-name: Notify to Discord on push
+name: Test and build application
 
 on:
   push:
-    branches:
-    - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - name: Discord notification
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-      uses: Ilshidur/action-discord@0.3.2
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+    - name: Set up Node.js version 14
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install frontend dependencies
+      run: |
+        cd frontend
+        yarn
+    - name: Run tests with Jest
+      run: |
+        cd frontend
+        yarn test
+    - name: Check frontend code coverage
+      uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        threshold: 90 # Require at least 90% code coverage
+        working-directory: 'frontend'
+        annotations: none
+        skip-step: install
+        test-script: "yarn test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\" --watchAll=false"
