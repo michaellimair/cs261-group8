@@ -39,5 +39,5 @@ jobs:
     - name: Check backend code coverage
       uses: dc740/django-coveragepy-github-action@0.9
       with:
-        django-app: '***REMOVED***'
+        django-app: 'backend/***REMOVED***'
         minimum-coverage: '90'
