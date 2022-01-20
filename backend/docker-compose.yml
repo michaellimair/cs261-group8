@@ -17,11 +17,11 @@ services:
     ports:
       - "8010:8010"
     environment:
-      - ENGINE=django.db.backends.postgresql
-      - NAME=postgres
-      - USER=postgres
-      - PASSWORD=example
-      - HOST=db
-      - PORT=5432
+      - DB_ENGINE=django.db.backends.postgresql
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=example
+      - DB_HOST=db
+      - DB_PORT=5432
     depends_on:
       - db
