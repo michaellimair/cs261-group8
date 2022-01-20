@@ -29,8 +29,6 @@ jobs:
         DB_USER: postgres
         DB_PASSWORD: postgres
         DB_NAME: postgres
-        DB_HOST: postgres
-        DB_PORT: 5432
       run: |
         cd backend
         python -m pip install --upgrade pipenv wheel
