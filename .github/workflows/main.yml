@@ -13,9 +13,7 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-#          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-#          POSTGRES_DB: github_actions
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
@@ -27,6 +25,12 @@ jobs:
       with:
         python-version: '3.9'
     - name: Run test and generate coverage results
+      env:
+        DB_USER: postgres
+        DB_PASSWORD: postgres
+        DB_NAME: postgres
+        DB_HOST: postgres
+        DB_PORT: 5432
       run: |
         cd backend
         python -m pip install --upgrade pipenv wheel
