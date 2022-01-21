@@ -11,6 +11,7 @@ pylint = "*"
 pyyaml = "*"
 uritemplate = "*"
 coverage = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

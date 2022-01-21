@@ -1,5 +1,13 @@
 version: "3.1"
 services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_PASSWORD=example
   app:
     restart: always
     build: .  # . is current directory
@@ -8,3 +16,12 @@ services:
       - .:/code
     ports:
       - "8010:8010"
+    environment:
+      - DB_ENGINE=django.db.backends.postgresql
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=example
+      - DB_HOST=db
+      - DB_PORT=5432
+    depends_on:
+      - db
