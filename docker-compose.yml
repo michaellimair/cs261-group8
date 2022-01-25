@@ -8,12 +8,20 @@ services:
     environment:
       - POSTGRES_NAME=postgres
       - POSTGRES_PASSWORD=example
-  app:
+  frontend:
     restart: always
-    build: .  # . is current directory
+    ports:
+      - "3000:3000"
+    build: ./frontend
+    command: bash -c "yarn start"
+    volumes:
+      - ./frontend:/frontend
+  backend:
+    restart: always
+    build: ./backend  # dockerfile position
     command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8010"
     volumes:
-      - .:/code
+      - ./backend:/backend
     ports:
       - "8010:8010"
     environment:

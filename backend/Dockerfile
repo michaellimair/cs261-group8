@@ -2,15 +2,15 @@
 FROM python:3.9
 ENV PYTHONUNBUFFERED 1
 
-RUN mkdir /code
-WORKDIR /code
+RUN mkdir /backend
+WORKDIR /backend
 # update pip
 RUN pip install pip -U
 # get requirements.txt
-ADD requirements.txt /code/
+COPY requirements.txt /backend/
 
 # install modules
 RUN pip install -r requirements.txt
 
 # copy current codes
-ADD . /code/
+COPY . /backend/
