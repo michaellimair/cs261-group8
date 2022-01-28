@@ -12,6 +12,7 @@ pyyaml = "*"
 uritemplate = "*"
 coverage = "*"
 psycopg2-binary = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
