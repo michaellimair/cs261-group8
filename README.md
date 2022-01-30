@@ -21,6 +21,11 @@ This project follows the Test-Driven Development (TDD) approach for development,
 ## For Backend Development
 The following section contains the steps to perform backend development along with things to note.
 
+### Environment Variables
+This project has been set up to support overriding operating system environment variables using the `.env` file. A `.env` file will only be locally stored and will not be uploaded to version control. This is done for security reasons, since `.env` files typically contain secrets and sensitive credentials. Inside the `backend` folder, you can copy the `.env.example` file and paste it as `.env`.
+
+When adding additional environment variables for configurable settings or for storing secrets, please add them as an environment variable. You can use `os.environ.get(<env_name>)` from the `os` module to get the environment variables. Afterwards, add the key of the environment variable to your `.env` file and an example key/value pair in `.env.example`.
+
 ### Running the Project
 - Navigate to the `backend` folder
 - Perform `pipenv shell` to activate the virtual Python environment for this project
