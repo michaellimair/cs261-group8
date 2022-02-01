@@ -14,5 +14,11 @@ module.exports = {
     '**/*.tsx',
     '!**/node_modules/*',
   ],
+  coverageThreshold: {
+    branches: 90,
+    functions: 90,
+    lines: 90,
+    statements: 90,
+  },
   resetMocks: false,
 };
