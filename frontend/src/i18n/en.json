@@ -1,0 +1,9 @@
+{
+  "not_found": {
+    "title": "Page not found."
+  },
+  "email": "Email",
+  "password": "Password",
+  "login": "Login",
+  "register": "Register"
+}
