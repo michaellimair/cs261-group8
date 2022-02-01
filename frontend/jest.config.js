@@ -7,7 +7,7 @@ module.exports = {
       tsConfig: 'tsconfig.json',
     },
   },
-  rootDir: '../.',
+  rootDir: '.',
   collectCoverage: true,
   collectCoverageFrom: [
     '**/*.ts',

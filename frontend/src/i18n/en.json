@@ -1,9 +1,19 @@
 {
+  "already_a_user": "Already a user?",
+  "email": "Email Address",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "login": "Login",
+  "login_description": "Log in to your mentoring platform account now!",
+  "mentoring_platform": "Mentoring Platform",
   "not_found": {
     "title": "Page not found."
   },
-  "email": "Email",
   "password": "Password",
-  "login": "Login",
-  "register": "Register"
+  "register": "Register",
+  "register_description": "Register to your mentoring platform account and start getting mentorship or start mentoring others!",
+  "remember_me": "Remember Me",
+  "submitting": "Submitting",
+  "forgot_password": "Forgot password?",
+  "no_account": "Do not have an account?"
 }

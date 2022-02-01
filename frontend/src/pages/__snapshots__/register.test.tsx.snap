@@ -39,13 +39,8 @@ Object {
         <h2
           class="chakra-heading css-5efzzv"
         >
-          Sign up
+          register
         </h2>
-        <p
-          class="chakra-text css-1r7spse"
-        >
-          to enjoy all of our cool features ✌️
-        </p>
       </div>
       <div
         class="css-3hziw7"
@@ -68,7 +63,7 @@ Object {
                   for="firstName"
                   id="firstName-label"
                 >
-                  First Name
+                  firstName
                   <span
                     aria-hidden="true"
                     class="chakra-form__required-indicator css-0"
@@ -98,7 +93,7 @@ Object {
                   for="lastName"
                   id="lastName-label"
                 >
-                  Last Name
+                  lastName
                 </label>
                 <input
                   class="chakra-input css-0"
@@ -117,7 +112,7 @@ Object {
               for="email"
               id="email-label"
             >
-              Email address
+              email
               <span
                 aria-hidden="true"
                 class="chakra-form__required-indicator css-0"
@@ -143,7 +138,7 @@ Object {
               for="password"
               id="password-label"
             >
-              Password
+              password
               <span
                 aria-hidden="true"
                 class="chakra-form__required-indicator css-0"
@@ -199,7 +194,7 @@ Object {
               class="chakra-button css-18dry65"
               type="button"
             >
-              Sign up
+              register
             </button>
           </div>
           <div
@@ -208,13 +203,14 @@ Object {
             <p
               class="chakra-text css-xi606m"
             >
-              Already a user?
+              already_a_user
                
               <a
                 class="chakra-link css-p03q1r"
+                data-testid="login-button"
                 href="/auth"
               >
-                Login
+                login
               </a>
             </p>
           </div>
@@ -229,13 +225,8 @@ Object {
       <h2
         class="chakra-heading css-5efzzv"
       >
-        Sign up
+        register
       </h2>
-      <p
-        class="chakra-text css-1r7spse"
-      >
-        to enjoy all of our cool features ✌️
-      </p>
     </div>
     <div
       class="css-3hziw7"
@@ -258,7 +249,7 @@ Object {
                 for="firstName"
                 id="firstName-label"
               >
-                First Name
+                firstName
                 <span
                   aria-hidden="true"
                   class="chakra-form__required-indicator css-0"
@@ -288,7 +279,7 @@ Object {
                 for="lastName"
                 id="lastName-label"
               >
-                Last Name
+                lastName
               </label>
               <input
                 class="chakra-input css-0"
@@ -307,7 +298,7 @@ Object {
             for="email"
             id="email-label"
           >
-            Email address
+            email
             <span
               aria-hidden="true"
               class="chakra-form__required-indicator css-0"
@@ -333,7 +324,7 @@ Object {
             for="password"
             id="password-label"
           >
-            Password
+            password
             <span
               aria-hidden="true"
               class="chakra-form__required-indicator css-0"
@@ -389,7 +380,7 @@ Object {
             class="chakra-button css-18dry65"
             type="button"
           >
-            Sign up
+            register
           </button>
         </div>
         <div
@@ -398,13 +389,14 @@ Object {
           <p
             class="chakra-text css-xi606m"
           >
-            Already a user?
+            already_a_user
              
             <a
               class="chakra-link css-p03q1r"
+              data-testid="login-button"
               href="/auth"
             >
-              Login
+              login
             </a>
           </p>
         </div>
