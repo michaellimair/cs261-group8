@@ -1,6 +1,10 @@
+/* eslint-disable max-classes-per-file */
 import { AxiosInstance } from 'axios';
 import BaseAPI, { handleDates, isIsoDateString } from './base.api';
 import ApiError from './error/ApiError';
+import BadRequestApiError from './error/BadRequestApiError';
+import UnauthorizedError from './error/UnauthorizedError';
+import UnprocessableEntityApiError from './error/UnprocessableEntityApiError';
 
 const mockResponseCreator = () => jest.fn(() => new Promise<any>((res) => {
   res({ data: {} });
@@ -44,24 +48,26 @@ describe('base.api.ts', () => {
       expect(handleDates(null)).toBeNull();
     });
 
+    it('converts shallowly nested ISO dates to a date object', () => {
+      const obj = {
+        a: '2022-01-18T18:42:06.930Z',
+      };
+
+      expect(handleDates(obj)).toMatchObject({
+        a: new Date('2022-01-18T18:42:06.930Z'),
+      });
+    });
+
     it('converts deeply nested ISO dates to a date object', () => {
       const obj = {
         a: {
-          b: {
-            c: {
-              d: '2022-01-18T18:42:06.930Z',
-            },
-          },
+          d: '2022-01-18T18:42:06.930Z',
         },
       };
 
       expect(handleDates(obj)).toMatchObject({
         a: {
-          b: {
-            c: {
-              d: new Date('2022-01-18T18:42:06.930Z'),
-            },
-          },
+          d: new Date('2022-01-18T18:42:06.930Z'),
         },
       });
     });
@@ -82,6 +88,10 @@ describe('base.api.ts', () => {
 
     afterEach(() => {
       jest.resetAllMocks();
+    });
+
+    it('instantiates successfully', () => {
+      expect(() => new StubBaseAPI()).not.toThrow();
     });
 
     it('injects date interceptors to the client', () => {
@@ -118,11 +128,61 @@ describe('base.api.ts', () => {
         errorInterceptor = (mockClient.interceptors.response.use as jest.Mock).mock.calls[1][1];
       });
 
-      it.skip('intercepts unknown errors properly', async () => {
-        expect(async () => {
-          await errorInterceptor(new Error('Unknown error'));
-        }).toThrow(new ApiError('An error has occurred in the server.'));
-      });
+      class MockAxiosError extends Error {
+        response: Record<string, any>;
+
+        isAxiosError: boolean;
+
+        constructor(status?: number, data?: Record<string, any>) {
+          super('Mocked Axios Error');
+
+          this.isAxiosError = true;
+
+          this.response = {
+            status: status ?? 500,
+            data,
+          };
+        }
+      }
+
+      it('intercepts unknown errors properly', async () => expect(() => errorInterceptor(new Error('Unknown error'))).rejects.toEqual(new ApiError('An error has occurred in the server.')));
+
+      it('intercepts unknown axios errors properly', async () => expect(async () => {
+        await errorInterceptor(new MockAxiosError(503));
+      }).rejects.toEqual(new ApiError('An error has occurred in the server.')));
+
+      it('intercepts bad request errors without error data properly', async () => expect(async () => {
+        await errorInterceptor(new MockAxiosError(400, { message: 'Bad Request' }));
+      }).rejects.toEqual(new BadRequestApiError('Bad Request')));
+
+      it('intercepts bad request errors with error data properly', async () => expect(async () => {
+        await errorInterceptor(new MockAxiosError(400, {
+          message: 'Invalid fields',
+          errors: [
+            {
+              property: 'name',
+              value: 'Name should not be empty',
+            },
+          ],
+        }));
+      }).rejects.toEqual(new BadRequestApiError('Invalid fields', [
+        {
+          property: 'name',
+          value: 'Name should not be empty',
+        },
+      ])));
+
+      it('intercepts unauthorized errors properly', async () => expect(async () => {
+        await errorInterceptor(new MockAxiosError(401, { message: 'Please log in' }));
+      }).rejects.toEqual(new UnauthorizedError('Please log in')));
+
+      it('intercepts payload too large errors properly', async () => expect(async () => {
+        await errorInterceptor(new MockAxiosError(413, { message: 'Payload too large' }));
+      }).rejects.toEqual(new UnprocessableEntityApiError('Payload too large')));
+
+      it('intercepts unprocessable entity errors properly', async () => expect(async () => {
+        await errorInterceptor(new MockAxiosError(422, { message: 'Form input not valid' }));
+      }).rejects.toEqual(new UnprocessableEntityApiError('Form input not valid')));
     });
 
     describe('get', () => {
@@ -150,6 +210,13 @@ describe('base.api.ts', () => {
           params: query,
         });
       });
+
+      it('posts successfully without body or query', async () => {
+        await api.post({
+          path: 'there',
+        });
+        expect(mockClient.post).toHaveBeenCalledWith('/hello/there', {}, {});
+      });
     });
 
     describe('patch', () => {
@@ -165,6 +232,13 @@ describe('base.api.ts', () => {
           params: query,
         });
       });
+
+      it('patches successfully without body or query', async () => {
+        await api.patch({
+          path: 'there',
+        });
+        expect(mockClient.patch).toHaveBeenCalledWith('/hello/there', {}, {});
+      });
     });
 
     describe('put', () => {
@@ -179,6 +253,13 @@ describe('base.api.ts', () => {
         expect(mockClient.put).toHaveBeenCalledWith('/hello/there', body, {
           params: query,
         });
+      });
+
+      it('puts successfully without body or query', async () => {
+        await api.put({
+          path: 'there',
+        });
+        expect(mockClient.put).toHaveBeenCalledWith('/hello/there', {}, {});
       });
     });
 
