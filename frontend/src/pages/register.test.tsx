@@ -18,8 +18,11 @@ describe('register', () => {
         <RegisterPage />
       </BrowserRouter>,
     );
-    const registerButton = await result.findByText('Login');
-    registerButton.click();
+    const loginButton = result.queryByTestId('login-button');
+    if (!loginButton) {
+      throw new Error('Login button cannot be found!');
+    }
+    loginButton.click();
     expect(window.location.pathname).toBe('/auth');
   });
 

@@ -39,13 +39,8 @@ Object {
         <h2
           class="chakra-heading css-1gjuw9l"
         >
-          Sign in to your account
+          login
         </h2>
-        <p
-          class="chakra-text css-1r7spse"
-        >
-          to enjoy all of our cool features ✌️
-        </p>
       </div>
       <div
         class="css-3hziw7"
@@ -62,7 +57,7 @@ Object {
               for="email"
               id="email-label"
             >
-              Email address
+              email
             </label>
             <input
               class="chakra-input css-0"
@@ -79,7 +74,7 @@ Object {
               for="password"
               id="password-label"
             >
-              Password
+              password
             </label>
             <input
               class="chakra-input css-0"
@@ -109,21 +104,21 @@ Object {
                 <span
                   class="chakra-checkbox__label css-1oeb2oe"
                 >
-                  Remember me
+                  remember_me
                 </span>
               </label>
               <a
                 class="chakra-link css-p03q1r"
                 href="/forgot-password"
               >
-                Forgot password?
+                forgot_password
               </a>
             </div>
             <button
               class="chakra-button css-18dry65"
               type="button"
             >
-              Sign in
+              login
             </button>
             <div
               class="chakra-stack css-nkdhe4"
@@ -131,13 +126,14 @@ Object {
               <p
                 class="chakra-text css-xi606m"
               >
-                Do not have an account?
+                no_account
                  
                 <a
                   class="chakra-link css-p03q1r"
+                  data-testid="register-button"
                   href="/auth/register"
                 >
-                  Register
+                  register
                 </a>
               </p>
             </div>
@@ -153,13 +149,8 @@ Object {
       <h2
         class="chakra-heading css-1gjuw9l"
       >
-        Sign in to your account
+        login
       </h2>
-      <p
-        class="chakra-text css-1r7spse"
-      >
-        to enjoy all of our cool features ✌️
-      </p>
     </div>
     <div
       class="css-3hziw7"
@@ -176,7 +167,7 @@ Object {
             for="email"
             id="email-label"
           >
-            Email address
+            email
           </label>
           <input
             class="chakra-input css-0"
@@ -193,7 +184,7 @@ Object {
             for="password"
             id="password-label"
           >
-            Password
+            password
           </label>
           <input
             class="chakra-input css-0"
@@ -223,21 +214,21 @@ Object {
               <span
                 class="chakra-checkbox__label css-1oeb2oe"
               >
-                Remember me
+                remember_me
               </span>
             </label>
             <a
               class="chakra-link css-p03q1r"
               href="/forgot-password"
             >
-              Forgot password?
+              forgot_password
             </a>
           </div>
           <button
             class="chakra-button css-18dry65"
             type="button"
           >
-            Sign in
+            login
           </button>
           <div
             class="chakra-stack css-nkdhe4"
@@ -245,13 +236,14 @@ Object {
             <p
               class="chakra-text css-xi606m"
             >
-              Do not have an account?
+              no_account
                
               <a
                 class="chakra-link css-p03q1r"
+                data-testid="register-button"
                 href="/auth/register"
               >
-                Register
+                register
               </a>
             </p>
           </div>

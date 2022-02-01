@@ -12,16 +12,8 @@ Object {
           class="App-header"
         >
           <p>
-            Page Not Found
+            not_found.title
           </p>
-          <a
-            class="App-link"
-            href="https://reactjs.org"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Learn React
-          </a>
         </header>
       </div>
     </div>
@@ -34,16 +26,8 @@ Object {
         class="App-header"
       >
         <p>
-          Page Not Found
+          not_found.title
         </p>
-        <a
-          class="App-link"
-          href="https://reactjs.org"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   </div>,

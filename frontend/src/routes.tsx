@@ -19,6 +19,8 @@ export interface IRoute {
   layout: RouteLayout;
   /** Indicates that the route is an index. */
   index?: boolean;
+  /** Translation key for the description of a certain page, used for metadata purposes. */
+  description: string;
 }
 
 export const authRoutes: IRoute[] = [
@@ -27,11 +29,13 @@ export const authRoutes: IRoute[] = [
     element: <LoginPage />,
     layout: RouteLayout.AUTH,
     index: true,
+    description: 'login_description',
   },
   {
     name: 'register',
     element: <RegisterPage />,
     layout: RouteLayout.AUTH,
     path: 'register',
+    description: 'register_description',
   },
 ];

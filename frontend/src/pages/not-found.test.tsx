@@ -9,7 +9,6 @@ describe('not-found', () => {
         <NotFoundPage />
       </BrowserRouter>,
     );
-    expect(await result.findByText('Page Not Found')).toBeTruthy();
     expect(result).toMatchSnapshot();
   });
 });

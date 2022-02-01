@@ -15,19 +15,18 @@ import {
 import { FC, useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import RouterLink from 'components/RouterLink';
+import { useTranslation } from 'react-i18next';
 
 const RegisterPage: FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   return (
     <>
       <Stack align="center">
         <Heading fontSize="4xl" textAlign="center">
-          Sign up
+          {t('register')}
         </Heading>
-        <Text fontSize="lg" color="gray.600">
-          to enjoy all of our cool features ✌️
-        </Text>
       </Stack>
       <Box
         rounded="lg"
@@ -39,23 +38,23 @@ const RegisterPage: FC = () => {
           <HStack>
             <Box>
               <FormControl id="firstName" isRequired>
-                <FormLabel>First Name</FormLabel>
+                <FormLabel>{t('firstName')}</FormLabel>
                 <Input type="text" />
               </FormControl>
             </Box>
             <Box>
               <FormControl id="lastName">
-                <FormLabel>Last Name</FormLabel>
+                <FormLabel>{t('lastName')}</FormLabel>
                 <Input type="text" />
               </FormControl>
             </Box>
           </HStack>
           <FormControl id="email" isRequired>
-            <FormLabel>Email address</FormLabel>
+            <FormLabel>{t('email')}</FormLabel>
             <Input type="email" />
           </FormControl>
           <FormControl id="password" isRequired>
-            <FormLabel>Password</FormLabel>
+            <FormLabel>{t('password')}</FormLabel>
             <InputGroup>
               <Input type={showPassword ? 'text' : 'password'} data-testid="password" />
               <InputRightElement h="full">
@@ -79,14 +78,14 @@ const RegisterPage: FC = () => {
                 bg: 'blue.500',
               }}
             >
-              Sign up
+              {t('register')}
             </Button>
           </Stack>
           <Stack pt={6}>
             <Text align="center">
-              Already a user?
+              {t('already_a_user')}
               {' '}
-              <RouterLink color="blue.400" to="/auth">Login</RouterLink>
+              <RouterLink color="blue.400" to="/auth" data-testid="login-button">{t('login')}</RouterLink>
             </Text>
           </Stack>
         </Stack>
