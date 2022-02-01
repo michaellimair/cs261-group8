@@ -1,7 +1,17 @@
 from rest_framework import serializers
-from .models import Todo
+from django.contrib.auth.models import User
+from .models import UserProfile
 
-class TodoSerializer(serializers.ModelSerializer):
+class UserProfileSerializer(serializers.ModelSerializer):
   class Meta:
-    model = Todo
-    fields = ('id', 'title', 'description', 'completed')
+    model = UserProfile
+    fields = ('id', 'pronoun', 'title')
+
+class UserSerializer(serializers.ModelSerializer):
+  profile = serializers.SlugRelatedField(
+    slug_field='id'
+  )
+
+  class Meta:
+    model = User
+    fields = ('id', 'first_name', 'last_name', 'username', 'email', 'groups', 'profile')
