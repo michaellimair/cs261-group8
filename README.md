@@ -40,6 +40,9 @@ When adding additional environment variables for configurable settings or for st
 ### Generating an OpenAPI Schema
 API schemas are useful for external users or for the frontend team to be able to link the application to the backend. Detailed instructions are available in the official Django REST Framework website [here](https://www.django-rest-framework.org/api-guide/schemas).
 
+### Testing
+All Python files need to have tests written alongside them. You can add tests in an adjacent file to the file you are writing by adding a `test_` prefix to the name of the test file. For example, if you want to test `models.py`, you should create a file `test_models.py`.
+
 ## References (WIP)
 Tutorials followed:
 - https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
