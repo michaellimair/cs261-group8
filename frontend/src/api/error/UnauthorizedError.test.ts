@@ -21,6 +21,12 @@ describe('UnauthorizedError', () => {
     expect(ApiError.isApiError(err)).toBe(true);
   });
 
+  it('uses the default error message when instantiated without any arguments', () => {
+    const err = new UnauthorizedError();
+
+    expect(err.message).toBe(UnauthorizedError.defaultMessage);
+  });
+
   describe('isUnauthorizedError', () => {
     it('identifies UnauthorizedError classes correctly', () => {
       const err = new UnauthorizedError('error');

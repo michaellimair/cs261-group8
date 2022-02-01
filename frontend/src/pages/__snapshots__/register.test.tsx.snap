@@ -158,6 +158,7 @@ Object {
               <input
                 aria-required="true"
                 class="chakra-input css-0"
+                data-testid="password"
                 id="password"
                 required=""
                 type="password"
@@ -167,10 +168,12 @@ Object {
               >
                 <button
                   class="chakra-button css-5c2176"
+                  data-testid="show-password-button"
                   type="button"
                 >
                   <svg
                     class="chakra-icon css-onkibi"
+                    data-testid="password-hidden"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -345,6 +348,7 @@ Object {
             <input
               aria-required="true"
               class="chakra-input css-0"
+              data-testid="password"
               id="password"
               required=""
               type="password"
@@ -354,10 +358,12 @@ Object {
             >
               <button
                 class="chakra-button css-5c2176"
+                data-testid="show-password-button"
                 type="button"
               >
                 <svg
                   class="chakra-icon css-onkibi"
+                  data-testid="password-hidden"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >

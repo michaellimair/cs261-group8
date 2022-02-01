@@ -27,6 +27,12 @@ describe('TooLargeError', () => {
     expect(ApiError.isApiError(err)).toBe(true);
   });
 
+  it('uses the default error message when instantiated without any arguments', () => {
+    const err = new TooLargeError();
+
+    expect(err.message).toBe(TooLargeError.defaultMessage);
+  });
+
   describe('isTooLargeError', () => {
     it('identifies TooLargeError classes correctly', () => {
       const err = new TooLargeError<unknown>('err', {});

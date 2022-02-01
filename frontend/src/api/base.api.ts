@@ -55,15 +55,34 @@ abstract class BaseAPI {
 
   protected basePath: string;
 
-  constructor() {
+  private static errorInterceptor = (err: Error) => {
+    // eslint-disable-next-line no-console
+    console.error(err);
+    if (err && axios.isAxiosError(err)) {
+      if (err.response?.status === 400 && Array.isArray(err.response.data.message)) {
+        return Promise.reject(new ValidationApiError(err.response.data.message));
+      }
+      if (err.response?.status === 401) {
+        return Promise.reject(new UnauthorizedError(err.response.data.message));
+      }
+      if (err.response?.status === 413) {
+        return Promise.reject(new TooLargeError(err.response.data?.message));
+      }
+      if (err.response?.status === 422) {
+        return Promise.reject(new UnprocessableEntityApiError(err.response.data?.message));
+      }
+    }
+    return Promise.reject(new ApiError('An error has occurred in the server.'));
+  };
+
+  // Use dependency injection for API client for testing purposes
+  constructor(client?: AxiosInstance) {
     this.host = 'http://localhost:8000/api';
     this.basePath = '';
 
-    this.client = axios.create({
+    this.client = client ?? axios.create({
       baseURL: this.host,
     });
-
-    console.log(this.client);
 
     this.client.interceptors.response.use((resp) => {
       handleDates(resp.data);
@@ -72,25 +91,7 @@ abstract class BaseAPI {
 
     this.client.interceptors.response.use(
       (resp) => resp,
-      (err) => {
-        // eslint-disable-next-line no-console
-        console.error(err);
-        if (err && axios.isAxiosError(err)) {
-          if (err.response?.status === 400 && Array.isArray(err.response.data.message)) {
-            return Promise.reject(new ValidationApiError(err.response.data.message));
-          }
-          if (err.response?.status === 401) {
-            return Promise.reject(new UnauthorizedError(err.response.data.message));
-          }
-          if (err.response?.status === 413) {
-            return Promise.reject(new TooLargeError(err.response.data?.message));
-          }
-          if (err.response?.status === 422) {
-            return Promise.reject(new UnprocessableEntityApiError(err.response.data?.message));
-          }
-        }
-        return Promise.reject(new ApiError('An error has occurred in the server.'));
-      },
+      BaseAPI.errorInterceptor,
     );
   }
 
