@@ -1,4 +1,3 @@
-// import Login from /'components/Login';
 import {
   Box,
   FormControl,
@@ -18,7 +17,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import RouterLink from 'components/RouterLink';
 
 const RegisterPage: FC = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
     <>
@@ -58,13 +57,14 @@ const RegisterPage: FC = () => {
           <FormControl id="password" isRequired>
             <FormLabel>Password</FormLabel>
             <InputGroup>
-              <Input type={showPassword ? 'text' : 'password'} />
+              <Input type={showPassword ? 'text' : 'password'} data-testid="password" />
               <InputRightElement h="full">
                 <Button
                   variant="ghost"
+                  data-testid="show-password-button"
                   onClick={() => setShowPassword((show) => !show)}
                 >
-                  {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  {showPassword ? <ViewIcon data-testid="password-shown" /> : <ViewOffIcon data-testid="password-hidden" />}
                 </Button>
               </InputRightElement>
             </InputGroup>

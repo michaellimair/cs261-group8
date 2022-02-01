@@ -1,8 +1,10 @@
 class ApiError<T> extends Error {
   data?: T;
 
-  constructor(message: string, data?: T) {
-    super(message ?? 'An error has occurred in the API.');
+  static defaultMessage = 'An error has occurred in the API.';
+
+  constructor(message?: string, data?: T) {
+    super(message ?? ApiError.defaultMessage);
     this.data = data;
   }
 

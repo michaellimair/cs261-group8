@@ -21,6 +21,12 @@ describe('UnprocessableEntityApiError', () => {
     expect(ApiError.isApiError(err)).toBe(true);
   });
 
+  it('uses the default error message when instantiated without any arguments', () => {
+    const err = new UnprocessableEntityApiError();
+
+    expect(err.message).toBe(UnprocessableEntityApiError.defaultMessage);
+  });
+
   describe('isUnprocessableEntityApiError', () => {
     it('identifies UnprocessableEntityApiError classes correctly', () => {
       const err = new UnprocessableEntityApiError('error');

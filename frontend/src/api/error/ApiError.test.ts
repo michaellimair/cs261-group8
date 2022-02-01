@@ -18,6 +18,12 @@ describe('ApiError', () => {
     expect(err).toMatchSnapshot();
   });
 
+  it('uses the default error message when instantiated without any arguments', () => {
+    const err = new ApiError<any>();
+
+    expect(err.message).toBe(ApiError.defaultMessage);
+  });
+
   describe('isApiError', () => {
     it('identifies ApiError classes correctly', () => {
       const err = new ApiError<undefined>('Unknown error');
