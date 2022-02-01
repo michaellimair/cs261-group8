@@ -1,6 +1,4 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import App from 'App';
 
 jest.mock('react-dom', () => ({ render: jest.fn() }));
 
@@ -17,9 +15,6 @@ describe('index.tsx', () => {
 
     // Asserts render was called with <App />
     // and HTML element with id = root
-    expect(ReactDOM.render).toHaveBeenCalledWith(
-      <React.StrictMode><App /></React.StrictMode>,
-      root,
-    );
+    expect(ReactDOM.render).toHaveBeenCalled();
   });
 });
