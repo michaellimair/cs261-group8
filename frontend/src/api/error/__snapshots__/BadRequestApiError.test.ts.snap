@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BadRequestApiError is instantiated successfully 1`] = `[Error: Validation error in the data.]`;
