@@ -8,8 +8,8 @@ interface ValidationErrorMeta<T> {
 class BadRequestApiError<T = Record<string, string>> extends ApiError<ValidationErrorMeta<T>[]> {
   static defaultMessage = 'Validation error in the data.';
 
-  constructor(meta: ValidationErrorMeta<T>[]) {
-    super(BadRequestApiError.defaultMessage, meta);
+  constructor(message?: string, meta?: ValidationErrorMeta<T>[]) {
+    super(message ?? BadRequestApiError.defaultMessage, meta);
   }
 
   static isBadRequestApiError<Res>(obj: any): obj is BadRequestApiError<Res> {

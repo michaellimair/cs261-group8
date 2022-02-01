@@ -14,21 +14,28 @@ describe('BadRequestApiError', () => {
       errors: [],
     };
 
-    const err = new BadRequestApiError<ISampleError>(errorData.errors);
+    const err = new BadRequestApiError<ISampleError>('An error has occurred', errorData.errors);
 
     expect(err.data).toMatchObject(errorData.errors);
     expect(err).toMatchSnapshot();
   });
 
+  it('is instantiated successfully with no message', () => {
+    const err = new BadRequestApiError();
+
+    expect(err.data).toBeUndefined();
+    expect(err.message).toBe(BadRequestApiError.defaultMessage);
+  });
+
   it('is a subclass of ApiError', () => {
-    const err = new BadRequestApiError<unknown>([]);
+    const err = new BadRequestApiError<unknown>('', []);
 
     expect(ApiError.isApiError(err)).toBe(true);
   });
 
   describe('isBadRequestApiError', () => {
     it('identifies BadRequestApiError classes correctly', () => {
-      const err = new BadRequestApiError<undefined>([]);
+      const err = new BadRequestApiError<undefined>('', []);
 
       expect(BadRequestApiError.isBadRequestApiError(err)).toBe(true);
     });

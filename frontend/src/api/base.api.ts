@@ -35,7 +35,8 @@ export const handleDates = (body: any) => {
     if (isIsoDateString(value)) {
       // eslint-disable-next-line no-param-reassign
       body[key] = parseISO(value);
-    } else if (typeof value === 'object') {
+    }
+    if (typeof value === 'object') {
       handleDates(value);
     }
   }
@@ -59,17 +60,29 @@ abstract class BaseAPI {
     // eslint-disable-next-line no-console
     console.error(err);
     if (err && axios.isAxiosError(err)) {
-      if (err.response?.status === 400 && Array.isArray(err.response.data.message)) {
-        return Promise.reject(new ValidationApiError(err.response.data.message));
+      if (err.response?.status === 400) {
+        const isErrorIncluded = err.response?.data?.errors
+          && Array.isArray(err.response.data.errors);
+        return Promise.reject(
+          new ValidationApiError(
+            err.response?.data?.message,
+            isErrorIncluded ? err.response.data.errors : undefined,
+          ),
+        );
       }
       if (err.response?.status === 401) {
         return Promise.reject(new UnauthorizedError(err.response.data.message));
       }
       if (err.response?.status === 413) {
-        return Promise.reject(new TooLargeError(err.response.data?.message));
+        return Promise.reject(new TooLargeError(err.response.data?.message, err.response.data));
       }
       if (err.response?.status === 422) {
-        return Promise.reject(new UnprocessableEntityApiError(err.response.data?.message));
+        return Promise.reject(
+          new UnprocessableEntityApiError(
+            err.response.data?.message,
+            err.response.data,
+          ),
+        );
       }
     }
     return Promise.reject(new ApiError('An error has occurred in the server.'));
