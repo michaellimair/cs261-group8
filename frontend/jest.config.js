@@ -14,4 +14,5 @@ module.exports = {
     '**/*.tsx',
     '!**/node_modules/*',
   ],
+  resetMocks: false,
 };
