@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Todo
+from .models import UserProfile
 
-class TodoAdmin(admin.ModelAdmin):
-  list_display = ('title', 'description', 'completed')
+class UserProfileAdmin(admin.ModelAdmin):
+  list_display = ('user.first_name', 'user.last_name', 'user.username', 'user.email')
 
 # Register your models here.
-admin.site.register(Todo, TodoAdmin)
+admin.site.register(UserProfile, UserProfileAdmin)

@@ -1,9 +1,17 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import TodoSerializer
-from .models import Todo
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from ***REMOVED***.permissions import IsOwner
+from .serializers import UserSerializer
+from .models import UserProfile
 
 # Create your views here.
-class TodoView(viewsets.ModelViewSet):
-  serializer_class = TodoSerializer
-  queryset = Todo.objects.all()
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated, IsOwner])
+class UserView(viewsets.ModelViewSet):
+  def get(self, request):
+    serializer = UserSerializer(request.user)
+    return Response(serializer.data)
