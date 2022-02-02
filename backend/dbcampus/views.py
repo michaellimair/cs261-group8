@@ -3,18 +3,15 @@ from rest_framework import generics, permissions
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from dbcampus.permissions import IsOwner
+from rest_framework.permissions import AllowAny
 from django.contrib.auth.models import User
 from .serializers import UserSerializer, RegisterSerializer
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
-from rest_framework.authentication import BasicAuthentication
 
 # Create your views here.
 
 class MyDataView(APIView):
-  @permission_classes([IsAuthenticated, IsOwner])
   def get(self, request):
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
