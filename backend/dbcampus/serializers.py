@@ -44,11 +44,8 @@ class RegisterSerializer(serializers.ModelSerializer):
     if (attrs['password'] != attrs['verify_password']):
       raise serializers.ValidationError({ 'password': 'Passwords do not match.' })
 
-    try:
-      User.objects.get(username = attrs['username'].lower()).exists()
+    if User.objects.filter(username = attrs['username'].lower()).exists():
       raise serializers.ValidationError({ 'username': 'Username has already been taken.' })
-    except ObjectDoesNotExist:
-      pass
 
     attrs['username'] = attrs['username'].lower()
     
