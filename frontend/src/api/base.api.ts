@@ -1,4 +1,11 @@
 import { parseISO } from 'date-fns';
+import urljoin from 'url-join';
+import axios, { AxiosInstance } from 'axios';
+import ApiError from './error/ApiError';
+import ValidationApiError from './error/BadRequestApiError';
+import TooLargeError from './error/TooLargeError';
+import UnprocessableEntityApiError from './error/UnprocessableEntityApiError';
+import UnauthorizedError from './error/UnauthorizedError';
 
 const isoDateFormat = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/;
 
@@ -28,7 +35,8 @@ export const handleDates = (body: any) => {
     if (isIsoDateString(value)) {
       // eslint-disable-next-line no-param-reassign
       body[key] = parseISO(value);
-    } else if (typeof value === 'object') {
+    }
+    if (typeof value === 'object') {
       handleDates(value);
     }
   }
@@ -44,8 +52,152 @@ export const handleDates = (body: any) => {
 abstract class BaseAPI {
   private host: string;
 
-  constructor() {
+  private client: AxiosInstance;
+
+  protected basePath: string;
+
+  private static errorInterceptor = (err: Error) => {
+    // eslint-disable-next-line no-console
+    console.error(err);
+    if (err && axios.isAxiosError(err)) {
+      if (err.response?.status === 400) {
+        const isErrorIncluded = err.response?.data?.errors
+          && Array.isArray(err.response.data.errors);
+        return Promise.reject(
+          new ValidationApiError(
+            err.response?.data?.message,
+            isErrorIncluded ? err.response.data.errors : undefined,
+          ),
+        );
+      }
+      if (err.response?.status === 401) {
+        return Promise.reject(new UnauthorizedError(err.response.data.message));
+      }
+      if (err.response?.status === 413) {
+        return Promise.reject(new TooLargeError(err.response.data?.message, err.response.data));
+      }
+      if (err.response?.status === 422) {
+        return Promise.reject(
+          new UnprocessableEntityApiError(
+            err.response.data?.message,
+            err.response.data,
+          ),
+        );
+      }
+    }
+    return Promise.reject(new ApiError('An error has occurred in the server.'));
+  };
+
+  // Use dependency injection for API client for testing purposes
+  constructor(client?: AxiosInstance) {
     this.host = 'http://localhost:8000/api';
+    this.basePath = '';
+
+    this.client = client ?? axios.create({
+      baseURL: this.host,
+    });
+
+    this.client.interceptors.response.use((resp) => {
+      handleDates(resp.data);
+      return resp;
+    });
+
+    this.client.interceptors.response.use(
+      (resp) => resp,
+      BaseAPI.errorInterceptor,
+    );
+  }
+
+  protected getFullPath(path: string) {
+    return urljoin(this.basePath, path);
+  }
+
+  async get<T = Record<string, unknown>, Qs = Record<string, unknown>>({
+    path,
+    query,
+  }: {
+    path: string;
+    query?: Qs;
+  }) {
+    const fullPath = this.getFullPath(path);
+    const resp = await this.client.get<T>(fullPath, {
+      params: query,
+    });
+    return resp.data;
+  }
+
+  async post<
+    Res = Record<string, unknown>,
+    TBody = Record<string, unknown>,
+    Qs = Record<string, unknown>,
+  >({
+    path,
+    body,
+    query,
+  }: {
+    path: string;
+    body?: TBody;
+    query?: Qs;
+  }) {
+    const fullPath = this.getFullPath(path);
+    const resp = await this.client.post<Res>(fullPath, body ?? {}, {
+      params: query,
+    });
+    return resp.data;
+  }
+
+  async patch<
+    Res = Record<string, unknown>,
+    TBody = Record<string, unknown>,
+    Qs = Record<string, unknown>,
+  >({
+    path,
+    body,
+    query,
+  }: {
+    path: string;
+    body?: TBody;
+    query?: Qs;
+  }) {
+    const fullPath = this.getFullPath(path);
+    const resp = await this.client.patch<Res>(fullPath, body ?? {}, {
+      params: query,
+    });
+    return resp.data;
+  }
+
+  async put<
+    Res = Record<string, unknown>,
+    TBody = Record<string, unknown>,
+    Qs = Record<string, unknown>,
+  >({
+    path,
+    body,
+    query,
+  }: {
+    path: string;
+    body?: TBody;
+    query?: Qs;
+  }) {
+    const fullPath = this.getFullPath(path);
+    const resp = await this.client.put<Res>(fullPath, body ?? {}, {
+      params: query,
+    });
+    return resp.data;
+  }
+
+  async delete<T = Record<string, unknown>, Qs = Record<string, unknown>>({
+    path,
+    query,
+  }: {
+    path: string;
+    query?: Qs;
+  }) {
+    const fullPath = this.getFullPath(path);
+    const resp = await this.client.delete<T>(fullPath, {
+      params: query,
+    });
+    return resp.data;
   }
 }
 
