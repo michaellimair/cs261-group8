@@ -1,9 +1,11 @@
-import React from 'react';
+import i18n from 'i18n';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App', () => {
+  it('renders and shows the not found page by default', () => {
+    render(<App />);
+    const notFoundText = screen.getByText(/not_found/i);
+    expect(notFoundText).toBeInTheDocument();
+  });
 });

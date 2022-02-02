@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# DBCampus Frontend App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -16,7 +16,7 @@ You will also see any lint errors in the console.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
+Launches the test runner with coverage testing.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
@@ -24,23 +24,16 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The build is minified and the filenames include the hashes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Internationalization (i18n)
 
-### `yarn eject`
+**DO NOT** place any plain text strings within component text files. If you have anything that resembles plain text (sentences, words, phrases), please add them to the `src/i18n/[locale].json` file so that it will support further localization.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Localization is something that has been implemented from the ground up so that no future extra effort is needed.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you feel like it, feel free to add a locale to your own liking. For file name formatting of the locale file, please visit the reference [here](https://www.i18next.com/how-to/faq#how-should-the-language-codes-be-formatted).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Routing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+All routing is done with React Router v6. Please refer to the [new documentation](https://reactrouter.com/docs/en/v6/getting-started/overview), as a Google search might lead you to the old version (v5) which has a different set of APIs.

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UnprocessableEntityApiError is instantiated successfully 1`] = `[Error: An error has occurred]`;
