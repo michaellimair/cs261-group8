@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from knox import views as knox_views
 from django.urls import path, include
-from ***REMOVED***.views import RegisterView, MyDataView, LoginView
+from ***REMOVED***.views import RegisterView, MyDataView, LoginView, BusinessAreaView
 from rest_framework import routers
 from rest_framework.schemas import get_schema_view
 
@@ -24,7 +24,7 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('api/business-areas', BusinessAreaView.as_view({'get': 'list'}), name='business_area'),
     path('api/auth', MyDataView.as_view(), name='me'),
     path('api/auth/login', LoginView.as_view(), name='knox_login'),
     path('api/auth/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
