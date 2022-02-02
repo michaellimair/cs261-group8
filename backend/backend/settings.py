@@ -53,7 +53,6 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'knox.auth.TokenAuthentication',
     ],
-    'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S.%f%z",
 }
 
 MIDDLEWARE = [
@@ -74,7 +73,6 @@ REST_KNOX = {
   'USER_SERIALIZER': 'knox.serializers.UserSerializer',
   'TOKEN_LIMIT_PER_USER': None,
   'AUTO_REFRESH': False,
-  'EXPIRY_DATETIME_FORMAT': REST_FRAMEWORK['DATETIME_FORMAT'],
 }
 
 ROOT_URLCONF = 'backend.urls'
