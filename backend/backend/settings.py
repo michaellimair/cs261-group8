@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import sys
+from datetime import timedelta
+from rest_framework.settings import api_settings
 from dotenv import load_dotenv
 
 load_dotenv()  # take environment variables from .env.
@@ -44,15 +45,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'rest_framework_simplejwt',
+    'knox',
     '***REMOVED***',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
+        'knox.auth.TokenAuthentication',
+    ],
+    'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S.%f%z",
 }
 
 MIDDLEWARE = [
@@ -65,6 +66,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+
+REST_KNOX = {
+  'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
+  'AUTH_TOKEN_CHARACTER_LENGTH': 64,
+  'TOKEN_TTL': timedelta(hours=1),
+  'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+  'TOKEN_LIMIT_PER_USER': None,
+  'AUTO_REFRESH': False,
+  'EXPIRY_DATETIME_FORMAT': REST_FRAMEWORK['DATETIME_FORMAT'],
+}
 
 ROOT_URLCONF = 'backend.urls'
 
