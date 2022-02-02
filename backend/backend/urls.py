@@ -25,11 +25,11 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api/me', MyDataView.as_view(), name='me'),
-    path('api/login', LoginView.as_view(), name='knox_login'),
-    path('api/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
-    path('api/logout-all', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
-    path('api/register', RegisterView.as_view(), name='auth_register'),
+    path('api/auth', MyDataView.as_view(), name='me'),
+    path('api/auth/login', LoginView.as_view(), name='knox_login'),
+    path('api/auth/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
+    path('api/auth/logout-all', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
+    path('api/auth/register', RegisterView.as_view(), name='auth_register'),
     path('openapi', get_schema_view(
         title="DBCampus API Documentation",
         description="API documentation for the DBCampus project.",
