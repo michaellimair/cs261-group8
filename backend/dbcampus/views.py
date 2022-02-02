@@ -1,9 +1,32 @@
-from django.shortcuts import render
-from rest_framework import viewsets
-from .serializers import TodoSerializer
-from .models import Todo
+from django.contrib.auth import login
+from rest_framework import generics, permissions
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from django.contrib.auth.models import User
+from .serializers import UserSerializer, RegisterSerializer
+from knox.views import LoginView as KnoxLoginView
+from rest_framework.authtoken.serializers import AuthTokenSerializer
 
 # Create your views here.
-class TodoView(viewsets.ModelViewSet):
-  serializer_class = TodoSerializer
-  queryset = Todo.objects.all()
+
+class MyDataView(APIView):
+  def get(self, request):
+    serializer = UserSerializer(request.user)
+    return Response(serializer.data)
+
+class RegisterView(generics.CreateAPIView):
+  queryset = User.objects.all()
+  permission_classes = (AllowAny,)
+  serializer_class = RegisterSerializer
+
+class LoginView(KnoxLoginView):
+  permission_classes = (permissions.AllowAny,)
+
+  def post(self, request, format=None):
+    serializer = AuthTokenSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    user = serializer.validated_data['user']
+    login(request, user)
+    return super(LoginView, self).post(request, format=None)
