@@ -16,6 +16,7 @@ python-dotenv = "*"
 djangorestframework-simplejwt = "*"
 django-rest-knox = "*"
 django-annoying = "*"
+factory-boy = "*"
 
 [dev-packages]
 
