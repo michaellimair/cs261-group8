@@ -17,7 +17,7 @@ class TestLoginView(TestCase):
       "password": self.password
     }
 
-    response = self.client.post('/api/login', body)
+    response = self.client.post('/api/auth/login', body)
 
     self.assertEqual(response.status_code, 200)
     
