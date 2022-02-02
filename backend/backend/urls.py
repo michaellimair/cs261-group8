@@ -14,22 +14,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from knox import views as knox_views
 from django.urls import path, include
-from dbcampus.views import RegisterView
+from dbcampus.views import RegisterView, MyDataView, LoginView
 from rest_framework import routers
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-    TokenVerifyView,
-)
+from rest_framework.schemas import get_schema_view
 
 router = routers.DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path('api/me', MyDataView.as_view(), name='me'),
+    path('api/login', LoginView.as_view(), name='knox_login'),
+    path('api/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
+    path('api/logout-all', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
     path('api/register', RegisterView.as_view(), name='auth_register'),
+    path('openapi', get_schema_view(
+        title="DBCampus API Documentation",
+        description="API documentation for the DBCampus project.",
+        version="1.0.0"
+    ), name='openapi-schema'),
 ]

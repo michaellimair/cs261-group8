@@ -3,17 +3,21 @@ from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.password_validation import validate_password
-from .models import UserProfile
+from .models import UserProfile, BusinessArea
+
+class BusinessAreaSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = BusinessArea
+    fields = ('id', 'name', 'label')
 
 class UserProfileSerializer(serializers.ModelSerializer):
   class Meta:
     model = UserProfile
-    fields = ('id', 'pronoun', 'title')
+    fields = ('pronoun', 'title', 'completed')
 
 class UserSerializer(serializers.ModelSerializer):
-  profile = serializers.SlugRelatedField(
-    slug_field='id',
-    queryset=UserProfile.objects.all()
+  profile = UserProfileSerializer(
+    read_only=True
   )
 
   class Meta:

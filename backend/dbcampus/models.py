@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+from annoying.fields import AutoOneToOneField
+
+class BusinessArea(models.Model):
+  name = models.CharField(max_length=50)
+  label = models.CharField(max_length=100)
 
 class UserProfile(models.Model):
   class Title(models.TextChoices):
@@ -10,12 +15,17 @@ class UserProfile(models.Model):
     VICE_PRESIDENT = 'VP', _('title.vp')
     DIRECTOR = 'DIR', _('title.dir')
     MANAGING_DIRECTOR = 'MD', _('title.md')
-  user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
+  user = AutoOneToOneField(User, related_name="profile", on_delete=models.CASCADE)
   pronoun = models.CharField(
     max_length=50,
+    null=True,
   )
+  completed = models.BooleanField(
+    default=False,
+  )
+  business_area = models.ForeignKey(BusinessArea, on_delete=models.CASCADE)
   title = models.CharField(
     max_length=5,
     choices=Title.choices,
-    blank=False,
+    null=True,
   )
