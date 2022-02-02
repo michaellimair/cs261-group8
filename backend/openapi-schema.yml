@@ -3,9 +3,9 @@ info:
   title: ''
   version: ''
 paths:
-  /api/todos/:
+  /api/me:
     get:
-      operationId: listTodos
+      operationId: listMyDatas
       description: ''
       parameters: []
       responses:
@@ -14,145 +14,130 @@ paths:
             application/json:
               schema:
                 type: array
-                items:
-                  $ref: '#/components/schemas/Todo'
+                items: {}
           description: ''
       tags:
       - api
+  /api/login:
     post:
-      operationId: createTodo
+      operationId: createLogin
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/logout:
+    post:
+      operationId: createLogout
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/logout-all:
+    post:
+      operationId: createLogoutAll
+      description: 'Log the user out of all sessions
+
+        I.E. deletes all auth tokens for the user'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/register:
+    post:
+      operationId: createUser
       description: ''
       parameters: []
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Todo'
+              $ref: '#/components/schemas/Register'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Todo'
+              $ref: '#/components/schemas/Register'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Todo'
+              $ref: '#/components/schemas/Register'
       responses:
         '201':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Todo'
-          description: ''
-      tags:
-      - api
-  /api/todos/{id}/:
-    get:
-      operationId: retrieveTodo
-      description: ''
-      parameters:
-      - name: id
-        in: path
-        required: true
-        description: A unique integer value identifying this todo.
-        schema:
-          type: string
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todo'
-          description: ''
-      tags:
-      - api
-    put:
-      operationId: updateTodo
-      description: ''
-      parameters:
-      - name: id
-        in: path
-        required: true
-        description: A unique integer value identifying this todo.
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Todo'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Todo'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Todo'
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todo'
-          description: ''
-      tags:
-      - api
-    patch:
-      operationId: partialUpdateTodo
-      description: ''
-      parameters:
-      - name: id
-        in: path
-        required: true
-        description: A unique integer value identifying this todo.
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Todo'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Todo'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Todo'
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todo'
-          description: ''
-      tags:
-      - api
-    delete:
-      operationId: destroyTodo
-      description: ''
-      parameters:
-      - name: id
-        in: path
-        required: true
-        description: A unique integer value identifying this todo.
-        schema:
-          type: string
-      responses:
-        '204':
+                $ref: '#/components/schemas/Register'
           description: ''
       tags:
       - api
 components:
   schemas:
-    Todo:
+    Register:
       type: object
       properties:
-        id:
-          type: integer
-          readOnly: true
-        title:
+        username:
           type: string
-          maxLength: 120
-        description:
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+\z
+          maxLength: 150
+        password:
           type: string
-        completed:
-          type: boolean
+          writeOnly: true
+        verify_password:
+          type: string
+          writeOnly: true
+        email:
+          type: string
+          format: email
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
       required:
-      - title
-      - description
+      - username
+      - password
+      - verify_password
+      - email
+      - first_name
+      - last_name
