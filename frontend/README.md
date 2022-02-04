@@ -2,29 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Getting Started
+1. Ensure you have Node.js 16 and Yarn installed on your system. Verify by typing `npm -v` and `yarn -v` in your command line.
+2. Run `yarn` to install all the project dependencies.
+3. Run `yarn start` to start the React project. Your browser should open automatically.
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner with coverage testing.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
+You can verify your test cases with `yarn test`.
 
 ## Internationalization (i18n)
 

@@ -1,6 +1,8 @@
 # DBCampus2021 Group 8
 Project for Group 8 of DBCampus 2021, made for the CS261 Software Engineering course at the University of Warwick.
 
+Project setup instructions for both the backend and frontend can be seen in their respective folders.
+
 Group members:
 - Betty (@acyanbird)
 - Kailo
@@ -9,7 +11,7 @@ Group members:
 - Sabit
 - Dan
 
-This project follows the Test-Driven Development (TDD) approach for development, applying testing wherever necessary and possible. As such, all code by all developers need to be adequately tested and needs to pass all automated checks.
+This project follows the **Test-Driven Development (TDD)** approach for development, applying testing wherever necessary and possible. As such, all code by all developers need to be adequately tested and needs to pass all automated checks.
 
 ## General Conventions
 - Development builds are automatically versioned according to their commit hash
@@ -17,33 +19,3 @@ This project follows the Test-Driven Development (TDD) approach for development,
 - Please use the naming conventions as laid out in [PEP8](https://www.python.org/dev/peps/pep-0008/#naming-conventions). Namely, variable and function names should use snake_case. Class names should use PascalCase.
 - Everyone is a developer, code reviewer, and tester. We prioritize collaboration in this team.
 - All code should pass checks from the linters of the code's programming language (Pylint for Python, ESLint for JavaScript)
-
-## For Backend Development
-The following section contains the steps to perform backend development along with things to note.
-
-### Environment Variables
-This project has been set up to support overriding operating system environment variables using the `.env` file. A `.env` file will only be locally stored and will not be uploaded to version control. This is done for security reasons, since `.env` files typically contain secrets and sensitive credentials. Inside the `backend` folder, you can copy the `.env.example` file and paste it as `.env`.
-
-When adding additional environment variables for configurable settings or for storing secrets, please add them as an environment variable. You can use `os.environ.get(<env_name>)` from the `os` module to get the environment variables. Afterwards, add the key of the environment variable to your `.env` file and an example key/value pair in `.env.example`.
-
-### Running the Project
-- Navigate to the `backend` folder
-- Perform `pipenv shell` to activate the virtual Python environment for this project
-- Perform `pipenv install` to install all the dependencies of the project
-- Perform database migration with `python manage.py migrate`
-- Run the project with `python manage.py runserver`
-
-### Creating Models
-- All models can be placed in `models.py` for now. Refactoring will be done in the near future.
-- After creating a model, make a migration by performing `python manage.py makemigrations <model_name>`, followed by performing the migration with `python manage.py migrate <model_name>`
-
-### Generating an OpenAPI Schema
-API schemas are useful for external users or for the frontend team to be able to link the application to the backend. Detailed instructions are available in the official Django REST Framework website [here](https://www.django-rest-framework.org/api-guide/schemas).
-
-### Testing
-All Python files need to have tests written alongside them. You can add tests in an adjacent file to the file you are writing by adding a `test_` prefix to the name of the test file. For example, if you want to test `models.py`, you should create a file `test_models.py`.
-
-## References (WIP)
-Tutorials followed:
-- https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
-- https://typescript-eslint.io/docs/linting/
