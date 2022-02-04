@@ -13,6 +13,11 @@ variable "region" {
   default     = "europe-west3"
 }
 
+variable "region_failover" {
+  description = "Location for Google Cloud Run failover."
+  default     = "europe-west2"
+}
+
 variable "ssl" {
   description = "Run load balancer on HTTPS and provision managed certificate with provided `domain`."
   type        = bool
