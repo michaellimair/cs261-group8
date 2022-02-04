@@ -1,35 +1,31 @@
 version: "3.1"
 services:
-  db:
-    image: postgres
-    ports:
-      - "5430:5432"
-    restart: always
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_PASSWORD=example
   frontend:
     restart: always
-    ports:
-      - "3000:3000"
+    expose:
+      - 3000
     build: ./frontend
-    command: bash -c "yarn start"
     volumes:
       - ./frontend:/frontend
   backend:
     restart: always
-    build: ./backend  # dockerfile position
-    command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8010"
+    build: ./backend
     volumes:
+      - static_volume:/home/app/backend/staticfiles
       - ./backend:/backend
+    expose:
+      - 8000
+    env_file:
+      - ./backend/backend/.env.prod
+  nginx:
+    build: ./nginx
     ports:
-      - "8010:8010"
-    environment:
-      - DB_ENGINE=django.db.backends.postgresql
-      - DB_NAME=postgres
-      - DB_USER=postgres
-      - DB_PASSWORD=example
-      - DB_HOST=db
-      - DB_PORT=5432
+      - 8123:80
+    volumes:
+      - static_volume:/home/app/backend/staticfiles
     depends_on:
-      - db
+      - backend
+      - frontend
+
+volumes:
+  static_volume:
