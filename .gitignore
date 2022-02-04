@@ -3,4 +3,22 @@ __pycache__/
 *.py[cod]
 .idea
 **.env
+**.env.prod
+**.env.local
 **requirements.txt
+serviceAccountKey.json
+
+*.tfvars
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+.terraform.lock**

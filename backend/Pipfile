@@ -17,6 +17,7 @@ djangorestframework-simplejwt = "*"
 django-rest-knox = "*"
 django-annoying = "*"
 factory-boy = "*"
+gunicorn = "*"
 
 [dev-packages]
 

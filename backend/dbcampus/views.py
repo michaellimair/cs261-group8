@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login
 from rest_framework import generics, permissions, viewsets
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
