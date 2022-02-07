@@ -1,9 +1,9 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
-from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.password_validation import validate_password
 from .models import UserProfile, BusinessArea
+from django.utils.translation import gettext_lazy as _
 
 class BusinessAreaSerializer(serializers.ModelSerializer):
   class Meta:
@@ -27,7 +27,11 @@ class UserSerializer(serializers.ModelSerializer):
 class RegisterSerializer(serializers.ModelSerializer):
   email = serializers.EmailField(
     required=True,
-    validators=[UniqueValidator(queryset=User.objects.all())]
+    validators=[UniqueValidator(queryset=User.objects.all(), message=_("email_taken"), lookup='iexact')]
+  )
+  username = serializers.CharField(
+    required=True,
+    validators=[UniqueValidator(queryset=User.objects.all(), message=_("username_taken"), lookup='iexact')],
   )
   password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
   verify_password = serializers.CharField(write_only=True, required=True)
@@ -42,11 +46,9 @@ class RegisterSerializer(serializers.ModelSerializer):
 
   def validate(self, attrs):
     if (attrs['password'] != attrs['verify_password']):
-      raise serializers.ValidationError({ 'password': 'Passwords do not match.' })
+      raise serializers.ValidationError({ 'verify_password': _('password_not_match') })
 
-    if User.objects.filter(username = attrs['username'].lower()).exists():
-      raise serializers.ValidationError({ 'username': 'Username has already been taken.' })
-
+    attrs['email'] = attrs['email'].lower()
     attrs['username'] = attrs['username'].lower()
     
     return attrs

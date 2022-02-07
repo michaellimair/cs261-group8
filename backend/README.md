@@ -20,6 +20,21 @@ When adding additional environment variables for configurable settings or for st
 - All models can be placed in `models.py` for now. Refactoring will be done in the near future.
 - After creating a model, make a migration by performing `python manage.py makemigrations <model_name>`, followed by performing the migration with `python manage.py migrate <model_name>`
 
+## Internationalization and Localization
+To ensure that all strings returned from the backend are properly localized, please use Django's built-in translation utilities from `django.utils.translation`. To add a translation key:
+1. In your code, use an instance of translation. For example:
+```
+from django.utils.translation import gettext as _
+
+print(_('hello_world'))
+```
+2. In this folder, run `python -m manage.py makemessages -a`
+3. Write all the proper strings for translations in the file `cs261/locale/[language]/LC_MESSAGES/django.po`.
+4. Compile the message files by running `python -m manage.py compilemessages` in this folder.
+5. If the compilation is successful, you will see an update to the `cs261/locale/[language]/LC_MESSAGES/django.mo` file.
+
+Note that names of language must follow the language identifiers as specified in [RFC 3066](http://www.i18nguy.com/unicode/language-identifiers.html). This is in order for Django's `Accept-Language` behavior to function properly.
+
 ## Generating an OpenAPI Schema
 API schemas are useful for external users or for the frontend team to be able to link the application to the backend. Detailed instructions are available in the official Django REST Framework website [here](https://www.django-rest-framework.org/api-guide/schemas).
 
