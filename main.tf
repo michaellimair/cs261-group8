@@ -5,6 +5,12 @@ terraform {
       version = "4.9.0"
     }
   }
+
+  # Store all Terraform state in a Google Cloud Storage bucket
+  backend "gcs" {
+    bucket  = var.tf_state_bucket_name
+    prefix  = var.tf_state_prefix
+  }
 }
 
 provider "google-beta" {
@@ -19,6 +25,7 @@ resource "google_cloud_run_service" "gcr_service_main" {
 
   template {
     spec {
+      # Container will pull image pushed to Google Container Registry in previous GitHub Action step
       containers {
         image = "gcr.io/${var.project_id}/${var.cloud_run_main_service}"
       }
@@ -33,6 +40,7 @@ resource "google_cloud_run_service" "gcr_service_main" {
   autogenerate_revision_name = true
 }
 
+# Ensure that the backend engine is a public endpoint
 resource "google_cloud_run_service_iam_member" "public-access" {
   location = google_cloud_run_service.gcr_service_main.location
   project  = google_cloud_run_service.gcr_service_main.project

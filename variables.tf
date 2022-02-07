@@ -8,6 +8,16 @@ variable "bucket_name" {
   description = "Name of the Google Cloud Storage (GCS) bucket."
 }
 
+variable "tf_state_bucket_name" {
+  type        = string
+  description = "Name of the Google Cloud Storage (GCS) bucket used for storing the Terraform state."
+}
+
+variable "tf_state_prefix" {
+  type = string
+  description = "Prefix to be used for storing the Terraform state."
+}
+
 variable "cloud_run_main_service" {
   type        = string
   description = "Name of the Google Cloud Run service that is hosted in the main region."
