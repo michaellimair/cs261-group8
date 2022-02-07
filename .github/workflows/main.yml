@@ -11,6 +11,14 @@ env:
   MAIN_REGION: ${{ secrets.GCP_MAIN_REGION }}
   SERVICE: ${{ secrets.GCR_SERVICE }}
   STORAGE_BUCKET: ${{ secrets.GCP_BUCKET }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+  TF_VAR_project_id: ${{ env.PROJECT_ID }}
+  TF_VAR_bucket_name: ${{ env.STORAGE_BUCKET }}
+  TF_VAR_cloud_run_main_service: ${{ env.SERVICE }}
+  TF_VAR_domain: ${{ secrets.GCP_LB_DOMAIN }}
+  TF_VAR_cloud_run_image: 'gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}}:${{ github.sha }}'
+  TF_VAR_tf_state_bucket_name: ${{ secrets.GCP_TFSTATE_BUCKET }}
+  TF_VAR_tf_state_prefix: ${{ secrets.TF_STATE_PREFIX }}
 
 jobs:
   backend:
@@ -59,11 +67,12 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         thresholdAll: 0.9
 
-    - name: Initialize Terraform
-      run: terraform init
-
-    - name: Validate Terraform configuration
-      run: terraform validate -no-color
+    - name: Generate secrets for backend configuration of Terraform
+      run: 'echo "bucket\t= ${{ env.TF_BUCKET }}\nprefix\t= ${{ env.TF_PREFIX }}" > backend.conf'
+      shell: bash
+      env:
+        TF_BUCKET: ${{ secrets.GCP_TFSTATE_BUCKET }}
+        TF_PREFIX: ${{ secrets.TF_STATE_PREFIX }}
 
     - name: Authenticate to Google Cloud Platform
       uses: 'google-github-actions/auth@v0'
@@ -82,18 +91,19 @@ jobs:
         docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }} backend/
         docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}
 
+    - name: Initialize Terraform
+      run: terraform init -backend-config=backend.conf
+
+    - name: Validate Terraform configuration
+      run: terraform validate -no-color
+
+    - name: Show Terraform plan
+      if: ${{ github.event_name == 'push' }}
+      run: terraform plan -no-color
+
     - name: Apply Terraform
       if: ${{ github.event_name == 'push' }}
-      run: terraform apply -auto-approve
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
-        TF_VAR_project_id: ${{ env.PROJECT_ID }}
-        TF_VAR_bucket_name: ${{ env.STORAGE_BUCKET }}
-        TF_VAR_cloud_run_main_service: ${{ env.SERVICE }}
-        TF_VAR_domain: ${{ secrets.GCP_LB_DOMAIN }}
-        TF_VAR_cloud_run_image: 'gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}}:${{ github.sha }}'
-        TF_VAR_tf_state_bucket_name: ${{ secrets.GCP_TFSTATE_BUCKET }}
-        TF_VAR_tf_state_prefix: ${{ secrets.TF_STATE_PREFIX }}
+      run: terraform apply -auto-approve -backend-config=backend.conf
 
     - name: Deploy to Cloud Run
       if: ${{ github.event_name == 'push' }}

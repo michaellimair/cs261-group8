@@ -7,10 +7,8 @@ terraform {
   }
 
   # Store all Terraform state in a Google Cloud Storage bucket
-  backend "gcs" {
-    bucket  = var.tf_state_bucket_name
-    prefix  = var.tf_state_prefix
-  }
+  # Since variables cannot be used, text file needs to be generated dynamically
+  backend "gcs" {}
 }
 
 provider "google-beta" {

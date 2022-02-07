@@ -16,6 +16,7 @@ serviceAccountKey.json
 # .tfstate files
 *.tfstate
 *.tfstate.*
+backend.conf
 
 # Crash log files
 crash.log
