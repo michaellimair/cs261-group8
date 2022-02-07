@@ -18,23 +18,23 @@ class TestRegisterSerializer(TestCase):
 
   def test_validate_password(self):
     _attrs = {
-      "password": "***REMOVED***412",
-      "verify_password": "***REMOVED***413"
+      "password": "cs261412",
+      "verify_password": "cs261413"
     }
     self.assertRaises(serializers.ValidationError, self.serializer.validate, _attrs)
 
   def test_validate_username_duplicate(self):
     _attrs = {
-      "password": "***REMOVED***412",
-      "verify_password": "***REMOVED***412",
+      "password": "cs261412",
+      "verify_password": "cs261412",
       "username": self.user.username,
     }
     self.assertRaises(serializers.ValidationError, self.serializer.validate, _attrs)
 
   def test_validate_username_normalize(self):
     _attrs = {
-      "password": "***REMOVED***412",
-      "verify_password": "***REMOVED***412",
+      "password": "cs261412",
+      "verify_password": "cs261412",
       "username": "abcdefg".upper(),
     }
     attrs_processed = self.serializer.validate(_attrs)
@@ -46,7 +46,7 @@ class TestRegisterSerializer(TestCase):
       "email": "email@test.com",
       "first_name": "Test",
       "last_name": "User",
-      "password": "abc***REMOVED***145"
+      "password": "abccs261145"
     }
 
     self.serializer.create(data)

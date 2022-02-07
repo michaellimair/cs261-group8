@@ -1,5 +1,5 @@
-# ***REMOVED***2021 Group 8
-Project for Group 8 of ***REMOVED*** 2021, made for the CS261 Software Engineering course at the University of Warwick.
+# CS261 Group 8
+Project for Group 8 of the CS261 Software Engineering course at the University of Warwick.
 
 Project setup instructions for both the backend and frontend can be seen in their respective folders.
 

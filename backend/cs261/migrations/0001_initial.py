@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('pronoun', models.CharField(max_length=50, null=True)),
                 ('completed', models.BooleanField(default=False)),
                 ('title', models.CharField(choices=[('ANLST', 'title.anlst'), ('ASSOC', 'title.assoc'), ('AVP', 'title.avp'), ('VP', 'title.vp'), ('DIR', 'title.dir'), ('MD', 'title.md')], max_length=5, null=True)),
-                ('business_area', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='***REMOVED***.businessarea')),
+                ('business_area', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cs261.businessarea')),
                 ('user', annoying.fields.AutoOneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile', to=settings.AUTH_USER_MODEL)),
             ],
         ),
