@@ -1,4 +1,4 @@
-# ***REMOVED*** Backend App
+# DBCampus Backend App
 
 This application was made with the Django framework, which is based in Python.
 

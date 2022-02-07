@@ -19,3 +19,7 @@ This project follows the **Test-Driven Development (TDD)** approach for developm
 - Please use the naming conventions as laid out in [PEP8](https://www.python.org/dev/peps/pep-0008/#naming-conventions). Namely, variable and function names should use snake_case. Class names should use PascalCase.
 - Everyone is a developer, code reviewer, and tester. We prioritize collaboration in this team.
 - All code should pass checks from the linters of the code's programming language (Pylint for Python, ESLint for JavaScript)
+
+
+## Notes
+This repository has been reset once on 7 February 2022 for security reasons.
