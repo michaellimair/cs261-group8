@@ -32,6 +32,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@v2
+    - uses: hashicorp/setup-terraform@v1
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -57,10 +58,32 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         thresholdAll: 0.9
 
+    - name: Initialize Terraform
+      run: terraform init
+
+    - name: Run Terraform formatter
+      run: terraform fmt -check
+
+    - name: Show Terraform plan
+      run: terraform plan -no-color
+
+    - run: echo ${{ steps.plan.outputs.stdout }}
+
+    - name: Apply Terraform
+      if: ${{ github.event_name == 'push' }}
+      run: terraform apply -auto-approve
+      GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+
     - name: Authenticate to Google Cloud Platform
       uses: 'google-github-actions/auth@v0'
       with:
         credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v0'
+
+    - name: Authorize Docker push
+      run: gcloud auth configure-docker
 
     - name: Build and Push Container
       if: ${{ github.event_name == 'push' }}
