@@ -65,12 +65,6 @@ jobs:
     - name: Validate Terraform configuration
       run: terraform validate -no-color
 
-    - name: Show Terraform plan
-      run: terraform plan -no-color
-
-    - name: Display output of the Terraform plan
-      run: echo ${{ steps.plan.outputs.stdout }}
-
     - name: Authenticate to Google Cloud Platform
       uses: 'google-github-actions/auth@v0'
       with:
