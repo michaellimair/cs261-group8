@@ -68,7 +68,7 @@ jobs:
         thresholdAll: 0.9
 
     - name: Generate secrets for backend configuration of Terraform
-      run: 'echo "bucket\t= ${{ env.TF_BUCKET }}\nprefix\t= ${{ env.TF_PREFIX }}" > backend.conf'
+      run: 'echo -e "bucket = ${{ env.TF_BUCKET }}\nprefix = ${{ env.TF_PREFIX }}" > backend.conf'
       shell: bash
       env:
         TF_BUCKET: ${{ secrets.GCP_TFSTATE_BUCKET }}
