@@ -4,12 +4,13 @@ This application was made with the Django framework, which is based in Python.
 
 ## Getting Started
 1. Ensure you have Python 3.9 or later installed in your system.
-2. Type `pipenv shell` to activate the virtual Python environment for this project
-3. Type `pipenv install` to install all the dependencies of the project
-4. Copy the `.env.example` file into a file named `.env`, and fill it with the appropriate credentials to authenticate to your local PostgreSQL database.
-5. Create a database in your PostgreSQL instance with the same name as the value you entered in the `DB_NAME` variable.
-6. Perform database migration with `python manage.py migrate` to populate all the tables and models.
-7. Run the project with `python manage.py runserver`
+2. Install `pipenv` if you do not have it by running `pip install pipenv`. If you get some `PATH` errors, try `python -m pip install pipenv`.
+3. Type `pipenv shell` to activate the virtual Python environment for this project
+4. Type `pipenv install` to install all the dependencies of the project
+5. Copy the `.env.example` file into a file named `.env`, and fill it with the appropriate credentials to authenticate to your local PostgreSQL database.
+6. Create a database in your PostgreSQL instance with the same name as the value you entered in the `DB_NAME` variable.
+7. Perform database migration with `python manage.py migrate` to populate all the tables and models.
+8. Run the project with `python manage.py runserver`.
 
 ## Environment Variables
 This project has been set up to support overriding operating system environment variables using the `.env` file. A `.env` file will only be locally stored and will not be uploaded to version control. This is done for security reasons, since `.env` files typically contain secrets and sensitive credentials. Inside the `backend` folder, you can copy the `.env.example` file and paste it as `.env`.
@@ -28,7 +29,7 @@ from django.utils.translation import gettext as _
 
 print(_('hello_world'))
 ```
-2. In this folder, run `python -m manage.py makemessages -a`
+2. In the folder of this readme file, run `python -m manage.py makemessages -a`.
 3. Write all the proper strings for translations in the file `cs261/locale/[language]/LC_MESSAGES/django.po`.
 4. Compile the message files by running `python -m manage.py compilemessages` in this folder.
 5. If the compilation is successful, you will see an update to the `cs261/locale/[language]/LC_MESSAGES/django.mo` file.
