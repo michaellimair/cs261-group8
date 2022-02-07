@@ -8,6 +8,11 @@ variable "bucket_name" {
   description = "Name of the Google Cloud Storage (GCS) bucket."
 }
 
+variable "cloud_run_main_service" {
+  type        = string
+  description = "Name of the Google Cloud Run service that is hosted in the main region."
+}
+
 variable "region" {
   description = "Location for load balancer and Google Cloud Run resources."
   default     = "europe-west3"

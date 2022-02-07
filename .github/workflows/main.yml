@@ -10,6 +10,7 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   MAIN_REGION: ${{ secrets.GCP_MAIN_REGION }}
   SERVICE: ${{ secrets.GCR_SERVICE }}
+  STORAGE_BUCKET: ${{ secrets.GCP_BUCKET }}
 
 jobs:
   backend:
@@ -61,19 +62,14 @@ jobs:
     - name: Initialize Terraform
       run: terraform init
 
-    - name: Run Terraform formatter
-      run: terraform fmt -check
+    - name: Validate Terraform configuration
+      run: terraform validate -no-color
 
     - name: Show Terraform plan
       run: terraform plan -no-color
 
-    - run: echo ${{ steps.plan.outputs.stdout }}
-
-    - name: Apply Terraform
-      if: ${{ github.event_name == 'push' }}
-      run: terraform apply -auto-approve
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+    - name: Display output of the Terraform plan
+      run: echo ${{ steps.plan.outputs.stdout }}
 
     - name: Authenticate to Google Cloud Platform
       uses: 'google-github-actions/auth@v0'
@@ -91,6 +87,15 @@ jobs:
       run: |-
         docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }} backend/
         docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}
+
+    - name: Apply Terraform
+      if: ${{ github.event_name == 'push' }}
+      run: terraform apply -auto-approve
+      env:
+        GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+        TF_VAR_project_id: ${{ env.PROJECT_ID }}
+        TF_VAR_bucket_name: ${{ env.STORAGE_BUCKET }}
+        TF_VAR_cloud_run_main_service: ${{ env.SERVICE }}
 
     - name: Deploy to Cloud Run
       if: ${{ github.event_name == 'push' }}
