@@ -14,6 +14,7 @@ module.exports = {
     '**/*.tsx',
     '!**/node_modules/*',
   ],
+  testRegex: '(\\.(test|spec))\\.(ts|tsx|js)$',
   coverageThreshold: {
     branches: 90,
     functions: 90,

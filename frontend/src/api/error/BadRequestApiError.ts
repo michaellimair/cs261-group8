@@ -1,14 +1,9 @@
 import ApiError from './ApiError';
 
-interface ValidationErrorMeta<T> {
-  property: keyof T,
-  value: T[keyof T];
-}
-
-class BadRequestApiError<T = Record<string, string>> extends ApiError<ValidationErrorMeta<T>[]> {
+class BadRequestApiError<T = Record<string, string>> extends ApiError<T> {
   static defaultMessage = 'Validation error in the data.';
 
-  constructor(message?: string, meta?: ValidationErrorMeta<T>[]) {
+  constructor(message?: string, meta?: T) {
     super(message ?? BadRequestApiError.defaultMessage, meta);
   }
 
