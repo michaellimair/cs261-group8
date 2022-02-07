@@ -1,6 +1,7 @@
-from django.test import TestCase, Client, RequestFactory
+from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from .views import MyDataView
+from rest_framework.test import force_authenticate, APIRequestFactory
 
 class TestLoginView(TestCase):
   def setUp(self):
@@ -28,12 +29,14 @@ class TestMyDataView(TestCase):
     self.user = User.objects.create(username=self.username)
     self.user.set_password(self.password)
     self.user.save()
-    self.request_factory = RequestFactory()
+    self.request_factory = APIRequestFactory()
 
   def test_post(self):
     request = self.request_factory.get('/api/me')
 
     request.user = self.user
+
+    force_authenticate(request, user=self.user)
 
     response = MyDataView.as_view()(request)
 
