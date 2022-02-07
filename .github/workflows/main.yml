@@ -91,13 +91,14 @@ jobs:
         TF_VAR_bucket_name: ${{ env.STORAGE_BUCKET }}
         TF_VAR_cloud_run_main_service: ${{ env.SERVICE }}
         TF_VAR_domain: ${{ secrets.GCP_LB_DOMAIN }}
+        TF_VAR_cloud_run_image: 'gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}}:${{ github.sha }}'
 
     - name: Deploy to Cloud Run
       if: ${{ github.event_name == 'push' }}
       uses: 'google-github-actions/deploy-cloudrun@v0'
       with:
         service: '${{ env.SERVICE }}}'
-        image: 'gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}}'
+        image: 'gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}}:${{ github.sha }}'
         region: '${{ env.MAIN_REGION }}'
 
     - name: Show Output of Deployment

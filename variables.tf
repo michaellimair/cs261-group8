@@ -13,6 +13,11 @@ variable "cloud_run_main_service" {
   description = "Name of the Google Cloud Run service that is hosted in the main region."
 }
 
+variable "cloud_run_image" {
+  type        = string
+  description = "Name of the Google Cloud Run image to be deployed to the Google Cloud Run instance."
+}
+
 variable "region" {
   description = "Location for load balancer and Google Cloud Run resources."
   default     = "europe-west3"
