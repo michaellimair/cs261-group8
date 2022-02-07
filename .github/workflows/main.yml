@@ -2,13 +2,23 @@ name: Test and build project
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, feat/infra-setup ]
   pull_request:
     branches: [ main ]
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  MAIN_REGION: ${{ secrets.GCP_MAIN_REGION }}
+  SERVICE: ${{ GCR_SERVICE }}
 
 jobs:
   backend:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     services:
       postgres:
         image: postgres:latest
@@ -46,6 +56,30 @@ jobs:
         coverageFile: ./backend/coverage.xml
         token: ${{ secrets.GITHUB_TOKEN }}
         thresholdAll: 0.9
+
+    - name: Authenticate to Google Cloud Platform
+      uses: 'google-github-actions/auth@v0'
+      with:
+        credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+    - name: Build and Push Container
+      if: ${{ github.event_name == 'push' }}
+      run: |-
+        docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }} backend/
+        docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}
+
+    - name: Deploy to Cloud Run
+      if: ${{ github.event_name == 'push' }}
+      uses: 'google-github-actions/deploy-cloudrun@v0'
+      with:
+        service: '${{ env.SERVICE }}}'
+        image: 'gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}}'
+        region: '${{ env.MAIN_REGION }}'
+
+    - name: Show Output of Deployment
+      if: ${{ github.event_name == 'push' }}
+      run: echo ${{ steps.deploy.outputs.url }}
+
   frontend:
     runs-on: ubuntu-latest
     steps:

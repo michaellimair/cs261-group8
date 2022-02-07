@@ -13,7 +13,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apk update \
-    && apk add gcc python3-dev musl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev
+    && apk add gcc python3-dev curl musl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev
 
 RUN pip install --upgrade pip
 RUN pip install pipenv
@@ -54,4 +54,4 @@ RUN chown -R app:app $APP_HOME
 # change to the app user
 USER app
 
-ENTRYPOINT ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000"]
+ENTRYPOINT [ "./entrypoint.sh" ]
