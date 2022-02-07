@@ -103,7 +103,7 @@ jobs:
 
     - name: Apply Terraform
       if: ${{ github.event_name == 'push' }}
-      run: terraform apply -auto-approve -backend-config=backend.conf
+      run: terraform apply -auto-approve
 
     - name: Deploy to Cloud Run
       if: ${{ github.event_name == 'push' }}
