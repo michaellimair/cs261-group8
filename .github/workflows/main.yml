@@ -72,7 +72,8 @@ jobs:
     - name: Apply Terraform
       if: ${{ github.event_name == 'push' }}
       run: terraform apply -auto-approve
-      GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+      with:
+        GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
 
     - name: Authenticate to Google Cloud Platform
       uses: 'google-github-actions/auth@v0'

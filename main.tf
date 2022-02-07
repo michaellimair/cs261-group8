@@ -8,8 +8,6 @@ terraform {
 }
 
 provider "google-beta" {
-  credentials = file("./serviceAccountKey.json")
-
   project = var.project_id
   region  = var.region
 }
