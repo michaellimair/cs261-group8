@@ -15,6 +15,7 @@ import os
 from datetime import timedelta
 from rest_framework.settings import api_settings
 from dotenv import load_dotenv
+from os import path
 
 load_dotenv()  # take environment variables from .env.
 
@@ -144,6 +145,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+USE_L10N = True
 
 USE_TZ = True
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 20:56+0000\n"
+"POT-Creation-Date: 2022-02-07 16:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,26 +18,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\cs261\models.py:7
+#: .\cs261\models.py:12
 msgid "title.anlst"
 msgstr "Analyst"
 
-#: .\cs261\models.py:8
+#: .\cs261\models.py:13
 msgid "title.assoc"
 msgstr "Associate"
 
-#: .\cs261\models.py:9
+#: .\cs261\models.py:14
 msgid "title.avp"
 msgstr "Assistant Vice President"
 
-#: .\cs261\models.py:10
+#: .\cs261\models.py:15
 msgid "title.vp"
 msgstr "Vice President"
 
-#: .\cs261\models.py:11
+#: .\cs261\models.py:16
 msgid "title.dir"
 msgstr "Director"
 
-#: .\cs261\models.py:12
+#: .\cs261\models.py:17
 msgid "title.md"
 msgstr "Managing Director"
+
+#: .\cs261\serializers.py:30
+msgid "email_taken"
+msgstr "Email is currently linked to another account."
+
+#: .\cs261\serializers.py:34
+msgid "username_taken"
+msgstr "Username has been taken by another account."
+
+#: .\cs261\serializers.py:49
+msgid "password_not_match"
+msgstr "Passwords do not match."
