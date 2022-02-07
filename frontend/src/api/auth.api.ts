@@ -3,23 +3,29 @@ import {
 } from 'customTypes/auth';
 import BaseAPI from './base.api';
 
-class AuthAPI extends BaseAPI {
-  constructor() {
-    super();
-    this.basePath = '/auth';
+/**
+ * API class which wraps all authentication methods.
+ */
+class AuthAPI {
+  private api: BaseAPI;
+
+  constructor(api?: BaseAPI) {
+    this.api = api ?? new BaseAPI({
+      basePath: '/auth',
+    });
   }
 
-  register = (payload: IRegistration): Promise<IUser> => this.post({
+  register = (payload: IRegistration): Promise<IUser> => this.api.post({
     path: '/register',
     body: payload,
   });
 
-  login = (payload: ILogin): Promise<ILoginResult> => this.post({
+  login = (payload: ILogin): Promise<ILoginResult> => this.api.post({
     path: '/login',
     body: payload,
   });
 
-  logout = (): Promise<IUser> => this.post({
+  logout = (): Promise<IUser> => this.api.post({
     path: '/logout',
   });
 }

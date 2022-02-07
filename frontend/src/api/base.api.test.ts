@@ -29,6 +29,7 @@ const createMockClient: () => AxiosInstance = () => ({
 }) as unknown as AxiosInstance;
 
 describe('base.api.ts', () => {
+  const mockIsoDate = '2022-01-18T18:42:06.930Z';
   describe('isIsoDateString', () => {
     it('returns false for non-date strings', () => {
       expect(isIsoDateString('aaaaa')).toBe(false);
@@ -39,7 +40,7 @@ describe('base.api.ts', () => {
     });
 
     it('returns true for ISO date strings', () => {
-      expect(isIsoDateString('2022-01-18T18:42:06.930Z')).toBe(true);
+      expect(isIsoDateString(mockIsoDate)).toBe(true);
     });
   });
 
@@ -50,24 +51,24 @@ describe('base.api.ts', () => {
 
     it('converts shallowly nested ISO dates to a date object', () => {
       const obj = {
-        a: '2022-01-18T18:42:06.930Z',
+        a: mockIsoDate,
       };
 
       expect(handleDates(obj)).toMatchObject({
-        a: new Date('2022-01-18T18:42:06.930Z'),
+        a: new Date(mockIsoDate),
       });
     });
 
     it('converts deeply nested ISO dates to a date object', () => {
       const obj = {
         a: {
-          d: '2022-01-18T18:42:06.930Z',
+          d: mockIsoDate,
         },
       };
 
       expect(handleDates(obj)).toMatchObject({
         a: {
-          d: new Date('2022-01-18T18:42:06.930Z'),
+          d: new Date(mockIsoDate),
         },
       });
     });
@@ -76,14 +77,14 @@ describe('base.api.ts', () => {
   describe('BaseAPI', () => {
     let api: BaseAPI;
     let mockClient: AxiosInstance;
-
-    class StubBaseAPI extends BaseAPI {
-      basePath = '/hello';
-    }
+    const mockPath = '/hello/there';
 
     beforeEach(() => {
       mockClient = createMockClient();
-      api = new StubBaseAPI(mockClient);
+      api = new BaseAPI({
+        client: mockClient,
+        basePath: '/hello',
+      });
     });
 
     afterEach(() => {
@@ -91,7 +92,7 @@ describe('base.api.ts', () => {
     });
 
     it('instantiates successfully', () => {
-      expect(() => new StubBaseAPI()).not.toThrow();
+      expect(() => new BaseAPI()).not.toThrow();
     });
 
     it('injects date interceptors to the client', () => {
@@ -151,26 +152,20 @@ describe('base.api.ts', () => {
         await errorInterceptor(new MockAxiosError(503));
       }).rejects.toEqual(new ApiError('An error has occurred in the server.')));
 
-      it('intercepts bad request errors without error data properly', async () => expect(async () => {
-        await errorInterceptor(new MockAxiosError(400, { message: 'Bad Request' }));
-      }).rejects.toEqual(new BadRequestApiError('Bad Request')));
+      it('intercepts bad request errors with no error data properly', async () => expect(async () => {
+        await errorInterceptor(new MockAxiosError(400));
+      }).rejects.toEqual(new BadRequestApiError('Validation error in the data.')));
 
-      it('intercepts bad request errors with error data properly', async () => expect(async () => {
-        await errorInterceptor(new MockAxiosError(400, {
-          message: 'Invalid fields',
-          errors: [
-            {
-              property: 'name',
-              value: 'Name should not be empty',
-            },
-          ],
-        }));
-      }).rejects.toEqual(new BadRequestApiError('Invalid fields', [
-        {
-          property: 'name',
-          value: 'Name should not be empty',
-        },
-      ])));
+      const nonFieldError = {
+        property: 'non_field_errors',
+        value: [
+          'Unable to log in with provided credentials.',
+        ],
+      };
+
+      it('intercepts bad request errors with field error data properly', async () => expect(async () => {
+        await errorInterceptor(new MockAxiosError(400, nonFieldError));
+      }).rejects.toEqual(new BadRequestApiError('Validation error in the data.', nonFieldError)));
 
       it('intercepts unauthorized errors properly', async () => expect(async () => {
         await errorInterceptor(new MockAxiosError(401, { message: 'Please log in' }));
@@ -191,7 +186,7 @@ describe('base.api.ts', () => {
           path: 'there',
           query: { a: 1 },
         });
-        expect(mockClient.get).toHaveBeenCalledWith('/hello/there', {
+        expect(mockClient.get).toHaveBeenCalledWith(mockPath, {
           params: { a: 1 },
         });
       });
@@ -206,7 +201,7 @@ describe('base.api.ts', () => {
           query,
           body,
         });
-        expect(mockClient.post).toHaveBeenCalledWith('/hello/there', body, {
+        expect(mockClient.post).toHaveBeenCalledWith(mockPath, body, {
           params: query,
         });
       });
@@ -215,7 +210,7 @@ describe('base.api.ts', () => {
         await api.post({
           path: 'there',
         });
-        expect(mockClient.post).toHaveBeenCalledWith('/hello/there', {}, {});
+        expect(mockClient.post).toHaveBeenCalledWith(mockPath, {}, {});
       });
     });
 
@@ -228,7 +223,7 @@ describe('base.api.ts', () => {
           query,
           body,
         });
-        expect(mockClient.patch).toHaveBeenCalledWith('/hello/there', body, {
+        expect(mockClient.patch).toHaveBeenCalledWith(mockPath, body, {
           params: query,
         });
       });
@@ -237,7 +232,7 @@ describe('base.api.ts', () => {
         await api.patch({
           path: 'there',
         });
-        expect(mockClient.patch).toHaveBeenCalledWith('/hello/there', {}, {});
+        expect(mockClient.patch).toHaveBeenCalledWith(mockPath, {}, {});
       });
     });
 
@@ -250,7 +245,7 @@ describe('base.api.ts', () => {
           query,
           body,
         });
-        expect(mockClient.put).toHaveBeenCalledWith('/hello/there', body, {
+        expect(mockClient.put).toHaveBeenCalledWith(mockPath, body, {
           params: query,
         });
       });
@@ -259,7 +254,7 @@ describe('base.api.ts', () => {
         await api.put({
           path: 'there',
         });
-        expect(mockClient.put).toHaveBeenCalledWith('/hello/there', {}, {});
+        expect(mockClient.put).toHaveBeenCalledWith(mockPath, {}, {});
       });
     });
 
@@ -269,7 +264,7 @@ describe('base.api.ts', () => {
           path: 'there',
           query: { a: 1 },
         });
-        expect(mockClient.delete).toHaveBeenCalledWith('/hello/there', {
+        expect(mockClient.delete).toHaveBeenCalledWith(mockPath, {
           params: { a: 1 },
         });
       });

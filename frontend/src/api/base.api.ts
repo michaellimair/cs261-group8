@@ -44,12 +44,18 @@ export const handleDates = (body: any) => {
   return body;
 };
 
+interface IBaseAPISettings {
+  basePath?: string;
+  host?: string;
+  client?: AxiosInstance;
+}
+
 /**
- * Abstract base class to be implemented by all API methods.
+ * Base class to be injected to all API methods.
  *
  * Hides the implementation details of the underlying library.
  */
-abstract class BaseAPI {
+class BaseAPI {
   private host: string;
 
   private client: AxiosInstance;
@@ -61,12 +67,11 @@ abstract class BaseAPI {
     console.error(err);
     if (err && axios.isAxiosError(err)) {
       if (err.response?.status === 400) {
-        const isErrorIncluded = err.response?.data?.errors
-          && Array.isArray(err.response.data.errors);
+        const isErrorIncluded = err.response?.data;
         return Promise.reject(
           new ValidationApiError(
             err.response?.data?.message,
-            isErrorIncluded ? err.response.data.errors : undefined,
+            isErrorIncluded ? err.response.data : undefined,
           ),
         );
       }
@@ -89,11 +94,11 @@ abstract class BaseAPI {
   };
 
   // Use dependency injection for API client for testing purposes
-  constructor(client?: AxiosInstance) {
-    this.host = 'http://localhost:8000/api';
-    this.basePath = '';
+  constructor(settings?: IBaseAPISettings) {
+    this.host = settings?.host ?? 'http://localhost:8000/api';
+    this.basePath = settings?.basePath ?? '';
 
-    this.client = client ?? axios.create({
+    this.client = settings?.client ?? axios.create({
       baseURL: this.host,
     });
 
