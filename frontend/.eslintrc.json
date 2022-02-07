@@ -10,7 +10,8 @@
     "plugin:jest/style",
     "airbnb",
     "airbnb/hooks",
-    "airbnb-typescript"
+    "airbnb-typescript",
+    "plugin:sonarjs/recommended"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
