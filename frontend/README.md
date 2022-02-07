@@ -3,11 +3,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Getting Started
-1. Ensure you have Node.js 16 and Yarn installed on your system. Verify by typing `npm -v` and `yarn -v` in your command line.
+1. Ensure you have Node.js 16 and Yarn installed on your system. Verify by typing `npm -v` and `yarn -v` in your command line. You can install (Node.js)[https://nodejs.org/en/download/] and (Yarn)[https://yarnpkg.com/] if you do not have it.
 2. Run `yarn` to install all the project dependencies.
 3. Run `yarn start` to start the React project. Your browser should open automatically.
 
-You can verify your test cases with `yarn test`.
+You can verify your test cases with `yarn test`. This will automatically run all test cases in the project and run the coverage test.
 
 ## Internationalization (i18n)
 

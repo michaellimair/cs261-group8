@@ -9,36 +9,64 @@ class UserFactory(factory.django.DjangoModelFactory):
       model = User
       django_get_or_create = ('username',)
 
-    username = 'michael'
+    username = 'testuser1'
+    email = "testuser1@test.com"
 
 class TestRegisterSerializer(TestCase):
   def setUp(self):
     self.user = UserFactory()
     self.serializer = RegisterSerializer()
+    self.serializer_data = {}
 
   def test_validate_password(self):
-    _attrs = {
+    self.serializer_data = {
+      "first_name": "Test",
+      "last_name": "User",
       "password": "cs261412",
-      "verify_password": "cs261413"
+      "verify_password": "cs261413",
+      "email": "unique@test.com",
+      "username": "uniqueuser"
     }
-    self.assertRaises(serializers.ValidationError, self.serializer.validate, _attrs)
+    self.serializer = RegisterSerializer(data=self.serializer_data)
+    self.assertFalse(self.serializer.is_valid())
 
   def test_validate_username_duplicate(self):
-    _attrs = {
+    self.serializer_data = {
+      "first_name": "Test",
+      "last_name": "User",
       "password": "cs261412",
       "verify_password": "cs261412",
       "username": self.user.username,
+      "email": "unique@test.com"
     }
-    self.assertRaises(serializers.ValidationError, self.serializer.validate, _attrs)
+    self.serializer = RegisterSerializer(data=self.serializer_data)
+    self.assertFalse(self.serializer.is_valid())
 
-  def test_validate_username_normalize(self):
-    _attrs = {
+  def test_validate_email_duplicate(self):
+    self.serializer_data = {
+      "first_name": "Test",
+      "last_name": "User",
       "password": "cs261412",
       "verify_password": "cs261412",
-      "username": "abcdefg".upper(),
+      "username": "uniqueuser",
+      "email": self.user.email.upper()
     }
-    attrs_processed = self.serializer.validate(_attrs)
-    self.assertEqual(attrs_processed['username'], _attrs['username'].lower())
+    self.serializer = RegisterSerializer(data=self.serializer_data)
+    self.assertFalse(self.serializer.is_valid())
+
+  def test_validate_username_email_normalize(self):
+    self.serializer_data = {
+      "first_name": "Test",
+      "last_name": "User",
+      "password": "cs261412",
+      "verify_password": "cs261412",
+      "username": "ABCDEFG",
+      "email": "TESTUSER2@TEST.COM"
+    }
+    self.serializer = RegisterSerializer(data=self.serializer_data)
+    self.assertTrue(self.serializer.is_valid())
+    self.assertEqual(self.serializer.data.get("username"), "abcdefg")
+    self.assertEqual(self.serializer.data.get("email"), "testuser2@test.com")
 
   def test_create(self):
     data = {
@@ -46,7 +74,8 @@ class TestRegisterSerializer(TestCase):
       "email": "email@test.com",
       "first_name": "Test",
       "last_name": "User",
-      "password": "abccs261145"
+      "password": "abccs261145",
+      "verify_password": "abccs261145",
     }
 
     self.serializer.create(data)
