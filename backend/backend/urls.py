@@ -15,7 +15,7 @@ Including another URLconf
 """
 from knox import views as knox_views
 from django.urls import path, include
-from dbcampus.views import RegisterView, MyDataView, LoginView, BusinessAreaView
+from cs261.views import RegisterView, MyDataView, LoginView, BusinessAreaView
 from rest_framework import routers
 from rest_framework.schemas import get_schema_view
 
@@ -31,8 +31,8 @@ urlpatterns = [
         path('auth/logout-all', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
         path('auth/register', RegisterView.as_view(), name='auth_register'),
         path('openapi', get_schema_view(
-            title="DBCampus API Documentation",
-            description="API documentation for the DBCampus project.",
+            title="Mentoring API Documentation",
+            description="API documentation for the Mentoring project.",
             version="1.0.0"
         ), name='openapi-schema'),
     ]))

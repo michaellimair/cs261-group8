@@ -31,16 +31,16 @@ resource "google_storage_bucket" "file_storage" {
   }
 }
 
-module "dbcampus-vpc-module" {
+module "cs261-vpc-module" {
   source       = "terraform-google-modules/network/google"
   version      = "~> 3.3.0"
   project_id   = var.project_id # Replace this with your project ID in quotes
-  network_name = "dbcampus-serverless-network"
+  network_name = "cs261-serverless-network"
   mtu          = 1460
 
   subnets = [
     {
-      subnet_name   = "dbcampus-serverless-subnet"
+      subnet_name   = "cs261-serverless-subnet"
       subnet_ip     = "10.10.10.0/28"
       subnet_region = var.region
     }
@@ -51,7 +51,7 @@ module "serverless-connector" {
   source     = "terraform-google-modules/network/google//modules/vpc-serverless-connector-beta"
   project_id = var.project_id
   vpc_connectors = [{
-    name        = "dbcampus-serverless-vpc"
+    name        = "cs261-serverless-vpc"
     region      = var.region
     subnet_name = module.test-vpc-module.subnets["${var.region}/serverless-subnet"].name
     machine_type  = "f1-micro"
@@ -70,7 +70,7 @@ resource "google_project_service" "vpcaccess-api" {
 }
 
 resource "google_cloud_run_service" "gcr_service_main" {
-  name     = "dbcampus-gcr-service"
+  name     = "cs261-gcr-service"
   provider = google-beta
   location = var.region
 
@@ -114,7 +114,7 @@ resource "google_compute_region_network_endpoint_group" "serverless_neg" {
 }
 
 resource "google_cloud_run_service" "gcr_service_failover" {
-  name     = "dbcampus-gcr-service-failover"
+  name     = "cs261-gcr-service-failover"
   provider = google-beta
   location = var.region_failover
 
@@ -199,7 +199,7 @@ module "lb-http" {
 resource "google_sql_database_instance" "instance" {
   provider = google-beta
 
-  name             = "instance-dbcampus"
+  name             = "instance-cs261"
   region           = var.region
   database_version = "POSTGRES_14"
 

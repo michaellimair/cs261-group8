@@ -7,13 +7,13 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dbcampus', '0001_initial'),
+        ('cs261', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='userprofile',
             name='business_area',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='dbcampus.businessarea'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='cs261.businessarea'),
         ),
     ]

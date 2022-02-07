@@ -18,26 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\dbcampus\models.py:7
+#: .\cs261\models.py:7
 msgid "title.anlst"
 msgstr "Analyst"
 
-#: .\dbcampus\models.py:8
+#: .\cs261\models.py:8
 msgid "title.assoc"
 msgstr "Associate"
 
-#: .\dbcampus\models.py:9
+#: .\cs261\models.py:9
 msgid "title.avp"
 msgstr "Assistant Vice President"
 
-#: .\dbcampus\models.py:10
+#: .\cs261\models.py:10
 msgid "title.vp"
 msgstr "Vice President"
 
-#: .\dbcampus\models.py:11
+#: .\cs261\models.py:11
 msgid "title.dir"
 msgstr "Director"
 
-#: .\dbcampus\models.py:12
+#: .\cs261\models.py:12
 msgid "title.md"
 msgstr "Managing Director"

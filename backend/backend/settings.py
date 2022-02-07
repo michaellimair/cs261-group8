@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'knox',
-    'dbcampus',
+    'cs261',
 ]
 
 REST_FRAMEWORK = {
