@@ -1,4 +1,4 @@
-name: Test and build project
+name: Test, build, and deploy project
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   MAIN_REGION: ${{ secrets.GCP_MAIN_REGION }}
-  SERVICE: ${{ GCR_SERVICE }}
+  SERVICE: ${{ secrets.GCR_SERVICE }}
 
 jobs:
   backend:
