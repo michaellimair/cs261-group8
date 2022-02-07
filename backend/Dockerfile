@@ -18,7 +18,8 @@ RUN apk update \
 RUN pip install --upgrade pip
 RUN pip install pipenv
 
-COPY Pipfile* .
+COPY Pipfile .
+COPY Pipfile.lock .
 RUN pipenv lock --keep-outdated --requirements > requirements.txt
 
 RUN pip install -r requirements.txt
