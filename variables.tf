@@ -31,5 +31,5 @@ variable "domain" {
 
 variable "lb-name" {
   description = "Name for load balancer and associated resources"
-  default     = "***REMOVED***-run-lb"
+  default     = "cs261-run-lb"
 }

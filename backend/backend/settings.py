@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'knox',
-    '***REMOVED***',
+    'cs261',
 ]
 
 REST_FRAMEWORK = {
