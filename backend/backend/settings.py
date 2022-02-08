@@ -29,7 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET')
 
-DEBUG = False
+# Disable this once the project is ready!
+DEBUG = True
 
 ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '0.0.0.0', '.run.app', '.michaellimair.me']
 
