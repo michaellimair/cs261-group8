@@ -18,6 +18,7 @@ django-rest-knox = "*"
 django-annoying = "*"
 factory-boy = "*"
 gunicorn = "*"
+django-storages = {extras = ["google"], version = "*"}
 
 [dev-packages]
 
