@@ -17,7 +17,6 @@ env:
   TF_VAR_project_id: ${{ secrets.GCP_PROJECT }}
   TF_VAR_bucket_name: ${{ secrets.GCP_BUCKET }}
   TF_VAR_db_user: ${{ secrets.DB_USER }}
-  TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
   TF_VAR_cloud_run_main_service: ${{ secrets.GCR_SERVICE }}
   TF_VAR_domain: ${{ secrets.GCP_LB_DOMAIN }}
   TF_VAR_cloud_run_image: 'gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.GCR_SERVICE }}:${{ github.sha }}'

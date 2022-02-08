@@ -20,6 +20,7 @@ data "google_project" "project" {
 }
 
 resource "random_password" "db_password" {
+  count            = 1
   length           = 128
   special          = false
 }
@@ -68,7 +69,7 @@ resource "google_secret_manager_secret" "db-password" {
 
 resource "google_secret_manager_secret_version" "db-password" {
   secret = google_secret_manager_secret.db-password.id
-  secret_data = random_password.db_password.result
+  secret_data = random_password.db_password[0].result
 }
 
 resource "google_secret_manager_secret_iam_member" "dbpassword-access" {
@@ -230,7 +231,7 @@ resource "google_sql_database" "database" {
 resource "google_sql_user" "users" {
   name     = var.db_user
   instance = google_sql_database_instance.instance.name
-  password = var.db_password
+  password = random_password.db_password[0].result
 }
 
 output "sql_cert" {
