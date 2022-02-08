@@ -41,6 +41,65 @@ resource "google_secret_manager_secret" "db-user" {
   }
 }
 
+module "lb-http" {
+  source  = "GoogleCloudPlatform/lb-http/google//modules/serverless_negs"
+  version = "~> 6.2.0"
+  name    = "${var.network_prefix}-cloudrun-lb"
+  project = var.project_id
+
+  ssl                             = var.ssl
+  managed_ssl_certificate_domains = [var.domain]
+  https_redirect                  = var.ssl
+
+  backends = {
+    default = {
+      description = null
+      groups = [
+        {
+          group = google_compute_region_network_endpoint_group.serverless_neg_main.id
+        },
+        {
+          group = google_compute_region_network_endpoint_group.serverless_neg_main.id
+        }
+      ]
+      enable_cdn              = false
+      security_policy         = null
+      custom_request_headers  = null
+      custom_response_headers = null
+
+      iap_config = {
+        enable               = false
+        oauth2_client_id     = ""
+        oauth2_client_secret = ""
+      }
+      log_config = {
+        enable      = false
+        sample_rate = null
+      }
+    }
+  }
+}
+
+resource "google_compute_region_network_endpoint_group" "serverless_neg_main" {
+  provider              = google-beta
+  name                  = "${var.project_id}-serverless-neg-main"
+  network_endpoint_type = "SERVERLESS"
+  region                = var.region
+  cloud_run {
+    service = google_cloud_run_service.gcr_service_main.name
+  }
+}
+
+resource "google_compute_region_network_endpoint_group" "serverless_neg_failover" {
+  provider              = google-beta
+  name                  = "${var.project_id}-serverless-neg-failover"
+  network_endpoint_type = "SERVERLESS"
+  region                = var.region
+  cloud_run {
+    service = google_cloud_run_service.gcr_service_failover.name
+  }
+}
+
 resource "google_secret_manager_secret_version" "db-user" {
   secret = google_secret_manager_secret.db-user.id
   secret_data = var.db_user
@@ -119,7 +178,6 @@ resource "google_cloud_run_service" "gcr_service_main" {
 
   template {
     spec {
-      # Container will pull image pushed to Google Container Registry in previous GitHub Action step
       containers {
         image = "${var.cloud_run_image}"
         env {
@@ -191,6 +249,88 @@ resource "google_cloud_run_service_iam_member" "public-access" {
   location = google_cloud_run_service.gcr_service_main.location
   project  = google_cloud_run_service.gcr_service_main.project
   service  = google_cloud_run_service.gcr_service_main.name
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
+
+resource "google_cloud_run_service" "gcr_service_failover" {
+  name     = var.cloud_run_main_service
+  provider = google-beta
+  location = var.region
+
+  template {
+    spec {
+      containers {
+        image = "${var.cloud_run_image}"
+        env {
+          name = "DB_NAME"
+          value = var.db_name
+        }
+
+        env {
+          name = "DB_SOCKET_DIR"
+          value = "/cloudsql/${google_sql_database_instance.instance.connection_name}"
+        }
+
+        env {
+          name = "DB_USER"
+          value_from {
+            secret_key_ref {
+              name = google_secret_manager_secret.db-user.secret_id
+              key = "latest"
+            }
+          }
+        }
+
+        env {
+          name = "DJANGO_SECRET"
+          value = random_password.django_secret_main.result
+        }
+
+        env {
+          name = "DB_PASSWORD"
+          value_from {
+            secret_key_ref {
+              name = google_secret_manager_secret.db-password.secret_id
+              key = "latest"
+            }
+          }
+        }
+
+        env {
+          name = "STATICFILES_STORAGE"
+          value = "storages.backends.gcloud.GoogleCloudStorage"
+        }
+
+        env {
+          name = "GCS_BUCKET"
+          value = var.bucket_name
+        }
+      }
+    }
+
+    metadata {
+      annotations = {
+        "autoscaling.knative.dev/maxScale"      = "5"
+        "run.googleapis.com/cloudsql-instances" = google_sql_database_instance.instance.connection_name
+        "run.googleapis.com/client-name"        = "terraform"
+      }
+    }
+  }
+
+  traffic {
+    percent         = 100
+    latest_revision = true
+  }
+
+  autogenerate_revision_name = true
+}
+
+# Ensure that the backend engine is a public endpoint
+resource "google_cloud_run_service_iam_member" "public-access" {
+  location = google_cloud_run_service.gcr_service_failover.location
+  project  = google_cloud_run_service.gcr_service_failover.project
+  service  = google_cloud_run_service.gcr_service_failover.name
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
