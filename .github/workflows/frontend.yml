@@ -9,10 +9,6 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
 
-defaults:
-  run:
-    working-directory: frontend
-
 jobs:
   frontend:
     runs-on: ubuntu-latest
