@@ -73,8 +73,8 @@ module "lb-http" {
         oauth2_client_secret = ""
       }
       log_config = {
-        enable      = false
-        sample_rate = null
+        enable      = true
+        sample_rate = 1.0
       }
     }
   }
