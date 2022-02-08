@@ -57,7 +57,7 @@ jobs:
         DB_HOST: localhost
         DB_PORT: 5432
         # Secret will not change and is only used for testing purposes, so it is fine to store it here
-        SECRET_KEY: 37gnLFecRCAvCthZATVL8zMP9JYaK4Gu7Ts3pqHLyWG6ybn9Ck4qFm7pjhgYJ7tQ9dZMtyqpvaMdwt6qgE5S5JVqr3hs5hZFrFwBxWMCptB7hG4EKSEhnYDxHG3wYDdb
+        DJANGO_SECRET: 37gnLFecRCAvCthZATVL8zMP9JYaK4Gu7Ts3pqHLyWG6ybn9Ck4qFm7pjhgYJ7tQ9dZMtyqpvaMdwt6qgE5S5JVqr3hs5hZFrFwBxWMCptB7hG4EKSEhnYDxHG3wYDdb
       run: |
         cd backend
         python -m pip install --upgrade pipenv wheel
