@@ -245,7 +245,7 @@ resource "google_cloud_run_service" "gcr_service_main" {
 }
 
 # Ensure that the backend engine is a public endpoint
-resource "google_cloud_run_service_iam_member" "public-access" {
+resource "google_cloud_run_service_iam_member" "public-access-main" {
   location = google_cloud_run_service.gcr_service_main.location
   project  = google_cloud_run_service.gcr_service_main.project
   service  = google_cloud_run_service.gcr_service_main.name
@@ -327,7 +327,7 @@ resource "google_cloud_run_service" "gcr_service_failover" {
 }
 
 # Ensure that the backend engine is a public endpoint
-resource "google_cloud_run_service_iam_member" "public-access" {
+resource "google_cloud_run_service_iam_member" "public-access-failover" {
   location = google_cloud_run_service.gcr_service_failover.location
   project  = google_cloud_run_service.gcr_service_failover.project
   service  = google_cloud_run_service.gcr_service_failover.name
