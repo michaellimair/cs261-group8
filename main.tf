@@ -144,12 +144,7 @@ resource "google_cloud_run_service" "gcr_service_main" {
 
         env {
           name = "DJANGO_SECRET"
-          value_from {
-            secret_key_ref {
-              name = random_password.django_secret_main.result
-              key = "latest"
-            }
-          }
+          value = random_password.django_secret_main.result
         }
 
         env {
