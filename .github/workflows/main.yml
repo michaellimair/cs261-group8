@@ -49,7 +49,25 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
-    - name: Run test and generate coverage results
+    - name: Install pipenv
+      run: |
+        cd backend
+        python -m pip install --upgrade pipenv wheel
+
+    - name: Cache pipenv files
+      id: cache-pipenv
+      uses: actions/cache@v1
+      with:
+        path: ~/.local/share/virtualenvs
+        key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+
+    - name: Install dependencies
+      if: steps.cache-pipenv.outputs.cache-hit != 'true'
+      run: |
+        cd backend
+        pipenv install --deploy --dev
+
+    - name: Run tests and generate coverage results
       env:
         DB_USER: postgres
         DB_PASSWORD: postgres
@@ -60,16 +78,8 @@ jobs:
         DJANGO_SECRET: 37gnLFecRCAvCthZATVL8zMP9JYaK4Gu7Ts3pqHLyWG6ybn9Ck4qFm7pjhgYJ7tQ9dZMtyqpvaMdwt6qgE5S5JVqr3hs5hZFrFwBxWMCptB7hG4EKSEhnYDxHG3wYDdb
       run: |
         cd backend
-        python -m pip install --upgrade pipenv wheel
-        pipenv install --deploy --dev
         pipenv run coverage run --source='.' manage.py test
         pipenv run coverage xml
-
-    - name: Cache pipenv files
-      uses: actions/cache@v1
-      with:
-        path: ~/.local/share/virtualenvs
-        key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
 
     - name: Generate coverage report and check
       if: ${{ github.event_name != 'push' }}
