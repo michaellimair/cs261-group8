@@ -49,6 +49,12 @@ variable "domain" {
   type        = string
 }
 
+
+variable "network_prefix" {
+  description = "Name for load balancer and associated resources"
+  default     = "cs261-private-ntwk"
+}
+
 variable "lb-name" {
   description = "Name for load balancer and associated resources"
   default     = "cs261-run-lb"

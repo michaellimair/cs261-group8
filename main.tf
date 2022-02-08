@@ -31,7 +31,9 @@ resource "google_cloud_run_service" "gcr_service_main" {
 
     metadata {
       annotations = {
-        "autoscaling.knative.dev/maxScale" = "5"
+        "autoscaling.knative.dev/maxScale"      = "5"
+        "run.googleapis.com/cloudsql-instances" = google_sql_database_instance.instance.connection_name
+        "run.googleapis.com/client-name"        = "terraform"
       }
     }
   }
@@ -45,4 +47,23 @@ resource "google_cloud_run_service_iam_member" "public-access" {
   service  = google_cloud_run_service.gcr_service_main.name
   role     = "roles/run.invoker"
   member   = "allUsers"
+}
+
+# Spin up a Google Cloud SQL instance
+resource "google_sql_database_instance" "instance" {
+  provider = google-beta
+
+  name             = "${var.project_id}-dbinstance"
+  region           = var.region
+  database_version = "POSTGRES_14"
+
+  settings {
+    tier = "db-f1-micro"
+    availability_type = "REGIONAL"
+    backup_configuration {
+      enabled = true
+    }
+  }
+
+  deletion_protection = "false"
 }
