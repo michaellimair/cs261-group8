@@ -105,14 +105,6 @@ jobs:
       if: ${{ github.event_name == 'push' }}
       run: terraform apply -auto-approve
 
-    - name: Deploy to Cloud Run
-      if: ${{ github.event_name == 'push' }}
-      uses: 'google-github-actions/deploy-cloudrun@v0'
-      with:
-        service: '${{ env.SERVICE }}'
-        image: 'gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}'
-        region: '${{ env.MAIN_REGION }}'
-
     - name: Show Output of Deployment
       if: ${{ github.event_name == 'push' }}
       run: echo ${{ steps.deploy.outputs.url }}
