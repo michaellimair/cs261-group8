@@ -139,6 +139,16 @@ resource "google_cloud_run_service" "gcr_service_main" {
             }
           }
         }
+
+        env {
+          name = "STATICFILES_STORAGE"
+          value = "storages.backends.gcloud.GoogleCloudStorage"
+        }
+
+        env {
+          name = "GCS_BUCKET"
+          value = var.bucket_name
+        }
       }
     }
 
@@ -200,4 +210,16 @@ resource "google_sql_user" "users" {
   name     = var.db_user
   instance = google_sql_database_instance.instance.name
   password = var.db_password
+}
+
+output "sql_cert" {
+  value       = google_sql_database_instance.instance.server_ca_cert
+  description = "CA Certificate of the Cloud SQL Instance."
+  sensitive   = true
+}
+
+output "sql_ip" {
+  value       = google_sql_database_instance.instance.first_ip_address
+  description = "IP Address of the Cloud SQL Instance."
+  sensitive   = true
 }
