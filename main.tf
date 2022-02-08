@@ -96,7 +96,7 @@ resource "google_compute_region_network_endpoint_group" "serverless_neg_failover
   provider              = google-beta
   name                  = "${var.project_id}-serverless-neg-failover"
   network_endpoint_type = "SERVERLESS"
-  region                = var.region
+  region                = var.region_failover
   cloud_run {
     service = google_cloud_run_service.gcr_service_failover.name
   }
