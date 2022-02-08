@@ -1,0 +1,64 @@
+name: Test, build, and deploy frontend project
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Node.js version 14
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install frontend dependencies
+      run: |
+        cd frontend
+        yarn
+    - name: Run tests with Jest
+      run: |
+        cd frontend
+        yarn test
+    - name: Check frontend code coverage
+      uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        threshold: 90 # Require at least 90% code coverage
+        working-directory: 'frontend'
+        annotations: none
+        skip-step: install
+        test-script: "yarn test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\" --watchAll=false"
+    # Recheckout to current branch since the previous action checks out to main branch
+    - uses: actions/checkout@v2
+    - name: Build website
+      run: |
+        cd frontend
+        yarn
+        yarn build
+      env:
+        REACT_APP_API_HOST: ${{ secrets.API_HOST }}
+    - name: Deploy to Firebase Hosting (Preview)
+      uses: FirebaseExtended/action-hosting-deploy@v0
+      if: ${{ github.event_name == 'pull_request' }}
+      with:
+        repoToken: '${{ secrets.GITHUB_TOKEN }}'
+        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+        projectId: '${{ env.PROJECT_ID }}'
+        expires: 7d
+        entryPoint: frontend
+    - name: Deploy to Firebase Hosting (Main)
+      uses: FirebaseExtended/action-hosting-deploy@v0
+      if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+      with:
+        repoToken: "${{ secrets.GITHUB_TOKEN }}"
+        firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+        projectId: '${{ env.PROJECT_ID }}'
+        channelId: live
+        entryPoint: frontend
