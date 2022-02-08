@@ -1,4 +1,4 @@
-name: Test and build project
+name: Test, build, and deploy project
 
 on:
   push:
@@ -6,9 +6,32 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  MAIN_REGION: ${{ secrets.GCP_MAIN_REGION }}
+  SERVICE: ${{ secrets.GCR_SERVICE }}
+  STORAGE_BUCKET: ${{ secrets.GCP_BUCKET }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+  TF_VAR_region: ${{ secrets.GCP_MAIN_REGION }}
+  TF_VAR_region_failover: ${{ secrets.GCP_FAILOVER_REGION }}
+  TF_VAR_project_id: ${{ secrets.GCP_PROJECT }}
+  TF_VAR_bucket_name: ${{ secrets.GCP_BUCKET }}
+  TF_VAR_db_user: ${{ secrets.DB_USER }}
+  TF_VAR_cloud_run_main_service: ${{ secrets.GCR_SERVICE }}
+  TF_VAR_cloud_run_failover_service: ${{ secrets.GCR_SERVICE_FAILOVER }}
+  TF_VAR_domain: ${{ secrets.GCP_LB_DOMAIN }}
+  TF_VAR_cloud_run_image: 'gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.GCR_SERVICE }}:${{ github.sha }}'
+  TF_VAR_tf_state_bucket_name: ${{ secrets.GCP_TFSTATE_BUCKET }}
+  TF_VAR_tf_state_prefix: ${{ secrets.TF_STATE_PREFIX }}
+
 jobs:
   backend:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     services:
       postgres:
         image: postgres:latest
@@ -22,30 +45,98 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@v2
+    - uses: hashicorp/setup-terraform@v1
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
-    - name: Run test and generate coverage results
+    - name: Install pipenv
+      run: |
+        cd backend
+        python -m pip install --upgrade pipenv wheel
+
+    - name: Cache pipenv files
+      id: cache-pipenv
+      uses: actions/cache@v1
+      with:
+        path: ~/.local/share/virtualenvs
+        key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+
+    - name: Install dependencies
+      if: steps.cache-pipenv.outputs.cache-hit != 'true'
+      run: |
+        cd backend
+        pipenv install --deploy --dev
+
+    - name: Run tests and generate coverage results
       env:
         DB_USER: postgres
         DB_PASSWORD: postgres
         DB_NAME: postgres
         DB_HOST: localhost
         DB_PORT: 5432
+        # Secret will not change and is only used for testing purposes, so it is fine to store it here
+        DJANGO_SECRET: 37gnLFecRCAvCthZATVL8zMP9JYaK4Gu7Ts3pqHLyWG6ybn9Ck4qFm7pjhgYJ7tQ9dZMtyqpvaMdwt6qgE5S5JVqr3hs5hZFrFwBxWMCptB7hG4EKSEhnYDxHG3wYDdb
       run: |
         cd backend
-        python -m pip install --upgrade pipenv wheel
-        pipenv install --deploy --dev
         pipenv run coverage run --source='.' manage.py test
         pipenv run coverage xml
-    - name: Generate coverage report and check
-      if: ${{ github.event_name != 'push' }}
-      uses: orgoro/coverage@v2.1
+
+    # - name: Generate coverage report and check
+    #   if: ${{ github.event_name != 'push' }}
+    #   uses: orgoro/coverage@v2.1
+    #   with:
+    #     coverageFile: ./backend/coverage.xml
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    #     thresholdAll: 0.9
+
+    - name: Generate secrets for backend configuration of Terraform
+      run: 'echo -e "bucket = \"${{ env.TF_BUCKET }}\"\nprefix = \"${{ env.TF_PREFIX }}\"" > backend.conf'
+      shell: bash
+      env:
+        TF_BUCKET: ${{ secrets.GCP_TFSTATE_BUCKET }}
+        TF_PREFIX: ${{ secrets.TF_STATE_PREFIX }}
+
+    - name: Authenticate to Google Cloud Platform
+      uses: 'google-github-actions/auth@v0'
       with:
-        coverageFile: ./backend/coverage.xml
-        token: ${{ secrets.GITHUB_TOKEN }}
-        thresholdAll: 0.9
+        credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v0'
+
+    - name: Authorize Docker push
+      run: gcloud auth configure-docker
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        context: ./backend
+        push: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+        tags: ${{ env.TF_VAR_cloud_run_image }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - name: Initialize Terraform
+      run: terraform init -backend-config=backend.conf
+
+    - name: Validate Terraform configuration
+      run: terraform validate -no-color
+
+    - name: Show Terraform plan
+      run: terraform plan -no-color
+
+    - name: Apply Terraform
+      if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+      run: terraform apply -auto-approve
+
+    - name: Show Output of Deployment
+      if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+      run: echo ${{ steps.deploy.outputs.url }}
+
   frontend:
     runs-on: ubuntu-latest
     steps:
@@ -71,3 +162,29 @@ jobs:
         annotations: none
         skip-step: install
         test-script: "yarn test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\" --watchAll=false"
+    - uses: actions/checkout@v2
+    - name: Build website
+      run: |
+        cd frontend
+        yarn
+        yarn build
+      env:
+        REACT_APP_API_HOST: ${{ secrets.API_HOST }}
+    - name: Deploy to Firebase Hosting (Preview)
+      uses: FirebaseExtended/action-hosting-deploy@v0
+      if: ${{ github.event_name == 'pull_request' }}
+      with:
+        repoToken: '${{ secrets.GITHUB_TOKEN }}'
+        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+        projectId: '${{ env.PROJECT_ID }}'
+        expires: 7d
+        entryPoint: frontend
+    - name: Deploy to Firebase Hosting (Main)
+      uses: FirebaseExtended/action-hosting-deploy@v0
+      if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+      with:
+        repoToken: "${{ secrets.GITHUB_TOKEN }}"
+        firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+        projectId: '${{ env.PROJECT_ID }}'
+        channelId: live
+        entryPoint: frontend

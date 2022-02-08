@@ -9,3 +9,13 @@ docs
 *.log
 
 **/coverage
+
+*.tfvars
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+backend.conf

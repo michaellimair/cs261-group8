@@ -16,9 +16,11 @@ serviceAccountKey.json
 # .tfstate files
 *.tfstate
 *.tfstate.*
+backend.conf
 
 # Crash log files
 crash.log
 crash.*.log
 
 .terraform.lock**
+frontend/.firebaserc

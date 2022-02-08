@@ -27,12 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r61r(apt#arxr&m+!zb5q-%(z4ipua=l4)uad)vu6^ri)@+ep0'
+SECRET_KEY = os.environ.get('DJANGO_SECRET')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Disable this once the project is ready!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '0.0.0.0', '.run.app', '.michaellimair.me']
 
 
 # Application definition
@@ -102,9 +102,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
+_port = None
+
+if os.environ.get('DB_PORT'):
+    _port = int(os.environ.get('DB_PORT'))
 
 DATABASES = {
     'default': {
@@ -113,8 +117,8 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': int(os.environ.get('DB_PORT')),
+        'HOST': os.environ.get('DB_SOCKET_DIR') or os.environ.get('DB_HOST'),
+        'PORT': _port,
     }
 }
 
@@ -154,6 +158,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_STORAGE = os.environ.get('STATICFILES_STORAGE', 'django.contrib.staticfiles.storage.StaticFilesStorage')
+
+GS_BUCKET_NAME = os.environ.get('GCS_BUCKET')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
