@@ -87,7 +87,7 @@ jobs:
       uses: orgoro/coverage@v2.1
       with:
         coverageFile: ./backend/coverage.xml
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ github.token }}
         thresholdAll: 0.9
 
     - name: Generate secrets for backend configuration of Terraform
