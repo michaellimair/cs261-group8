@@ -129,7 +129,7 @@ resource "google_cloud_run_service" "gcr_service_main" {
 
         env {
           name = "DB_SOCKET_DIR"
-          value = "/cloudsql"
+          value = "/cloudsql/${google_sql_database_instance.instance.connection_name}"
         }
 
         env {

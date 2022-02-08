@@ -41,5 +41,8 @@ Note that names of language must follow the language identifiers as specified in
 ## Generating an OpenAPI Schema
 API schemas are useful for external users or for the frontend team to be able to link the application to the backend. Detailed instructions are available in the official Django REST Framework website [here](https://www.django-rest-framework.org/api-guide/schemas).
 
+## Production Database Migration
+In the production Cloud SQL instance, migrations will need to be done manually for security and safety reasons. This can be done by connecting to the Cloud SQL instance with the [Cloud SQL Proxy](https://cloud.google.com/sql/docs/postgres/quickstart-proxy-test). Afterwards, point your local backend environment variables to the proxy. Then, you will be able to do all the `python manage.py <command>` as usual.
+
 ## Testing
 All Python files need to have tests written alongside them. You can add tests in an adjacent file to the file you are writing by adding a `test_` prefix to the name of the test file. For example, if you want to test `models.py`, you should create a file `test_models.py`.
