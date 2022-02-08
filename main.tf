@@ -19,6 +19,11 @@ provider "google-beta" {
 data "google_project" "project" {
 }
 
+resource "random_password" "db_password" {
+  length           = 128
+  special          = false
+}
+
 resource "google_secret_manager_secret" "db-user" {
   secret_id = "${var.project_id}-dbuser"
 
@@ -63,7 +68,7 @@ resource "google_secret_manager_secret" "db-password" {
 
 resource "google_secret_manager_secret_version" "db-password" {
   secret = google_secret_manager_secret.db-password.id
-  secret_data = var.db_password
+  secret_data = random_password.db_password.result
 }
 
 resource "google_secret_manager_secret_iam_member" "dbpassword-access" {
@@ -100,6 +105,12 @@ resource "google_secret_manager_secret_iam_member" "dbname-access" {
   depends_on = [google_secret_manager_secret.db-name]
 }
 
+resource "random_password" "django_secret_main" {
+  length           = 128
+  special          = true
+  override_special = "_%@"
+}
+
 resource "google_cloud_run_service" "gcr_service_main" {
   name     = var.cloud_run_main_service
   provider = google-beta
@@ -125,6 +136,16 @@ resource "google_cloud_run_service" "gcr_service_main" {
           value_from {
             secret_key_ref {
               name = google_secret_manager_secret.db-user.secret_id
+              key = "latest"
+            }
+          }
+        }
+
+        env {
+          name = "DJANGO_SECRET"
+          value_from {
+            secret_key_ref {
+              name = random_password.django_secret_main.result
               key = "latest"
             }
           }

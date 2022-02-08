@@ -65,11 +65,6 @@ variable "db_name" {
   default = "cs261_database"
 }
 
-variable "db_password" {
-  description = "Password of the Cloud SQL database user."
-  type = string
-}
-
 variable "lb-name" {
   description = "Name for load balancer and associated resources."
   default     = "cs261-run-lb"
