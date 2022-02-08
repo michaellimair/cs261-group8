@@ -55,7 +55,22 @@ variable "network_prefix" {
   default     = "cs261-private-ntwk"
 }
 
+variable "db_user" {
+  description = "Name of the Cloud SQL database user."
+  type = string
+}
+
+variable "db_name" {
+  description = "Name of the Cloud SQL database."
+  default = "cs261_database"
+}
+
+variable "db_password" {
+  description = "Password of the Cloud SQL database user."
+  type = string
+}
+
 variable "lb-name" {
-  description = "Name for load balancer and associated resources"
+  description = "Name for load balancer and associated resources."
   default     = "cs261-run-lb"
 }

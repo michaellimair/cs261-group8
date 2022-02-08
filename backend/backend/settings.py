@@ -102,7 +102,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -114,7 +113,10 @@ DATABASES = {
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_HOST'),
-        'PORT': int(os.environ.get('DB_PORT')),
+        'OPTIONS': {
+            "unix_socket": os.environ.get('DB_SOCKET_DIR')
+        },
+        'PORT': int(os.environ.get('DB_PORT')) if os.environ.get('DB_PORT') else None,
     }
 }
 
