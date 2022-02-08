@@ -165,7 +165,7 @@ jobs:
     - name: Build website
       run: |
         cd frontend
-        npm run build
+        yarn build
       env:
         REACT_APP_API_HOST: ${{ secrets.API_HOST }}
     - name: Deploy to Firebase Hosting (Preview)
