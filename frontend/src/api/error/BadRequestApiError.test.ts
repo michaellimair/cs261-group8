@@ -14,9 +14,9 @@ describe('BadRequestApiError', () => {
       errors: [],
     };
 
-    const err = new BadRequestApiError<ISampleError>('An error has occurred', errorData.errors);
+    const err = new BadRequestApiError<ISampleError>('An error has occurred', errorData);
 
-    expect(err.data).toMatchObject(errorData.errors);
+    expect(err.data).toMatchObject(errorData);
     expect(err).toMatchSnapshot();
   });
 
@@ -35,7 +35,7 @@ describe('BadRequestApiError', () => {
 
   describe('isBadRequestApiError', () => {
     it('identifies BadRequestApiError classes correctly', () => {
-      const err = new BadRequestApiError<undefined>('', []);
+      const err = new BadRequestApiError<undefined>('');
 
       expect(BadRequestApiError.isBadRequestApiError(err)).toBe(true);
     });
