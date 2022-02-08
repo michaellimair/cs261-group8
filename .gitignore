@@ -23,3 +23,4 @@ crash.log
 crash.*.log
 
 .terraform.lock**
+frontend/.firebaserc

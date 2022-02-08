@@ -1,6 +1,7 @@
 import { parseISO } from 'date-fns';
 import urljoin from 'url-join';
 import axios, { AxiosInstance } from 'axios';
+import { API_HOST } from 'appenv';
 import ApiError from './error/ApiError';
 import ValidationApiError from './error/BadRequestApiError';
 import TooLargeError from './error/TooLargeError';
@@ -95,7 +96,7 @@ class BaseAPI {
 
   // Use dependency injection for API client for testing purposes
   constructor(settings?: IBaseAPISettings) {
-    this.host = settings?.host ?? 'http://localhost:8000/api';
+    this.host = settings?.host ?? API_HOST;
     this.basePath = settings?.basePath ?? '';
 
     this.client = settings?.client ?? axios.create({
