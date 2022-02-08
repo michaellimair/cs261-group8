@@ -14,10 +14,10 @@ describe('BadRequestApiError', () => {
       errors: [],
     };
 
-    const err = new BadRequestApiError<ISampleError>('An error has occurred', errorData);
+    const error = new BadRequestApiError<ISampleError>('An error has occurred', errorData);
 
-    expect(err.data).toMatchObject(errorData);
-    expect(err).toMatchSnapshot();
+    expect(error.data).toMatchObject(errorData);
+    expect(error).toMatchSnapshot();
   });
 
   it('is instantiated successfully with no message', () => {
