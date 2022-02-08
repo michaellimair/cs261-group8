@@ -57,7 +57,7 @@ variable "domain" {
 
 variable "network_prefix" {
   description = "Name for load balancer and associated resources"
-  default     = "cs261-private-ntwk"
+  default     = "cs261-network"
 }
 
 variable "db_user" {
