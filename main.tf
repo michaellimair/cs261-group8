@@ -59,7 +59,7 @@ module "lb-http" {
           group = google_compute_region_network_endpoint_group.serverless_neg_main.id
         },
         {
-          group = google_compute_region_network_endpoint_group.serverless_neg_main.id
+          group = google_compute_region_network_endpoint_group.serverless_neg_failover.id
         }
       ]
       enable_cdn              = false
