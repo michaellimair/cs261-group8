@@ -39,7 +39,7 @@ resource "google_secret_manager_secret_version" "db-user" {
   secret_data = var.db_user
 }
 
-resource "google_secret_manager_secret_iam_member" "secret-access" {
+resource "google_secret_manager_secret_iam_member" "dbuser-access" {
   secret_id = google_secret_manager_secret.db-user.id
   role      = "roles/secretmanager.secretAccessor"
   member    = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
@@ -66,7 +66,7 @@ resource "google_secret_manager_secret_version" "db-password" {
   secret_data = var.db_password
 }
 
-resource "google_secret_manager_secret_iam_member" "secret-access" {
+resource "google_secret_manager_secret_iam_member" "dbpassword-access" {
   secret_id = google_secret_manager_secret.db-password.id
   role      = "roles/secretmanager.secretAccessor"
   member    = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
@@ -93,7 +93,7 @@ resource "google_secret_manager_secret_version" "db-name" {
   secret_data = var.db_name
 }
 
-resource "google_secret_manager_secret_iam_member" "secret-access" {
+resource "google_secret_manager_secret_iam_member" "dbname-access" {
   secret_id = google_secret_manager_secret.db-name.id
   role      = "roles/secretmanager.secretAccessor"
   member    = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
