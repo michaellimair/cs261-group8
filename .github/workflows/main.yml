@@ -61,6 +61,13 @@ jobs:
         pipenv install --deploy --dev
         pipenv run coverage run --source='.' manage.py test
         pipenv run coverage xml
+
+    - name: Cache pipenv files
+      uses: actions/cache@v1
+      with:
+        path: ~/.local/share/virtualenvs
+        key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+
     - name: Generate coverage report and check
       if: ${{ github.event_name != 'push' }}
       uses: orgoro/coverage@v2.1
