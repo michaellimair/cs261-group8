@@ -2,7 +2,7 @@ import ApiError from './ApiError';
 import BadRequestApiError from './BadRequestApiError';
 
 describe('BadRequestApiError', () => {
-  it.skip('is instantiated successfully', () => {
+  it('is instantiated successfully', () => {
     interface ISampleError {
       status_code: number;
       message: string;

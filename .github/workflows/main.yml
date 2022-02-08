@@ -162,6 +162,7 @@ jobs:
         annotations: none
         skip-step: install
         test-script: "yarn test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\" --watchAll=false"
+    - uses: actions/checkout@v2
     - name: Build website
       run: |
         cd frontend
