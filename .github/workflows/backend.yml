@@ -84,10 +84,10 @@ jobs:
 
     - name: Generate coverage report and check
       if: ${{ github.event_name != 'push' }}
-      uses: orgoro/coverage@v2.1
+      uses: orgoro/coverage@v2
       with:
         coverageFile: ./backend/coverage.xml
-        token: ${{ github.token }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         thresholdAll: 0.9
 
     - name: Generate secrets for backend configuration of Terraform
