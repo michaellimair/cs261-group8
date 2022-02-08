@@ -104,6 +104,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+_port = None
+
+if os.environ.get('DB_PORT'):
+    _port = int(os.environ.get('DB_PORT'))
+
 DATABASES = {
     'default': {
         # Always force to use PostgreSQL for now
@@ -115,7 +120,7 @@ DATABASES = {
         'OPTIONS': {
             "unix_socket": os.environ.get('DB_SOCKET_DIR')
         },
-        'PORT': int(os.environ.get('DB_PORT')) if os.environ.get('DB_PORT') else None,
+        'PORT': _port,
     }
 }
 
