@@ -12,6 +12,8 @@ env:
   SERVICE: ${{ secrets.GCR_SERVICE }}
   STORAGE_BUCKET: ${{ secrets.GCP_BUCKET }}
   GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+  TF_VAR_region: ${{ secrets.GCP_MAIN_REGION }}
+  TF_VAR_region_failover: ${{ secrets.GCP_FAILOVER_REGION }}
   TF_VAR_project_id: ${{ secrets.GCP_PROJECT }}
   TF_VAR_bucket_name: ${{ secrets.GCP_BUCKET }}
   TF_VAR_db_user: ${{ secrets.DB_USER }}
