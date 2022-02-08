@@ -111,6 +111,7 @@ resource "google_cloud_run_service" "gcr_service_main" {
           value_from {
             secret_key_ref {
               name = google_secret_manager_secret.db-user.secret_id
+              key = "latest"
             }
           }
         }
@@ -120,6 +121,7 @@ resource "google_cloud_run_service" "gcr_service_main" {
           value_from {
             secret_key_ref {
               name = google_secret_manager_secret.db-password.secret_id
+              key = "latest"
             }
           }
         }
