@@ -22,7 +22,8 @@ data "google_project" "project" {
 resource "random_password" "db_password" {
   count            = 1
   length           = 128
-  special          = false
+  special          = true
+  override_special = "-_"
 }
 
 resource "google_secret_manager_secret" "db-user" {
@@ -108,8 +109,7 @@ resource "google_secret_manager_secret_iam_member" "dbname-access" {
 
 resource "random_password" "django_secret_main" {
   length           = 128
-  special          = true
-  override_special = "_%@"
+  special          = false
 }
 
 resource "google_cloud_run_service" "gcr_service_main" {
