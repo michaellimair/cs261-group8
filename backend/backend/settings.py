@@ -117,10 +117,7 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'OPTIONS': {
-            "unix_socket": os.environ.get('DB_SOCKET_DIR')
-        },
+        'HOST': os.environ.get('DB_SOCKET_DIR') or os.environ.get('DB_HOST'),
         'PORT': _port,
     }
 }
