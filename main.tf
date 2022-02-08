@@ -88,6 +88,8 @@ resource "google_compute_region_network_endpoint_group" "serverless_neg_main" {
   cloud_run {
     service = google_cloud_run_service.gcr_service_main.name
   }
+
+  depends_on = [google_cloud_run_service.gcr_service_main]
 }
 
 resource "google_compute_region_network_endpoint_group" "serverless_neg_failover" {
@@ -98,6 +100,8 @@ resource "google_compute_region_network_endpoint_group" "serverless_neg_failover
   cloud_run {
     service = google_cloud_run_service.gcr_service_failover.name
   }
+
+  depends_on = [google_cloud_run_service.gcr_service_failover]
 }
 
 resource "google_secret_manager_secret_version" "db-user" {
