@@ -25,7 +25,7 @@ resource "google_cloud_run_service" "gcr_service_main" {
     spec {
       # Container will pull image pushed to Google Container Registry in previous GitHub Action step
       containers {
-        image = "gcr.io/${var.project_id}/${var.cloud_run_main_service}"
+        image = "${var.cloud_run_image}"
       }
     }
 
