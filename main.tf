@@ -175,6 +175,33 @@ resource "random_password" "django_secret_main" {
   special          = false
 }
 
+resource "google_secret_manager_secret" "django_secret" {
+  secret_id = "${var.project_id}-django-secret"
+
+  replication {
+    user_managed {
+      replicas {
+        location = var.region
+      }
+      replicas {
+        location = var.region_failover
+      }
+    }
+  }
+}
+
+resource "google_secret_manager_secret_version" "django_secret" {
+  secret = google_secret_manager_secret.django_secret.id
+  secret_data = random_password.django_secret_main.result
+}
+
+resource "google_secret_manager_secret_iam_member" "django_secret_access" {
+  secret_id = google_secret_manager_secret.django_secret.id
+  role      = "roles/secretmanager.secretAccessor"
+  member    = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
+  depends_on = [google_secret_manager_secret.django_secret]
+}
+
 resource "google_cloud_run_service" "gcr_service_main" {
   name     = var.cloud_run_main_service
   provider = google-beta
@@ -206,7 +233,12 @@ resource "google_cloud_run_service" "gcr_service_main" {
 
         env {
           name = "DJANGO_SECRET"
-          value = random_password.django_secret_main.result
+          value_from {
+            secret_key_ref {
+              name = google_secret_manager_secret.django_secret.secret_id
+              key = "latest"
+            }
+          }
         }
 
         env {
@@ -303,7 +335,12 @@ resource "google_cloud_run_service" "gcr_service_failover" {
 
         env {
           name = "DJANGO_SECRET"
-          value = random_password.django_secret_main.result
+          value_from {
+            secret_key_ref {
+              name = google_secret_manager_secret.django_secret.secret_id
+              key = "latest"
+            }
+          }
         }
 
         env {
