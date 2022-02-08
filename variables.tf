@@ -74,3 +74,8 @@ variable "lb-name" {
   description = "Name for load balancer and associated resources."
   default     = "cs261-run-lb"
 }
+
+variable "bucket_location" {
+  description = "Location of the Google Cloud Storage bucket."
+  default = "EU"
+}

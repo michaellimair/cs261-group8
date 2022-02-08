@@ -248,6 +248,21 @@ resource "google_cloud_run_service" "gcr_service_main" {
   autogenerate_revision_name = true
 }
 
+resource "google_storage_bucket" "filestore_bucket" {
+  name          = var.bucket_name
+  location      = var.bucket_location
+  force_destroy = true
+
+  uniform_bucket_level_access = true
+
+  cors {
+    origin          = ["*"]
+    method          = ["GET", "HEAD", "PUT", "POST", "DELETE"]
+    response_header = ["*"]
+    max_age_seconds = 3600
+  }
+}
+
 # Ensure that the backend engine is a public endpoint
 resource "google_cloud_run_service_iam_member" "public-access-main" {
   location = google_cloud_run_service.gcr_service_main.location
@@ -258,9 +273,9 @@ resource "google_cloud_run_service_iam_member" "public-access-main" {
 }
 
 resource "google_cloud_run_service" "gcr_service_failover" {
-  name     = var.cloud_run_main_service
+  name     = var.cloud_run_failover_service
   provider = google-beta
-  location = var.region
+  location = var.region_failover
 
   template {
     spec {
