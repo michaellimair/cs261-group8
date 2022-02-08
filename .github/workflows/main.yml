@@ -166,6 +166,7 @@ jobs:
     - name: Build website
       run: |
         cd frontend
+        yarn
         yarn build
       env:
         REACT_APP_API_HOST: ${{ secrets.API_HOST }}
