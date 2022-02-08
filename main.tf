@@ -39,6 +39,13 @@ resource "google_secret_manager_secret_version" "db-user" {
   secret_data = var.db_user
 }
 
+resource "google_secret_manager_secret_iam_member" "secret-access" {
+  secret_id = google_secret_manager_secret.db-user.id
+  role      = "roles/secretmanager.secretAccessor"
+  member    = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
+  depends_on = [google_secret_manager_secret.db-user]
+}
+
 resource "google_secret_manager_secret" "db-password" {
   secret_id = "${var.project_id}-dbpassword"
 
@@ -57,6 +64,13 @@ resource "google_secret_manager_secret" "db-password" {
 resource "google_secret_manager_secret_version" "db-password" {
   secret = google_secret_manager_secret.db-password.id
   secret_data = var.db_password
+}
+
+resource "google_secret_manager_secret_iam_member" "secret-access" {
+  secret_id = google_secret_manager_secret.db-password.id
+  role      = "roles/secretmanager.secretAccessor"
+  member    = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
+  depends_on = [google_secret_manager_secret.db-password]
 }
 
 resource "google_secret_manager_secret" "db-name" {
@@ -80,10 +94,10 @@ resource "google_secret_manager_secret_version" "db-name" {
 }
 
 resource "google_secret_manager_secret_iam_member" "secret-access" {
-  secret_id = google_secret_manager_secret.secret.id
+  secret_id = google_secret_manager_secret.db-name.id
   role      = "roles/secretmanager.secretAccessor"
   member    = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
-  depends_on = [google_secret_manager_secret.db-user, google_secret_manager_secret.db-password, google_secret_manager_secret.db-name]
+  depends_on = [google_secret_manager_secret.db-name]
 }
 
 resource "google_cloud_run_service" "gcr_service_main" {
