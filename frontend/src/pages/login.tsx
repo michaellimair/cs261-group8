@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form';
 import {
   Box,
   FormControl,
@@ -15,6 +16,21 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const LoginPage: FC = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  function onSubmit(values: any) {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        alert(JSON.stringify(values, null, 2));
+        resolve();
+      }, 3000);
+    });
+  }
+
   const { t } = useTranslation();
 
   return (
@@ -29,40 +45,44 @@ const LoginPage: FC = () => {
         p={8}
       >
         <Stack spacing={4}>
-          <FormControl id="email">
-            <FormLabel>{t('email')}</FormLabel>
-            <Input type="email" />
-          </FormControl>
-          <FormControl id="password">
-            <FormLabel>{t('password')}</FormLabel>
-            <Input type="password" />
-          </FormControl>
-          <Stack spacing={10}>
-            <Stack
-              direction={{ base: 'column', sm: 'row' }}
-              align="start"
-              justify="space-between"
-            >
-              <Checkbox>{t('remember_me')}</Checkbox>
-              <RouterLink color="blue.400" to="/forgot-password">{t('forgot_password')}</RouterLink>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <FormControl id="email" isInvalid={errors.name}>
+              <FormLabel htmlFor="name">{t('email')}</FormLabel>
+              <Input {...register('email')} />
+            </FormControl>
+            <FormControl id="password">
+              <FormLabel>{t('password')}</FormLabel>
+              <Input {...register('password')} />
+            </FormControl>
+            <Stack spacing={10}>
+              <Stack
+                direction={{ base: 'column', sm: 'row' }}
+                align="start"
+                justify="space-between"
+              >
+                <Checkbox>{t('remember_me')}</Checkbox>
+                <RouterLink color="blue.400" to="/forgot-password">{t('forgot_password')}</RouterLink>
+              </Stack>
+              <Button
+                bg="blue.400"
+                color="white"
+                _hover={{
+                  bg: 'blue.500',
+                }}
+                isLoading={isSubmitting}
+                type="submit"
+              >
+                {t('login')}
+              </Button>
+              <Stack pt={6}>
+                <Text align="center">
+                  {t('no_account')}
+                  {' '}
+                  <RouterLink color="blue.400" to="/auth/register" data-testid="register-button">{t('register')}</RouterLink>
+                </Text>
+              </Stack>
             </Stack>
-            <Button
-              bg="blue.400"
-              color="white"
-              _hover={{
-                bg: 'blue.500',
-              }}
-            >
-              {t('login')}
-            </Button>
-            <Stack pt={6}>
-              <Text align="center">
-                {t('no_account')}
-                {' '}
-                <RouterLink color="blue.400" to="/auth/register" data-testid="register-button">{t('register')}</RouterLink>
-              </Text>
-            </Stack>
-          </Stack>
+          </form>
         </Stack>
       </Box>
     </>
