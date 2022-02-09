@@ -8077,6 +8077,11 @@ react-focus-lock@2.5.2:
     use-callback-ref "^1.2.5"
     use-sidecar "^1.0.5"
 
+react-hook-form@^7.26.1:
+  version "7.26.1"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.26.1.tgz#8f5c0aa81a452f5ebcb6a2d7253800011e735b1c"
+  integrity sha512-/Qw/7IsCCVfYSGryJAMcouEpIDgWZJPeHR15J0IFSgo1BgofcfnY+AeUDcYD1E3yzzXYpR7NHyJehhkBKvjdMg==
+
 react-i18next@^11.15.3:
   version "11.15.3"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.15.3.tgz#7608fb3cacc02ac75a62fc2d68b579f140b198dd"
@@ -8101,10 +8106,10 @@ react-merge-refs@^1.1.0:
   resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
   integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
 
-react-query@^3.34.8:
-  version "3.34.8"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.34.8.tgz#a3be8523fd95f766b04c32847a1b58d8231db03c"
-  integrity sha512-pl9e2VmVbgKf29Qn/WpmFVtB2g17JPqLLyOQg3GfSs/S2WABvip5xlT464vfXtilLPcJVg9bEHHlqmC38/nvDw==
+react-query@^3.34.14:
+  version "3.34.14"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.34.14.tgz#ba944c1c36bbeab3e7037c42e8e862acd73111ff"
+  integrity sha512-KVMnM8omt+81oO9fPZfM65pGhQilpWzGsNwAqeeLMB2sG3xwY3bpIEYbhDf7FFgsqhAQfSzmCL4gRSiJaWIDwA==
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
