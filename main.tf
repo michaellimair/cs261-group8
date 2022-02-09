@@ -73,8 +73,8 @@ module "lb-http" {
         oauth2_client_secret = ""
       }
       log_config = {
-        enable      = false
-        sample_rate = null
+        enable      = true
+        sample_rate = 1.0
       }
     }
   }
@@ -278,6 +278,12 @@ resource "google_cloud_run_service" "gcr_service_main" {
   }
 
   autogenerate_revision_name = true
+
+  depends_on = [
+    google_secret_manager_secret.django_secret,
+    google_secret_manager_secret.db-password,
+    google_secret_manager_secret.db-user,
+  ]
 }
 
 resource "google_storage_bucket" "filestore_bucket" {
@@ -380,6 +386,12 @@ resource "google_cloud_run_service" "gcr_service_failover" {
   }
 
   autogenerate_revision_name = true
+
+  depends_on = [
+    google_secret_manager_secret.django_secret,
+    google_secret_manager_secret.db-password,
+    google_secret_manager_secret.db-user,
+  ]
 }
 
 # Ensure that the backend engine is a public endpoint
