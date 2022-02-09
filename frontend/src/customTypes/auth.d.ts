@@ -1,3 +1,5 @@
+import { IApiBadRequestErrorData } from './api';
+
 export interface IUser {
   username: string;
   email: string;
@@ -24,3 +26,9 @@ export interface ILoginResult {
   token: string;
   expiry: Date;
 }
+
+/**
+ * Login error type to use if the error is a Bad Request error,
+ * possibly due to the wrong username or password.
+ */
+export type ILoginError = IApiBadRequestErrorData<ILogin>;
