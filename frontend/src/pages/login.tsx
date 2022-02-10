@@ -48,11 +48,11 @@ const LoginPage: FC = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl id="email" isInvalid={errors.name}>
               <FormLabel htmlFor="name">{t('email')}</FormLabel>
-              <Input {...register('email')} />
+              <Input data-testid="email-field" {...register('email')} />
             </FormControl>
             <FormControl id="password">
               <FormLabel>{t('password')}</FormLabel>
-              <Input {...register('password')} />
+              <Input data-testid="password-field" {...register('password')} />
             </FormControl>
             <Stack spacing={10}>
               <Stack
@@ -71,6 +71,7 @@ const LoginPage: FC = () => {
                 }}
                 isLoading={isSubmitting}
                 type="submit"
+                data-testid="login-button"
               >
                 {t('login')}
               </Button>
