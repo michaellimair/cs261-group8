@@ -1,9 +1,9 @@
 {
   "already_a_user": "Already a user?",
   "email": "Email Address",
-  "firstName": "First Name",
+  "first_name": "First Name",
   "forgot_password": "Forgot password?",
-  "lastName": "Last Name",
+  "last_name": "Last Name",
   "login": "Login",
   "login_description": "Log in to your mentoring platform account now!",
   "mentoring_platform": "Mentoring Platform",

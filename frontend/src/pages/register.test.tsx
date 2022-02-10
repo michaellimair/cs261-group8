@@ -71,52 +71,16 @@ describe('register', () => {
     expect(window.location.pathname).toBe('/auth');
   });
 
-  const passwordHiddenId = 'password-hidden';
-  const passwordShownId = 'password-shown';
-
-  it('defaults to not showing password', async () => {
-    const passwordOffIcon = result.queryByTestId(passwordHiddenId);
-    expect(passwordOffIcon).not.toBeEmptyDOMElement();
-    const passwordOnIcon = result.queryByTestId(passwordShownId);
-    expect(passwordOnIcon).toBeNull();
-  });
-
-  it('shows password when the show password button is clicked', async () => {
-    const showPassButton = result.queryByTestId('show-password-button');
-    if (!showPassButton) {
-      throw new Error('Cannot find button to show password!');
-    }
-    act(() => {
-      showPassButton.click();
-    });
-    let passwordOffIcon: HTMLElement | null;
-    let passwordOnIcon: HTMLElement | null;
-
-    passwordOffIcon = result.queryByTestId(passwordHiddenId);
-    expect(passwordOffIcon).toBeNull();
-    passwordOnIcon = result.queryByTestId(passwordShownId);
-    expect(passwordOnIcon).not.toBeEmptyDOMElement();
-
-    act(() => {
-      showPassButton.click();
-    });
-
-    passwordOffIcon = result.queryByTestId(passwordHiddenId);
-    expect(passwordOffIcon).not.toBeEmptyDOMElement();
-    passwordOnIcon = result.queryByTestId(passwordShownId);
-    expect(passwordOnIcon).toBeNull();
-  });
+  const userData: IRegistration = {
+    email: 'testuser@test.com',
+    username: 'testuser',
+    password: 'testuser1',
+    verify_password: 'testuser1',
+    first_name: 'Test',
+    last_name: 'User',
+  };
 
   const fillForm = () => {
-    const userData: IRegistration = {
-      email: 'testuser@test.com',
-      username: 'testuser',
-      password: 'testuser1',
-      verify_password: 'testuser1',
-      first_name: 'Test',
-      last_name: 'User',
-    };
-
     Object.entries(userData).forEach(([key, value]) => {
       const inputField = result.queryByTestId(key);
       if (!inputField) {
@@ -170,6 +134,7 @@ describe('register', () => {
 
     // Displays success message
     expect(httpClient.auth.register).toHaveBeenCalledTimes(1);
+    expect(httpClient.auth.register).toHaveBeenCalledWith(userData);
     expect(result.queryByTestId('register_success')).not.toBeEmptyDOMElement();
   });
 });

@@ -58,15 +58,17 @@ Object {
                 class="css-0"
               >
                 <div
-                  class="chakra-form-control css-0"
+                  class="chakra-form-control css-wlea3r"
+                  data-testid="first_name-formcontrol"
                   role="group"
                 >
                   <label
                     class="chakra-form__label css-uvho5g"
-                    for="firstName"
-                    id="firstName-label"
+                    data-testid="first_name-label"
+                    for="first_name"
+                    id="first_name-label"
                   >
-                    firstName
+                    first_name
                     <span
                       aria-hidden="true"
                       class="chakra-form__required-indicator css-0"
@@ -75,31 +77,37 @@ Object {
                       *
                     </span>
                   </label>
-                  <input
-                    aria-required="true"
-                    autocomplete="given-name"
-                    class="chakra-input css-0"
-                    data-testid="first_name"
-                    id="firstName"
-                    name="first_name"
-                    required=""
-                    type="text"
-                  />
+                  <div
+                    class="chakra-input__group css-4302v8"
+                  >
+                    <input
+                      aria-required="true"
+                      autocomplete="given-name"
+                      class="chakra-input css-0"
+                      data-testid="first_name"
+                      id="first_name"
+                      name="first_name"
+                      required=""
+                      type="text"
+                    />
+                  </div>
                 </div>
               </div>
               <div
                 class="css-0"
               >
                 <div
-                  class="chakra-form-control css-0"
+                  class="chakra-form-control css-wlea3r"
+                  data-testid="last_name-formcontrol"
                   role="group"
                 >
                   <label
                     class="chakra-form__label css-uvho5g"
-                    for="lastName"
-                    id="lastName-label"
+                    data-testid="last_name-label"
+                    for="last_name"
+                    id="last_name-label"
                   >
-                    lastName
+                    last_name
                     <span
                       aria-hidden="true"
                       class="chakra-form__required-indicator css-0"
@@ -108,25 +116,31 @@ Object {
                       *
                     </span>
                   </label>
-                  <input
-                    aria-required="true"
-                    autocomplete="given-name"
-                    class="chakra-input css-0"
-                    data-testid="last_name"
-                    id="lastName"
-                    name="last_name"
-                    required=""
-                    type="text"
-                  />
+                  <div
+                    class="chakra-input__group css-4302v8"
+                  >
+                    <input
+                      aria-required="true"
+                      autocomplete="family-name"
+                      class="chakra-input css-0"
+                      data-testid="last_name"
+                      id="last_name"
+                      name="last_name"
+                      required=""
+                      type="text"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
             <div
               class="chakra-form-control css-wlea3r"
+              data-testid="username-formcontrol"
               role="group"
             >
               <label
                 class="chakra-form__label css-uvho5g"
+                data-testid="username-label"
                 for="username"
                 id="username-label"
               >
@@ -139,23 +153,29 @@ Object {
                   *
                 </span>
               </label>
-              <input
-                aria-required="true"
-                autocomplete="username"
-                class="chakra-input css-0"
-                data-testid="username"
-                id="username"
-                name="username"
-                required=""
-                type="text"
-              />
+              <div
+                class="chakra-input__group css-4302v8"
+              >
+                <input
+                  aria-required="true"
+                  autocomplete="username"
+                  class="chakra-input css-0"
+                  data-testid="username"
+                  id="username"
+                  name="username"
+                  required=""
+                  type="text"
+                />
+              </div>
             </div>
             <div
               class="chakra-form-control css-wlea3r"
+              data-testid="email-formcontrol"
               role="group"
             >
               <label
                 class="chakra-form__label css-uvho5g"
+                data-testid="email-label"
                 for="email"
                 id="email-label"
               >
@@ -168,25 +188,31 @@ Object {
                   *
                 </span>
               </label>
-              <input
-                aria-required="true"
-                autocomplete="email"
-                class="chakra-input css-0"
-                data-testid="email"
-                id="email"
-                name="email"
-                required=""
-                type="email"
-              />
+              <div
+                class="chakra-input__group css-4302v8"
+              >
+                <input
+                  aria-required="true"
+                  autocomplete="email"
+                  class="chakra-input css-0"
+                  data-testid="email"
+                  id="email"
+                  name="email"
+                  required=""
+                  type="email"
+                />
+              </div>
             </div>
             <div
               class="chakra-form-control css-wlea3r"
+              data-testid="password-formcontrol"
               role="group"
             >
               <label
                 class="chakra-form__label css-uvho5g"
-                for="new-password"
-                id="new-password-label"
+                data-testid="password-label"
+                for="password"
+                id="password-label"
               >
                 password
                 <span
@@ -205,13 +231,14 @@ Object {
                   autocomplete="new-password"
                   class="chakra-input css-0"
                   data-testid="password"
-                  id="new-password"
+                  id="password"
                   name="password"
                   required=""
                   type="password"
                 />
                 <div
                   class="chakra-input__right-element css-1aezdzf"
+                  data-testid="show-password-toggle"
                 >
                   <button
                     class="chakra-button css-5c2176"
@@ -241,12 +268,14 @@ Object {
             </div>
             <div
               class="chakra-form-control css-wlea3r"
+              data-testid="verify_password-formcontrol"
               role="group"
             >
               <label
                 class="chakra-form__label css-uvho5g"
-                for="verify-password"
-                id="verify-password-label"
+                data-testid="verify_password-label"
+                for="verify_password"
+                id="verify_password-label"
               >
                 verify_password
                 <span
@@ -265,11 +294,39 @@ Object {
                   autocomplete="new-password"
                   class="chakra-input css-0"
                   data-testid="verify_password"
-                  id="verify-password"
+                  id="verify_password"
                   name="verify_password"
                   required=""
                   type="password"
                 />
+                <div
+                  class="chakra-input__right-element css-1aezdzf"
+                  data-testid="show-password-toggle"
+                >
+                  <button
+                    class="chakra-button css-5c2176"
+                    data-testid="show-password-button"
+                    type="button"
+                  >
+                    <svg
+                      class="chakra-icon css-onkibi"
+                      data-testid="password-hidden"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        fill="currentColor"
+                      >
+                        <path
+                          d="M23.2,10.549a20.954,20.954,0,0,0-4.3-3.6l4-3.995a1,1,0,1,0-1.414-1.414l-.018.018a.737.737,0,0,1-.173.291l-19.5,19.5c-.008.007-.018.009-.026.017a1,1,0,0,0,1.631,1.088l4.146-4.146a11.26,11.26,0,0,0,4.31.939h.3c4.256,0,8.489-2.984,11.051-5.8A2.171,2.171,0,0,0,23.2,10.549ZM16.313,13.27a4.581,4.581,0,0,1-3,3.028,4.3,4.3,0,0,1-3.1-.19.253.253,0,0,1-.068-.407l5.56-5.559a.252.252,0,0,1,.407.067A4.3,4.3,0,0,1,16.313,13.27Z"
+                        />
+                        <path
+                          d="M7.615,13.4a.244.244,0,0,0,.061-.24A4.315,4.315,0,0,1,7.5,12,4.5,4.5,0,0,1,12,7.5a4.276,4.276,0,0,1,1.16.173.244.244,0,0,0,.24-.062l1.941-1.942a.254.254,0,0,0-.1-.421A10.413,10.413,0,0,0,12,4.75C7.7,4.692,3.4,7.7.813,10.549a2.15,2.15,0,0,0-.007,2.9,21.209,21.209,0,0,0,3.438,3.03.256.256,0,0,0,.326-.029Z"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
             <div
@@ -335,15 +392,17 @@ Object {
               class="css-0"
             >
               <div
-                class="chakra-form-control css-0"
+                class="chakra-form-control css-wlea3r"
+                data-testid="first_name-formcontrol"
                 role="group"
               >
                 <label
                   class="chakra-form__label css-uvho5g"
-                  for="firstName"
-                  id="firstName-label"
+                  data-testid="first_name-label"
+                  for="first_name"
+                  id="first_name-label"
                 >
-                  firstName
+                  first_name
                   <span
                     aria-hidden="true"
                     class="chakra-form__required-indicator css-0"
@@ -352,31 +411,37 @@ Object {
                     *
                   </span>
                 </label>
-                <input
-                  aria-required="true"
-                  autocomplete="given-name"
-                  class="chakra-input css-0"
-                  data-testid="first_name"
-                  id="firstName"
-                  name="first_name"
-                  required=""
-                  type="text"
-                />
+                <div
+                  class="chakra-input__group css-4302v8"
+                >
+                  <input
+                    aria-required="true"
+                    autocomplete="given-name"
+                    class="chakra-input css-0"
+                    data-testid="first_name"
+                    id="first_name"
+                    name="first_name"
+                    required=""
+                    type="text"
+                  />
+                </div>
               </div>
             </div>
             <div
               class="css-0"
             >
               <div
-                class="chakra-form-control css-0"
+                class="chakra-form-control css-wlea3r"
+                data-testid="last_name-formcontrol"
                 role="group"
               >
                 <label
                   class="chakra-form__label css-uvho5g"
-                  for="lastName"
-                  id="lastName-label"
+                  data-testid="last_name-label"
+                  for="last_name"
+                  id="last_name-label"
                 >
-                  lastName
+                  last_name
                   <span
                     aria-hidden="true"
                     class="chakra-form__required-indicator css-0"
@@ -385,25 +450,31 @@ Object {
                     *
                   </span>
                 </label>
-                <input
-                  aria-required="true"
-                  autocomplete="given-name"
-                  class="chakra-input css-0"
-                  data-testid="last_name"
-                  id="lastName"
-                  name="last_name"
-                  required=""
-                  type="text"
-                />
+                <div
+                  class="chakra-input__group css-4302v8"
+                >
+                  <input
+                    aria-required="true"
+                    autocomplete="family-name"
+                    class="chakra-input css-0"
+                    data-testid="last_name"
+                    id="last_name"
+                    name="last_name"
+                    required=""
+                    type="text"
+                  />
+                </div>
               </div>
             </div>
           </div>
           <div
             class="chakra-form-control css-wlea3r"
+            data-testid="username-formcontrol"
             role="group"
           >
             <label
               class="chakra-form__label css-uvho5g"
+              data-testid="username-label"
               for="username"
               id="username-label"
             >
@@ -416,23 +487,29 @@ Object {
                 *
               </span>
             </label>
-            <input
-              aria-required="true"
-              autocomplete="username"
-              class="chakra-input css-0"
-              data-testid="username"
-              id="username"
-              name="username"
-              required=""
-              type="text"
-            />
+            <div
+              class="chakra-input__group css-4302v8"
+            >
+              <input
+                aria-required="true"
+                autocomplete="username"
+                class="chakra-input css-0"
+                data-testid="username"
+                id="username"
+                name="username"
+                required=""
+                type="text"
+              />
+            </div>
           </div>
           <div
             class="chakra-form-control css-wlea3r"
+            data-testid="email-formcontrol"
             role="group"
           >
             <label
               class="chakra-form__label css-uvho5g"
+              data-testid="email-label"
               for="email"
               id="email-label"
             >
@@ -445,25 +522,31 @@ Object {
                 *
               </span>
             </label>
-            <input
-              aria-required="true"
-              autocomplete="email"
-              class="chakra-input css-0"
-              data-testid="email"
-              id="email"
-              name="email"
-              required=""
-              type="email"
-            />
+            <div
+              class="chakra-input__group css-4302v8"
+            >
+              <input
+                aria-required="true"
+                autocomplete="email"
+                class="chakra-input css-0"
+                data-testid="email"
+                id="email"
+                name="email"
+                required=""
+                type="email"
+              />
+            </div>
           </div>
           <div
             class="chakra-form-control css-wlea3r"
+            data-testid="password-formcontrol"
             role="group"
           >
             <label
               class="chakra-form__label css-uvho5g"
-              for="new-password"
-              id="new-password-label"
+              data-testid="password-label"
+              for="password"
+              id="password-label"
             >
               password
               <span
@@ -482,13 +565,14 @@ Object {
                 autocomplete="new-password"
                 class="chakra-input css-0"
                 data-testid="password"
-                id="new-password"
+                id="password"
                 name="password"
                 required=""
                 type="password"
               />
               <div
                 class="chakra-input__right-element css-1aezdzf"
+                data-testid="show-password-toggle"
               >
                 <button
                   class="chakra-button css-5c2176"
@@ -518,12 +602,14 @@ Object {
           </div>
           <div
             class="chakra-form-control css-wlea3r"
+            data-testid="verify_password-formcontrol"
             role="group"
           >
             <label
               class="chakra-form__label css-uvho5g"
-              for="verify-password"
-              id="verify-password-label"
+              data-testid="verify_password-label"
+              for="verify_password"
+              id="verify_password-label"
             >
               verify_password
               <span
@@ -542,11 +628,39 @@ Object {
                 autocomplete="new-password"
                 class="chakra-input css-0"
                 data-testid="verify_password"
-                id="verify-password"
+                id="verify_password"
                 name="verify_password"
                 required=""
                 type="password"
               />
+              <div
+                class="chakra-input__right-element css-1aezdzf"
+                data-testid="show-password-toggle"
+              >
+                <button
+                  class="chakra-button css-5c2176"
+                  data-testid="show-password-button"
+                  type="button"
+                >
+                  <svg
+                    class="chakra-icon css-onkibi"
+                    data-testid="password-hidden"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M23.2,10.549a20.954,20.954,0,0,0-4.3-3.6l4-3.995a1,1,0,1,0-1.414-1.414l-.018.018a.737.737,0,0,1-.173.291l-19.5,19.5c-.008.007-.018.009-.026.017a1,1,0,0,0,1.631,1.088l4.146-4.146a11.26,11.26,0,0,0,4.31.939h.3c4.256,0,8.489-2.984,11.051-5.8A2.171,2.171,0,0,0,23.2,10.549ZM16.313,13.27a4.581,4.581,0,0,1-3,3.028,4.3,4.3,0,0,1-3.1-.19.253.253,0,0,1-.068-.407l5.56-5.559a.252.252,0,0,1,.407.067A4.3,4.3,0,0,1,16.313,13.27Z"
+                      />
+                      <path
+                        d="M7.615,13.4a.244.244,0,0,0,.061-.24A4.315,4.315,0,0,1,7.5,12,4.5,4.5,0,0,1,12,7.5a4.276,4.276,0,0,1,1.16.173.244.244,0,0,0,.24-.062l1.941-1.942a.254.254,0,0,0-.1-.421A10.413,10.413,0,0,0,12,4.75C7.7,4.692,3.4,7.7.813,10.549a2.15,2.15,0,0,0-.007,2.9,21.209,21.209,0,0,0,3.438,3.03.256.256,0,0,0,.326-.029Z"
+                      />
+                    </g>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
           <div

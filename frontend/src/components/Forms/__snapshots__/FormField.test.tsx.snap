@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/FormField renders correctly with the right set of attributes 1`] = `
+<div
+  class="chakra-form-control css-wlea3r"
+  data-testid="field-formcontrol"
+  role="group"
+>
+  <label
+    class="chakra-form__label css-uvho5g"
+    data-testid="field-label"
+    for="field"
+    id="field-label"
+  >
+    field
+  </label>
+  <div
+    class="chakra-input__group css-4302v8"
+  >
+    <input
+      autocomplete="email"
+      class="chakra-input css-0"
+      data-testid="field"
+      id="field"
+      type="email"
+    />
+  </div>
+</div>
+`;
