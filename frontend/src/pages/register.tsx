@@ -217,7 +217,7 @@ const RegisterPage: FC = () => {
                 <FormErrorMessage>{error?.data?.non_field_errors}</FormErrorMessage>
               </FormControl>
               {isSuccess && (
-              <Text align="center">
+              <Text align="center" data-testid="register_success">
                 {t('register_success')}
               </Text>
               )}

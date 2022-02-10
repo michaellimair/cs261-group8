@@ -283,7 +283,7 @@ Object {
                 register
               </button>
               <div
-                class="chakra-form-control css-g89h0y"
+                class="chakra-form-control css-t9xfd"
                 role="group"
               />
             </div>
@@ -560,7 +560,7 @@ Object {
               register
             </button>
             <div
-              class="chakra-form-control css-g89h0y"
+              class="chakra-form-control css-t9xfd"
               role="group"
             />
           </div>
