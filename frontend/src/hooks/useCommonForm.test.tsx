@@ -1,6 +1,7 @@
 import { FC, SyntheticEvent } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { renderHook } from '@testing-library/react-hooks';
+import { tick } from 'libs/testing';
 import useCommonForm from './useCommonForm';
 
 describe('hooks/useCommonForm', () => {
@@ -31,9 +32,7 @@ describe('hooks/useCommonForm', () => {
       preventDefault: () => {},
       persist: () => {},
     } as SyntheticEvent);
-    await new Promise((resolve) => {
-      setTimeout(resolve, 1);
-    });
+    await tick(1);
     expect(mutationFn).toHaveBeenCalledTimes(1);
   });
 });

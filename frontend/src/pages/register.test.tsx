@@ -5,15 +5,12 @@ import {
 import { httpClient } from 'api';
 import BadRequestApiError from 'api/error/BadRequestApiError';
 import { IRegistration, IRegistrationError } from 'customTypes/auth';
+import { tick } from 'libs/testing';
 import { QueryClient, QueryClientProvider, setLogger } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import RegisterPage from './register';
 
 jest.mock('api');
-
-const tick = (ms: number) => new Promise((resolve) => {
-  setTimeout(resolve, ms);
-});
 
 describe('register', () => {
   let queryClient: QueryClient;
