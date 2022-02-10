@@ -3,7 +3,6 @@ import {
   FormControl,
   HStack,
   Stack,
-  Button,
   Heading,
   Text,
   useColorModeValue,
@@ -20,6 +19,7 @@ import { useMutation } from 'react-query';
 import { httpClient } from 'api';
 import BadRequestApiError from 'api/error/BadRequestApiError';
 import FormField from 'components/Forms/FormField';
+import SubmitButton from 'components/Forms/SubmitButton';
 
 const LoginLinkButton: FC = () => {
   const { t } = useTranslation();
@@ -138,20 +138,13 @@ const RegisterPage: FC = () => {
               register={register}
             />
             <Stack spacing={10} pt={2}>
-              <Button
+              <SubmitButton
                 disabled={isLoading || isSuccess}
                 loadingText={t('registering')}
-                type="submit"
-                size="lg"
-                data-testid="registerButton"
-                bg="blue.400"
-                color="white"
-                _hover={{
-                  bg: 'blue.500',
-                }}
+                testId="registerButton"
               >
                 {t('register')}
-              </Button>
+              </SubmitButton>
               <FormControl id="non-field" isInvalid={Boolean(error?.data?.non_field_errors)} mt={['0 !important']}>
                 <FormErrorMessage>{error?.data?.non_field_errors}</FormErrorMessage>
               </FormControl>
