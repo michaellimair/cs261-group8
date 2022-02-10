@@ -11,7 +11,6 @@ import {
 import React, {
   FC, useCallback,
 } from 'react';
-import RouterLink from 'components/RouterLink';
 import { useTranslation } from 'react-i18next';
 import { useForm, UseFormRegister } from 'react-hook-form';
 import { IRegistration, IRegistrationError, IUser } from 'customTypes/auth';
@@ -20,20 +19,7 @@ import { httpClient } from 'api';
 import BadRequestApiError from 'api/error/BadRequestApiError';
 import FormField from 'components/Forms/FormField';
 import SubmitButton from 'components/Forms/SubmitButton';
-
-const LoginLinkButton: FC = () => {
-  const { t } = useTranslation();
-
-  return (
-    <Stack pt={6}>
-      <Text align="center">
-        {t('already_a_user')}
-        {' '}
-        <RouterLink color="blue.400" to="/auth" data-testid="login-button">{t('login')}</RouterLink>
-      </Text>
-    </Stack>
-  );
-};
+import AlternateAuthAction from 'components/AlternateAuthAction';
 
 interface INameFieldData {
   firstNameError: string | string[] | undefined;
@@ -154,7 +140,12 @@ const RegisterPage: FC = () => {
               </Text>
               )}
             </Stack>
-            <LoginLinkButton />
+            <AlternateAuthAction
+              question={t('already_a_user')}
+              linkText={t('login')}
+              linkTestId="login-button"
+              to="/auth"
+            />
           </form>
         </Stack>
       </Box>
