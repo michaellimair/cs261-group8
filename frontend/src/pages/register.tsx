@@ -12,14 +12,16 @@ import React, {
   FC, useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useForm, UseFormRegister } from 'react-hook-form';
+import {
+  UseFormRegister,
+} from 'react-hook-form';
 import { IRegistration, IRegistrationError, IUser } from 'customTypes/auth';
-import { useMutation } from 'react-query';
 import { httpClient } from 'api';
 import BadRequestApiError from 'api/error/BadRequestApiError';
 import FormField from 'components/Forms/FormField';
 import SubmitButton from 'components/Forms/SubmitButton';
 import AlternateAuthAction from 'components/AlternateAuthAction';
+import useCommonForm from 'hooks/useCommonForm';
 
 interface INameFieldData {
   firstNameError: string | string[] | undefined;
@@ -55,22 +57,18 @@ const NameField: FC<INameFieldData> = ({
 );
 
 const RegisterPage: FC = () => {
-  const { register, handleSubmit, formState: { errors: formErrors } } = useForm<IRegistration>();
-  const {
-    mutate, isLoading, error, isSuccess,
-  } = useMutation<
-  IUser,
-  BadRequestApiError<IRegistrationError>,
-  IRegistration
-  >(
-    'register',
-    (values) => httpClient.auth.register(values),
-  );
   const { t } = useTranslation();
-
-  const onSubmit = useCallback((values: IRegistration) => {
-    mutate(values);
-  }, [mutate]);
+  const mutationFn = useCallback((values: IRegistration) => httpClient.auth.register(values), []);
+  const {
+    register,
+    onSubmit,
+    errors,
+    isLoading,
+    isSuccess,
+  } = useCommonForm<IRegistration, BadRequestApiError<IRegistrationError>, IUser>({
+    mutationId: 'register',
+    mutationFn,
+  });
 
   return (
     <>
@@ -86,17 +84,17 @@ const RegisterPage: FC = () => {
         p={8}
       >
         <Stack spacing={4}>
-          <form onSubmit={handleSubmit(onSubmit)} data-testid="registerForm">
+          <form onSubmit={onSubmit} data-testid="registerForm">
             <NameField
-              firstNameError={error?.data?.first_name ?? formErrors?.first_name?.message}
-              lastNameError={error?.data?.last_name ?? formErrors?.last_name?.message}
+              firstNameError={errors?.first_name}
+              lastNameError={errors?.last_name}
               register={register}
             />
             <FormField
               name="username"
               required
               autoComplete="username"
-              error={error?.data?.username ?? formErrors?.username?.message}
+              error={errors?.username}
               register={register}
             />
             <FormField
@@ -104,7 +102,7 @@ const RegisterPage: FC = () => {
               required
               autoComplete="email"
               type="email"
-              error={error?.data?.email ?? formErrors?.email?.message}
+              error={errors?.email}
               register={register}
             />
             <FormField
@@ -112,7 +110,7 @@ const RegisterPage: FC = () => {
               autoComplete="new-password"
               type="password"
               required
-              error={error?.data?.password ?? formErrors?.password?.message}
+              error={errors?.password}
               register={register}
             />
             <FormField
@@ -120,7 +118,7 @@ const RegisterPage: FC = () => {
               autoComplete="new-password"
               type="password"
               required
-              error={error?.data?.verify_password ?? formErrors?.verify_password?.message}
+              error={errors?.verify_password}
               register={register}
             />
             <Stack spacing={10} pt={2}>
@@ -131,8 +129,8 @@ const RegisterPage: FC = () => {
               >
                 {t('register')}
               </SubmitButton>
-              <FormControl id="non-field" isInvalid={Boolean(error?.data?.non_field_errors)} mt={['0 !important']}>
-                <FormErrorMessage>{error?.data?.non_field_errors}</FormErrorMessage>
+              <FormControl id="non-field" isInvalid={Boolean(errors?.non_field_errors)} mt={['0 !important']}>
+                <FormErrorMessage>{errors?.non_field_errors}</FormErrorMessage>
               </FormControl>
               {isSuccess && (
               <Text align="center" data-testid="register_success">
