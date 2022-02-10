@@ -2,18 +2,24 @@
   "already_a_user": "Already a user?",
   "email": "Email Address",
   "firstName": "First Name",
+  "forgot_password": "Forgot password?",
   "lastName": "Last Name",
   "login": "Login",
   "login_description": "Log in to your mentoring platform account now!",
   "mentoring_platform": "Mentoring Platform",
+  "no_account": "Do not have an account?",
+  "no_blank": "{{field}} may not be blank.",
   "not_found": {
     "title": "Page not found."
   },
   "password": "Password",
   "register": "Register",
   "register_description": "Register to your mentoring platform account and start getting mentorship or start mentoring others!",
+  "registering": "Registration in progress...",
   "remember_me": "Remember Me",
   "submitting": "Submitting",
-  "forgot_password": "Forgot password?",
-  "no_account": "Do not have an account?"
+  "username": "Username",
+  "verify_password": "Verify Password",
+  "internal_error": "An error has occurred in the server, please try again later.",
+  "register_success": "Registration is successful, logging you in..."
 }
