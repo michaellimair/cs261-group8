@@ -134,7 +134,7 @@ jobs:
         cache-to: type=gha,mode=max
 
     - name: Initialize Terraform
-      run: terraform init -backend-config=backend.conf
+      run: terraform init -backend-config=backend.conf -upgrade
 
     - name: Validate Terraform configuration
       run: terraform validate -no-color
