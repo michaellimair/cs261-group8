@@ -6,7 +6,7 @@ terraform {
     }
     heroku = {
       source  = "heroku/heroku"
-      version = "4.9.0"
+      version = "5.0.0-beta.1"
     }
   }
 
@@ -115,9 +115,14 @@ resource "heroku_app" "main" {
   region = var.heroku_region
 }
 
+resource "heroku_addon" "database" {
+  app_id = heroku_app.main.id
+  plan   = "heroku-postgresql:hobby-dev"
+}
+
 locals {
   // DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME
-  database_url_normalized = replace(heroku_app.main.all_config_vars.DATABASE_URL, "postgres://", "")
+  database_url_normalized = replace(heroku_addon.database.config_var_values.DATABASE_URL, "postgres://", "")
   db_user_pass = split("@", local.database_url_normalized)[0]
   db_password = split(":", local.db_user_pass)[0]
   db_user = split(":", local.db_user_pass)[0]
