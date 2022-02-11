@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from .models import UserProfile, BusinessArea
@@ -13,7 +13,7 @@ class BusinessAreaSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
   class Meta:
     model = UserProfile
-    fields = ('pronoun', 'title', 'completed')
+    exclude=('id', 'user')
 
 class UserSerializer(serializers.ModelSerializer):
   profile = UserProfileSerializer(
@@ -22,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = User
-    exclude=['password', 'is_superuser', 'user_permissions']
+    exclude=['password', 'is_superuser', 'user_permissions', 'is_staff', 'is_active']
 
 class RegisterSerializer(serializers.ModelSerializer):
   email = serializers.EmailField(
@@ -65,3 +65,8 @@ class RegisterSerializer(serializers.ModelSerializer):
     user.save()
 
     return user
+
+class GroupSerializer(serializers.ModelSerializer):
+  class Meta:
+    model= Group
+    fields = ('id','name')

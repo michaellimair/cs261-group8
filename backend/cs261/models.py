@@ -24,6 +24,9 @@ class UserProfile(models.Model):
     default=False,
   )
   business_area = models.ForeignKey(BusinessArea, on_delete=models.CASCADE, null=True,)
+  years_experience = models.SmallIntegerField(
+    null=True
+  )
   title = models.CharField(
     max_length=5,
     choices=Title.choices,

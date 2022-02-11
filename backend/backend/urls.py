@@ -15,15 +15,16 @@ Including another URLconf
 """
 from knox import views as knox_views
 from django.urls import path, include
-from cs261.views import RegisterView, MyDataView, LoginView, BusinessAreaView
+from cs261.views import RegisterView, MyDataView, LoginView, BusinessAreaView, GroupView
 from rest_framework import routers
 from rest_framework.schemas import get_schema_view
 
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    path('api/', include([
+    path('api/v1/', include([
         path('', include(router.urls)),
+        path('groups', GroupView.as_view(), name='group'),
         path('business-areas', BusinessAreaView.as_view({'get': 'list'}), name='business_area'),
         path('auth', MyDataView.as_view(), name='me'),
         path('auth/login', LoginView.as_view(), name='knox_login'),

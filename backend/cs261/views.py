@@ -4,11 +4,12 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
-from django.contrib.auth.models import User
-from .serializers import UserSerializer, RegisterSerializer, BusinessAreaSerializer
+from django.contrib.auth.models import User, Group
+from .serializers import UserSerializer, RegisterSerializer, BusinessAreaSerializer, GroupSerializer
 from knox.views import LoginView as KnoxLoginView
 from .models import BusinessArea
 from rest_framework.authtoken.serializers import AuthTokenSerializer
+from cs261.permission_constants import project_permission_group
 
 # Create your views here.
 
@@ -16,6 +17,10 @@ class MyDataView(APIView):
   def get(self, request):
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
+
+class GroupView(generics.ListAPIView):
+  queryset = Group.objects.all()
+  serializer_class = GroupSerializer
 
 class BusinessAreaView(viewsets.ReadOnlyModelViewSet):
   queryset = BusinessArea.objects.all()
