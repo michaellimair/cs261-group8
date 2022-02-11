@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-import { render, fireEvent } from '@testing-library/react';
-=======
 /* eslint-disable no-console */
 import {
   act, fireEvent, render, RenderResult,
@@ -10,7 +7,6 @@ import BadRequestApiError from 'api/error/BadRequestApiError';
 import { ILogin, ILoginError } from 'customTypes/auth';
 import { tick } from 'libs/testing';
 import { QueryClient, QueryClientProvider, setLogger } from 'react-query';
->>>>>>> Stashed changes
 import { BrowserRouter } from 'react-router-dom';
 import LoginPage from './login';
 
@@ -69,31 +65,6 @@ describe('login', () => {
     expect(window.location.pathname).toBe('/auth/register');
   });
 
-<<<<<<< Updated upstream
-  const tick = (ms: number) => new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-
-  it('submits login details properly', async () => {
-    const result = render(
-      <BrowserRouter>
-        <LoginPage />
-      </BrowserRouter>,
-    );
-    const loginButton = result.queryByTestId('login-button');
-    const usernameField = result.queryByTestId('email-field');
-    const passwordField = result.queryByTestId('password-field');
-    if (!loginButton || !usernameField || !passwordField) {
-      throw new Error('Login button cannot be found!');
-    }
-    const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => {});
-    usernameField.focus();
-    fireEvent.change(usernameField, { target: { value: 'email@test.com' } });
-    fireEvent.change(passwordField, { target: { value: 'password123' } });
-    loginButton.click();
-    await tick(3500);
-    expect(mockAlert).toHaveBeenCalledWith('{\n  \"email\": \"email@test.com\",\n  \"password\": \"password123\"\n}');
-=======
   const userData: ILogin = {
     username: 'testuser',
     password: 'testuser1',
@@ -151,6 +122,5 @@ describe('login', () => {
     expect(httpClient.auth.login).toHaveBeenCalledTimes(1);
     expect(httpClient.auth.login).toHaveBeenCalledWith(userData);
     expect(result.queryByTestId('login_success')).not.toBeEmptyDOMElement();
->>>>>>> Stashed changes
   });
 });

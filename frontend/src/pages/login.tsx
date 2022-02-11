@@ -53,17 +53,6 @@ const LoginPage: FC = () => {
         p={8}
       >
         <Stack spacing={4}>
-<<<<<<< Updated upstream
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <FormControl id="email" isInvalid={errors.name}>
-              <FormLabel htmlFor="name">{t('email')}</FormLabel>
-              <Input data-testid="email-field" {...register('email')} />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>{t('password')}</FormLabel>
-              <Input data-testid="password-field" {...register('password')} />
-            </FormControl>
-=======
           <form onSubmit={onSubmit} data-testid="loginForm">
             <FormField
               name="username"
@@ -80,7 +69,6 @@ const LoginPage: FC = () => {
               error={errors?.password}
               register={register}
             />
->>>>>>> Stashed changes
             <Stack spacing={10}>
               <Stack
                 direction={{ base: 'column', sm: 'row' }}
@@ -90,22 +78,10 @@ const LoginPage: FC = () => {
                 <Checkbox>{t('remember_me')}</Checkbox>
                 <RouterLink color="blue.400" to="/forgot-password">{t('forgot_password')}</RouterLink>
               </Stack>
-<<<<<<< Updated upstream
-              <Button
-                bg="blue.400"
-                color="white"
-                _hover={{
-                  bg: 'blue.500',
-                }}
-                isLoading={isSubmitting}
-                type="submit"
-                data-testid="login-button"
-=======
               <SubmitButton
                 disabled={isLoading || isSuccess}
                 loadingText={t('logging_in')}
                 testId="loginButton"
->>>>>>> Stashed changes
               >
                 {t('login')}
               </SubmitButton>
