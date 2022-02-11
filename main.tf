@@ -15,6 +15,11 @@ terraform {
   backend "gcs" {}
 }
 
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
 provider "google-beta" {
   project = var.project_id
   region  = var.region
@@ -48,7 +53,9 @@ module "lb-http" {
 
   ssl                             = var.ssl
   managed_ssl_certificate_domains = [var.domain]
-  https_redirect                  = var.ssl
+  # Temporarily disable HTTPS redirect to reduce cost, since browsers probably already use HTTPS by default
+  # https_redirect                  = var.ssl
+  https_redirect                  = false
 
   backends = {
     default = {
