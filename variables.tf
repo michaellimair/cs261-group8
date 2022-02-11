@@ -35,12 +35,12 @@ variable "cloud_run_image" {
 
 variable "region" {
   description = "Location for load balancer and Google Cloud Run resources."
-  default     = "europe-west3"
+  default     = "europe-west1"
 }
 
 variable "region_failover" {
   description = "Location for Google Cloud Run failover."
-  default     = "europe-west2"
+  default     = "europe-west4"
 }
 
 variable "ssl" {
