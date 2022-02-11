@@ -44,11 +44,10 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         threshold: 90 # Require at least 90% code coverage
-        working-directory: 'frontend'
         annotations: none
         skip-step: all
-        coverage-file: report.json
-        base-coverage-file: report.json
+        coverage-file: ./frontend/report.json
+        base-coverage-file: ./frontend/report.json
     # Recheckout to current branch since the previous action checks out to main branch
     - uses: actions/checkout@v2
     - name: Build website
