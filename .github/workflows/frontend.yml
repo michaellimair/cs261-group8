@@ -38,7 +38,7 @@ jobs:
     - name: Run tests with Jest
       run: |
         cd frontend
-        yarn test
+        yarn test --outputFile=report.json
     - name: Check frontend code coverage
       uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
       with:
@@ -46,8 +46,9 @@ jobs:
         threshold: 90 # Require at least 90% code coverage
         working-directory: 'frontend'
         annotations: none
-        skip-step: install
-        test-script: "yarn test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\" --watchAll=false"
+        skip-step: all
+        coverage-file: report.json
+        base-coverage-file: report.json
     # Recheckout to current branch since the previous action checks out to main branch
     - uses: actions/checkout@v2
     - name: Build website
