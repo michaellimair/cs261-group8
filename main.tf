@@ -45,71 +45,6 @@ resource "random_password" "db_password" {
   override_special = "-_"
 }
 
-module "lb-http" {
-  source  = "GoogleCloudPlatform/lb-http/google//modules/serverless_negs"
-  version = "~> 6.2.0"
-  name    = "${var.network_prefix}-cloudrun-lb"
-  project = var.project_id
-
-  ssl                             = var.ssl
-  managed_ssl_certificate_domains = [var.domain]
-  # Temporarily disable HTTPS redirect to reduce cost, since browsers probably already use HTTPS by default
-  # https_redirect                  = var.ssl
-  https_redirect                  = false
-
-  backends = {
-    default = {
-      description = null
-      groups = [
-        {
-          group = google_compute_region_network_endpoint_group.serverless_neg_main.id
-        },
-        {
-          group = google_compute_region_network_endpoint_group.serverless_neg_failover.id
-        }
-      ]
-      enable_cdn              = false
-      security_policy         = null
-      custom_request_headers  = null
-      custom_response_headers = null
-
-      iap_config = {
-        enable               = false
-        oauth2_client_id     = ""
-        oauth2_client_secret = ""
-      }
-      log_config = {
-        enable      = true
-        sample_rate = 1.0
-      }
-    }
-  }
-}
-
-resource "google_compute_region_network_endpoint_group" "serverless_neg_main" {
-  provider              = google-beta
-  name                  = "${var.project_id}-serverless-neg-main"
-  network_endpoint_type = "SERVERLESS"
-  region                = var.region
-  cloud_run {
-    service = google_cloud_run_service.gcr_service_main.name
-  }
-
-  depends_on = [google_cloud_run_service.gcr_service_main]
-}
-
-resource "google_compute_region_network_endpoint_group" "serverless_neg_failover" {
-  provider              = google-beta
-  name                  = "${var.project_id}-serverless-neg-failover"
-  network_endpoint_type = "SERVERLESS"
-  region                = var.region_failover
-  cloud_run {
-    service = google_cloud_run_service.gcr_service_failover.name
-  }
-
-  depends_on = [google_cloud_run_service.gcr_service_failover]
-}
-
 resource "heroku_app" "main" {
   name = var.heroku_app_name
   region = var.heroku_region
@@ -355,6 +290,7 @@ resource "google_cloud_run_service" "gcr_service_main" {
         "autoscaling.knative.dev/maxScale"      = "5"
         "run.googleapis.com/client-name"        = "terraform"
       }
+      namespace = var.project_id
     }
   }
 
@@ -369,6 +305,23 @@ resource "google_cloud_run_service" "gcr_service_main" {
     google_secret_manager_secret.django_secret,
     google_secret_manager_secret.db-password,
     google_secret_manager_secret.db-user,
+  ]
+}
+
+resource "google_cloud_run_domain_mapping" "gcr_service_main" {
+  location = var.region
+  name     = var.domain
+
+  metadata {
+    namespace = var.project_id
+  }
+
+  spec {
+    route_name = google_cloud_run_service.gcr_service_main.name
+  }
+
+  depends_on = [
+    google_cloud_run_service.gcr_service_main
   ]
 }
 
@@ -392,113 +345,6 @@ resource "google_cloud_run_service_iam_member" "public-access-main" {
   location = google_cloud_run_service.gcr_service_main.location
   project  = google_cloud_run_service.gcr_service_main.project
   service  = google_cloud_run_service.gcr_service_main.name
-  role     = "roles/run.invoker"
-  member   = "allUsers"
-}
-
-resource "google_cloud_run_service" "gcr_service_failover" {
-  name     = var.cloud_run_failover_service
-  provider = google-beta
-  location = var.region_failover
-
-  template {
-    spec {
-      containers {
-        image = "${var.cloud_run_image}"
-        env {
-          name = "DB_NAME"
-          value_from {
-            secret_key_ref {
-              name = google_secret_manager_secret.db-name.secret_id
-              key = "latest"
-            }
-          }
-        }
-
-        env {
-          name = "DB_HOST"
-          value_from {
-            secret_key_ref {
-              name = google_secret_manager_secret.db-herokuhost.secret_id
-              key = "latest"
-            }
-          }
-        }
-
-        env {
-          name = "DB_PORT"
-          value = local.db_port
-        }
-
-        env {
-          name = "DB_USER"
-          value_from {
-            secret_key_ref {
-              name = google_secret_manager_secret.db-user.secret_id
-              key = "latest"
-            }
-          }
-        }
-
-        env {
-          name = "DJANGO_SECRET"
-          value_from {
-            secret_key_ref {
-              name = google_secret_manager_secret.django_secret.secret_id
-              key = "latest"
-            }
-          }
-        }
-
-        env {
-          name = "DB_PASSWORD"
-          value_from {
-            secret_key_ref {
-              name = google_secret_manager_secret.db-password.secret_id
-              key = "latest"
-            }
-          }
-        }
-
-        env {
-          name = "STATICFILES_STORAGE"
-          value = "storages.backends.gcloud.GoogleCloudStorage"
-        }
-
-        env {
-          name = "GCS_BUCKET"
-          value = var.bucket_name
-        }
-      }
-    }
-
-    metadata {
-      annotations = {
-        "autoscaling.knative.dev/maxScale"      = "5"
-        "run.googleapis.com/client-name"        = "terraform"
-      }
-    }
-  }
-
-  traffic {
-    percent         = 100
-    latest_revision = true
-  }
-
-  autogenerate_revision_name = true
-
-  depends_on = [
-    google_secret_manager_secret.django_secret,
-    google_secret_manager_secret.db-password,
-    google_secret_manager_secret.db-user,
-  ]
-}
-
-# Ensure that the backend engine is a public endpoint
-resource "google_cloud_run_service_iam_member" "public-access-failover" {
-  location = google_cloud_run_service.gcr_service_failover.location
-  project  = google_cloud_run_service.gcr_service_failover.project
-  service  = google_cloud_run_service.gcr_service_failover.name
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
