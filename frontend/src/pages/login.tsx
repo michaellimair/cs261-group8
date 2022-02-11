@@ -35,7 +35,7 @@ const LoginPage: FC = () => {
     isLoading,
     isSuccess,
   } = useCommonForm<ILogin, BadRequestApiError<ILoginError>, ILoginResult>({
-    mutationId: 'register',
+    mutationId: 'login',
     mutationFn,
   });
 
