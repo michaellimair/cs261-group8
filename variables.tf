@@ -79,3 +79,23 @@ variable "bucket_location" {
   description = "Location of the Google Cloud Storage bucket."
   default = "EU"
 }
+
+variable "heroku_api_key" {
+  description = "API Key to access Heroku resources for provisioning of the SQL database."
+  type = string
+}
+
+variable "heroku_email" {
+  description = "Email of the Heroku project used for the SQL database."
+  type = string
+}
+
+variable "heroku_app_name" {
+  description = "Name of the Heroku project used for the SQL database."
+  type = string
+}
+
+variable "heroku_region" {
+  description = "Region of deployment for the Heroku application."
+  default = "eu"
+}

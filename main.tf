@@ -4,6 +4,10 @@ terraform {
       source = "hashicorp/google"
       version = "4.9.0"
     }
+    heroku = {
+      source  = "heroku/heroku"
+      version = "4.9.0"
+    }
   }
 
   # Store all Terraform state in a Google Cloud Storage bucket
@@ -16,6 +20,16 @@ provider "google-beta" {
   region  = var.region
 }
 
+provider "heroku" {
+  email = var.heroku_email
+  api_key = var.heroku_api_key
+}
+
+# If you receive an error such as `project: required field is not set` from this line, perform the following:
+# 1. `gcloud auth login`
+# 2. `gcloud config set project PROJECT_ID`
+# 3. `gcloud auth application-default login`
+# 4. Set environment variable GOOGLE_PROJECT to your PROJECT_ID
 data "google_project" "project" {
 }
 
@@ -24,21 +38,6 @@ resource "random_password" "db_password" {
   length           = 128
   special          = true
   override_special = "-_"
-}
-
-resource "google_secret_manager_secret" "db-user" {
-  secret_id = "${var.project_id}-dbuser"
-
-  replication {
-    user_managed {
-      replicas {
-        location = var.region
-      }
-      replicas {
-        location = var.region_failover
-      }
-    }
-  }
 }
 
 module "lb-http" {
@@ -104,9 +103,44 @@ resource "google_compute_region_network_endpoint_group" "serverless_neg_failover
   depends_on = [google_cloud_run_service.gcr_service_failover]
 }
 
+resource "heroku_app" "main" {
+  name = var.heroku_app_name
+  region = var.heroku_region
+}
+
+locals {
+  // DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME
+  database_url_normalized = replace(heroku_app.main.all_config_vars.DATABASE_URL, "postgres://", "")
+  db_user_pass = split("@", local.database_url_normalized)[0]
+  db_password = split(":", local.db_user_pass)[0]
+  db_user = split(":", local.db_user_pass)[0]
+  db_host_port_name = split("@", local.database_url_normalized)[1]
+  db_name = split("/", local.db_host_port_name)[1]
+  db_host_port = split("/", local.db_host_port_name)[0]
+  db_host = split(":", local.db_host_port)[0]
+  db_port = split(":", local.db_host_port)[1]
+}
+
+### START: Google Secret Manager
+
+resource "google_secret_manager_secret" "db-user" {
+  secret_id = "${var.project_id}-dbuser"
+
+  replication {
+    user_managed {
+      replicas {
+        location = var.region
+      }
+      replicas {
+        location = var.region_failover
+      }
+    }
+  }
+}
+
 resource "google_secret_manager_secret_version" "db-user" {
   secret = google_secret_manager_secret.db-user.id
-  secret_data = var.db_user
+  secret_data = local.db_user
 }
 
 resource "google_secret_manager_secret_iam_member" "dbuser-access" {
@@ -133,7 +167,7 @@ resource "google_secret_manager_secret" "db-password" {
 
 resource "google_secret_manager_secret_version" "db-password" {
   secret = google_secret_manager_secret.db-password.id
-  secret_data = random_password.db_password[0].result
+  secret_data = local.db_password
 }
 
 resource "google_secret_manager_secret_iam_member" "dbpassword-access" {
@@ -160,7 +194,7 @@ resource "google_secret_manager_secret" "db-name" {
 
 resource "google_secret_manager_secret_version" "db-name" {
   secret = google_secret_manager_secret.db-name.id
-  secret_data = var.db_name
+  secret_data = local.db_name
 }
 
 resource "google_secret_manager_secret_iam_member" "dbname-access" {
@@ -168,6 +202,33 @@ resource "google_secret_manager_secret_iam_member" "dbname-access" {
   role      = "roles/secretmanager.secretAccessor"
   member    = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
   depends_on = [google_secret_manager_secret.db-name]
+}
+
+resource "google_secret_manager_secret" "db-herokuhost" {
+  secret_id = "${var.project_id}-dbherokuhost"
+
+  replication {
+    user_managed {
+      replicas {
+        location = var.region
+      }
+      replicas {
+        location = var.region_failover
+      }
+    }
+  }
+}
+
+resource "google_secret_manager_secret_version" "db-herokuhost" {
+  secret = google_secret_manager_secret.db-password.id
+  secret_data = local.db_host
+}
+
+resource "google_secret_manager_secret_iam_member" "dbherokuhost-access" {
+  secret_id = google_secret_manager_secret.db-herokuhost.id
+  role      = "roles/secretmanager.secretAccessor"
+  member    = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
+  depends_on = [google_secret_manager_secret.db-herokuhost]
 }
 
 resource "random_password" "django_secret_main" {
@@ -202,6 +263,8 @@ resource "google_secret_manager_secret_iam_member" "django_secret_access" {
   depends_on = [google_secret_manager_secret.django_secret]
 }
 
+### END: Google Secret Manager
+
 resource "google_cloud_run_service" "gcr_service_main" {
   name     = var.cloud_run_main_service
   provider = google-beta
@@ -217,8 +280,18 @@ resource "google_cloud_run_service" "gcr_service_main" {
         }
 
         env {
-          name = "DB_SOCKET_DIR"
-          value = "/cloudsql/${google_sql_database_instance.instance.connection_name}"
+          name = "DB_HOST"
+          value_from {
+            secret_key_ref {
+              name = google_secret_manager_secret.db-herokuhost.secret_id
+              key = "latest"
+            }
+          }
+        }
+
+        env {
+          name = "DB_PORT"
+          value = local.db_port
         }
 
         env {
@@ -266,7 +339,6 @@ resource "google_cloud_run_service" "gcr_service_main" {
     metadata {
       annotations = {
         "autoscaling.knative.dev/maxScale"      = "5"
-        "run.googleapis.com/cloudsql-instances" = google_sql_database_instance.instance.connection_name
         "run.googleapis.com/client-name"        = "terraform"
       }
     }
@@ -325,8 +397,18 @@ resource "google_cloud_run_service" "gcr_service_failover" {
         }
 
         env {
-          name = "DB_SOCKET_DIR"
-          value = "/cloudsql/${google_sql_database_instance.instance.connection_name}"
+          name = "DB_HOST"
+          value_from {
+            secret_key_ref {
+              name = google_secret_manager_secret.db-herokuhost.secret_id
+              key = "latest"
+            }
+          }
+        }
+
+        env {
+          name = "DB_PORT"
+          value = local.db_port
         }
 
         env {
@@ -374,7 +456,6 @@ resource "google_cloud_run_service" "gcr_service_failover" {
     metadata {
       annotations = {
         "autoscaling.knative.dev/maxScale"      = "5"
-        "run.googleapis.com/cloudsql-instances" = google_sql_database_instance.instance.connection_name
         "run.googleapis.com/client-name"        = "terraform"
       }
     }
@@ -405,46 +486,4 @@ resource "google_cloud_run_service_iam_member" "public-access-failover" {
 
 resource "random_id" "db_name_suffix" {
   byte_length = 4
-}
-
-# Spin up a Google Cloud SQL instance
-resource "google_sql_database_instance" "instance" {
-  provider = google-beta
-
-  name             = "${var.project_id}-dbinstance-${random_id.db_name_suffix.hex}"
-  region           = var.region
-  database_version = "POSTGRES_14"
-
-  settings {
-    tier = "db-f1-micro"
-    availability_type = "REGIONAL"
-    backup_configuration {
-      enabled = true
-    }
-  }
-
-  deletion_protection = "false"
-}
-
-resource "google_sql_database" "database" {
-  name     = var.db_name
-  instance = google_sql_database_instance.instance.name
-}
-
-resource "google_sql_user" "users" {
-  name     = var.db_user
-  instance = google_sql_database_instance.instance.name
-  password = random_password.db_password[0].result
-}
-
-output "sql_cert" {
-  value       = google_sql_database_instance.instance.server_ca_cert
-  description = "CA Certificate of the Cloud SQL Instance."
-  sensitive   = true
-}
-
-output "sql_ip" {
-  value       = google_sql_database_instance.instance.first_ip_address
-  description = "IP Address of the Cloud SQL Instance."
-  sensitive   = true
 }

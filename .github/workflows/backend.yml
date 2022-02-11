@@ -97,6 +97,16 @@ jobs:
         TF_BUCKET: ${{ secrets.GCP_TFSTATE_BUCKET }}
         TF_PREFIX: ${{ secrets.TF_STATE_PREFIX }}
 
+    - name: Setup authentication for Heroku CLI
+      uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+        heroku_email: ${{ secrets.HEROKU_EMAIL }}
+        justlogin: true
+    - name: Display Heroku authentication information
+      run: heroku auth:whoami
+
     - name: Authenticate to Google Cloud Platform
       uses: 'google-github-actions/auth@v0'
       with:
