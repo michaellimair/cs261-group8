@@ -232,7 +232,7 @@ resource "google_secret_manager_secret" "db-herokuhost" {
 }
 
 resource "google_secret_manager_secret_version" "db-herokuhost" {
-  secret = google_secret_manager_secret.db-password.id
+  secret = google_secret_manager_secret.db-herokuhost.id
   secret_data = local.db_host
 }
 
