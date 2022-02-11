@@ -288,7 +288,12 @@ resource "google_cloud_run_service" "gcr_service_main" {
         image = "${var.cloud_run_image}"
         env {
           name = "DB_NAME"
-          value = var.db_name
+          value_from {
+            secret_key_ref {
+              name = google_secret_manager_secret.db-name.secret_id
+              key = "latest"
+            }
+          }
         }
 
         env {
@@ -405,7 +410,12 @@ resource "google_cloud_run_service" "gcr_service_failover" {
         image = "${var.cloud_run_image}"
         env {
           name = "DB_NAME"
-          value = var.db_name
+          value_from {
+            secret_key_ref {
+              name = google_secret_manager_secret.db-name.secret_id
+              key = "latest"
+            }
+          }
         }
 
         env {
