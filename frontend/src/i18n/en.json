@@ -6,8 +6,9 @@
   "last_name": "Last Name",
   "login": "Login",
   "login_description": "Log in to your mentoring platform account now!",
+  "logging_in": "Logging you in...",
   "mentoring_platform": "Mentoring Platform",
-  "no_account": "Do not have an account?",
+  "no_account": "Don't have an account?",
   "no_blank": "{{field}} may not be blank.",
   "not_found": {
     "title": "Page not found."
