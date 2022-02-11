@@ -18,29 +18,42 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - name: Load Yarn Cache 
+      uses: actions/cache@v1
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
     - name: Install frontend dependencies
       run: |
         cd frontend
-        yarn
+        yarn --prefer-offline
     - name: Run tests with Jest
       run: |
         cd frontend
-        yarn test
+        yarn test --outputFile=report.json --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\" --watchAll=false --json
     - name: Check frontend code coverage
       uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         threshold: 90 # Require at least 90% code coverage
-        working-directory: 'frontend'
         annotations: none
-        skip-step: install
-        test-script: "yarn test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\" --watchAll=false"
+        skip-step: all
+        coverage-file: ./frontend/report.json
+        base-coverage-file: ./frontend/report.json
     # Recheckout to current branch since the previous action checks out to main branch
     - uses: actions/checkout@v2
     - name: Build website
       run: |
         cd frontend
-        yarn
+        yarn --prefer-offline
         yarn build
       env:
         REACT_APP_API_HOST: ${{ secrets.API_HOST }}
