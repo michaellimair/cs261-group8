@@ -38,7 +38,7 @@ jobs:
     - name: Run tests with Jest
       run: |
         cd frontend
-        yarn test --outputFile=report.json
+        yarn test --outputFile=report.json --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\" --watchAll=false --json
     - name: Check frontend code coverage
       uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
       with:
