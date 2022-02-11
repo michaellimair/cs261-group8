@@ -1,25 +1,74 @@
 import {
   Box,
   FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
   HStack,
-  InputRightElement,
   Stack,
-  Button,
   Heading,
   Text,
   useColorModeValue,
+  FormErrorMessage,
 } from '@chakra-ui/react';
-import { FC, useState } from 'react';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import RouterLink from 'components/RouterLink';
+import React, {
+  FC, useCallback,
+} from 'react';
 import { useTranslation } from 'react-i18next';
+import {
+  UseFormRegister,
+} from 'react-hook-form';
+import { IRegistration, IRegistrationError, IUser } from 'customTypes/auth';
+import { httpClient } from 'api';
+import BadRequestApiError from 'api/error/BadRequestApiError';
+import FormField from 'components/Forms/FormField';
+import SubmitButton from 'components/Forms/SubmitButton';
+import AlternateAuthAction from 'components/AlternateAuthAction';
+import useCommonForm from 'hooks/useCommonForm';
+
+interface INameFieldData {
+  firstNameError: string | string[] | undefined;
+  lastNameError: string | string[] | undefined;
+  register: UseFormRegister<IRegistration>;
+}
+
+const NameField: FC<INameFieldData> = ({
+  firstNameError,
+  lastNameError,
+  register,
+}) => (
+  <HStack mb={2}>
+    <Box>
+      <FormField
+        name="first_name"
+        required
+        autoComplete="given-name"
+        error={firstNameError}
+        register={register}
+      />
+    </Box>
+    <Box>
+      <FormField
+        name="last_name"
+        required
+        autoComplete="family-name"
+        error={lastNameError}
+        register={register}
+      />
+    </Box>
+  </HStack>
+);
 
 const RegisterPage: FC = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const { t } = useTranslation();
+  const mutationFn = useCallback((values: IRegistration) => httpClient.auth.register(values), []);
+  const {
+    register,
+    onSubmit,
+    errors,
+    isLoading,
+    isSuccess,
+  } = useCommonForm<IRegistration, BadRequestApiError<IRegistrationError>, IUser>({
+    mutationId: 'register',
+    mutationFn,
+  });
 
   return (
     <>
@@ -35,59 +84,67 @@ const RegisterPage: FC = () => {
         p={8}
       >
         <Stack spacing={4}>
-          <HStack>
-            <Box>
-              <FormControl id="firstName" isRequired>
-                <FormLabel>{t('firstName')}</FormLabel>
-                <Input type="text" />
+          <form onSubmit={onSubmit} data-testid="registerForm">
+            <NameField
+              firstNameError={errors?.first_name}
+              lastNameError={errors?.last_name}
+              register={register}
+            />
+            <FormField
+              name="username"
+              required
+              autoComplete="username"
+              error={errors?.username}
+              register={register}
+            />
+            <FormField
+              name="email"
+              required
+              autoComplete="email"
+              type="email"
+              error={errors?.email}
+              register={register}
+            />
+            <FormField
+              name="password"
+              autoComplete="new-password"
+              type="password"
+              required
+              error={errors?.password}
+              register={register}
+            />
+            <FormField
+              name="verify_password"
+              autoComplete="new-password"
+              type="password"
+              required
+              error={errors?.verify_password}
+              register={register}
+            />
+            <Stack spacing={10} pt={2}>
+              <SubmitButton
+                disabled={isLoading || isSuccess}
+                loadingText={t('registering')}
+                testId="registerButton"
+              >
+                {t('register')}
+              </SubmitButton>
+              <FormControl id="non-field" isInvalid={Boolean(errors?.non_field_errors)} mt={['0 !important']}>
+                <FormErrorMessage>{errors?.non_field_errors}</FormErrorMessage>
               </FormControl>
-            </Box>
-            <Box>
-              <FormControl id="lastName">
-                <FormLabel>{t('lastName')}</FormLabel>
-                <Input type="text" />
-              </FormControl>
-            </Box>
-          </HStack>
-          <FormControl id="email" isRequired>
-            <FormLabel>{t('email')}</FormLabel>
-            <Input type="email" />
-          </FormControl>
-          <FormControl id="password" isRequired>
-            <FormLabel>{t('password')}</FormLabel>
-            <InputGroup>
-              <Input type={showPassword ? 'text' : 'password'} data-testid="password" />
-              <InputRightElement h="full">
-                <Button
-                  variant="ghost"
-                  data-testid="show-password-button"
-                  onClick={() => setShowPassword((show) => !show)}
-                >
-                  {showPassword ? <ViewIcon data-testid="password-shown" /> : <ViewOffIcon data-testid="password-hidden" />}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-          </FormControl>
-          <Stack spacing={10} pt={2}>
-            <Button
-              loadingText="Submitting"
-              size="lg"
-              bg="blue.400"
-              color="white"
-              _hover={{
-                bg: 'blue.500',
-              }}
-            >
-              {t('register')}
-            </Button>
-          </Stack>
-          <Stack pt={6}>
-            <Text align="center">
-              {t('already_a_user')}
-              {' '}
-              <RouterLink color="blue.400" to="/auth" data-testid="login-button">{t('login')}</RouterLink>
-            </Text>
-          </Stack>
+              {isSuccess && (
+              <Text align="center" data-testid="register_success">
+                {t('register_success')}
+              </Text>
+              )}
+            </Stack>
+            <AlternateAuthAction
+              question={t('already_a_user')}
+              linkText={t('login')}
+              linkTestId="login-button"
+              to="/auth"
+            />
+          </form>
         </Stack>
       </Box>
     </>
