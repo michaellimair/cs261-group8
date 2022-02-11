@@ -121,16 +121,13 @@ resource "heroku_addon" "database" {
 }
 
 locals {
-  // DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME
-  database_url_normalized = replace(heroku_addon.database.config_var_values.DATABASE_URL, "postgres://", "")
-  db_user_pass = split("@", local.database_url_normalized)[0]
-  db_password = split(":", local.db_user_pass)[0]
-  db_user = split(":", local.db_user_pass)[0]
-  db_host_port_name = split("@", local.database_url_normalized)[1]
-  db_name = split("/", local.db_host_port_name)[1]
-  db_host_port = split("/", local.db_host_port_name)[0]
-  db_host = split(":", local.db_host_port)[0]
-  db_port = split(":", local.db_host_port)[1]
+  // postgres://DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME/
+  database_url_regex = regex("postgres://(.*):(.*)@(.*):(.*)/(.*)", heroku_addon.database.config_var_values.DATABASE_URL)
+  db_user = local.database_url_regex[0]
+  db_password = local.database_url_regex[1]
+  db_host = local.database_url_regex[2]
+  db_port = local.database_url_regex[3]
+  db_name = local.database_url_regex[4]
 }
 
 ### START: Google Secret Manager
