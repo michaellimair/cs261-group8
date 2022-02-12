@@ -14,14 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from knox import views as knox_views
-from django.urls import path, include
+from django.urls import path, include, re_path
+from feedback.views import UserFeedbackViewSet, UserFeedbackAdminViewSet
 from cs261.views import RegisterView, MyDataView, LoginView, BusinessAreaView, GroupView
 from rest_framework import routers
 from rest_framework.schemas import get_schema_view
+from django.contrib import admin
 
 router = routers.DefaultRouter()
+router.register(r'feedbacks', UserFeedbackViewSet, basename='my_feedbacks')
+
+admin_router = routers.DefaultRouter()
+admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('api/v1/', include([
         path('', include(router.urls)),
         path('groups', GroupView.as_view(), name='group'),
@@ -36,5 +43,6 @@ urlpatterns = [
             description="API documentation for the Mentoring project.",
             version="1.0.0"
         ), name='openapi-schema'),
+        re_path(r'^admin/', include(admin_router.urls))
     ]))
 ]

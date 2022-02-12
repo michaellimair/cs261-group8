@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'knox',
     'cs261',
+    'feedback',
+    'safedelete',
+    'django_extensions'
 ]
 
 REST_FRAMEWORK = {
@@ -76,8 +79,8 @@ MIDDLEWARE = [
 REST_KNOX = {
   'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
   'AUTH_TOKEN_CHARACTER_LENGTH': 64,
-  'TOKEN_TTL': timedelta(hours=1),
-  'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+  'TOKEN_TTL': timedelta(hours=12),
+  'USER_SERIALIZER': 'cs261.serializers.UserSerializer',
   'TOKEN_LIMIT_PER_USER': None,
   'AUTO_REFRESH': False,
 }
