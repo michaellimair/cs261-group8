@@ -21,6 +21,9 @@ This project has been set up to support overriding operating system environment 
 
 When adding additional environment variables for configurable settings or for storing secrets, please add them as an environment variable. You can use `os.environ.get(<env_name>)` from the `os` module to get the environment variables. Afterwards, add the key of the environment variable to your `.env` file and an example key/value pair in `.env.example`.
 
+## Loading Sample Data
+Sample data such as business area and users can be loaded by performing `python manage.py loaddata <fixture_filename>`, where `fixture_filename` would be the name of the fixture without extension (e.g. users, businessarea).
+
 ## Default User Credentials
 ### Mentor
 - Username: testmentor
