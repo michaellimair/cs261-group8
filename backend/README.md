@@ -27,11 +27,11 @@ Sample data such as business area and users can be loaded by performing `python 
 ## Default User Credentials
 ### Mentor
 - Username: testmentor
-- Password: testmentor124
+- Password: test1235
 
 ### Mentee
 - Username: testmentee
-- Password: testmentee124
+- Password: test1235
 
 ### Admin
 - Username: superadmin
