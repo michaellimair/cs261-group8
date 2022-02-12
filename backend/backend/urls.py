@@ -15,17 +15,24 @@ Including another URLconf
 """
 from knox import views as knox_views
 from django.urls import path, include, re_path
-from feedback.views import UserFeedbackViewSet, UserFeedbackAdminViewSet
+from feedback.views import UserFeedbackViewSet, UserFeedbackAdminViewSet, UserFeedbackAdminReplyView
 from cs261.views import RegisterView, MyDataView, LoginView, BusinessAreaView, GroupView
-from rest_framework import routers
 from rest_framework.schemas import get_schema_view
 from django.contrib import admin
+from rest_framework_nested import routers
 
 router = routers.DefaultRouter()
 router.register(r'feedbacks', UserFeedbackViewSet, basename='my_feedbacks')
 
 admin_router = routers.DefaultRouter()
 admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)
+
+admin_feedback_router = routers.NestedSimpleRouter(admin_router, r'feedbacks', lookup='feedback')
+
+admin_patterns = [
+    re_path(r'', include(admin_router.urls)),
+    path('feedbacks/<int:feedback_pk>/reply', UserFeedbackAdminReplyView.as_view())
+]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,6 +50,6 @@ urlpatterns = [
             description="API documentation for the Mentoring project.",
             version="1.0.0"
         ), name='openapi-schema'),
-        re_path(r'^admin/', include(admin_router.urls))
+        re_path(r'^admin/', include(admin_patterns)),
     ]))
 ]

@@ -21,9 +21,7 @@ class UserFeedback(SafeDeleteModel, TimeStampedModel):
   user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
   content = models.TextField()
 
-class UserFeedbackReply(SafeDeleteModel, TimeStampedModel):
-  _safedelete_policy = SOFT_DELETE_CASCADE
-
+class UserFeedbackReply(TimeStampedModel):
   admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
   feedback = models.OneToOneField(UserFeedback, related_name='reply', on_delete=models.CASCADE, null=True)
   content = models.TextField()
