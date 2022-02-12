@@ -23,6 +23,7 @@ from rest_framework_nested import routers
 
 router = routers.DefaultRouter()
 router.register(r'feedbacks', UserFeedbackViewSet, basename='my_feedbacks')
+router.register(r'business-areas', BusinessAreaView, basename='business_area')
 
 admin_router = routers.DefaultRouter()
 admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)
@@ -39,7 +40,6 @@ urlpatterns = [
     path('api/v1/', include([
         path('', include(router.urls)),
         path('groups', GroupView.as_view(), name='group'),
-        path('business-areas', BusinessAreaView.as_view({'get': 'list'}), name='business_area'),
         path('auth', MyDataView.as_view(), name='me'),
         path('auth/login', LoginView.as_view(), name='knox_login'),
         path('auth/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
