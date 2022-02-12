@@ -11,6 +11,13 @@ class IsOwner(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         return obj.user == request.user
 
+class IsNotSuperuser(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return not request.user.is_superuser
+
+    def has_object_permission(self, request, view, obj):
+        return super().has_object_permission(request, view, obj)
+
 class IsMentor(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user.groups.filter(name=MENTOR_GROUP).exists()
