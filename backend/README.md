@@ -12,12 +12,27 @@ This application was made with the Django framework, which is based in Python.
 7. Perform database migration with `python manage.py migrate` to populate all the tables and models.
 8. Run the project with `python manage.py runserver`.
 
+Every time you start the project, run `python manage.py migrate` to ensure that you are on the latest version of the database.
+
 Run test cases by invoking the `python manage.py test` command.
 
 ## Environment Variables
 This project has been set up to support overriding operating system environment variables using the `.env` file. A `.env` file will only be locally stored and will not be uploaded to version control. This is done for security reasons, since `.env` files typically contain secrets and sensitive credentials. Inside the `backend` folder, you can copy the `.env.example` file and paste it as `.env`.
 
 When adding additional environment variables for configurable settings or for storing secrets, please add them as an environment variable. You can use `os.environ.get(<env_name>)` from the `os` module to get the environment variables. Afterwards, add the key of the environment variable to your `.env` file and an example key/value pair in `.env.example`.
+
+## Default User Credentials
+### Mentor
+- Username: testmentor
+- Password: testmentor124
+
+### Mentee
+- Username: testmentee
+- Password: testmentee124
+
+### Admin
+- Username: superadmin
+- Password: superadmin124
 
 ## Creating Models
 - All models can be placed in `models.py` for now. Refactoring will be done in the near future.
