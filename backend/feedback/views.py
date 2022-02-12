@@ -1,4 +1,4 @@
-from django.http import Http404, HttpResponse, HttpResponseBadRequest
+from django.http import Http404, HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from django.http.response import HttpResponseNotAllowed
@@ -17,8 +17,8 @@ class UserFeedbackViewSet(viewsets.ModelViewSet):
   serializer_class = UserFeedbackSerializer
   permission_classes = [IsNotSuperuser, IsOwner]
 
-  def destroy(self):
-    raise PermissionDenied()
+  def destroy(self, pk):
+    return HttpResponseForbidden()
 
   def get_queryset(self):
     user = self.request.user
