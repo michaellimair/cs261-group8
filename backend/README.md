@@ -45,13 +45,13 @@ Sample data such as business area and users can be loaded by performing `python 
 To ensure that all strings returned from the backend are properly localized, please use Django's built-in translation utilities from `django.utils.translation`. To add a translation key:
 1. In your code, use an instance of translation. For example:
 ```
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 print(_('hello_world'))
 ```
-2. In the folder of this readme file, run `python -m manage.py makemessages -a`.
+2. In the folder of this readme file, run `python manage.py makemessages -a`.
 3. Write all the proper strings for translations in the file `cs261/locale/[language]/LC_MESSAGES/django.po`.
-4. Compile the message files by running `python -m manage.py compilemessages` in this folder.
+4. Compile the message files by running `python manage.py compilemessages` in this folder.
 5. If the compilation is successful, you will see an update to the `cs261/locale/[language]/LC_MESSAGES/django.mo` file.
 
 Note that names of language must follow the language identifiers as specified in [RFC 3066](http://www.i18nguy.com/unicode/language-identifiers.html). This is in order for Django's `Accept-Language` behavior to function properly.
