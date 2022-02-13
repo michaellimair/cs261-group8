@@ -2,10 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from annoying.fields import AutoOneToOneField
-
-class BusinessArea(models.Model):
-  name = models.CharField(max_length=50)
-  label = models.CharField(max_length=100)
+from business_area.models import BusinessArea
 
 class UserProfile(models.Model):
   class Title(models.TextChoices):

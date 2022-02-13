@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'knox',
-    'cs261',
+    'business_area',
+    'users',
     'feedback',
     'safedelete',
     'django_extensions'
@@ -62,7 +63,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
-        'feedback.permissions.IsNotSuperuser',
+        'users.permissions.IsNotSuperuser',
     ),
 }
 
@@ -81,7 +82,7 @@ REST_KNOX = {
   'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
   'AUTH_TOKEN_CHARACTER_LENGTH': 64,
   'TOKEN_TTL': timedelta(hours=12),
-  'USER_SERIALIZER': 'cs261.serializers.UserSerializer',
+  'USER_SERIALIZER': 'users.serializers.UserSerializer',
   'TOKEN_LIMIT_PER_USER': None,
   'AUTO_REFRESH': False,
 }

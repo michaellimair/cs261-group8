@@ -16,7 +16,8 @@ Including another URLconf
 from knox import views as knox_views
 from django.urls import path, include, re_path
 from feedback.views import UserFeedbackViewSet, UserFeedbackAdminViewSet, UserFeedbackAdminReplyView
-from cs261.views import RegisterView, MyDataView, LoginView, BusinessAreaView, GroupView
+from users.views import RegisterView, MyDataView, LoginView, GroupView
+from business_area.views import BusinessAreaView
 from rest_framework.schemas import get_schema_view
 from django.contrib import admin
 from rest_framework_nested import routers

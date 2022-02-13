@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django_extensions.db.models import TimeStampedModel
 from django.utils.translation import gettext_lazy as _
 from safedelete.models import SafeDeleteModel, SOFT_DELETE_CASCADE
-from annoying.fields import AutoOneToOneField
 
 class UserFeedback(SafeDeleteModel, TimeStampedModel):
   _safedelete_policy = SOFT_DELETE_CASCADE

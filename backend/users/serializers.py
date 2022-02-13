@@ -5,11 +5,6 @@ from django.contrib.auth.password_validation import validate_password
 from .models import UserProfile, BusinessArea
 from django.utils.translation import gettext_lazy as _
 
-class BusinessAreaSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = BusinessArea
-    fields = ('id', 'name', 'label')
-
 class UserProfileSerializer(serializers.ModelSerializer):
   class Meta:
     model = UserProfile

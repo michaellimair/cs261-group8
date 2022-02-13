@@ -1,17 +1,13 @@
 from django.http import Http404, HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
-from django.shortcuts import render
-from django.core.exceptions import PermissionDenied
-from django.http.response import HttpResponseNotAllowed
-from .permissions import IsOwner, IsNotSuperuser
+from users.permissions import IsOwner, IsNotSuperuser
 from .models import UserFeedback, UserFeedbackReply
 from rest_framework.views import APIView
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 import json
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAdminUser
 from .serializers import UserFeedbackSerializer, UserFeedbackAdminSerializer, UserFeedbackReplyAdminSerializer
 from django.shortcuts import get_object_or_404
-from rest_framework import generics
 
 class UserFeedbackViewSet(viewsets.ModelViewSet):
   serializer_class = UserFeedbackSerializer

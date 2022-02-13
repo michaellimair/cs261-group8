@@ -3,7 +3,7 @@ import logging
 
 from django.core.management.base import BaseCommand
 
-from cs261.permission_constants import project_permission_group
+from users.permission_constants import project_permission_group
 from django.contrib.auth.models import Group, Permission, User
 from django.contrib.contenttypes.models import ContentType
 

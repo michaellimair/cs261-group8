@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import UserFeedback, UserFeedbackReply
-from cs261.serializers import UserSerializer
+from users.serializers import UserSerializer
 
 class UserFeedbackReplySerializer(serializers.ModelSerializer):
   admin = UserSerializer(

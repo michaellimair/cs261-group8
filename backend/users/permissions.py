@@ -1,5 +1,5 @@
 from rest_framework import permissions
-from cs261.permission_constants import MENTEE_GROUP, MENTOR_GROUP
+from .permission_constants import MENTEE_GROUP, MENTOR_GROUP
 
 class IsOwner(permissions.BasePermission):
     """
