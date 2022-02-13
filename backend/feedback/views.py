@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 import json
+from django.utils.translation import gettext_lazy as _
 from rest_framework.permissions import IsAdminUser
 from .serializers import UserFeedbackSerializer, UserFeedbackAdminSerializer, UserFeedbackReplyAdminSerializer
 from django.shortcuts import get_object_or_404
@@ -38,12 +39,11 @@ class UserFeedbackAdminReplyView(APIView):
       "request": request,
       "feedback": feedback
     })
-    if not serializer.is_valid():
-      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    serializer.is_valid(raise_exception=True)
     reply = UserFeedbackReply.objects.filter(feedback=feedback_pk).exists()
     if reply:
       return HttpResponseBadRequest(json.dumps({
-        "non_field_errors": ["Not allowed to reply more than once"]
+        "non_field_errors": [_("reply_once_only")]
       }), content_type='application/json')
     serializer.create(request.data)
     return Response(serializer.data)

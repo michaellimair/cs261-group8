@@ -86,3 +86,13 @@ class TestUserFeedbackViewSet(TestCase):
     response = feedback_list(request, pk=self.feedback.id)
 
     self.assertEqual(response.status_code, 404)
+
+class TestUserFeedbackAdminReplyView(TestCase):
+  def test_post(self):
+    raise NotImplementedError()
+
+  def test_post(self):
+    raise NotImplementedError()
+
+  def test_patch(self):
+    raise NotImplementedError()
