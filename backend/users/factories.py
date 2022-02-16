@@ -1,5 +1,6 @@
 import factory
 from .models import User
+from django.contrib.auth.models import Group
 import random
 import string
 
@@ -33,3 +34,6 @@ class AdminFactory(factory.django.DjangoModelFactory):
   is_staff = True
   is_superuser = True
 
+class GroupFactory(factory.django.DjangoModelFactory):
+  class Meta:
+    model = Group
