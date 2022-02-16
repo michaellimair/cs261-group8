@@ -12,26 +12,30 @@ from users.permission_constants import project_permission_group
 
 # Create your views here.
 
+
 class MyDataView(APIView):
-  def get(self, request):
-    serializer = UserSerializer(request.user)
-    return Response(serializer.data)
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
+
 
 class GroupView(generics.ListAPIView):
-  queryset = Group.objects.all()
-  serializer_class = GroupSerializer
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+
 
 class RegisterView(generics.CreateAPIView):
-  queryset = User.objects.all()
-  permission_classes = (AllowAny,)
-  serializer_class = RegisterSerializer
+    queryset = User.objects.all()
+    permission_classes = (AllowAny,)
+    serializer_class = RegisterSerializer
+
 
 class LoginView(KnoxLoginView):
-  permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.AllowAny,)
 
-  def post(self, request, format=None):
-    serializer = AuthTokenSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
-    user = serializer.validated_data['user']
-    login(request, user)
-    return super(LoginView, self).post(request, format=None)
+    def post(self, request, format=None):
+        serializer = AuthTokenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        login(request, user)
+        return super(LoginView, self).post(request, format=None)
