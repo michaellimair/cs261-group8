@@ -86,12 +86,12 @@ jobs:
         pipenv run coverage xml
         pipenv run coverage report --fail-under=90
 
-    - name: Generate coverage report and check
-      if: ${{ github.event_name != 'push' }}
-      uses: orgoro/coverage@v2.1
-      with:
-        coverageFile: ./backend/coverage.xml
-        token: ${{ secrets.GITHUB_TOKEN }}
+  - name: "Upload coverage to Codecov"
+    uses: codecov/codecov-action@v2
+    with:
+      files: ./backend/coverage.xml
+      fail_ci_if_error: true
+      token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
 
     - name: Generate secrets for backend configuration of Terraform
       run: 'echo -e "bucket = \"${{ env.TF_BUCKET }}\"\nprefix = \"${{ env.TF_PREFIX }}\"" > backend.conf'
