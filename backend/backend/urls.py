@@ -33,7 +33,7 @@ admin_feedback_router = routers.NestedSimpleRouter(admin_router, r'feedbacks', l
 
 admin_patterns = [
     re_path(r'', include(admin_router.urls)),
-    path('feedbacks/<int:feedback_pk>/reply', UserFeedbackAdminReplyView.as_view())
+    path('feedbacks/<int:feedback_pk>/reply', UserFeedbackAdminReplyView.as_view(), name="admin_feedback_reply")
 ]
 
 urlpatterns = [
