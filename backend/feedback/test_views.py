@@ -1,22 +1,16 @@
 from django.test import TestCase, Client
-from .models import UserFeedback
-from .views import UserFeedbackViewSet
+from .models import UserFeedback, UserFeedbackReply
+from .views import UserFeedbackAdminReplyView, UserFeedbackViewSet
 from django.contrib.auth.models import User
 from rest_framework.test import force_authenticate, APIRequestFactory
 from django.urls import reverse
+from .factories import UserFeedbackFactory, UserFeedbackReplyFactory
+from users.factories import AdminFactory, UserFactory
 
 class TestUserFeedbackViewSet(TestCase):
   def setUp(self) -> None:
-    self.username = 'testuser'
-    self.password = 'testpass124'
-    self.user = User.objects.create(username=self.username)
-    self.user.set_password(self.password)
-    self.user.save()
-
-    self.other_username = 'testuser2'
-    self.other_user = User.objects.create(username=self.other_username)
-    self.other_user.set_password(self.password)
-    self.other_user.save()
+    self.user = UserFactory()
+    self.other_user = UserFactory()
     self.request_factory = APIRequestFactory()
 
     self.feedback_content = "FeedbackContent"
@@ -88,11 +82,47 @@ class TestUserFeedbackViewSet(TestCase):
     self.assertEqual(response.status_code, 404)
 
 class TestUserFeedbackAdminReplyView(TestCase):
-  def test_post(self):
-    raise NotImplementedError()
+  def setUp(self) -> None:
+    self.admin = AdminFactory()
+    self.feedback = UserFeedbackFactory()
+    self.feedback_reply = UserFeedbackReplyFactory(feedback=self.feedback, admin=self.admin)
+    self.feedback_noreply = UserFeedbackFactory()
+    self.request_factory = APIRequestFactory()
 
-  def test_post(self):
-    raise NotImplementedError()
+  def _authenticate(self, request):
+    request.user = self.admin
+    force_authenticate(request, user=self.admin)
 
-  def test_patch(self):
-    raise NotImplementedError()
+  def test_delete_nofeedback(self):
+    """
+    Attempts to delete a reply for an invalid feedback should return 404.
+    """
+    url = reverse('admin_feedback_reply', kwargs={'feedback_pk': 333})
+    request = self.request_factory.delete(url)
+    self._authenticate(request)
+    admin_view = UserFeedbackAdminReplyView.as_view()
+    response = admin_view(request, feedback_pk=333)
+    self.assertEqual(response.status_code, 404)
+
+  def test_delete_nofeedback(self):
+    """
+    Attempts to delete a reply for a feedback without a reply should return 404.
+    """
+    url = reverse('admin_feedback_reply', kwargs={'feedback_pk': self.feedback_noreply.id})
+    request = self.request_factory.delete(url)
+    self._authenticate(request)
+    admin_view = UserFeedbackAdminReplyView.as_view()
+    response = admin_view(request, feedback_pk=333)
+    self.assertEqual(response.status_code, 404)
+
+  def test_delete_success(self):
+    """
+    Feedback should be deleted successfully.
+    """
+    url = reverse('admin_feedback_reply', kwargs={'feedback_pk': self.feedback_reply.id})
+    request = self.request_factory.delete(url)
+    self._authenticate(request)
+    admin_view = UserFeedbackAdminReplyView.as_view()
+    response = admin_view(request, feedback_pk=self.feedback.id)
+    self.assertEqual(response.status_code, 204)
+    self.assertFalse(UserFeedbackReply.objects.filter(pk=self.feedback_reply.id).exists())
