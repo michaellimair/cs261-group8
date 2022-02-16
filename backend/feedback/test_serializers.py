@@ -1,17 +1,18 @@
-from django.test import TestCase
-from .models import UserFeedback, UserFeedbackReply
-from django.contrib.auth.models import User
-from rest_framework.test import force_authenticate, APIRequestFactory
 import random
-from .models import UserFeedback
-from .serializers import UserFeedbackReplyAdminSerializer, UserFeedbackSerializer
+from django.test import TestCase
+from rest_framework.test import force_authenticate, APIRequestFactory
 from users.factories import UserFactory, AdminFactory
+from .models import UserFeedback, UserFeedbackReply
+from .serializers import UserFeedbackReplyAdminSerializer, UserFeedbackSerializer
 from .factories import UserFeedbackFactory
 
 random.seed(0)
 
 
 class TestUserFeedbackReplyAdminSerializer(TestCase):
+    """
+    Test cases for serializer related to administrator replies for feedbacks.
+    """
     def setUp(self):
         self.user = UserFactory()
         self.admin = AdminFactory()
@@ -22,6 +23,9 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
         force_authenticate(self.request, user=self.admin)
 
     def test_create(self):
+        """
+        Test creation of replies for a user feedback.
+        """
         data = {
             "content": "Feedback Reply Content",
         }
@@ -38,6 +42,9 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
         self.assertEqual(result.content, data['content'])
 
     def test_update(self):
+        """
+        Test updating replies for a user feedback.
+        """
         data = {
             "content": "Updated Content",
         }
@@ -63,6 +70,9 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
 
 
 class TestUserFeedbackSerializer(TestCase):
+    """
+    Test cases for the serializer handling user feedbacks.
+    """
     def setUp(self):
         self.user = UserFactory()
         self.request = APIRequestFactory().post('fakepath')
@@ -70,6 +80,9 @@ class TestUserFeedbackSerializer(TestCase):
         force_authenticate(self.request, user=self.user)
 
     def test_create(self):
+        """
+        Test creation of user feedback.
+        """
         data = {
             "content": "User Feedback Content",
             "type": UserFeedback.FeedbackType.IMPROVEMENT

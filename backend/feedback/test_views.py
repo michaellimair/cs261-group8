@@ -1,16 +1,18 @@
 import json
-from django.test import TestCase, Client
+from django.test import TestCase
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
+from rest_framework.test import force_authenticate, APIRequestFactory
+from users.factories import AdminFactory, UserFactory
 from .models import UserFeedback, UserFeedbackReply
 from .views import UserFeedbackAdminReplyView, UserFeedbackViewSet
-from django.contrib.auth.models import User
-from rest_framework.test import force_authenticate, APIRequestFactory
-from django.urls import reverse
 from .factories import UserFeedbackFactory, UserFeedbackReplyFactory
-from users.factories import AdminFactory, UserFactory
-from django.utils.translation import gettext_lazy as _
 
 
 class TestUserFeedbackViewSet(TestCase):
+    """
+    Test cases for view related to user feedback.
+    """
     def setUp(self) -> None:
         self.user = UserFactory()
         self.other_user = UserFactory()
@@ -41,7 +43,7 @@ class TestUserFeedbackViewSet(TestCase):
 
         self.assertEqual(response.status_code, 403)
 
-    def test_list_otherUser(self):
+    def test_list_otheruser(self):
         """
         Users will only by able to see their own feedbacks.
         """
@@ -70,9 +72,10 @@ class TestUserFeedbackViewSet(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    def test_detail_otherUser(self):
+    def test_detail_otheruser(self):
         """
-        Other users will get a Not Found error when trying to access the detail of a feedback created by another user.
+        Other users will get a Not Found error when
+        trying to access the detail of a feedback created by another user.
         """
         url = reverse('my_feedbacks-detail', kwargs={'pk': self.feedback.id})
         request = self.request_factory.get(url)
@@ -86,6 +89,9 @@ class TestUserFeedbackViewSet(TestCase):
 
 
 class TestUserFeedbackAdminReplyView(TestCase):
+    """
+    Test cases for view related to administrator feedback reply functionality.
+    """
     def setUp(self) -> None:
         self.admin = AdminFactory()
         self.other_admin = AdminFactory()
@@ -127,7 +133,8 @@ class TestUserFeedbackAdminReplyView(TestCase):
 
     def test_post_hasfeedback(self):
         """
-        Attempting to reply to a feedback that already has a reply should result in a bad request error.
+        Attempting to reply to a feedback that
+        already has a reply should result in a bad request error.
         """
         url = reverse(
             'admin_feedback_reply', kwargs={
@@ -136,7 +143,8 @@ class TestUserFeedbackAdminReplyView(TestCase):
         self._authenticate(request)
         response = self.view(request, feedback_pk=self.feedback.id)
         self.assertEqual(response.status_code, 400)
-        # For some reason, APIRequestFactory is returning the HttpResponseBadRequest class instead of a normal response object
+        # For some reason, APIRequestFactory is returning the
+        # HttpResponseBadRequest class instead of a normal response object
         # Use this as workaround
         self.assertEqual(
             json.loads(
@@ -145,7 +153,8 @@ class TestUserFeedbackAdminReplyView(TestCase):
 
     def test_post_success(self):
         """
-        Attempting to reply to a feedback that already has a reply should result in a bad request error.
+        Attempting to reply to a feedback that
+        already has a reply should result in a bad request error.
         """
         url = reverse(
             'admin_feedback_reply', kwargs={
@@ -219,7 +228,7 @@ class TestUserFeedbackAdminReplyView(TestCase):
         response = self.view(request, feedback_pk=333)
         self.assertEqual(response.status_code, 404)
 
-    def test_delete_nofeedback(self):
+    def test_delete_noreply(self):
         """
         Attempts to delete a reply for a feedback without a reply should return 404.
         """

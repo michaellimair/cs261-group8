@@ -1,26 +1,22 @@
-import factory
 from django.test import TestCase
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .serializers import RegisterSerializer
-from rest_framework import serializers
-
-
-class UserFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = User
-        django_get_or_create = ('username',)
-
-    username = 'testuser1'
-    email = "testuser1@test.com"
+from .factories import UserFactory
 
 
 class TestRegisterSerializer(TestCase):
+    """
+    Test case for the registration serializer.
+    """
     def setUp(self):
-        self.user = UserFactory()
+        self.user = UserFactory(username = 'testuser1', email = "testuser1@test.com")
         self.serializer = RegisterSerializer()
         self.serializer_data = {}
 
     def test_validate_password(self):
+        """
+        Ensure passwords are validated.
+        """
         self.serializer_data = {
             "first_name": "Test",
             "last_name": "User",
@@ -33,6 +29,9 @@ class TestRegisterSerializer(TestCase):
         self.assertFalse(self.serializer.is_valid())
 
     def test_validate_username_duplicate(self):
+        """
+        Ensure duplicate usernames are not allowed.
+        """
         self.serializer_data = {
             "first_name": "Test",
             "last_name": "User",
@@ -45,6 +44,9 @@ class TestRegisterSerializer(TestCase):
         self.assertFalse(self.serializer.is_valid())
 
     def test_validate_email_duplicate(self):
+        """
+        Ensure duplicate emails are not allowed.
+        """
         self.serializer_data = {
             "first_name": "Test",
             "last_name": "User",
@@ -57,6 +59,9 @@ class TestRegisterSerializer(TestCase):
         self.assertFalse(self.serializer.is_valid())
 
     def test_validate_username_email_normalize(self):
+        """
+        Ensure emails and usernames are saved as its lowercase representation.
+        """
         self.serializer_data = {
             "first_name": "Test",
             "last_name": "User",
@@ -73,6 +78,9 @@ class TestRegisterSerializer(TestCase):
             "testuser2@test.com")
 
     def test_create(self):
+        """
+        Ensure user can register successfully.
+        """
         data = {
             "username": "testuser",
             "email": "email@test.com",
@@ -85,5 +93,5 @@ class TestRegisterSerializer(TestCase):
         self.serializer.create(data)
 
         self.assertTrue(
-            User.objects.filter(
+            get_user_model().objects.filter(
                 username=data['username'].lower()).exists())

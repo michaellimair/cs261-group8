@@ -25,9 +25,6 @@ RUN pipenv lock --keep-outdated --requirements > requirements.txt
 RUN pip install -r requirements.txt
 
 COPY . .
-# TODO: Add Python linter
-RUN pip install pylint==2.12.2
-# RUN pylint .
 
 # install dependencies
 RUN apk update && apk add libpq

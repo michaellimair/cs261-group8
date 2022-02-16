@@ -71,6 +71,11 @@ jobs:
         cd backend
         pipenv install --deploy --dev
 
+    - name: Lint project
+      run: |
+        cd backend
+        pipenv run pylint **/**.py
+
     - name: Run tests and generate coverage results
       env:
         DB_USER: postgres

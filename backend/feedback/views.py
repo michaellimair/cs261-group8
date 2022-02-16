@@ -1,41 +1,60 @@
-from django.http import Http404, HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
-from users.permissions import IsOwner, IsNotSuperuser
-from .models import UserFeedback, UserFeedbackReply
+import json
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
+from django.utils.translation import gettext_lazy as _
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-import json
-from django.utils.translation import gettext_lazy as _
 from rest_framework.permissions import IsAdminUser
-from .serializers import UserFeedbackSerializer, UserFeedbackAdminSerializer, UserFeedbackReplyAdminSerializer
-from django.shortcuts import get_object_or_404
+from users.permissions import IsOwner, IsNotSuperuser
+from .models import UserFeedback, UserFeedbackReply
+from .serializers import (UserFeedbackSerializer,
+                            UserFeedbackAdminSerializer,
+                            UserFeedbackReplyAdminSerializer)
 
 
 class UserFeedbackViewSet(viewsets.ModelViewSet):
+    """
+    Create, read, and update views for user feedback. Only accessible by users.
+    """
     serializer_class = UserFeedbackSerializer
     permission_classes = [IsNotSuperuser, IsOwner]
 
-    def destroy(self, pk):
+    # pylint: disable=arguments-differ
+    def destroy(self, _):
+        """
+        User is not allowed to delete feedback.
+        """
         return HttpResponseForbidden()
 
     def get_queryset(self):
+        """
+        Limit queryset to feedback created by a specific user.
+        """
         user = self.request.user
         return UserFeedback.objects.filter(user=user)
 
 
 class UserFeedbackAdminViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    Read-only view set which allows admins to read user feedback.
+    """
     serializer_class = UserFeedbackAdminSerializer
     permission_classes = [IsAdminUser]
     queryset = UserFeedback.objects.all()
 
 
 class UserFeedbackAdminReplyView(APIView):
+    """
+    Custom API view to allow administrators to reply to feedback,
+    update their replies, and delete their reply.
+    """
     serializer_class = UserFeedbackReplyAdminSerializer
     permission_classes = [IsAdminUser]
 
     def post(self, request, feedback_pk):
         """
-        Creates a reply to a feedback given to a normal user.
+        Creates a reply to a feedback given by a user of the platform (non-admin).
         """
         feedback = get_object_or_404(UserFeedback, pk=feedback_pk)
         serializer = UserFeedbackReplyAdminSerializer(data=self.request.data, context={
@@ -73,7 +92,10 @@ class UserFeedbackAdminReplyView(APIView):
 
         return Response(serializer.data)
 
-    def delete(self, request, feedback_pk):
+    def delete(self, _, feedback_pk):
+        """
+        Delete administrator reply if a current reply exists.
+        """
         reply = get_object_or_404(UserFeedbackReply, feedback=feedback_pk)
         reply.delete()
         return HttpResponse(status=204)

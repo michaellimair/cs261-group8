@@ -1,24 +1,37 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User, Group
 from rest_framework.validators import UniqueValidator
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from django.contrib.auth.password_validation import validate_password
-from .models import UserProfile, BusinessArea
 from django.utils.translation import gettext_lazy as _
+from .models import UserProfile
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the UserProfile model.
+    """
     class Meta:
+        """
+        Metadata for the UserProfile serializer.
+        """
         model = UserProfile
         exclude = ('id', 'user')
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the User model.
+    """
     profile = UserProfileSerializer(
         read_only=True
     )
 
     class Meta:
-        model = User
+        """
+        Metadata for the User serializer.
+        """
+        model = get_user_model()
         exclude = [
             'password',
             'is_superuser',
@@ -28,11 +41,14 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
+    """
+    Serializer used to handle registration.
+    """
     email = serializers.EmailField(
         required=True,
         validators=[
             UniqueValidator(
-                queryset=User.objects.all(),
+                queryset=get_user_model().objects.all(),
                 message=_("email_taken"),
                 lookup='iexact')]
     )
@@ -40,7 +56,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         required=True,
         validators=[
             UniqueValidator(
-                queryset=User.objects.all(),
+                queryset=get_user_model().objects.all(),
                 message=_("username_taken"),
                 lookup='iexact')],
     )
@@ -51,7 +67,10 @@ class RegisterSerializer(serializers.ModelSerializer):
     verify_password = serializers.CharField(write_only=True, required=True)
 
     class Meta:
-        model = User
+        """
+        Metadata for the registration serializer, contains field validation configuration.
+        """
+        model = get_user_model()
         fields = (
             'username',
             'password',
@@ -65,7 +84,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         }
 
     def validate(self, attrs):
-        if (attrs['password'] != attrs['verify_password']):
+        if attrs['password'] != attrs['verify_password']:
             raise serializers.ValidationError(
                 {'verify_password': _('password_not_match')})
 
@@ -74,21 +93,27 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         return attrs
 
-    def create(self, data):
-        user = User.objects.create(
-            username=data['username'],
-            email=data['email'],
-            first_name=data['first_name'],
-            last_name=data['last_name']
+    def create(self, validated_data):
+        user = get_user_model().objects.create(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name']
         )
 
-        user.set_password(data['password'])
+        user.set_password(validated_data['password'])
         user.save()
 
         return user
 
 
 class GroupSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Group objects which indicate different user groups.
+    """
     class Meta:
+        """
+        Metadata for serializing user groups.
+        """
         model = Group
         fields = ('id', 'name')

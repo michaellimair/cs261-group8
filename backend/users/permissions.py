@@ -12,15 +12,24 @@ class IsOwner(permissions.BasePermission):
 
 
 class IsNotSuperuser(permissions.BasePermission):
+    """
+    Custom permission class which only grants permission to users who are not superusers (admin).
+    """
     def has_permission(self, request, view):
         return not request.user.is_superuser
 
 
 class IsMentor(permissions.BasePermission):
+    """
+    Custom permission class which only grants permission to a mentor.
+    """
     def has_permission(self, request, view):
         return request.user.groups.filter(name=MENTOR_GROUP).exists()
 
 
 class IsMentee(permissions.BasePermission):
+    """
+    Custom permission class which only grants permission to a mentee.
+    """
     def has_permission(self, request, view):
         return request.user.groups.filter(name=MENTEE_GROUP).exists()

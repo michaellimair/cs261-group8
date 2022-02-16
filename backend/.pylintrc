@@ -6,13 +6,13 @@
 extension-pkg-whitelist=
 
 # Specify a score threshold to be exceeded before program exits with error.
-fail-under=10.0
+fail-under=9.8
 
 # Add files or directories to the blacklist. They should be base names, not
 # paths.
-ignore=CVS
+ignore=CVS,apps.py,wsgi.py,settings.py,manage.py,.pylintrc
 
-ignore-paths=^(.*/|)(migrations|asgi|settings\.py|wsgi).*$
+ignore-paths=^(.*/|)(migrations|asgi|settings|wsgi|apps).*$
 
 # Add files or directories matching the regex patterns to the blacklist. The
 # regex matches against base names, not paths.
@@ -33,7 +33,9 @@ limit-inference-results=100
 
 # List of plugins (as comma separated values of python module names) to load,
 # usually to register additional checkers.
-load-plugins=pylint-django
+load-plugins=pylint_django
+
+django-settings-module=backend.settings
 
 # Pickle collected data for later comparisons.
 persistent=yes
@@ -62,8 +64,7 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
-disable=print-statement,
-        parameter-unpacking,
+disable=parameter-unpacking,
         unpacking-in-except,
         old-raise-syntax,
         backtick,
@@ -140,7 +141,9 @@ disable=print-statement,
         xreadlines-attribute,
         deprecated-sys-function,
         exception-escape,
-        comprehension-escape
+        comprehension-escape,
+        missing-module-docstring,
+        too-many-ancestors
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

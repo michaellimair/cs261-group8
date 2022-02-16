@@ -13,9 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
-from rest_framework.settings import api_settings
 from dotenv import load_dotenv
-from os import path
 
 load_dotenv()  # take environment variables from .env.
 
@@ -110,10 +108,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-_port = None
+PORT = None
 
 if os.environ.get('DB_PORT'):
-    _port = int(os.environ.get('DB_PORT'))
+    PORT = int(os.environ.get('DB_PORT'))
 
 DATABASES = {
     'default': {
@@ -123,7 +121,7 @@ DATABASES = {
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_SOCKET_DIR') or os.environ.get('DB_HOST'),
-        'PORT': _port,
+        'PORT': PORT,
     }
 }
 
@@ -164,7 +162,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_STORAGE = os.environ.get('STATICFILES_STORAGE', 'django.contrib.staticfiles.storage.StaticFilesStorage')
+STATICFILES_STORAGE = os.environ.get(
+    'STATICFILES_STORAGE', 'django.contrib.staticfiles.storage.StaticFilesStorage')
 
 GS_BUCKET_NAME = os.environ.get('GCS_BUCKET')
 
