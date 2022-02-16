@@ -1,0 +1,60 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$VxO058Rc82Jv2lh96TZTCq$O5jHT3CNN6wNQDDyp1NvzDotVjfAkwhuW0EmQFDBpPc=",
+        "last_login": "2022-02-12T02:35:13.861Z",
+        "is_superuser": true,
+        "username": "superadmin",
+        "first_name": "Superadmin",
+        "last_name": "Superadmin",
+        "email": "admin@cs261.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-02-12T02:08:17Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$bgM7P9D2I0IP7zW0ssRLYZ$3q3lslOOvvCL4IGeYYHFIRmTmWMPmuj5gPMkN/A2M8Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "testmentor",
+        "first_name": "Mentor",
+        "last_name": "Test",
+        "email": "testmentor@cs261.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-02-12T02:13:43Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$zq4MeG8LromPHoc4oW8gEd$Bz2RplJGHXLqJx/x4GOGpGuO+1W2JnzqaJwPj0mw8KI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "testmentee",
+        "first_name": "Mentee",
+        "last_name": "Test",
+        "email": "mentee_test@cs261.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-02-12T02:13:53Z",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+}
+]

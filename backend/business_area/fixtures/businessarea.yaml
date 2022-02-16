@@ -1,0 +1,40 @@
+- model: business_area.businessarea
+  pk: 1
+  fields:
+    name: investment_bank
+    label: Investment Banking
+- model: business_area.businessarea
+  pk: 2
+  fields:
+    name: corporate_bank
+    label: Corporate Banking
+- model: business_area.businessarea
+  pk: 3
+  fields:
+    name: pb
+    label: Private Bank (Wealth Management)
+- model: business_area.businessarea
+  pk: 4
+  fields:
+    name: tech
+    label: Technology
+- model: business_area.businessarea
+  pk: 5
+  fields:
+    name: finance
+    label: Finance
+- model: business_area.businessarea
+  pk: 6
+  fields:
+    name: group_audit
+    label: Group Audit
+- model: business_area.businessarea
+  pk: 7
+  fields:
+    name: hr
+    label: Human Resources
+- model: business_area.businessarea
+  pk: 7
+  fields:
+    name: am
+    label: Asset Management

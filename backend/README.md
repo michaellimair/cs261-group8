@@ -12,12 +12,30 @@ This application was made with the Django framework, which is based in Python.
 7. Perform database migration with `python manage.py migrate` to populate all the tables and models.
 8. Run the project with `python manage.py runserver`.
 
+Every time you start the project, run `python manage.py migrate` to ensure that you are on the latest version of the database.
+
 Run test cases by invoking the `python manage.py test` command.
 
 ## Environment Variables
 This project has been set up to support overriding operating system environment variables using the `.env` file. A `.env` file will only be locally stored and will not be uploaded to version control. This is done for security reasons, since `.env` files typically contain secrets and sensitive credentials. Inside the `backend` folder, you can copy the `.env.example` file and paste it as `.env`.
 
 When adding additional environment variables for configurable settings or for storing secrets, please add them as an environment variable. You can use `os.environ.get(<env_name>)` from the `os` module to get the environment variables. Afterwards, add the key of the environment variable to your `.env` file and an example key/value pair in `.env.example`.
+
+## Loading Sample Data
+Sample data such as business area and users can be loaded by performing `python manage.py loaddata <fixture_filename>`, where `fixture_filename` would be the name of the fixture without extension (e.g. users, businessarea).
+
+## Default User Credentials
+### Mentor
+- Username: testmentor
+- Password: test1235
+
+### Mentee
+- Username: testmentee
+- Password: test1235
+
+### Admin
+- Username: superadmin
+- Password: superadmin124
 
 ## Creating Models
 - All models can be placed in `models.py` for now. Refactoring will be done in the near future.
@@ -27,13 +45,13 @@ When adding additional environment variables for configurable settings or for st
 To ensure that all strings returned from the backend are properly localized, please use Django's built-in translation utilities from `django.utils.translation`. To add a translation key:
 1. In your code, use an instance of translation. For example:
 ```
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 print(_('hello_world'))
 ```
-2. In the folder of this readme file, run `python -m manage.py makemessages -a`.
+2. In the folder of this readme file, run `python manage.py makemessages -a`.
 3. Write all the proper strings for translations in the file `cs261/locale/[language]/LC_MESSAGES/django.po`.
-4. Compile the message files by running `python -m manage.py compilemessages` in this folder.
+4. Compile the message files by running `python manage.py compilemessages` in this folder.
 5. If the compilation is successful, you will see an update to the `cs261/locale/[language]/LC_MESSAGES/django.mo` file.
 
 Note that names of language must follow the language identifiers as specified in [RFC 3066](http://www.i18nguy.com/unicode/language-identifiers.html). This is in order for Django's `Accept-Language` behavior to function properly.
