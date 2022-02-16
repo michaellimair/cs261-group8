@@ -84,6 +84,7 @@ jobs:
         cd backend
         pipenv run coverage run --source='.' manage.py test
         pipenv run coverage xml
+        pipenv run coverage report --fail-under=90
 
     # - name: Generate coverage report and check
     #   if: ${{ github.event_name != 'push' }}
