@@ -1,4 +1,5 @@
-# Derived from https://www.botreetechnologies.com/blog/django-user-groups-and-permission/
+# Derived from
+# https://www.botreetechnologies.com/blog/django-user-groups-and-permission/
 
 # Permissions name and code
 mentor_only_permission = ('mentor_only', 'Can perform actions as mentor')
@@ -14,4 +15,4 @@ MENTEE_GROUP = 'mentee'
 
 # Group and permission list mappings
 project_permission_group = {MENTOR_GROUP: mentor_group_permissions,
-                            MENTEE_GROUP: mentee_group_permissions,}
+                            MENTEE_GROUP: mentee_group_permissions, }

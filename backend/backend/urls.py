@@ -14,13 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from knox import views as knox_views
+from django.contrib import admin
 from django.urls import path, include, re_path
+from rest_framework.schemas import get_schema_view
+from rest_framework_nested import routers
+
 from feedback.views import UserFeedbackViewSet, UserFeedbackAdminViewSet, UserFeedbackAdminReplyView
 from users.views import RegisterView, MyDataView, LoginView, GroupView
 from business_area.views import BusinessAreaView
-from rest_framework.schemas import get_schema_view
-from django.contrib import admin
-from rest_framework_nested import routers
 
 router = routers.DefaultRouter()
 router.register(r'feedbacks', UserFeedbackViewSet, basename='my_feedbacks')
@@ -33,7 +34,10 @@ admin_feedback_router = routers.NestedSimpleRouter(admin_router, r'feedbacks', l
 
 admin_patterns = [
     re_path(r'', include(admin_router.urls)),
-    path('feedbacks/<int:feedback_pk>/reply', UserFeedbackAdminReplyView.as_view(), name="admin_feedback_reply")
+    path(
+        'feedbacks/<int:feedback_pk>/reply',
+        UserFeedbackAdminReplyView.as_view(),
+        name="admin_feedback_reply")
 ]
 
 urlpatterns = [

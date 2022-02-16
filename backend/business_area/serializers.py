@@ -1,7 +1,14 @@
 from rest_framework import serializers
 from .models import BusinessArea
 
+
 class BusinessAreaSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = BusinessArea
-    fields = ('id', 'name', 'label')
+    """
+    Serializer for the business area model.
+    """
+    class Meta:
+        """
+        Metadata for the business area serializer.
+        """
+        model = BusinessArea
+        fields = ('id', 'name', 'label')

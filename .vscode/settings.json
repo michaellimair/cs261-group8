@@ -12,5 +12,13 @@
     "javascriptreact",
     "html",
     "typescriptreact"
-  ]
+  ],
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  "[javascript, html, typescriptreact, typescript]": {
+    "editor.tabSize": 2
+  }
 }

@@ -27,7 +27,7 @@ This project follows the **Test-Driven Development (TDD)** approach for developm
 - All code should pass checks from the linters of the code's programming language (Pylint for Python, ESLint for JavaScript)
 
 ## Deployment
-This project's system architecture has been designed heavily around the Google Cloud Platform (GCP) cloud provider. All configuration of the cloud project has been done in the `main.tf` file. Since it involves quite a bit of sorcery, documentation about this will come for now.
+This project's system architecture has been designed heavily around the Google Cloud Platform (GCP) cloud provider. All configuration of the cloud project has been done with Terraform in the `main.tf` file.
 
 Essentially, the components involved in the project are as follows:
 - 1 GCS bucket for Terraform state

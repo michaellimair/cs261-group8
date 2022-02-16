@@ -3,7 +3,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Getting Started
-1. Ensure you have Node.js 16 and Yarn installed on your system. Verify by typing `npm -v` and `yarn -v` in your command line. You can install (Node.js)[https://nodejs.org/en/download/] and (Yarn)[https://yarnpkg.com/] if you do not have it.
+
+### Development Environment
+
+This project has been set up to play nicely with Visual Studio Code, hence the availability of the `.vscode` folder. However, if you use another IDE or editor, please ensure that the experience will be equivalent. You will need the following extensions:
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [JavaScript and TypeScript Nightly](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next)
+- [TypeScript React code snippets](https://marketplace.visualstudio.com/items?itemName=infeng.vscode-react-typescript)
+
+### Steps
+
+1. Ensure you have Node.js 16 and Yarn installed on your system.
+   1. Verify by typing `npm -v` and `yarn -v` in your command line.
+   2. You can install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/) if you do not have it.
 2. Run `yarn` to install all the project dependencies.
 3. Run `yarn start` to start the React project. Your browser should open automatically.
 
