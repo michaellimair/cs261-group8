@@ -1,2 +1,2 @@
 [run]
-omit = *migrations*,*__init__*,*factories*,*test*,*manage.py,*urls*,*asgi*,*wsgi*,*admin.py,*apps.py,backend/settings.py
+omit = *migrations*,*__init__*,*factories*,*test*,*manage.py,*urls*,*asgi*,*wsgi*,*admin.py,*apps.py,backend/settings.py,*pylint_ignore*
