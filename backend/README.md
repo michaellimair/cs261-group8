@@ -3,6 +3,15 @@
 This application was made with the Django framework, which is based in Python.
 
 ## Getting Started
+
+### Development Environment
+
+This project has been set up to play nicely with Visual Studio Code, hence the availability of the `.vscode` folder. However, if you use another IDE or editor, please ensure that the experience will be equivalent. You will need the following extensions:
+- [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+- [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+- [autoDocstring](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring)
+
+### Installation Steps
 1. Ensure you have Python 3.9 or later installed in your system.
 2. Install `pipenv` if you do not have it by running `pip install pipenv`. If you get some `PATH` errors, try `python -m pip install pipenv`.
 3. Type `pipenv shell` to activate the virtual Python environment for this project
@@ -13,6 +22,8 @@ This application was made with the Django framework, which is based in Python.
 8. Run the project with `python manage.py runserver`.
 
 Every time you start the project, run `python manage.py migrate` to ensure that you are on the latest version of the database.
+
+Lint the code base for code style issues by running `pipenv run pylint **/**.py`. This should be automatic if your Visual Studio Code is configured correctly.
 
 Run test cases by invoking the `python manage.py test` command.
 
