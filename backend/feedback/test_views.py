@@ -164,6 +164,16 @@ class TestUserFeedbackAdminReplyView(TestCase):
     response = self.view(request, feedback_pk=self.feedback_noreply.id)
     self.assertEqual(response.status_code, 404)
 
+  def test_patch_invalid(self):
+    """
+    Reject invalid patch requests.
+    """
+    url = reverse('admin_feedback_reply', kwargs={'feedback_pk': self.feedback.id})
+    request = self.request_factory.patch(url, {"content": {"nested": "no!" }}, format='json')
+    self._authenticate(request)
+    response = self.view(request, feedback_pk=self.feedback.id)
+    self.assertEqual(response.status_code, 400)
+
   def test_patch_success(self):
     """
     Should perform feedback reply content update successfully.

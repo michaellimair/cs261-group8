@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import UserFeedback, UserFeedbackReply
 from users.serializers import UserSerializer
+import six
 
 class UserFeedbackReplySerializer(serializers.ModelSerializer):
   admin = UserSerializer(
@@ -38,7 +39,8 @@ class UserFeedbackReplyAdminSerializer(serializers.ModelSerializer):
   def update(self, instance, data):
     request = self.context.get("request")
     instance.admin = request.user
-    instance.content = data['content']
+    if "content" in data:
+      instance.content = data['content']
 
     instance.save()
 
