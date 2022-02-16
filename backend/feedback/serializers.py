@@ -12,9 +12,13 @@ class UserFeedbackReplySerializer(serializers.ModelSerializer):
     fields=('id', 'content', 'admin', 'created', 'modified')
 
 class UserFeedbackReplyAdminSerializer(serializers.ModelSerializer):
+  admin = UserSerializer(
+    read_only=True
+  )
+
   class Meta:
     model = UserFeedbackReply
-    fields=('id', 'content', 'created', 'modified')
+    fields=('id', 'admin', 'content', 'created', 'modified')
     extra_kwargs = {
       'content': { 'required': True }
     }

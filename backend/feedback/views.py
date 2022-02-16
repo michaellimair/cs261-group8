@@ -42,9 +42,10 @@ class UserFeedbackAdminReplyView(APIView):
     serializer.is_valid(raise_exception=True)
     reply = UserFeedbackReply.objects.filter(feedback=feedback_pk).exists()
     if reply:
-      return HttpResponseBadRequest(json.dumps({
-        "non_field_errors": [_("reply_once_only")]
-      }), content_type='application/json')
+      error = json.dumps({
+        "non_field_errors": [str(_("reply_once_only"))]
+      })
+      return HttpResponseBadRequest(content=error, content_type='application/json')
     serializer.create(request.data)
     return Response(serializer.data)
 
