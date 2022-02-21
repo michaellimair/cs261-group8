@@ -17,7 +17,6 @@ djangorestframework-simplejwt = "*"
 django-rest-knox = "*"
 django-annoying = "*"
 factory-boy = "*"
-gunicorn = "*"
 django-storages = {extras = ["google"], version = "*"}
 django-localized-fields = "*"
 django-safedelete = "*"
@@ -27,6 +26,7 @@ pylint-django = "*"
 autopep8 = "*"
 pycodestyle = "*"
 autoflake = "*"
+hypercorn = "*"
 
 [dev-packages]
 
