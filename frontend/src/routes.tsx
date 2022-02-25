@@ -1,4 +1,4 @@
-import LoginPage from 'pages/login';
+import LoginPage from 'pages/identity/login';
 import RegisterPage from 'pages/register';
 import { ReactElement } from 'react';
 
