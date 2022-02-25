@@ -19,7 +19,8 @@ This project has been set up to play nicely with Visual Studio Code, hence the a
 5. Copy the `.env.example` file into a file named `.env`, and fill it with the appropriate credentials to authenticate to your local PostgreSQL database.
 6. Create a database in your PostgreSQL instance with the same name as the value you entered in the `DB_NAME` variable.
 7. Perform database migration with `python manage.py migrate` to populate all the tables and models.
-8. Run the project with `python manage.py runserver`.
+8. In the `backend/.env` file, populate the `DJANGO_SECRET` variable with any random string. (The fastest way would simply be to bash your keyboard.)
+9. Run the project with `python manage.py runserver`.
 
 Every time you start the project, run `python manage.py migrate` to ensure that you are on the latest version of the database.
 
