@@ -5,8 +5,9 @@ import {
   Route,
 } from 'react-router-dom';
 import './App.css';
-import { authRoutes } from 'routes';
+import { authRoutes, userRoutes } from 'routes';
 import AuthLayout from 'layouts/AuthLayout';
+import UserLayout from 'layouts/UserLayout';
 import NotFoundPage from 'pages/not-found';
 
 const App: FC = () => (
@@ -14,6 +15,13 @@ const App: FC = () => (
     <Routes>
       <Route path="auth" element={<AuthLayout />}>
         {authRoutes.map(({
+          name, path, element, index,
+        }) => (
+          <Route key={name} path={path} element={element} index={index} />
+        ))}
+      </Route>
+      <Route path="user" element={<UserLayout />}>
+        {userRoutes.map(({
           name, path, element, index,
         }) => (
           <Route key={name} path={path} element={element} index={index} />

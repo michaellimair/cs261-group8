@@ -22,5 +22,17 @@
   "username": "Username",
   "verify_password": "Verify Password",
   "internal_error": "An error has occurred in the server, please try again later.",
-  "register_success": "Registration is successful, logging you in..."
+  "register_success": "Registration is successful, logging you in...",
+  "welcome": "Welcome",
+  "welcome_description": "Fill in your details to get started on the mentoring platform",
+  "change_avatar": "Change Avatar",
+  "mentor": "mentor",
+  "mentee": "mentee",
+  "select_mentor_mentee": "Are you a...",
+  "business_area": "Your business area",
+  "select_option": "Select an option",
+  "seniority": "Seniority",
+  "years_of_experience": "Years of experience",
+  "time_zone": "Time zone",
+  "country": "Country"
 }

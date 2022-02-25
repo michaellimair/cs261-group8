@@ -1,5 +1,6 @@
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
+import WelcomeForm from 'pages/welcome';
 import { ReactElement } from 'react';
 
 export enum RouteLayout {
@@ -37,5 +38,15 @@ export const authRoutes: IRoute[] = [
     layout: RouteLayout.AUTH,
     path: 'register',
     description: 'register_description',
+  },
+];
+
+export const userRoutes: IRoute[] = [
+  {
+    name: 'welcome',
+    element: <WelcomeForm />,
+    layout: RouteLayout.USER,
+    path: 'welcome',
+    description: 'welcome_description',
   },
 ];
