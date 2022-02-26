@@ -282,6 +282,11 @@ resource "google_cloud_run_service" "gcr_service_main" {
           name = "GCS_BUCKET"
           value = var.bucket_name
         }
+
+        ports {
+          name = "h2c"
+          container_port = 8080
+        }
       }
     }
 
