@@ -5,6 +5,8 @@ import DashboardMentorOnlyPage from 'pages/dashboard/mentor-only';
 import FeedbackPage from 'pages/feedback';
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
+import MenteeMeetingsPage from 'pages/mentee-meetings';
+import MentorMeetingsPage from 'pages/mentor-meetings';
 import { ReactElement } from 'react';
 import { IconType } from 'react-icons';
 import {
@@ -133,5 +135,21 @@ export const dashboardRoutes: IDashboardRoute[] = [
     icon: VscFeedback,
     description: 'dashboard.feedback.description',
     allowedGroups: ALLOW_ALL_USERS,
+  },
+  {
+    name: 'mentee-meetings',
+    element: <MenteeMeetingsPage />,
+    layout: RouteLayout.USER,
+    path: 'mentee-meetings',
+    description: 'mentee_meetings_description',
+    allowedGroups: MENTEE_ONLY,
+  },
+  {
+    name: 'mentor-meetings',
+    element: <MentorMeetingsPage />,
+    layout: RouteLayout.USER,
+    path: 'mentor-meetings',
+    description: 'mentor_meetings_description',
+    allowedGroups: MENTOR_ONLY,
   },
 ];
