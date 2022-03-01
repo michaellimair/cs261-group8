@@ -1,9 +1,10 @@
 /* eslint-disable class-methods-use-this */
 import { IUser, JobTitle } from 'customTypes/auth';
 import { faker } from '@faker-js/faker';
+import { merge } from 'lodash';
 
 class UserFactory {
-  create = (): IUser => ({
+  create = (user?: Partial<IUser>): IUser => merge(({
     id: faker.datatype.number(),
     username: faker.internet.userName(),
     first_name: faker.name.firstName(),
@@ -21,7 +22,8 @@ class UserFactory {
         label: 'Technology',
       },
     },
-  });
+    groups: [],
+  }), user ?? {});
 }
 
 export default UserFactory;

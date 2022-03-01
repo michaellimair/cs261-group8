@@ -8,7 +8,7 @@ import ApiError from 'api/error/ApiError';
 import UnauthorizedError from 'api/error/UnauthorizedError';
 import { RetryValue } from 'react-query/types/core/retryer';
 
-interface IUserContext {
+export interface IUserContext {
   user?: IUser;
   refetch: () => void;
   isLoading: boolean;
