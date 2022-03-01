@@ -11,6 +11,8 @@ describe('auth.api.test.ts', () => {
 
   beforeEach(() => {
     class StubBaseAPI extends BaseAPI {
+      public get = jest.fn();
+
       public post = jest.fn();
     }
     api = new StubBaseAPI();
@@ -57,6 +59,17 @@ describe('auth.api.test.ts', () => {
       expect(api.post).toHaveBeenCalledWith({
         path: '/register',
         body: registerBody,
+      });
+    });
+  });
+
+  describe('me', () => {
+    it('gets current logged in user successfully', async () => {
+      await authApi.me();
+
+      expect(api.get).toHaveBeenCalledTimes(1);
+      expect(api.get).toHaveBeenCalledWith({
+        path: '',
       });
     });
   });

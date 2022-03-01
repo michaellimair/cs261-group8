@@ -28,6 +28,10 @@ class AuthAPI {
   logout = (): Promise<IUser> => this.api.post({
     path: '/logout',
   });
+
+  me = (): Promise<IUser> => this.api.get({
+    path: '',
+  });
 }
 
 export default AuthAPI;
