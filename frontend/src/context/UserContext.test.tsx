@@ -4,7 +4,7 @@ import { httpClient } from 'api';
 import UserFactory from 'factories/UserFactory';
 import { FC, useContext } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { UserContext, UserContextProvider } from './UserContext';
+import UserContext, { UserContextProvider } from './UserContext';
 
 jest.mock('api');
 

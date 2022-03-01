@@ -12,7 +12,7 @@ interface IUserContext {
   initialized: boolean;
 }
 
-export const UserContext = createContext<IUserContext>({
+const UserContext = createContext<IUserContext>({
   initialized: false,
   isLoading: true,
   refetch: () => {},
@@ -37,3 +37,5 @@ export const UserContextProvider: FC = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
+export default UserContext;
