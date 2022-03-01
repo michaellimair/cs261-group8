@@ -2,9 +2,10 @@ import { Button } from '@chakra-ui/react';
 import { FC } from 'react';
 
 interface ISubmitButtonProps {
-  disabled: boolean;
+  disabled?: boolean;
   loadingText: string;
   testId?: string;
+  isLoading?: boolean;
 }
 
 const SubmitButton: FC<ISubmitButtonProps> = ({
@@ -12,10 +13,12 @@ const SubmitButton: FC<ISubmitButtonProps> = ({
   children,
   loadingText,
   testId,
+  isLoading,
 }) => (
   <Button
     disabled={disabled}
     loadingText={loadingText}
+    isLoading={isLoading}
     type="submit"
     size="lg"
     data-testid={testId}
