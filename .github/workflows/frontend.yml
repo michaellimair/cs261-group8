@@ -36,7 +36,7 @@ jobs:
     - name: Install frontend dependencies
       run: |
         cd frontend
-        yarn install --cached
+        yarn install
     - name: Run tests with Jest
       run: |
         cd frontend
@@ -55,7 +55,7 @@ jobs:
     - name: Build website
       run: |
         cd frontend
-        yarn install --cached
+        yarn install
         yarn build
       env:
         REACT_APP_API_HOST: ${{ secrets.API_HOST }}
