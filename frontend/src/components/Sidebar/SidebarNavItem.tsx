@@ -8,7 +8,7 @@ import {
 import { IconType } from 'react-icons';
 
 interface ISidebarNavItemProps extends FlexProps {
-  icon: IconType;
+  icon?: IconType;
 }
 
 const SidebarNavItem: FC<ISidebarNavItemProps> = ({ icon, children, ...rest }) => (
@@ -34,6 +34,7 @@ const SidebarNavItem: FC<ISidebarNavItemProps> = ({ icon, children, ...rest }) =
           color: 'white',
         }}
         as={icon}
+        data-testid="sidebarNavIcon"
       />
       )}
       {children}

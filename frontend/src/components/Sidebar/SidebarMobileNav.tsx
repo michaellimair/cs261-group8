@@ -40,6 +40,7 @@ const SidebarMobileNav: FC<ISidebarMobileNavProps> = ({ onOpen, ...rest }) => (
     <IconButton
       display={{ base: 'flex', md: 'none' }}
       onClick={onOpen}
+      data-testid="openButton"
       variant="outline"
       aria-label="open menu"
       icon={<FiMenu />}

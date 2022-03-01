@@ -74,6 +74,7 @@ Object {
           >
             <svg
               class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
               fill="none"
               focusable="false"
               height="1em"
@@ -106,6 +107,7 @@ Object {
           >
             <svg
               class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
               fill="none"
               focusable="false"
               height="1em"
@@ -138,6 +140,7 @@ Object {
           >
             <svg
               class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
               fill="none"
               focusable="false"
               height="1em"
@@ -172,6 +175,7 @@ Object {
           >
             <svg
               class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
               fill="none"
               focusable="false"
               height="1em"
@@ -201,6 +205,7 @@ Object {
           >
             <svg
               class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
               fill="none"
               focusable="false"
               height="1em"
@@ -269,6 +274,7 @@ Object {
         >
           <svg
             class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
             fill="none"
             focusable="false"
             height="1em"
@@ -301,6 +307,7 @@ Object {
         >
           <svg
             class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
             fill="none"
             focusable="false"
             height="1em"
@@ -333,6 +340,7 @@ Object {
         >
           <svg
             class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
             fill="none"
             focusable="false"
             height="1em"
@@ -367,6 +375,7 @@ Object {
         >
           <svg
             class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
             fill="none"
             focusable="false"
             height="1em"
@@ -396,6 +405,7 @@ Object {
         >
           <svg
             class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
             fill="none"
             focusable="false"
             height="1em"
