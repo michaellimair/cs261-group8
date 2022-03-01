@@ -6,6 +6,16 @@ from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
 from .models import UserProfile
 
+class GroupSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Group objects which indicate different user groups.
+    """
+    class Meta:
+        """
+        Metadata for serializing user groups.
+        """
+        model = Group
+        fields = ('id', 'name')
 
 class UserProfileSerializer(serializers.ModelSerializer):
     """
@@ -26,6 +36,7 @@ class UserSerializer(serializers.ModelSerializer):
     profile = UserProfileSerializer(
         read_only=True
     )
+    groups = GroupSerializer(many=True)
 
     class Meta:
         """
@@ -106,14 +117,3 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         return user
 
-
-class GroupSerializer(serializers.ModelSerializer):
-    """
-    Serializer for Group objects which indicate different user groups.
-    """
-    class Meta:
-        """
-        Metadata for serializing user groups.
-        """
-        model = Group
-        fields = ('id', 'name')
