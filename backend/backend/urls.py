@@ -14,17 +14,37 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from knox import views as knox_views
-from django.urls import path, include
-from cs261.views import RegisterView, MyDataView, LoginView, BusinessAreaView
-from rest_framework import routers
+from django.contrib import admin
+from django.urls import path, include, re_path
 from rest_framework.schemas import get_schema_view
+from rest_framework_nested import routers
+
+from feedback.views import UserFeedbackViewSet, UserFeedbackAdminViewSet, UserFeedbackAdminReplyView
+from users.views import RegisterView, MyDataView, LoginView, GroupView
+from business_area.views import BusinessAreaView
 
 router = routers.DefaultRouter()
+router.register(r'feedbacks', UserFeedbackViewSet, basename='my_feedbacks')
+router.register(r'business-areas', BusinessAreaView, basename='business_area')
+
+admin_router = routers.DefaultRouter()
+admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)
+
+admin_feedback_router = routers.NestedSimpleRouter(admin_router, r'feedbacks', lookup='feedback')
+
+admin_patterns = [
+    re_path(r'', include(admin_router.urls)),
+    path(
+        'feedbacks/<int:feedback_pk>/reply',
+        UserFeedbackAdminReplyView.as_view(),
+        name="admin_feedback_reply")
+]
 
 urlpatterns = [
-    path('api/', include([
+    path('admin/', admin.site.urls),
+    path('api/v1/', include([
         path('', include(router.urls)),
-        path('business-areas', BusinessAreaView.as_view({'get': 'list'}), name='business_area'),
+        path('groups', GroupView.as_view(), name='group'),
         path('auth', MyDataView.as_view(), name='me'),
         path('auth/login', LoginView.as_view(), name='knox_login'),
         path('auth/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
@@ -35,5 +55,6 @@ urlpatterns = [
             description="API documentation for the Mentoring project.",
             version="1.0.0"
         ), name='openapi-schema'),
+        re_path(r'^admin/', include(admin_patterns)),
     ]))
 ]

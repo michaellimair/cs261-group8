@@ -13,9 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
-from rest_framework.settings import api_settings
 from dotenv import load_dotenv
-from os import path
 
 load_dotenv()  # take environment variables from .env.
 
@@ -47,7 +45,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'knox',
-    'cs261',
+    'business_area',
+    'users',
+    'feedback',
+    'safedelete',
+    'django_extensions'
 ]
 
 REST_FRAMEWORK = {
@@ -59,6 +61,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
+        'users.permissions.IsNotSuperuser',
     ),
 }
 
@@ -76,8 +79,8 @@ MIDDLEWARE = [
 REST_KNOX = {
   'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
   'AUTH_TOKEN_CHARACTER_LENGTH': 64,
-  'TOKEN_TTL': timedelta(hours=1),
-  'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+  'TOKEN_TTL': timedelta(hours=12),
+  'USER_SERIALIZER': 'users.serializers.UserSerializer',
   'TOKEN_LIMIT_PER_USER': None,
   'AUTO_REFRESH': False,
 }
@@ -105,10 +108,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-_port = None
+PORT = None
 
 if os.environ.get('DB_PORT'):
-    _port = int(os.environ.get('DB_PORT'))
+    PORT = int(os.environ.get('DB_PORT'))
 
 DATABASES = {
     'default': {
@@ -118,7 +121,7 @@ DATABASES = {
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_SOCKET_DIR') or os.environ.get('DB_HOST'),
-        'PORT': _port,
+        'PORT': PORT,
     }
 }
 
@@ -159,7 +162,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_STORAGE = os.environ.get('STATICFILES_STORAGE', 'django.contrib.staticfiles.storage.StaticFilesStorage')
+STATICFILES_STORAGE = os.environ.get(
+    'STATICFILES_STORAGE', 'django.contrib.staticfiles.storage.StaticFilesStorage')
 
 GS_BUCKET_NAME = os.environ.get('GCS_BUCKET')
 

@@ -5,6 +5,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - '**/README.md'
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
@@ -71,6 +73,11 @@ jobs:
         cd backend
         pipenv install --deploy --dev
 
+    - name: Lint project
+      run: |
+        cd backend
+        pipenv run pylint **/**.py
+
     - name: Run tests and generate coverage results
       env:
         DB_USER: postgres
@@ -85,13 +92,18 @@ jobs:
         pipenv run coverage run --source='.' manage.py test
         pipenv run coverage xml
 
-    # - name: Generate coverage report and check
-    #   if: ${{ github.event_name != 'push' }}
-    #   uses: orgoro/coverage@v2
-    #   with:
-    #     coverageFile: ./backend/coverage.xml
-    #     token: ${{ secrets.GITHUB_TOKEN }}
-    #     thresholdAll: 0.9
+    - name: "Upload coverage to Codecov"
+      uses: codecov/codecov-action@v2
+      with:
+        files: ./backend/coverage.xml
+        fail_ci_if_error: true
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        verbose: true
+
+    - name: Display coverage report
+      run: |
+        cd backend
+        pipenv run coverage report --fail-under=90
 
     - name: Generate secrets for backend configuration of Terraform
       run: 'echo -e "bucket = \"${{ env.TF_BUCKET }}\"\nprefix = \"${{ env.TF_PREFIX }}\"" > backend.conf'

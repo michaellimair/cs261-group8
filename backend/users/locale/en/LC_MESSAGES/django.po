@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-16 02:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\users\models.py:9
+msgid "title.anlst"
+msgstr "Analyst"
+
+#: .\users\models.py:10
+msgid "title.assoc"
+msgstr "Associate"
+
+#: .\users\models.py:11
+msgid "title.avp"
+msgstr "Assistant Vice President"
+
+#: .\users\models.py:12
+msgid "title.vp"
+msgstr "Vice President"
+
+#: .\users\models.py:13
+msgid "title.dir"
+msgstr "Director"
+
+#: .\users\models.py:14
+msgid "title.md"
+msgstr "Managing Director"
+
+#: .\users\serializers.py:25
+msgid "email_taken"
+msgstr "Email is currently linked to another account."
+
+#: .\users\serializers.py:29
+msgid "username_taken"
+msgstr "Username has been taken by another account."
+
+#: .\users\serializers.py:44
+msgid "password_not_match"
+msgstr "Passwords do not match."

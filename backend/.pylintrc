@@ -6,11 +6,13 @@
 extension-pkg-whitelist=
 
 # Specify a score threshold to be exceeded before program exits with error.
-fail-under=10.0
+fail-under=9.8
 
 # Add files or directories to the blacklist. They should be base names, not
 # paths.
-ignore=CVS
+ignore=CVS,apps.py,wsgi.py,settings.py,manage.py,.pylintrc
+
+ignore-paths=^(.*/|)(migrations|asgi|settings|wsgi|apps).*$
 
 # Add files or directories matching the regex patterns to the blacklist. The
 # regex matches against base names, not paths.
@@ -31,7 +33,9 @@ limit-inference-results=100
 
 # List of plugins (as comma separated values of python module names) to load,
 # usually to register additional checkers.
-load-plugins=
+load-plugins=pylint_django
+
+django-settings-module=backend.settings
 
 # Pickle collected data for later comparisons.
 persistent=yes
@@ -60,8 +64,7 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
-disable=print-statement,
-        parameter-unpacking,
+disable=parameter-unpacking,
         unpacking-in-except,
         old-raise-syntax,
         backtick,
@@ -138,7 +141,9 @@ disable=print-statement,
         xreadlines-attribute,
         deprecated-sys-function,
         exception-escape,
-        comprehension-escape
+        comprehension-escape,
+        missing-module-docstring,
+        too-many-ancestors
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
@@ -209,7 +214,7 @@ contextmanager-decorators=contextlib.contextmanager
 # List of members which are set dynamically and missed by pylint inference
 # system, and so shouldn't trigger E1101 when accessed. Python regular
 # expressions are accepted.
-generated-members=
+generated-members=objects,DoesNotExist,id,pk,_meta,base_fields,context,REQUEST
 
 # Tells whether missing members accessed in mixin class should be ignored. A
 # mixin class is detected if its name ends with "mixin" (case insensitive).
@@ -230,7 +235,7 @@ ignore-on-opaque-inference=yes
 # List of class names for which member attributes should not be checked (useful
 # for classes with dynamically set attributes). This supports the use of
 # qualified names.
-ignored-classes=optparse.Values,thread._local,_thread._local
+ignored-classes=optparse.Values,thread._local,_thread._local,SQLObject,WSGIRequest
 
 # List of module names for which member attributes should not be checked
 # (useful for modules/projects where namespaces are manipulated during runtime
