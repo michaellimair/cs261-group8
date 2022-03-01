@@ -1,6 +1,10 @@
-{ 
+{
   "engines": {
     "npm": "please-use-yarn",
-    "yarn": ">= 1.19.1"
-  }
+    "yarn": ">= 3.2.0"
+  },
+  "workspaces": [
+    "frontend"
+  ],
+  "private": true
 }

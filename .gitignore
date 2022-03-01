@@ -24,3 +24,14 @@ crash.*.log
 
 .terraform.lock**
 frontend/.firebaserc
+
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+*.DS_Store
+node_modules
