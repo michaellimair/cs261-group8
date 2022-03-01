@@ -22,13 +22,24 @@ export interface IUserProfile {
   business_area: IBusinessArea | null;
 }
 
+export enum UserGroup {
+  MENTOR = 'mentor',
+  MENTEE = 'mentee',
+}
+
+export interface IUserGroup {
+  id: number;
+  name: UserGroup;
+}
+
 export interface IUser {
   id: number;
   username: string;
   email: string;
   first_name: string;
   last_name: string;
-  profile: IUserProfile
+  profile: IUserProfile;
+  groups: IUserGroup[];
 }
 
 export interface IRegistration {
