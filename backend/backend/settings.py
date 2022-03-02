@@ -32,6 +32,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '0.0.0.0', '.run.app', '.michaellimair.me']
 
+CORS_ALLOWED_ORIGINS = [
+    "https://cs261.michaellimair.me",
+    "http://localhost:3000",
+]
 
 # Application definition
 
