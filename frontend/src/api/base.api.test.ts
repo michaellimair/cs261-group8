@@ -1,5 +1,7 @@
 /* eslint-disable max-classes-per-file */
 import { AxiosInstance } from 'axios';
+import CredentialManagerFactory from 'factories/CredentialManagerFactory';
+import CredentialManager from 'libs/credential-manager';
 import BaseAPI, { handleDates, isIsoDateString } from './base.api';
 import ApiError from './error/ApiError';
 import BadRequestApiError from './error/BadRequestApiError';
@@ -74,14 +76,19 @@ describe('base.api.ts', () => {
     });
   });
 
+  const credentialManagerFactory = new CredentialManagerFactory();
+
   describe('BaseAPI', () => {
     let api: BaseAPI;
+    let mockCredentialManager: CredentialManager;
     let mockClient: AxiosInstance;
     const mockPath = '/hello/there';
 
     beforeEach(() => {
       mockClient = createMockClient();
+      mockCredentialManager = credentialManagerFactory.create(true);
       api = new BaseAPI({
+        credentialManager: mockCredentialManager,
         client: mockClient,
         basePath: '/hello',
       });
@@ -107,6 +114,17 @@ describe('base.api.ts', () => {
       expect(parsedData).toMatchObject({
         data: {
           createdAt: new Date('2022-02-01T14:14:48.508Z'),
+        },
+      });
+    });
+
+    it('injects an request token interceptor to the client', () => {
+      const passThruFn = (mockClient.interceptors.request.use as jest.Mock).mock.calls[0][0];
+      expect(typeof passThruFn).toBe('function');
+      const testObject = {};
+      expect(passThruFn(testObject)).toMatchObject({
+        headers: {
+          Authorization: `Token ${mockCredentialManager.credentials.token}`,
         },
       });
     });

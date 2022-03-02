@@ -1,26 +1,33 @@
 /* eslint-disable max-classes-per-file */
 import { IRegistration } from 'customTypes/auth';
+import CredentialManagerFactory from 'factories/CredentialManagerFactory';
+import CredentialManager from 'libs/credential-manager';
 import AuthAPI from './auth.api';
 import BaseAPI from './base.api';
+
+const credentialManagerFactory = new CredentialManagerFactory();
+
+class StubBaseAPI extends BaseAPI {
+  public get = jest.fn();
+
+  public post = jest.fn();
+}
 
 describe('auth.api.test.ts', () => {
   let authApi: AuthAPI;
   let api: BaseAPI;
+  let credentialManager: CredentialManager;
   const username: string = 'testuser';
   const password: string = 'testpassword';
 
   beforeEach(() => {
-    class StubBaseAPI extends BaseAPI {
-      public get = jest.fn();
-
-      public post = jest.fn();
-    }
     api = new StubBaseAPI();
-    authApi = new AuthAPI(api);
+    credentialManager = credentialManagerFactory.create(true);
+    authApi = new AuthAPI(api, credentialManager);
   });
 
   it('instantiates successfully', () => {
-    expect(() => new AuthAPI()).not.toThrow();
+    expect(() => new AuthAPI(api, credentialManager)).not.toThrow();
   });
 
   describe('login', () => {
@@ -29,9 +36,16 @@ describe('auth.api.test.ts', () => {
         username,
         password,
       };
+
+      (api.post as jest.Mock).mockImplementationOnce(() => ({
+        token: 'abc',
+        expiry: new Date(),
+      }));
+
       await authApi.login(body);
 
       expect(api.post).toHaveBeenCalledTimes(1);
+      expect(credentialManager.setCredentials).toHaveBeenCalledTimes(1);
       expect(api.post).toHaveBeenCalledWith({
         path: '/login',
         body,
@@ -75,10 +89,11 @@ describe('auth.api.test.ts', () => {
   });
 
   describe('logout', () => {
-    it('registers successfully', async () => {
+    it('logs out successfully', async () => {
       await authApi.logout();
 
       expect(api.post).toHaveBeenCalledTimes(1);
+      expect(credentialManager.clearCredentials).toHaveBeenCalledTimes(1);
       expect(api.post).toHaveBeenCalledWith({
         path: '/logout',
       });
