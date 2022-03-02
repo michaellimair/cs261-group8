@@ -5,6 +5,7 @@ import 'i18n';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import './index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { UserContextProvider } from 'context/UserContext';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -15,7 +16,9 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <ChakraProvider>
         <CSSReset />
-        <App />
+        <UserContextProvider>
+          <App />
+        </UserContextProvider>
       </ChakraProvider>
     </QueryClientProvider>
   </React.StrictMode>,

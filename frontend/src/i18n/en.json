@@ -5,6 +5,7 @@
   "forgot_password": "Forgot password?",
   "last_name": "Last Name",
   "login": "Login",
+  "logout": "Logout",
   "login_description": "Log in to your mentoring platform account now!",
   "logging_in": "Logging you in...",
   "mentoring_platform": "Mentoring Platform",
@@ -22,5 +23,19 @@
   "username": "Username",
   "verify_password": "Verify Password",
   "internal_error": "An error has occurred in the server, please try again later.",
-  "register_success": "Registration is successful, logging you in..."
+  "register_success": "Registration is successful, logging you in...",
+  "dashboard": {
+    "home": {
+      "title": "Home",
+      "description": "Home page of the dasboard for all users."
+    },
+    "mentor_only": {
+      "title": "Mentor Only",
+      "description": "This page can only be viewed by a mentor."
+    },
+    "mentee_only": {
+      "title": "Mentee Only",
+      "description": "This page can only be viewed by a mentee."
+    }
+  }
 }

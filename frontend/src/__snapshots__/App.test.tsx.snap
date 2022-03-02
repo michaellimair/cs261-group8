@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SidebarNavItem renders properly without an icon 1`] = `
+exports[`App renders correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -32,35 +32,9 @@ Object {
         style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
       />
     </div>
-    <div>
-      <a
-        class="chakra-link css-jgup0q"
-        href="/dashboard"
-        style="text-decoration: none;"
-      >
-        <div
-          class="css-cpuzs9"
-          role="group"
-        >
-          hello
-        </div>
-      </a>
-    </div>
+    <div />
   </body>,
-  "container": <div>
-    <a
-      class="chakra-link css-jgup0q"
-      href="/dashboard"
-      style="text-decoration: none;"
-    >
-      <div
-        class="css-cpuzs9"
-        role="group"
-      >
-        hello
-      </div>
-    </a>
-  </div>,
+  "container": <div />,
   "debug": [Function],
   "findAllByAltText": [Function],
   "findAllByDisplayValue": [Function],

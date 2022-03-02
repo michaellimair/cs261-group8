@@ -1,5 +1,7 @@
 /* eslint-disable max-classes-per-file */
 import { AxiosInstance } from 'axios';
+import CredentialManagerFactory from 'factories/CredentialManagerFactory';
+import CredentialManager from 'libs/credential-manager';
 import BaseAPI, { handleDates, isIsoDateString } from './base.api';
 import ApiError from './error/ApiError';
 import BadRequestApiError from './error/BadRequestApiError';
@@ -74,14 +76,19 @@ describe('base.api.ts', () => {
     });
   });
 
+  const credentialManagerFactory = new CredentialManagerFactory();
+
   describe('BaseAPI', () => {
     let api: BaseAPI;
+    let mockCredentialManager: CredentialManager;
     let mockClient: AxiosInstance;
     const mockPath = '/hello/there';
 
     beforeEach(() => {
       mockClient = createMockClient();
+      mockCredentialManager = credentialManagerFactory.create();
       api = new BaseAPI({
+        credentialManager: mockCredentialManager,
         client: mockClient,
         basePath: '/hello',
       });
@@ -108,6 +115,65 @@ describe('base.api.ts', () => {
         data: {
           createdAt: new Date('2022-02-01T14:14:48.508Z'),
         },
+      });
+    });
+
+    it('injects an request token interceptor to the client given no options', () => {
+      const passThruFn = (mockClient.interceptors.request.use as jest.Mock).mock.calls[0][0];
+      expect(typeof passThruFn).toBe('function');
+      const testObject = {};
+      expect(passThruFn(testObject)).toMatchObject({
+        headers: {
+          Authorization: `Token ${mockCredentialManager.credentials.token}`,
+        },
+      });
+    });
+
+    it('injects an request token interceptor to the client given existing headers', () => {
+      const passThruFn = (mockClient.interceptors.request.use as jest.Mock).mock.calls[0][0];
+      expect(typeof passThruFn).toBe('function');
+      const testObject = {
+        headers: {
+          Cookie: 'abc',
+        },
+      };
+      expect(passThruFn(testObject)).toMatchObject({
+        headers: {
+          Cookie: 'abc',
+          Authorization: `Token ${mockCredentialManager.credentials.token}`,
+        },
+      });
+    });
+
+    it('does not inject auth token if present in header', () => {
+      const passThruFn = (mockClient.interceptors.request.use as jest.Mock).mock.calls[0][0];
+      expect(typeof passThruFn).toBe('function');
+      const testObject = {
+        headers: {
+          Authorization: 'abc',
+        },
+      };
+      expect(passThruFn(testObject)).toMatchObject({
+        headers: {
+          Authorization: 'abc',
+        },
+      });
+    });
+
+    it('does not inject auth token if token is not present', () => {
+      mockCredentialManager = credentialManagerFactory.create(null, null);
+      api = new BaseAPI({
+        credentialManager: mockCredentialManager,
+        client: mockClient,
+        basePath: '/hello',
+      });
+      const passThruFn = (mockClient.interceptors.request.use as jest.Mock).mock.calls[0][0];
+      expect(typeof passThruFn).toBe('function');
+      const testObject = {
+        headers: {},
+      };
+      expect(passThruFn(testObject)).toMatchObject({
+        headers: {},
       });
     });
 

@@ -2,6 +2,7 @@ import { parseISO } from 'date-fns';
 import urljoin from 'url-join';
 import axios, { AxiosInstance } from 'axios';
 import { API_HOST } from 'appenv';
+import CredentialManager from 'libs/credential-manager';
 import ApiError from './error/ApiError';
 import ValidationApiError from './error/BadRequestApiError';
 import TooLargeError from './error/TooLargeError';
@@ -49,6 +50,7 @@ interface IBaseAPISettings {
   basePath?: string;
   host?: string;
   client?: AxiosInstance;
+  credentialManager?: CredentialManager;
 }
 
 /**
@@ -60,6 +62,8 @@ class BaseAPI {
   private host: string;
 
   private client: AxiosInstance;
+
+  private credentialManager: CredentialManager;
 
   protected basePath: string;
 
@@ -101,6 +105,19 @@ class BaseAPI {
 
     this.client = settings?.client ?? axios.create({
       baseURL: this.host,
+    });
+
+    this.credentialManager = settings?.credentialManager ?? new CredentialManager();
+
+    this.client.interceptors.request.use((request) => {
+      if (!request.headers) {
+        request.headers = {};
+      }
+      const { token } = this.credentialManager.credentials;
+      if (!request.headers.Authorization && token) {
+        request.headers.Authorization = `Token ${token}`;
+      }
+      return request;
     });
 
     this.client.interceptors.response.use((resp) => {
