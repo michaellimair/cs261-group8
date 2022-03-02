@@ -113,11 +113,11 @@ Object {
             class="css-70qvj9"
           >
             <button
-              aria-controls="menu-list-6"
+              aria-controls="menu-list-3"
               aria-expanded="false"
               aria-haspopup="menu"
               class="chakra-menu__menu-button css-10lilp"
-              id="menu-button-6"
+              id="menu-button-3"
             >
               <span
                 class="css-xl71ch"
@@ -149,14 +149,7 @@ Object {
                   >
                     <p
                       class="chakra-text css-g5hezf"
-                    >
-                      Justina Clark
-                    </p>
-                    <p
-                      class="chakra-text css-65bt76"
-                    >
-                      Admin
-                    </p>
+                    />
                   </div>
                   <div
                     class="css-1t6irk0"
@@ -187,41 +180,11 @@ Object {
               <div
                 aria-orientation="vertical"
                 class="chakra-menu__menu-list css-w8sf4k"
-                id="menu-list-6"
+                id="menu-list-3"
                 role="menu"
                 style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
                 tabindex="-1"
               >
-                <button
-                  class="chakra-menu__menuitem css-1k756t9"
-                  data-index="0"
-                  id="menu-list-6-menuitem-1"
-                  role="menuitem"
-                  tabindex="-1"
-                  type="button"
-                >
-                  Profile
-                </button>
-                <button
-                  class="chakra-menu__menuitem css-1k756t9"
-                  data-index="1"
-                  id="menu-list-6-menuitem-2"
-                  role="menuitem"
-                  tabindex="-1"
-                  type="button"
-                >
-                  Settings
-                </button>
-                <button
-                  class="chakra-menu__menuitem css-1k756t9"
-                  data-index="2"
-                  id="menu-list-6-menuitem-3"
-                  role="menuitem"
-                  tabindex="-1"
-                  type="button"
-                >
-                  Billing
-                </button>
                 <hr
                   aria-orientation="horizontal"
                   class="chakra-menu__divider css-0"
@@ -229,13 +192,13 @@ Object {
                 />
                 <button
                   class="chakra-menu__menuitem css-1k756t9"
-                  data-index="3"
-                  id="menu-list-6-menuitem-4"
+                  data-index="0"
+                  id="menu-list-3-menuitem-1"
                   role="menuitem"
                   tabindex="-1"
                   type="button"
                 >
-                  Sign out
+                  logout
                 </button>
               </div>
             </div>
@@ -325,11 +288,11 @@ Object {
           class="css-70qvj9"
         >
           <button
-            aria-controls="menu-list-6"
+            aria-controls="menu-list-3"
             aria-expanded="false"
             aria-haspopup="menu"
             class="chakra-menu__menu-button css-10lilp"
-            id="menu-button-6"
+            id="menu-button-3"
           >
             <span
               class="css-xl71ch"
@@ -361,14 +324,7 @@ Object {
                 >
                   <p
                     class="chakra-text css-g5hezf"
-                  >
-                    Justina Clark
-                  </p>
-                  <p
-                    class="chakra-text css-65bt76"
-                  >
-                    Admin
-                  </p>
+                  />
                 </div>
                 <div
                   class="css-1t6irk0"
@@ -399,41 +355,11 @@ Object {
             <div
               aria-orientation="vertical"
               class="chakra-menu__menu-list css-w8sf4k"
-              id="menu-list-6"
+              id="menu-list-3"
               role="menu"
               style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
               tabindex="-1"
             >
-              <button
-                class="chakra-menu__menuitem css-1k756t9"
-                data-index="0"
-                id="menu-list-6-menuitem-1"
-                role="menuitem"
-                tabindex="-1"
-                type="button"
-              >
-                Profile
-              </button>
-              <button
-                class="chakra-menu__menuitem css-1k756t9"
-                data-index="1"
-                id="menu-list-6-menuitem-2"
-                role="menuitem"
-                tabindex="-1"
-                type="button"
-              >
-                Settings
-              </button>
-              <button
-                class="chakra-menu__menuitem css-1k756t9"
-                data-index="2"
-                id="menu-list-6-menuitem-3"
-                role="menuitem"
-                tabindex="-1"
-                type="button"
-              >
-                Billing
-              </button>
               <hr
                 aria-orientation="horizontal"
                 class="chakra-menu__divider css-0"
@@ -441,13 +367,13 @@ Object {
               />
               <button
                 class="chakra-menu__menuitem css-1k756t9"
-                data-index="3"
-                id="menu-list-6-menuitem-4"
+                data-index="0"
+                id="menu-list-3-menuitem-1"
                 role="menuitem"
                 tabindex="-1"
                 type="button"
               >
-                Sign out
+                logout
               </button>
             </div>
           </div>
