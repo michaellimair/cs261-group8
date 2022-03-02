@@ -1,0 +1,510 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarMobileNav renders properly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div
+      id="chakra-toast-portal"
+    >
+      <ul
+        id="chakra-toast-manager-top"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-top-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-top-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
+    <div>
+      <div
+        class="css-g8fv48"
+      >
+        <button
+          aria-label="open menu"
+          class="chakra-button css-2mi4sz"
+          data-testid="openButton"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            focusable="false"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="3"
+              x2="21"
+              y1="12"
+              y2="12"
+            />
+            <line
+              x1="3"
+              x2="21"
+              y1="6"
+              y2="6"
+            />
+            <line
+              x1="3"
+              x2="21"
+              y1="18"
+              y2="18"
+            />
+          </svg>
+        </button>
+        <p
+          class="chakra-text css-1ri2w28"
+        >
+          Logo
+        </p>
+        <div
+          class="chakra-stack css-1qgtx64"
+        >
+          <button
+            aria-label="open menu"
+            class="chakra-button css-198bfjk"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+              />
+              <path
+                d="M13.73 21a2 2 0 0 1-3.46 0"
+              />
+            </svg>
+          </button>
+          <div
+            class="css-70qvj9"
+          >
+            <button
+              aria-controls="menu-list-6"
+              aria-expanded="false"
+              aria-haspopup="menu"
+              class="chakra-menu__menu-button css-10lilp"
+              id="menu-button-6"
+            >
+              <span
+                class="css-xl71ch"
+              >
+                <div
+                  class="chakra-stack css-84zodg"
+                >
+                  <span
+                    class="chakra-avatar css-1ruhx4w"
+                  >
+                    <svg
+                      aria-label=" avatar"
+                      class="chakra-avatar__svg css-16ite8i"
+                      role="img"
+                      viewBox="0 0 128 128"
+                    >
+                      <path
+                        d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                  <div
+                    class="chakra-stack css-q43qan"
+                  >
+                    <p
+                      class="chakra-text css-g5hezf"
+                    >
+                      Justina Clark
+                    </p>
+                    <p
+                      class="chakra-text css-65bt76"
+                    >
+                      Admin
+                    </p>
+                  </div>
+                  <div
+                    class="css-1t6irk0"
+                  >
+                    <svg
+                      fill="none"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <polyline
+                        points="6 9 12 15 18 9"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </span>
+            </button>
+            <div
+              class="css-0"
+              style="visibility: hidden; position: absolute; min-width: max-content; inset: 0 auto auto 0;"
+            >
+              <div
+                aria-orientation="vertical"
+                class="chakra-menu__menu-list css-w8sf4k"
+                id="menu-list-6"
+                role="menu"
+                style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
+                tabindex="-1"
+              >
+                <button
+                  class="chakra-menu__menuitem css-1k756t9"
+                  data-index="0"
+                  id="menu-list-6-menuitem-1"
+                  role="menuitem"
+                  tabindex="-1"
+                  type="button"
+                >
+                  Profile
+                </button>
+                <button
+                  class="chakra-menu__menuitem css-1k756t9"
+                  data-index="1"
+                  id="menu-list-6-menuitem-2"
+                  role="menuitem"
+                  tabindex="-1"
+                  type="button"
+                >
+                  Settings
+                </button>
+                <button
+                  class="chakra-menu__menuitem css-1k756t9"
+                  data-index="2"
+                  id="menu-list-6-menuitem-3"
+                  role="menuitem"
+                  tabindex="-1"
+                  type="button"
+                >
+                  Billing
+                </button>
+                <hr
+                  aria-orientation="horizontal"
+                  class="chakra-menu__divider css-0"
+                  role="separator"
+                />
+                <button
+                  class="chakra-menu__menuitem css-1k756t9"
+                  data-index="3"
+                  id="menu-list-6-menuitem-4"
+                  role="menuitem"
+                  tabindex="-1"
+                  type="button"
+                >
+                  Sign out
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="css-g8fv48"
+    >
+      <button
+        aria-label="open menu"
+        class="chakra-button css-2mi4sz"
+        data-testid="openButton"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          focusable="false"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="3"
+            x2="21"
+            y1="12"
+            y2="12"
+          />
+          <line
+            x1="3"
+            x2="21"
+            y1="6"
+            y2="6"
+          />
+          <line
+            x1="3"
+            x2="21"
+            y1="18"
+            y2="18"
+          />
+        </svg>
+      </button>
+      <p
+        class="chakra-text css-1ri2w28"
+      >
+        Logo
+      </p>
+      <div
+        class="chakra-stack css-1qgtx64"
+      >
+        <button
+          aria-label="open menu"
+          class="chakra-button css-198bfjk"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            focusable="false"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+            />
+            <path
+              d="M13.73 21a2 2 0 0 1-3.46 0"
+            />
+          </svg>
+        </button>
+        <div
+          class="css-70qvj9"
+        >
+          <button
+            aria-controls="menu-list-6"
+            aria-expanded="false"
+            aria-haspopup="menu"
+            class="chakra-menu__menu-button css-10lilp"
+            id="menu-button-6"
+          >
+            <span
+              class="css-xl71ch"
+            >
+              <div
+                class="chakra-stack css-84zodg"
+              >
+                <span
+                  class="chakra-avatar css-1ruhx4w"
+                >
+                  <svg
+                    aria-label=" avatar"
+                    class="chakra-avatar__svg css-16ite8i"
+                    role="img"
+                    viewBox="0 0 128 128"
+                  >
+                    <path
+                      d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <div
+                  class="chakra-stack css-q43qan"
+                >
+                  <p
+                    class="chakra-text css-g5hezf"
+                  >
+                    Justina Clark
+                  </p>
+                  <p
+                    class="chakra-text css-65bt76"
+                  >
+                    Admin
+                  </p>
+                </div>
+                <div
+                  class="css-1t6irk0"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polyline
+                      points="6 9 12 15 18 9"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </span>
+          </button>
+          <div
+            class="css-0"
+            style="visibility: hidden; position: absolute; min-width: max-content; inset: 0 auto auto 0;"
+          >
+            <div
+              aria-orientation="vertical"
+              class="chakra-menu__menu-list css-w8sf4k"
+              id="menu-list-6"
+              role="menu"
+              style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
+              tabindex="-1"
+            >
+              <button
+                class="chakra-menu__menuitem css-1k756t9"
+                data-index="0"
+                id="menu-list-6-menuitem-1"
+                role="menuitem"
+                tabindex="-1"
+                type="button"
+              >
+                Profile
+              </button>
+              <button
+                class="chakra-menu__menuitem css-1k756t9"
+                data-index="1"
+                id="menu-list-6-menuitem-2"
+                role="menuitem"
+                tabindex="-1"
+                type="button"
+              >
+                Settings
+              </button>
+              <button
+                class="chakra-menu__menuitem css-1k756t9"
+                data-index="2"
+                id="menu-list-6-menuitem-3"
+                role="menuitem"
+                tabindex="-1"
+                type="button"
+              >
+                Billing
+              </button>
+              <hr
+                aria-orientation="horizontal"
+                class="chakra-menu__divider css-0"
+                role="separator"
+              />
+              <button
+                class="chakra-menu__menuitem css-1k756t9"
+                data-index="3"
+                id="menu-list-6-menuitem-4"
+                role="menuitem"
+                tabindex="-1"
+                type="button"
+              >
+                Sign out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
