@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import PlanOfAction, MileStone, Comment
+from .models import plan_of_action, milestone, Comment
 
 
 class CommentMenteeSerializer(serializers.ModelSerializer):
@@ -43,7 +43,7 @@ class CommentMentorSerializer(serializers.ModelSerializer):
         return comment
 
 
-class MilestoneMentorSerializer(serializers.ModelSerializer):
+class milestoneMentorSerializer(serializers.ModelSerializer):
     """
     Serializer for milestone, mentor read only
     """
@@ -55,14 +55,14 @@ class MilestoneMentorSerializer(serializers.ModelSerializer):
         """
         Meta data for milestone
         """
-        model = MileStone
-        fields = ('id', 'description', 'dateRecorded', 'planOfAction', 'completed', 'created', 'modified')
+        model = milestone
+        fields = ('id', 'description', 'plan_of_action', 'completed', 'created', 'modified')
         extra_kwargs = {
             'description': {'required': True},
             'completed': {'required': True}
         }
 
-class MilestoneMenteeSerializer(serializers.ModelSerializer):
+class milestoneMenteeSerializer(serializers.ModelSerializer):
     """
     Serializer for milestone, mentee can create, and update if it is complete
     """
@@ -74,8 +74,8 @@ class MilestoneMenteeSerializer(serializers.ModelSerializer):
         """
         Meta data for milestone
         """
-        model = MileStone
-        fields = ('id', 'description', 'dateRecorded', 'planOfAction', 'completed', 'created', 'modified')
+        model = milestone
+        fields = ('id', 'description', 'plan_of_action', 'completed', 'created', 'modified')
         extra_kwargs = {
             'description': {'required': True},
             'completed': {'required': True}
@@ -87,10 +87,8 @@ class MilestoneMenteeSerializer(serializers.ModelSerializer):
         """
 
         request = self.context.get("request")
-        milestone = MileStone.objects.create(
+        milestone = milestone.objects.create(
             description=validated_data['description'],
-            ## may need to add default current time here?
-            dateRecorded=validated_data['dateRecorded'],
             completed=False
         )
 

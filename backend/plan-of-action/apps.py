@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PlanofactionConfig(AppConfig):
+class plan_of_actionConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'planOfAction'
+    name = 'plan_of_action'
