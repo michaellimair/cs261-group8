@@ -8,20 +8,20 @@ class PlanOfAction(TimeStampedModel):
     Model of plan of action
     """
     #  left fk to pair here
-    discription = models.TextField()
+    description = models.TextField()
 
 
 class MileStone(TimeStampedModel):
     """
     Model for milestone connect to plan of action
     """
-    discription = models.TextField()
+    description = models.TextField()
     dateRecorded = models.DateTimeField()
     planOfAction = models.ForeignKey(PlanOfAction, on_delete=models.CASCADE, null=True)
-    completed = models.BooleanField()
+    completed = models.BooleanField(default=False)
 
 
-class comment(TimeStampedModel):
+class Comment(TimeStampedModel):
     """
     Model for comment add on milestone(?)
     """
