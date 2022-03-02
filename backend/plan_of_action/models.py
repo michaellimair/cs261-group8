@@ -9,15 +9,29 @@ class PlanOfAction(TimeStampedModel):
     """
     #  left fk to pair here
     description = models.TextField()
+    approved = models.BooleanField(default=False)
 
 
 class Milestone(TimeStampedModel):
     """
     Model for milestone connect to plan of action
     """
+    class MilestoneType(models.TextChoices):
+        """
+        Personal or Professional milestone should be chosen.
+        """
+        PERSONAL = 'personal', _('personal')
+        PROFESSIONAL = 'professional', _('professional')
+
+    type = models.CharField(
+        max_length=20,
+        choices=MilestoneType.choices,
+        null=False
+    )
     description = models.TextField()
     plan_of_action = models.ForeignKey(PlanOfAction, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
+    approved = models.BooleanField(default=False)
 
 
 class Comment(TimeStampedModel):
