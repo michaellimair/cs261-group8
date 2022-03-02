@@ -5,6 +5,7 @@ import CredentialManager from 'libs/credential-manager';
 import BaseAPI, { handleDates, isIsoDateString } from './base.api';
 import ApiError from './error/ApiError';
 import BadRequestApiError from './error/BadRequestApiError';
+import NotFoundError from './error/NotFoundError';
 import UnauthorizedError from './error/UnauthorizedError';
 import UnprocessableEntityApiError from './error/UnprocessableEntityApiError';
 
@@ -236,6 +237,10 @@ describe('base.api.ts', () => {
       it('intercepts unauthorized errors properly', async () => expect(async () => {
         await errorInterceptor(new MockAxiosError(401, { message: 'Please log in' }));
       }).rejects.toEqual(new UnauthorizedError('Please log in')));
+
+      it('intercepts not found errors properly', async () => expect(async () => {
+        await errorInterceptor(new MockAxiosError(404, { message: 'Not Found' }));
+      }).rejects.toEqual(new NotFoundError('Not Found')));
 
       it('intercepts payload too large errors properly', async () => expect(async () => {
         await errorInterceptor(new MockAxiosError(413, { message: 'Payload too large' }));
