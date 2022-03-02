@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import plan_of_action, milestone, Comment
+from .models import PlanOfAction, Milestone, Comment
 
 
 class CommentMenteeSerializer(serializers.ModelSerializer):
     """
-    serializer for comment to mantee's view, read only
+    serializer for comment to mentee's view, read only
     """
     class Meta:
         """
@@ -55,7 +55,7 @@ class milestoneMentorSerializer(serializers.ModelSerializer):
         """
         Meta data for milestone
         """
-        model = milestone
+        model = Milestone
         fields = ('id', 'description', 'plan_of_action', 'completed', 'created', 'modified')
         extra_kwargs = {
             'description': {'required': True},
@@ -74,7 +74,7 @@ class milestoneMenteeSerializer(serializers.ModelSerializer):
         """
         Meta data for milestone
         """
-        model = milestone
+        model = Milestone
         fields = ('id', 'description', 'plan_of_action', 'completed', 'created', 'modified')
         extra_kwargs = {
             'description': {'required': True},
@@ -87,7 +87,7 @@ class milestoneMenteeSerializer(serializers.ModelSerializer):
         """
 
         request = self.context.get("request")
-        milestone = milestone.objects.create(
+        milestone = Milestone.objects.create(
             description=validated_data['description'],
             completed=False
         )
