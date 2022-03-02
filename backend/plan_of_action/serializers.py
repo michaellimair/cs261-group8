@@ -51,20 +51,20 @@ class MilestoneMentorSerializer(serializers.ModelSerializer):
         Meta data for milestone
         """
         model = Milestone
-        fields = ('id', 'description', 'type', 'completed', 'approved', 'created', 'modified')
+        fields = ('id', 'description', 'type', 'completed', 'created', 'modified')
         extra_kwargs = {
             'description': {'required': True},
             'type': {'required': True},
             'completed': {'required': True},
-            'approved': {'required': True}
+            # 'approved': {'required': True}
         }
 
-    def update(self, instance, validated_data):
-        """
-        mentor can approve the milestone
-        """
-        if "approved" in validated_data:
-            instance.approved = validated_data['approved']
+    # def update(self, instance, validated_data):
+    #     """
+    #     mentor can approve the milestone
+    #     """
+    #     if "approved" in validated_data:
+    #         instance.approved = validated_data['approved']
 
 
 class MilestoneMenteeSerializer(serializers.ModelSerializer):
@@ -77,13 +77,12 @@ class MilestoneMenteeSerializer(serializers.ModelSerializer):
         Meta data for milestone
         """
         model = Milestone
-        fields = ('id', 'description', 'type', 'completed', 'approved', 'created', 'modified')
+        fields = ('id', 'description', 'type', 'completed', 'created', 'modified')
         extra_kwargs = {
             'description': {'required': True},
             'type': {'required': True},
             'completed': {'required': True},
-            'approved': {'required': True}
-
+            # 'approved': {'required': True}
         }
 
     def create(self, validated_data):
@@ -98,7 +97,7 @@ class MilestoneMenteeSerializer(serializers.ModelSerializer):
             #  should I don't ask them to provide completion in the first time since it always been false?
             #  already set it to false at model
             completed=False,
-            approved=False
+            # approved=False
         )
 
         return milestone

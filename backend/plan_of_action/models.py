@@ -31,7 +31,7 @@ class Milestone(TimeStampedModel):
     description = models.TextField()
     plan_of_action = models.ForeignKey(PlanOfAction, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
-    approved = models.BooleanField(default=False)
+    # approved = models.BooleanField(default=False)
 
 
 class Comment(TimeStampedModel):
