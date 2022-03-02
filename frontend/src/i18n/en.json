@@ -22,5 +22,16 @@
   "username": "Username",
   "verify_password": "Verify Password",
   "internal_error": "An error has occurred in the server, please try again later.",
-  "register_success": "Registration is successful, logging you in..."
+  "register_success": "Registration is successful, logging you in...",
+  "dashboard": {
+    "home": {
+      "description": "Home page of the dasboard for all users."
+    },
+    "mentor_only": {
+      "description": "This page can only be viewed by a mentor."
+    },
+    "mentee_only": {
+      "description": "This page can only be viewed by a mentee."
+    }
+  }
 }

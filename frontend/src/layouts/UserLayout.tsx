@@ -10,7 +10,7 @@ import { Outlet } from 'react-router-dom';
 import SidebarContent from 'components/Sidebar/SidebarLinkItem';
 import SidebarMobileNav from 'components/Sidebar/SidebarMobileNav';
 
-const SidebarWithHeader: FC = () => {
+const UserLayout: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
@@ -39,4 +39,4 @@ const SidebarWithHeader: FC = () => {
   );
 };
 
-export default SidebarWithHeader;
+export default UserLayout;

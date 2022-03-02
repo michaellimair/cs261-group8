@@ -1,3 +1,7 @@
+import { UserGroup } from 'customTypes/auth';
+import DashboardHomePage from 'pages/dashboard/dashboard';
+import DashboardMenteeOnlyPage from 'pages/dashboard/mentee-only';
+import DashboardMentorOnlyPage from 'pages/dashboard/mentor-only';
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
 import { ReactElement } from 'react';
@@ -23,6 +27,14 @@ export interface IRoute {
   description: string;
 }
 
+export interface IDashboardRoute extends IRoute {
+  allowedGroups: UserGroup[];
+}
+
+const ALLOW_ALL_USERS: UserGroup[] = [UserGroup.MENTOR, UserGroup.MENTEE];
+const MENTOR_ONLY: UserGroup[] = [UserGroup.MENTOR];
+const MENTEE_ONLY: UserGroup[] = [UserGroup.MENTEE];
+
 export const authRoutes: IRoute[] = [
   {
     name: 'login',
@@ -37,5 +49,32 @@ export const authRoutes: IRoute[] = [
     layout: RouteLayout.AUTH,
     path: 'register',
     description: 'register_description',
+  },
+];
+
+export const dashboardRoutes: IDashboardRoute[] = [
+  {
+    name: 'home',
+    element: <DashboardHomePage />,
+    layout: RouteLayout.USER,
+    index: true,
+    description: 'dashboard.home.description',
+    allowedGroups: ALLOW_ALL_USERS,
+  },
+  {
+    name: 'mentor-only',
+    element: <DashboardMentorOnlyPage />,
+    layout: RouteLayout.USER,
+    path: 'mentor-only',
+    description: 'dashboard.mentor_only.description',
+    allowedGroups: MENTOR_ONLY,
+  },
+  {
+    name: 'mentee-only',
+    element: <DashboardMenteeOnlyPage />,
+    layout: RouteLayout.USER,
+    path: 'mentee-only',
+    description: 'dashboard.mentee_only.description',
+    allowedGroups: MENTEE_ONLY,
   },
 ];
