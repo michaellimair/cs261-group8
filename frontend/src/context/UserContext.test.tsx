@@ -3,12 +3,19 @@ import { renderHook } from '@testing-library/react-hooks';
 import { httpClient } from 'api';
 import ApiError from 'api/error/ApiError';
 import UnauthorizedError from 'api/error/UnauthorizedError';
+import CredentialManagerFactory from 'factories/CredentialManagerFactory';
 import UserFactory from 'factories/UserFactory';
+import CredentialManager from 'libs/credential-manager';
+import { queryClient } from 'libs/query-client';
+import { queryRetryCondition } from 'libs/query-retry';
 import { FC, useContext } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from 'react-query';
 import UserContext, { UserContextProvider } from './UserContext';
 
+const mockCredentialManager = (new CredentialManagerFactory()).create('abc', new Date());
+
 jest.mock('api');
+jest.mock('libs/credential-manager');
 
 const useTestUserContextHook = () => {
   // eslint-disable-next-line sonarjs/prefer-immediate-return
@@ -17,12 +24,11 @@ const useTestUserContextHook = () => {
   return ctx;
 };
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      cacheTime: 0,
-      retryDelay: 0,
-    },
+queryClient.setDefaultOptions({
+  queries: {
+    cacheTime: 0,
+    retryDelay: 0,
+    retry: queryRetryCondition,
   },
 });
 
@@ -35,7 +41,18 @@ const wrapper: FC = ({ children }) => (
 describe('UserContext', () => {
   const userFactory = new UserFactory();
 
+  it.skip('immediately returns not authorized if user if there are no user credentials', () => {
+    const mockEmptyCredentialManager = (new CredentialManagerFactory()).create(null, null);
+    (CredentialManager as jest.Mock).mockImplementationOnce(() => mockEmptyCredentialManager);
+
+    const { result } = renderHook(() => useTestUserContextHook(), { wrapper });
+
+    expect(httpClient.auth.me).toHaveBeenCalledTimes(0);
+    expect(result.current.user).toBeUndefined();
+  });
+
   it('returns the correct data if the user is authenticated', async () => {
+    (CredentialManager as jest.Mock).mockImplementationOnce(() => mockCredentialManager);
     const user = userFactory.create();
     const userQueryFn = async () => user;
     const userQueryPromise = userQueryFn();
@@ -89,6 +106,7 @@ describe('UserContext', () => {
   });
 
   it('does not retry if there is an unauthorized error', async () => {
+    (CredentialManager as jest.Mock).mockImplementationOnce(() => mockCredentialManager);
     let count: number = 0;
 
     const unauthorizedQueryFn = async () => {
@@ -115,7 +133,7 @@ describe('UserContext', () => {
     });
 
     expect(count).toBe(1);
-    expect(result.current.isUnauthorized).toBe(true);
     expect(result.current.isLoading).toBe(false);
+    expect(result.current.isUnauthorized).toBe(true);
   });
 });
