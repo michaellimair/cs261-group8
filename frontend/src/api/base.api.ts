@@ -8,6 +8,7 @@ import ValidationApiError from './error/BadRequestApiError';
 import TooLargeError from './error/TooLargeError';
 import UnprocessableEntityApiError from './error/UnprocessableEntityApiError';
 import UnauthorizedError from './error/UnauthorizedError';
+import NotFoundError from './error/NotFoundError';
 
 const isoDateFormat = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/;
 
@@ -82,6 +83,9 @@ class BaseAPI {
       }
       if (err.response?.status === 401) {
         return Promise.reject(new UnauthorizedError(err.response.data.message));
+      }
+      if (err.response?.status === 404) {
+        return Promise.reject(new NotFoundError(err.response.data.message));
       }
       if (err.response?.status === 413) {
         return Promise.reject(new TooLargeError(err.response.data?.message, err.response.data));
