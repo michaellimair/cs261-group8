@@ -117,6 +117,7 @@ Object {
               aria-expanded="false"
               aria-haspopup="menu"
               class="chakra-menu__menu-button css-10lilp"
+              data-testid="menuButton"
               id="menu-button-6"
             >
               <span
@@ -203,7 +204,7 @@ Object {
                   tabindex="-1"
                   type="button"
                 >
-                  dashboard.mentor-only.title
+                  dashboard.mentor_only.title
                 </button>
                 <button
                   class="chakra-menu__menuitem css-1k756t9"
@@ -213,7 +214,7 @@ Object {
                   tabindex="-1"
                   type="button"
                 >
-                  dashboard.mentee-only.title
+                  dashboard.mentee_only.title
                 </button>
                 <hr
                   aria-orientation="horizontal"
@@ -223,6 +224,7 @@ Object {
                 <button
                   class="chakra-menu__menuitem css-1k756t9"
                   data-index="3"
+                  data-testid="logoutButton"
                   id="menu-list-6-menuitem-4"
                   role="menuitem"
                   tabindex="-1"
@@ -322,6 +324,7 @@ Object {
             aria-expanded="false"
             aria-haspopup="menu"
             class="chakra-menu__menu-button css-10lilp"
+            data-testid="menuButton"
             id="menu-button-6"
           >
             <span
@@ -408,7 +411,7 @@ Object {
                 tabindex="-1"
                 type="button"
               >
-                dashboard.mentor-only.title
+                dashboard.mentor_only.title
               </button>
               <button
                 class="chakra-menu__menuitem css-1k756t9"
@@ -418,7 +421,7 @@ Object {
                 tabindex="-1"
                 type="button"
               >
-                dashboard.mentee-only.title
+                dashboard.mentee_only.title
               </button>
               <hr
                 aria-orientation="horizontal"
@@ -428,6 +431,7 @@ Object {
               <button
                 class="chakra-menu__menuitem css-1k756t9"
                 data-index="3"
+                data-testid="logoutButton"
                 id="menu-list-6-menuitem-4"
                 role="menuitem"
                 tabindex="-1"

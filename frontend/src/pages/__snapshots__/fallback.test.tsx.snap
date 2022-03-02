@@ -1,35 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`not-found renders properly 1`] = `
+exports[`fallback renders properly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
         class="App"
-      >
-        <header
-          class="App-header"
-        >
-          <p>
-            not_found.title
-          </p>
-        </header>
-      </div>
+      />
     </div>
   </body>,
   "container": <div>
     <div
       class="App"
-    >
-      <header
-        class="App-header"
-      >
-        <p>
-          not_found.title
-        </p>
-      </header>
-    </div>
+    />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

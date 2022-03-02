@@ -65,7 +65,7 @@ Object {
         </div>
         <a
           class="chakra-link css-jgup0q"
-          href="/"
+          href="/dashboard"
           style="text-decoration: none;"
         >
           <div
@@ -98,7 +98,7 @@ Object {
         </a>
         <a
           class="chakra-link css-jgup0q"
-          href="/"
+          href="/mentor-only"
           style="text-decoration: none;"
         >
           <div
@@ -123,12 +123,12 @@ Object {
                 d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
               />
             </svg>
-            dashboard.mentor-only.title
+            dashboard.mentor_only.title
           </div>
         </a>
         <a
           class="chakra-link css-jgup0q"
-          href="/"
+          href="/mentee-only"
           style="text-decoration: none;"
         >
           <div
@@ -154,7 +154,7 @@ Object {
                 d="M495.92 190.5v-.11a16 16 0 00-8-12.28l-224-128a16 16 0 00-15.88 0l-224 128a16 16 0 000 27.78l224 128a16 16 0 0015.88 0L461 221.28a2 2 0 013 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 00496 368V192a14.76 14.76 0 00-.08-1.5z"
               />
             </svg>
-            dashboard.mentee-only.title
+            dashboard.mentee_only.title
           </div>
         </a>
       </div>
@@ -193,7 +193,7 @@ Object {
       </div>
       <a
         class="chakra-link css-jgup0q"
-        href="/"
+        href="/dashboard"
         style="text-decoration: none;"
       >
         <div
@@ -226,7 +226,7 @@ Object {
       </a>
       <a
         class="chakra-link css-jgup0q"
-        href="/"
+        href="/mentor-only"
         style="text-decoration: none;"
       >
         <div
@@ -251,12 +251,12 @@ Object {
               d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
             />
           </svg>
-          dashboard.mentor-only.title
+          dashboard.mentor_only.title
         </div>
       </a>
       <a
         class="chakra-link css-jgup0q"
-        href="/"
+        href="/mentee-only"
         style="text-decoration: none;"
       >
         <div
@@ -282,7 +282,7 @@ Object {
               d="M495.92 190.5v-.11a16 16 0 00-8-12.28l-224-128a16 16 0 00-15.88 0l-224 128a16 16 0 000 27.78l224 128a16 16 0 0015.88 0L461 221.28a2 2 0 013 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 00496 368V192a14.76 14.76 0 00-.08-1.5z"
             />
           </svg>
-          dashboard.mentee-only.title
+          dashboard.mentee_only.title
         </div>
       </a>
     </div>

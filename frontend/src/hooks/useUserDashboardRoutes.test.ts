@@ -1,7 +1,7 @@
 import { dashboardRoutes } from 'routes';
 import { UserGroup } from 'customTypes/auth';
 import { renderHook } from '@testing-library/react-hooks';
-import useUser from 'hooks/useUser';
+import { useUser } from 'hooks/useUser';
 import useUserDashboardRoutes from './useUserDashboardRoutes';
 
 jest.mock('hooks/useUser');

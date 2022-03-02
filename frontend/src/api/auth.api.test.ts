@@ -47,7 +47,7 @@ describe('auth.api.test.ts', () => {
       expect(api.post).toHaveBeenCalledTimes(1);
       expect(credentialManager.setCredentials).toHaveBeenCalledTimes(1);
       expect(api.post).toHaveBeenCalledWith({
-        path: '/login',
+        path: '/auth/login',
         body,
       });
     });
@@ -71,7 +71,7 @@ describe('auth.api.test.ts', () => {
 
       expect(api.post).toHaveBeenCalledTimes(1);
       expect(api.post).toHaveBeenCalledWith({
-        path: '/register',
+        path: '/auth/register',
         body: registerBody,
       });
     });
@@ -83,7 +83,7 @@ describe('auth.api.test.ts', () => {
 
       expect(api.get).toHaveBeenCalledTimes(1);
       expect(api.get).toHaveBeenCalledWith({
-        path: '',
+        path: '/auth',
       });
     });
   });
@@ -95,7 +95,7 @@ describe('auth.api.test.ts', () => {
       expect(api.post).toHaveBeenCalledTimes(1);
       expect(credentialManager.clearCredentials).toHaveBeenCalledTimes(1);
       expect(api.post).toHaveBeenCalledWith({
-        path: '/logout',
+        path: '/auth/logout',
       });
     });
   });

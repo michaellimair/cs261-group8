@@ -1,4 +1,4 @@
-import useUser from 'hooks/useUser';
+import { useUser } from 'hooks/useUser';
 import { FC } from 'react';
 import { Navigate } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ const FallbackPage: FC = () => {
       {!isLoading && !isLoggedIn && (
         <Navigate replace to="/auth" />
       )}
-      {isLoggedIn && (
+      {!isLoading && isLoggedIn && (
         <Navigate replace to="/dashboard" />
       )}
     </div>

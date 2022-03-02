@@ -17,7 +17,7 @@ interface IUseUserProps {
   context?: typeof UserContext;
 }
 
-const useUser = ({
+export const useUser = ({
   context = UserContext,
 }: IUseUserProps = {}): IUseUser => {
   const userContext = useContext(context);
@@ -47,5 +47,3 @@ const useUser = ({
     isMentee,
   };
 };
-
-export default useUser;

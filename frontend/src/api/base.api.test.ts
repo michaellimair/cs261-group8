@@ -160,6 +160,23 @@ describe('base.api.ts', () => {
       });
     });
 
+    it('does not inject auth token if token is not present', () => {
+      mockCredentialManager = credentialManagerFactory.create(null, null);
+      api = new BaseAPI({
+        credentialManager: mockCredentialManager,
+        client: mockClient,
+        basePath: '/hello',
+      });
+      const passThruFn = (mockClient.interceptors.request.use as jest.Mock).mock.calls[0][0];
+      expect(typeof passThruFn).toBe('function');
+      const testObject = {
+        headers: {},
+      };
+      expect(passThruFn(testObject)).toMatchObject({
+        headers: {},
+      });
+    });
+
     it('injects an error interceptor to the client', () => {
       const passThruFn = (mockClient.interceptors.response.use as jest.Mock).mock.calls[1][0];
       expect(typeof passThruFn).toBe('function');

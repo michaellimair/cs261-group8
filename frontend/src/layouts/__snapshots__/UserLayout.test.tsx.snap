@@ -151,6 +151,7 @@ Object {
                 aria-expanded="false"
                 aria-haspopup="menu"
                 class="chakra-menu__menu-button css-10lilp"
+                data-testid="menuButton"
                 id="menu-button-4"
               >
                 <span
@@ -227,6 +228,7 @@ Object {
                   <button
                     class="chakra-menu__menuitem css-1k756t9"
                     data-index="0"
+                    data-testid="logoutButton"
                     id="menu-list-4-menuitem-2"
                     role="menuitem"
                     tabindex="-1"
@@ -364,6 +366,7 @@ Object {
               aria-expanded="false"
               aria-haspopup="menu"
               class="chakra-menu__menu-button css-10lilp"
+              data-testid="menuButton"
               id="menu-button-4"
             >
               <span
@@ -440,6 +443,7 @@ Object {
                 <button
                   class="chakra-menu__menuitem css-1k756t9"
                   data-index="0"
+                  data-testid="logoutButton"
                   id="menu-list-4-menuitem-2"
                   role="menuitem"
                   tabindex="-1"

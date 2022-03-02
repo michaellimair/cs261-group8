@@ -5,7 +5,7 @@ import UserFactory from 'factories/UserFactory';
 import { IUser, UserGroup } from 'customTypes/auth';
 import { renderHook } from '@testing-library/react-hooks';
 import { IUserContext } from 'context/UserContext';
-import useUser from './useUser';
+import { useUser } from './useUser';
 
 const userFactory = new UserFactory();
 

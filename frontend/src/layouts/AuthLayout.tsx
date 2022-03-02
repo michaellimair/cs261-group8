@@ -5,7 +5,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { Navigate, Outlet } from 'react-router-dom';
-import useUser from 'hooks/useUser';
+import { useUser } from 'hooks/useUser';
 
 const AuthLayout: FC = () => {
   const bgColor = useColorModeValue('gray.50', 'gray.800');

@@ -113,11 +113,9 @@ class BaseAPI {
       if (!request.headers) {
         request.headers = {};
       }
-      if (!request.headers.Authorization) {
-        const { token } = this.credentialManager.credentials;
-        if (token) {
-          request.headers.Authorization = `Token ${token}`;
-        }
+      const { token } = this.credentialManager.credentials;
+      if (!request.headers.Authorization && token) {
+        request.headers.Authorization = `Token ${token}`;
       }
       return request;
     });

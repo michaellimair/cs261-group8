@@ -9,7 +9,7 @@ import {
 import { Navigate, Outlet } from 'react-router-dom';
 import SidebarContent from 'components/Sidebar/SidebarContent';
 import SidebarMobileNav from 'components/Sidebar/SidebarMobileNav';
-import useUser from 'hooks/useUser';
+import { useUser } from 'hooks/useUser';
 
 const UserLayout: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

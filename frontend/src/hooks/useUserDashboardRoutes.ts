@@ -1,5 +1,5 @@
 import { dashboardRoutes, IDashboardRoute } from 'routes';
-import useUser from 'hooks/useUser';
+import { useUser } from 'hooks/useUser';
 
 const useUserDashboardRoutes = (): IDashboardRoute[] => {
   const { user } = useUser();

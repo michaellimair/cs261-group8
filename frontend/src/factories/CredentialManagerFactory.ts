@@ -3,10 +3,10 @@ import faker from '@faker-js/faker';
 import CredentialManager from 'libs/credential-manager';
 
 class StubCredentialManager extends CredentialManager {
-  constructor() {
+  constructor(token?: string | null, expiry?: Date | null) {
     super();
-    this.token = faker.random.alphaNumeric(20);
-    this.expiry = faker.date.future(20);
+    this.token = token ?? faker.random.alphaNumeric(20);
+    this.expiry = expiry ?? faker.date.future(20);
   }
 
   get credentials(): { token: string | null; expiry: Date | null; } {
@@ -23,8 +23,8 @@ class StubCredentialManager extends CredentialManager {
 
 class CredentialManagerFactory {
   // eslint-disable-next-line class-methods-use-this
-  create() {
-    return new StubCredentialManager();
+  create(token?: string | null, expiry?: Date | null) {
+    return new StubCredentialManager(token, expiry);
   }
 }
 

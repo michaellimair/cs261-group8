@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC } from 'react';
 import {
   IconButton,
   Avatar,
@@ -21,10 +21,9 @@ import {
   FiChevronDown,
 } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
-import useUser from 'hooks/useUser';
+import { useUser } from 'hooks/useUser';
 import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
-import { useMutation } from 'react-query';
-import { httpClient } from 'api';
+import useLogout from 'hooks/useLogout';
 
 interface ISidebarMobileNavProps extends FlexProps {
   onOpen: () => void;
@@ -32,18 +31,9 @@ interface ISidebarMobileNavProps extends FlexProps {
 
 const SidebarMobileNav: FC<ISidebarMobileNavProps> = ({ onOpen, ...rest }) => {
   const { t } = useTranslation();
-  const { mutateAsync, isLoading: isLoggingOut } = useMutation<void>(['logout'], () => httpClient.auth.logout());
-  const { user, reauthenticate } = useUser();
+  const { user } = useUser();
   const routes = useUserDashboardRoutes();
-
-  const onLogout = useCallback(async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    await mutateAsync();
-    await reauthenticate();
-
-    // Hack so that the browser state is totally refreshed
-    window.location.assign('/auth');
-  }, [mutateAsync, reauthenticate]);
+  const { onLogout, isLoggingOut } = useLogout();
 
   return (
     <Flex
@@ -86,6 +76,7 @@ const SidebarMobileNav: FC<ISidebarMobileNavProps> = ({ onOpen, ...rest }) => {
           <Menu>
             <MenuButton
               py={2}
+              data-testid="menuButton"
               transition="all 0.3s"
               _focus={{ boxShadow: 'none' }}
             >
@@ -118,7 +109,7 @@ const SidebarMobileNav: FC<ISidebarMobileNavProps> = ({ onOpen, ...rest }) => {
                 </MenuItem>
               ))}
               <MenuDivider />
-              <MenuItem onClick={onLogout} disabled={isLoggingOut}>{t('logout')}</MenuItem>
+              <MenuItem onClick={onLogout} data-testid="logoutButton" disabled={isLoggingOut}>{t('logout')}</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

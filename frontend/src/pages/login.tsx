@@ -24,7 +24,7 @@ import {
 import useCommonForm from 'hooks/useCommonForm';
 import AlternateAuthAction from 'components/AlternateAuthAction';
 import SubmitButton from 'components/Forms/SubmitButton';
-import useUser from 'hooks/useUser';
+import { useUser } from 'hooks/useUser';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage: FC = () => {
