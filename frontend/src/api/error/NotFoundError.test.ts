@@ -12,7 +12,6 @@ describe('NotFoundError', () => {
     const err = new NotFoundError(errorData.message);
 
     expect(err.message).toBe(errorData.message);
-    expect(err.data).toMatchObject(errorData);
     expect(err).toMatchSnapshot();
   });
 
