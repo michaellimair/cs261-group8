@@ -10,11 +10,16 @@ import { Navigate, Outlet } from 'react-router-dom';
 import SidebarContent from 'components/Sidebar/SidebarContent';
 import SidebarMobileNav from 'components/Sidebar/SidebarMobileNav';
 import { useUser } from 'hooks/useUser';
+import InitializingApp from 'components/InitializingApp';
 
 const UserLayout: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isLoggedIn, isLoading } = useUser();
   const bgColor = useColorModeValue('gray.100', 'gray.900');
+
+  if (isLoading) {
+    return <InitializingApp data-testid="initializing" />;
+  }
 
   if (!isLoading && !isLoggedIn) {
     return <Navigate replace to="/auth" />;

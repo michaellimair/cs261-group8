@@ -14,6 +14,7 @@
   "not_found": {
     "title": "Page not found."
   },
+  "initializing_app": "The application is currently being initialized, please wait.",
   "password": "Password",
   "register": "Register",
   "register_description": "Register to your mentoring platform account and start getting mentorship or start mentoring others!",

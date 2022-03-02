@@ -6,13 +6,18 @@ import {
 } from '@chakra-ui/react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useUser } from 'hooks/useUser';
+import InitializingApp from 'components/InitializingApp';
 
 const AuthLayout: FC = () => {
   const bgColor = useColorModeValue('gray.50', 'gray.800');
-  const { isLoggedIn } = useUser();
+  const { isLoggedIn, isLoading } = useUser();
 
   if (isLoggedIn) {
     return <Navigate to="/dashboard" replace />;
+  }
+
+  if (isLoading) {
+    return <InitializingApp data-testid="initializing" />;
   }
 
   return (

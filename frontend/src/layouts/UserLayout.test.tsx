@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import InitializingApp from 'components/InitializingApp';
 import * as useUser from 'hooks/useUser';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
@@ -6,13 +7,34 @@ import UserLayout from './UserLayout';
 
 describe('UserLayout', () => {
   it('renders properly', () => {
+    jest.spyOn(useUser, 'useUser').mockReturnValue({
+      isLoggedIn: true,
+      user: {
+        groups: [],
+      },
+      isLoading: false,
+    } as any);
     const queryClient = new QueryClient();
     const result = render(
       <QueryClientProvider client={queryClient}>
-        <UserLayout />
+        <MemoryRouter>
+          <UserLayout />
+        </MemoryRouter>
       </QueryClientProvider>,
     );
     expect(result).toMatchSnapshot();
+  });
+
+  it('shows initializing screen if user data is loading', () => {
+    jest.spyOn(useUser, 'useUser').mockReturnValue({
+      isLoggedIn: false,
+      isLoading: true,
+    } as any);
+
+    const result = render(<UserLayout />);
+    const initializing = render(<InitializingApp />);
+
+    expect(result.container.innerHTML).toEqual(initializing.container.innerHTML);
   });
 
   it('redirects to dashboard if user is logged in', () => {

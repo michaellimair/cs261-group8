@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fallback renders properly 1`] = `
+exports[`components/InitializingApp renders properly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>

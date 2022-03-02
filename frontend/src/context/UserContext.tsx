@@ -1,12 +1,12 @@
 import { useQuery } from 'react-query';
 import { IUser } from 'customTypes/auth';
 import {
-  createContext, FC, useCallback, useMemo,
+  createContext, FC, useMemo, useState,
 } from 'react';
 import { httpClient } from 'api';
 import ApiError from 'api/error/ApiError';
 import UnauthorizedError from 'api/error/UnauthorizedError';
-import { RetryValue } from 'react-query/types/core/retryer';
+import CredentialManager from 'libs/credential-manager';
 
 export interface IUserContext {
   user?: IUser;
@@ -22,21 +22,15 @@ const UserContext = createContext<IUserContext>({
 });
 
 export const UserContextProvider: FC = ({ children }) => {
-  const retryFn: RetryValue<ApiError<any>> = useCallback((failureCount, err) => {
-    if (failureCount >= 3) {
-      return false;
-    }
-    return !UnauthorizedError.isUnauthorizedError(err);
-  }, []);
-
+  const [credentialManager] = useState(new CredentialManager());
   const {
     data, refetch, isLoading, error,
   } = useQuery<IUser, ApiError<any>>(
     ['user', 'me'],
     {
-      retry: retryFn,
-      queryFn: () => httpClient.auth.me(),
+      queryFn: async () => httpClient.auth.me(),
       cacheTime: 0,
+      enabled: !!credentialManager.credentials.token,
     },
   );
 
