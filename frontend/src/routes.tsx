@@ -5,6 +5,12 @@ import DashboardMentorOnlyPage from 'pages/dashboard/mentor-only';
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
 import { ReactElement } from 'react';
+import { IconType } from 'react-icons';
+import {
+  FiHome,
+  FiShield,
+} from 'react-icons/fi';
+import { IoSchool } from 'react-icons/io5';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -29,6 +35,7 @@ export interface IRoute {
 
 export interface IDashboardRoute extends IRoute {
   allowedGroups: UserGroup[];
+  icon: IconType;
 }
 
 const ALLOW_ALL_USERS: UserGroup[] = [UserGroup.MENTOR, UserGroup.MENTEE];
@@ -57,6 +64,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     name: 'home',
     element: <DashboardHomePage />,
     layout: RouteLayout.USER,
+    icon: FiHome,
     index: true,
     description: 'dashboard.home.description',
     allowedGroups: ALLOW_ALL_USERS,
@@ -66,6 +74,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     element: <DashboardMentorOnlyPage />,
     layout: RouteLayout.USER,
     path: 'mentor-only',
+    icon: FiShield,
     description: 'dashboard.mentor_only.description',
     allowedGroups: MENTOR_ONLY,
   },
@@ -74,6 +83,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     element: <DashboardMenteeOnlyPage />,
     layout: RouteLayout.USER,
     path: 'mentee-only',
+    icon: IoSchool,
     description: 'dashboard.mentee_only.description',
     allowedGroups: MENTEE_ONLY,
   },
