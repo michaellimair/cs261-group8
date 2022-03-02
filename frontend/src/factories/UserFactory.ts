@@ -9,6 +9,7 @@ class UserFactory {
     username: faker.internet.userName(),
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
+    full_name: `${faker.name.firstName()} ${faker.name.lastName()}`,
     email: faker.internet.email(),
     profile: {
       pronoun: 'he',
