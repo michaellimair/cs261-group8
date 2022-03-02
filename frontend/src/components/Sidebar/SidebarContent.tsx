@@ -37,7 +37,7 @@ const SidebarContent: FC<ISidebarContentProps> = ({ onClose, ...rest }) => {
         <CloseButton data-testid="closeButton" display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {routes.map((route) => (
-        <SidebarNavItem key={route.name} icon={route.icon}>
+        <SidebarNavItem key={route.name} icon={route.icon} route={route}>
           {t(`dashboard.${route.name}.title`)}
         </SidebarNavItem>
       ))}

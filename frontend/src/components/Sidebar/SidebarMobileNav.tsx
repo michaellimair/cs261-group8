@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import {
   IconButton,
   Avatar,
@@ -23,6 +23,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import useUser from 'hooks/useUser';
 import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
+import { useMutation } from 'react-query';
+import { httpClient } from 'api';
 
 interface ISidebarMobileNavProps extends FlexProps {
   onOpen: () => void;
@@ -30,8 +32,18 @@ interface ISidebarMobileNavProps extends FlexProps {
 
 const SidebarMobileNav: FC<ISidebarMobileNavProps> = ({ onOpen, ...rest }) => {
   const { t } = useTranslation();
-  const { user } = useUser();
+  const { mutateAsync, isLoading: isLoggingOut } = useMutation<void>(['logout'], () => httpClient.auth.logout());
+  const { user, reauthenticate } = useUser();
   const routes = useUserDashboardRoutes();
+
+  const onLogout = useCallback(async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    await mutateAsync();
+    await reauthenticate();
+
+    // Hack so that the browser state is totally refreshed
+    window.location.assign('/auth');
+  }, [mutateAsync, reauthenticate]);
 
   return (
     <Flex
@@ -106,7 +118,7 @@ const SidebarMobileNav: FC<ISidebarMobileNavProps> = ({ onOpen, ...rest }) => {
                 </MenuItem>
               ))}
               <MenuDivider />
-              <MenuItem>{t('logout')}</MenuItem>
+              <MenuItem onClick={onLogout} disabled={isLoggingOut}>{t('logout')}</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

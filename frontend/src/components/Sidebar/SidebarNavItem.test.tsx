@@ -2,12 +2,13 @@ import { render } from '@testing-library/react';
 import {
   FiBell,
 } from 'react-icons/fi';
+import { dashboardRoutes } from 'routes';
 import SidebarNavItem from './SidebarNavItem';
 
 describe('SidebarNavItem', () => {
   it('renders properly without an icon', () => {
     const result = render(
-      <SidebarNavItem>
+      <SidebarNavItem route={dashboardRoutes[0]}>
         hello
       </SidebarNavItem>,
     );
@@ -18,7 +19,7 @@ describe('SidebarNavItem', () => {
 
   it('renders properly with an icon', () => {
     const result = render(
-      <SidebarNavItem icon={FiBell}>
+      <SidebarNavItem icon={FiBell} route={dashboardRoutes[0]}>
         hello
       </SidebarNavItem>,
     );

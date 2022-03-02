@@ -9,7 +9,7 @@ interface IUseUser {
   isLoggedIn: boolean;
   isMentor: boolean;
   isMentee: boolean;
-  reauthenticate: () => void;
+  reauthenticate: () => Promise<void>;
 }
 
 interface IUseUserProps {

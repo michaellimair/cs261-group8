@@ -3,16 +3,20 @@ import {
   Flex,
   FlexProps,
   Icon,
-  Link,
 } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
+import { IDashboardRoute } from 'routes';
+import RouterLink from 'components/RouterLink';
 
 interface ISidebarNavItemProps extends FlexProps {
   icon?: IconType;
+  route: IDashboardRoute;
 }
 
-const SidebarNavItem: FC<ISidebarNavItemProps> = ({ icon, children, ...rest }) => (
-  <Link href="/" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+const SidebarNavItem: FC<ISidebarNavItemProps> = ({
+  icon, route, children, ...rest
+}) => (
+  <RouterLink to={route.path ?? '/dashboard'} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
     <Flex
       align="center"
       p="4"
@@ -39,7 +43,7 @@ const SidebarNavItem: FC<ISidebarNavItemProps> = ({ icon, children, ...rest }) =
       )}
       {children}
     </Flex>
-  </Link>
+  </RouterLink>
 );
 
 export default SidebarNavItem;

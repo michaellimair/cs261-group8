@@ -6,14 +6,22 @@ import {
   DrawerContent,
   useDisclosure,
 } from '@chakra-ui/react';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import SidebarContent from 'components/Sidebar/SidebarContent';
 import SidebarMobileNav from 'components/Sidebar/SidebarMobileNav';
+import useUser from 'hooks/useUser';
 
 const UserLayout: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isLoggedIn, isLoading } = useUser();
+  const bgColor = useColorModeValue('gray.100', 'gray.900');
+
+  if (!isLoading && !isLoggedIn) {
+    return <Navigate replace to="/auth" />;
+  }
+
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+    <Box minH="100vh" bg={bgColor}>
       <SidebarContent
         onClose={onClose}
         display={{ base: 'none', md: 'block' }}

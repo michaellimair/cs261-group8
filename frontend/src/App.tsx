@@ -7,7 +7,7 @@ import {
 import './App.css';
 import { authRoutes } from 'routes';
 import AuthLayout from 'layouts/AuthLayout';
-import NotFoundPage from 'pages/not-found';
+import FallbackPage from 'pages/fallback';
 import UserLayout from 'layouts/UserLayout';
 import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
 
@@ -31,7 +31,7 @@ const App: FC = () => {
             <Route key={name} path={path} element={element} index={index} />
           ))}
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<FallbackPage />} />
       </Routes>
     </Router>
   );

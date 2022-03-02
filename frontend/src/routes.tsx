@@ -70,7 +70,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     allowedGroups: ALLOW_ALL_USERS,
   },
   {
-    name: 'mentor-only',
+    name: 'mentor_only',
     element: <DashboardMentorOnlyPage />,
     layout: RouteLayout.USER,
     path: 'mentor-only',
@@ -79,7 +79,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     allowedGroups: MENTOR_ONLY,
   },
   {
-    name: 'mentee-only',
+    name: 'mentee_only',
     element: <DashboardMenteeOnlyPage />,
     layout: RouteLayout.USER,
     path: 'mentee-only',

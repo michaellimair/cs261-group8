@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import NotFoundPage from './not-found';
+import NotFoundPage from './fallback';
 
-describe('not-found', () => {
+describe('fallback', () => {
   it('renders properly', async () => {
     const result = render(
       <BrowserRouter>
