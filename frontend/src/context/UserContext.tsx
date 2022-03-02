@@ -10,7 +10,7 @@ import { RetryValue } from 'react-query/types/core/retryer';
 
 export interface IUserContext {
   user?: IUser;
-  refetch: () => Promise<void>;
+  refetch: () => Promise<any>;
   isLoading: boolean;
   isUnauthorized: boolean;
 }
@@ -43,9 +43,7 @@ export const UserContextProvider: FC = ({ children }) => {
   const ctx: IUserContext = useMemo(() => ({
     user: data,
     isLoading,
-    refetch: async () => {
-      await refetch();
-    },
+    refetch,
     isUnauthorized: UnauthorizedError.isUnauthorizedError(error),
   }), [data, isLoading, refetch, error]);
 
