@@ -4,20 +4,11 @@ import ReactDOM from 'react-dom';
 import 'i18n';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import './index.css';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from 'react-query';
 import { UserContextProvider } from 'context/UserContext';
-import { queryRetryCondition } from 'libs/query-retry';
+import { queryClient } from 'libs/query-client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // If error is not a 404 error, allow retry
-      retry: queryRetryCondition,
-    },
-  },
-});
 
 ReactDOM.render(
   <React.StrictMode>
