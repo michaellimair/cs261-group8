@@ -209,7 +209,6 @@ class PlanOfActionMenteeSerializer(serializers.ModelSerializer):
         # request = self.context.get("request")
         if "completed" in validated_data:
             instance.completed = validated_data['completed']
-            #  should mentor also approve the completion?
             # instance.approved = False
 
         instance.save()
