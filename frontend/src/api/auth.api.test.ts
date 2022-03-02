@@ -22,7 +22,7 @@ describe('auth.api.test.ts', () => {
 
   beforeEach(() => {
     api = new StubBaseAPI();
-    credentialManager = credentialManagerFactory.create(true);
+    credentialManager = credentialManagerFactory.create();
     authApi = new AuthAPI(api, credentialManager);
   });
 

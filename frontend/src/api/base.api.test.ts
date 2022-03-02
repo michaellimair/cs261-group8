@@ -86,7 +86,7 @@ describe('base.api.ts', () => {
 
     beforeEach(() => {
       mockClient = createMockClient();
-      mockCredentialManager = credentialManagerFactory.create(true);
+      mockCredentialManager = credentialManagerFactory.create();
       api = new BaseAPI({
         credentialManager: mockCredentialManager,
         client: mockClient,
@@ -118,13 +118,44 @@ describe('base.api.ts', () => {
       });
     });
 
-    it('injects an request token interceptor to the client', () => {
+    it('injects an request token interceptor to the client given no options', () => {
       const passThruFn = (mockClient.interceptors.request.use as jest.Mock).mock.calls[0][0];
       expect(typeof passThruFn).toBe('function');
       const testObject = {};
       expect(passThruFn(testObject)).toMatchObject({
         headers: {
           Authorization: `Token ${mockCredentialManager.credentials.token}`,
+        },
+      });
+    });
+
+    it('injects an request token interceptor to the client given existing headers', () => {
+      const passThruFn = (mockClient.interceptors.request.use as jest.Mock).mock.calls[0][0];
+      expect(typeof passThruFn).toBe('function');
+      const testObject = {
+        headers: {
+          Cookie: 'abc',
+        },
+      };
+      expect(passThruFn(testObject)).toMatchObject({
+        headers: {
+          Cookie: 'abc',
+          Authorization: `Token ${mockCredentialManager.credentials.token}`,
+        },
+      });
+    });
+
+    it('does not inject auth token if present in header', () => {
+      const passThruFn = (mockClient.interceptors.request.use as jest.Mock).mock.calls[0][0];
+      expect(typeof passThruFn).toBe('function');
+      const testObject = {
+        headers: {
+          Authorization: 'abc',
+        },
+      };
+      expect(passThruFn(testObject)).toMatchObject({
+        headers: {
+          Authorization: 'abc',
         },
       });
     });
