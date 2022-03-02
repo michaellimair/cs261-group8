@@ -1,5 +1,6 @@
 import { dashboardRoutes, IDashboardRoute } from 'routes';
 import { useUser } from 'hooks/useUser';
+import { checkAllowed } from 'libs/access-control';
 
 const useUserDashboardRoutes = (): IDashboardRoute[] => {
   const { user } = useUser();
@@ -9,8 +10,7 @@ const useUserDashboardRoutes = (): IDashboardRoute[] => {
   }
 
   return dashboardRoutes
-    .filter(({ allowedGroups }) => allowedGroups
-      .some((groupName) => user.groups.find(({ name }) => name === groupName)));
+    .filter(({ allowedGroups }) => checkAllowed({ allowedGroups, userGroups: user.groups }));
 };
 
 export default useUserDashboardRoutes;
