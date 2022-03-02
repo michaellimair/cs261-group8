@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
 from .models import UserProfile
@@ -37,6 +37,18 @@ class UserSerializer(serializers.ModelSerializer):
         read_only=True
     )
     groups = GroupSerializer(many=True)
+    full_name = serializers.SerializerMethodField('get_full_name')
+
+    def get_full_name(self, obj: User) -> str:
+        """_summary_
+
+        Args:
+            obj (User): User object
+
+        Returns:
+            str: Full name of the user
+        """
+        return obj.get_full_name()
 
     class Meta:
         """

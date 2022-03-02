@@ -1,9 +1,19 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from .serializers import RegisterSerializer
+from .serializers import RegisterSerializer, UserSerializer
 from .factories import UserFactory
 
+class TestUserSerializer(TestCase):
+    """Test methods for the UserSerializer serializer class."""
+    def setUp(self) -> None:
+        """Setup user serializer tests"""
+        self.user = UserFactory(username = 'testuser1', email = "testuser1@test.com")
+        self.serializer = UserSerializer(data=self.user)
 
+    def test_get_full_name(self) -> None:
+        """Ensure user full name is displayed as intended
+        """
+        self.assertEqual(self.serializer.get_full_name(self.user), self.user.get_full_name())
 class TestRegisterSerializer(TestCase):
     """
     Test case for the registration serializer.
