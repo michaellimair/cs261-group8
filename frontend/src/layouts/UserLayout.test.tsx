@@ -7,10 +7,19 @@ import UserLayout from './UserLayout';
 
 describe('UserLayout', () => {
   it('renders properly', () => {
+    jest.spyOn(useUser, 'useUser').mockReturnValue({
+      isLoggedIn: true,
+      user: {
+        groups: [],
+      },
+      isLoading: false,
+    } as any);
     const queryClient = new QueryClient();
     const result = render(
       <QueryClientProvider client={queryClient}>
-        <UserLayout />
+        <MemoryRouter>
+          <UserLayout />
+        </MemoryRouter>
       </QueryClientProvider>,
     );
     expect(result).toMatchSnapshot();

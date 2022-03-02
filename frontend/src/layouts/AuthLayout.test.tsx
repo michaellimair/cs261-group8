@@ -9,6 +9,10 @@ import AuthLayout from './AuthLayout';
 
 describe('AuthLayout', () => {
   it('renders properly', () => {
+    jest.spyOn(useUser, 'useUser').mockReturnValue({
+      isLoggedIn: false,
+      isLoading: false,
+    } as any);
     const result = render(<AuthLayout />);
     expect(result).toMatchSnapshot();
   });

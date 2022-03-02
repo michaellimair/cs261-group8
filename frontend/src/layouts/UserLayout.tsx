@@ -18,7 +18,6 @@ const UserLayout: FC = () => {
   const bgColor = useColorModeValue('gray.100', 'gray.900');
 
   if (isLoading) {
-    console.log('ENTEREDHERE');
     return <InitializingApp data-testid="initializing" />;
   }
 

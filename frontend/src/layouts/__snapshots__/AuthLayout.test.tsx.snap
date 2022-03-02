@@ -34,39 +34,21 @@ Object {
     </div>
     <div>
       <div
-        class="chakra-container css-vngzts"
+        class="css-1jc7f17"
       >
         <div
-          class="chakra-spinner css-u4uvb9"
-        >
-          <span
-            class="css-f8n5zr"
-          >
-            Loading...
-          </span>
-        </div>
-        <p>
-          initializing_app
-        </p>
+          class="chakra-stack css-iwmpw6"
+        />
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="chakra-container css-vngzts"
+      class="css-1jc7f17"
     >
       <div
-        class="chakra-spinner css-u4uvb9"
-      >
-        <span
-          class="css-f8n5zr"
-        >
-          Loading...
-        </span>
-      </div>
-      <p>
-        initializing_app
-      </p>
+        class="chakra-stack css-iwmpw6"
+      />
     </div>
   </div>,
   "debug": [Function],
