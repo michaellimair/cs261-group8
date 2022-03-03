@@ -24,3 +24,5 @@ crash.*.log
 
 .terraform.lock**
 frontend/.firebaserc
+
+**.DS_Store

@@ -9,9 +9,7 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import RouterLink from 'components/RouterLink';
-import React, {
-  FC, useCallback,
-} from 'react';
+import React, { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { httpClient } from 'api';
 import BadRequestApiError from 'api/error/BadRequestApiError';
