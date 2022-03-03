@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group, User
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
+from business_area.models import BusinessArea
+from business_area.serializers import BusinessAreaSerializer
 from .models import UserProfile
 
 class GroupSerializer(serializers.ModelSerializer):
@@ -18,15 +20,32 @@ class GroupSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the UserProfile model.
-    """
+    """Serializer for UserProfile objects."""
+    business_area = BusinessAreaSerializer()
+
+    def validate(self, attrs):
+        print(attrs)
+        return super().validate(attrs)
+
     class Meta:
         """
         Metadata for the UserProfile serializer.
         """
         model = UserProfile
         exclude = ('id', 'user')
+        read_only_fields = ('completed',)
+
+    def update(self, instance, validated_data):
+        print(validated_data)
+        """Update user profile, automatically populates completed field if all data is updated properly"""
+        super().update(instance, validated_data)
+
+        if (instance.pronoun and instance.years_experience and instance.title and instance.business_area):
+            instance.completed = True
+
+        instance.save()
+
+        return instance
 
 
 class UserSerializer(serializers.ModelSerializer):

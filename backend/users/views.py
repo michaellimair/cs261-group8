@@ -1,14 +1,62 @@
+from typing import Dict
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.models import Group
-from rest_framework import generics, permissions
+from django.http import HttpResponseForbidden
+from django.shortcuts import get_object_or_404
+from rest_framework import generics, permissions, viewsets, mixins
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
-from .serializers import UserSerializer, RegisterSerializer, GroupSerializer
+
+from business_area.models import BusinessArea
+
+from .models import UserProfile
+from .permissions import IsOwner
+from .serializers import UserSerializer, RegisterSerializer, GroupSerializer, UserProfileSerializer
 
 # Create your views here.
+
+class UserProfileViewSet(viewsets.ViewSet):
+    """View sets for user profile update
+
+    Args:
+        viewsets (_type_): Viewsets
+    """
+
+    def get_queryset(self):
+        """
+        Limit queryset to feedback created by a specific user.
+        """
+        user = self.request.user
+        return UserProfile.objects.filter(user=user)
+
+    def retrieve(self, request, user_pk=None):
+        """Retrieves the profile of a certain user
+
+        Args:
+            user_pk (int): Primary key of the user
+        """
+        profile = get_object_or_404(UserProfile, user=user_pk)
+        serializer = UserProfileSerializer(profile)
+        return Response(serializer.data)
+
+    def update(self, request, user_pk=None):
+        """Updates the profile of a user
+
+        Args:
+            user_pk (int): Primary key of the user
+        """
+        profile = get_object_or_404(UserProfile, user=user_pk)
+
+        # TODO: Update business area
+        serializer = UserProfileSerializer(profile, data=request.data, partial=True)
+        serializer.is_valid(True)
+
+        serializer.save()
+
+        return Response(serializer.data)
 
 
 class MyDataView(APIView):

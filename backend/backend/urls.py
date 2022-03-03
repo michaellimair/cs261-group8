@@ -19,13 +19,34 @@ from django.urls import path, include, re_path
 from rest_framework.schemas import get_schema_view
 from rest_framework_nested import routers
 
-from feedback.views import UserFeedbackViewSet, UserFeedbackAdminViewSet, UserFeedbackAdminReplyView
-from users.views import RegisterView, MyDataView, LoginView, GroupView
+from feedback.views import (
+    UserFeedbackViewSet,
+    UserFeedbackAdminViewSet,
+    UserFeedbackAdminReplyView,
+)
+from users.views import (
+    RegisterView,
+    MyDataView,
+    LoginView,
+    GroupView,
+    UserProfileViewSet,
+)
 from business_area.views import BusinessAreaView
+
+user_patterns = [
+    path(
+        r'<int:user_pk>/profile',
+        UserProfileViewSet.as_view({
+            'get': 'retrieve',
+            'patch': 'update',
+        }),
+        name="my_profile")
+]
 
 router = routers.DefaultRouter()
 router.register(r'feedbacks', UserFeedbackViewSet, basename='my_feedbacks')
 router.register(r'business-areas', BusinessAreaView, basename='business_area')
+router.register(r'profiles', UserProfileViewSet, basename='profile')
 
 admin_router = routers.DefaultRouter()
 admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)
@@ -50,6 +71,7 @@ urlpatterns = [
         path('auth/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
         path('auth/logout-all', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
         path('auth/register', RegisterView.as_view(), name='auth_register'),
+        re_path(r'^users/', include(user_patterns)),
         path('openapi', get_schema_view(
             title="Mentoring API Documentation",
             description="API documentation for the Mentoring project.",
