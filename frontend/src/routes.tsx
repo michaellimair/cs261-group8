@@ -1,6 +1,7 @@
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
 import WelcomeForm from 'pages/welcome';
+import MentorRec from 'pages/mentor-rec';
 import { ReactElement } from 'react';
 
 export enum RouteLayout {
@@ -48,5 +49,12 @@ export const userRoutes: IRoute[] = [
     layout: RouteLayout.USER,
     path: 'welcome',
     description: 'welcome_description',
+  },
+  {
+    name: 'recommendations',
+    element: <MentorRec />,
+    layout: RouteLayout.USER,
+    path: 'mentor-recs',
+    description: 'mentor_recs',
   },
 ];

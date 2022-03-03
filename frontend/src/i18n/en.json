@@ -34,5 +34,8 @@
   "seniority": "Seniority",
   "years_of_experience": "Years of experience",
   "time_zone": "Time zone",
-  "country": "Country"
+  "country": "Country",
+  "mentor_recs": "Select a mentor",
+  "select_mentors": "Select Mentors",
+  "submit_mentors": "Submit"
 }
