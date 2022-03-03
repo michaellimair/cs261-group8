@@ -1,35 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`not-found renders properly 1`] = `
+exports[`SidebarNavItem renders properly without an icon 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
+    <div
+      id="chakra-toast-portal"
+    >
+      <ul
+        id="chakra-toast-manager-top"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-top-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-top-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
     <div>
-      <div
-        class="App"
+      <a
+        class="chakra-link css-jgup0q"
+        href="/dashboard"
+        style="text-decoration: none;"
       >
-        <header
-          class="App-header"
+        <div
+          class="css-cpuzs9"
+          role="group"
         >
-          <p>
-            not_found.title
-          </p>
-        </header>
-      </div>
+          hello
+        </div>
+      </a>
     </div>
   </body>,
   "container": <div>
-    <div
-      class="App"
+    <a
+      class="chakra-link css-jgup0q"
+      href="/dashboard"
+      style="text-decoration: none;"
     >
-      <header
-        class="App-header"
+      <div
+        class="css-cpuzs9"
+        role="group"
       >
-        <p>
-          not_found.title
-        </p>
-      </header>
-    </div>
+        hello
+      </div>
+    </a>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
