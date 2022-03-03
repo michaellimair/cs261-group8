@@ -16,7 +16,9 @@ class TestUserProfileViewSet(TestCase):
     def setUp(self) -> None:
         self.user = UserFactory()
         self.business_area = BusinessAreaFactory(name="pb", label="Private Bank (Wealth Management)")
-        self.profile = UserProfileFactory(user=self.user, business_area=self.business_area)
+        self.profile = UserProfileFactory(
+            user=self.user,
+            business_area=self.business_area)
         self.request_factory = APIRequestFactory()
 
     def test_retrieve(self):

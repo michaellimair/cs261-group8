@@ -24,13 +24,11 @@ class TestUserProfileSerializer(TestCase):
         data = {
             "years_experience": 20,
             "pronoun": "she",
-            "business_area": self.business_area.id
+            "business_area": self.business_area
         }
 
         self.serializer.update(self.profile, validated_data=data)
-        self.serializer.is_valid(True)
 
-        self.serializer.save()
         self.assertEqual(self.profile.business_area, self.business_area)
         self.assertTrue(self.profile.completed)
 

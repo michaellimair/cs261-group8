@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
 from business_area.models import BusinessArea
@@ -34,7 +34,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
         exclude = ('id', 'user')
         read_only_fields = ('completed',)
 
+
     def update(self, instance, validated_data):
+        super().update(instance, validated_data)
+
         """Update user profile,
         automatically populates completed field if all data is updated properly"""
         if (instance.pronoun
@@ -43,7 +46,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
             and instance.business_area):
             instance.completed = True
 
-        return super().update(instance, validated_data)
+        instance.save()
+
+        return instance
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -56,7 +61,7 @@ class UserSerializer(serializers.ModelSerializer):
     groups = GroupSerializer(many=True)
     full_name = serializers.SerializerMethodField('get_full_name')
 
-    def get_full_name(self, obj: User) -> str:
+    def get_full_name(self, obj: get_user_model()) -> str:
         """_summary_
 
         Args:
