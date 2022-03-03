@@ -23,7 +23,6 @@ class TestUserProfileSerializer(TestCase):
             business_area=None)
         self.serializer = UserProfileSerializer(self.profile)
 
-    @unittest.skip("Unable to test business_area field")
     def test_update(self) -> None:
         """Completed field will be automatically populated"""
         data = {
@@ -31,7 +30,6 @@ class TestUserProfileSerializer(TestCase):
             "pronoun": "she",
             "business_area": self.business_area.id
         }
-
 
         self.serializer.update(self.profile, validated_data=data)
         self.serializer.is_valid(True)

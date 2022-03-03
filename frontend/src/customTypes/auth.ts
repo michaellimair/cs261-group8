@@ -23,7 +23,7 @@ export interface IUserProfile {
 }
 
 export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area'> {
-  business_area: number;
+  business_area_id: number;
 }
 
 export enum UserGroup {

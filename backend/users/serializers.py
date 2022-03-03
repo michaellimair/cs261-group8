@@ -22,6 +22,7 @@ class GroupSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     """Serializer for UserProfile objects."""
     business_area = BusinessAreaSerializer()
+    business_area_id = serializers.PrimaryKeyRelatedField(queryset=BusinessArea.objects.all(), source='business_area')
 
     class Meta:
         """
@@ -33,17 +34,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         """Update user profile, automatically populates completed field if all data is updated properly"""
-        super().update(instance, validated_data)
-
-        if ('business_area' in self.initial_data):
-            instance.business_area = self.initial_data['business_area']
-
         if (instance.pronoun and instance.years_experience and instance.title and instance.business_area):
             instance.completed = True
 
-        instance.save()
-
-        return instance
+        return super().update(instance, validated_data)
 
 
 class UserSerializer(serializers.ModelSerializer):
