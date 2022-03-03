@@ -1,9 +1,5 @@
-import unittest
-from wsgiref import validate
-from django.shortcuts import get_object_or_404
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from business_area.models import BusinessArea
 
 from business_area.factories import BusinessAreaFactory
 from .serializers import RegisterSerializer, UserProfileSerializer, UserSerializer

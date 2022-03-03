@@ -1,9 +1,8 @@
 from typing import Dict
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.models import Group
-from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
-from rest_framework import generics, permissions, viewsets, mixins
+from rest_framework import generics, permissions, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
@@ -13,7 +12,6 @@ from knox.views import LoginView as KnoxLoginView
 from business_area.models import BusinessArea
 
 from .models import UserProfile
-from .permissions import IsOwner
 from .serializers import UserSerializer, RegisterSerializer, GroupSerializer, UserProfileSerializer
 
 # Create your views here.
@@ -32,7 +30,7 @@ class UserProfileViewSet(viewsets.ViewSet):
         user = self.request.user
         return UserProfile.objects.filter(user=user)
 
-    def retrieve(self, request, user_pk=None):
+    def retrieve(self, _, user_pk=None):
         """Retrieves the profile of a certain user
 
         Args:
@@ -52,7 +50,7 @@ class UserProfileViewSet(viewsets.ViewSet):
 
         data: Dict = request.data.copy()
 
-        if ('business_area' in request.data):
+        if 'business_area' in request.data:
             data['business_area'] = get_object_or_404(BusinessArea, id=data['business_area'])
 
         serializer = UserProfileSerializer(profile, data=data, partial=True)
