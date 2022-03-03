@@ -135,6 +135,7 @@ const UserProfile: FC = () => (
       </Stack>
     </Stack>
   </Flex>
+
 );
 
 export default UserProfile;
