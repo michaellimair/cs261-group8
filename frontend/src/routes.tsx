@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-import LoginPage from 'pages/identity/login';
-=======
 import { UserGroup } from 'customTypes/auth';
 import DashboardHomePage from 'pages/dashboard/dashboard';
 import DashboardMenteeOnlyPage from 'pages/dashboard/mentee-only';
 import DashboardMentorOnlyPage from 'pages/dashboard/mentor-only';
 import LoginPage from 'pages/login';
->>>>>>> f7d57001ee445a59b7fb901042ce91c2ce14c214
 import RegisterPage from 'pages/register';
 import { ReactElement } from 'react';
 import { IconType } from 'react-icons';
