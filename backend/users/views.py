@@ -30,7 +30,6 @@ class UserProfileViewSet(viewsets.ViewSet):
         Limit queryset to feedback created by a specific user.
         """
         user = self.request.user
-        print(user)
         return UserProfile.objects.filter(user=user)
 
     def retrieve(self, request, user_pk=None):
@@ -51,8 +50,12 @@ class UserProfileViewSet(viewsets.ViewSet):
         """
         profile = get_object_or_404(self.get_queryset(), user=user_pk)
 
-        # TODO: Update business area
-        serializer = UserProfileSerializer(profile, data=request.data, partial=True)
+        data: Dict = request.data.copy()
+
+        if ('business_area' in request.data):
+            data['business_area'] = get_object_or_404(BusinessArea, id=data['business_area'])
+
+        serializer = UserProfileSerializer(profile, data=data, partial=True)
         serializer.is_valid(True)
 
         serializer.save()

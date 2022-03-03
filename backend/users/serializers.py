@@ -23,10 +23,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
     """Serializer for UserProfile objects."""
     business_area = BusinessAreaSerializer()
 
-    def validate(self, attrs):
-        print(attrs)
-        return super().validate(attrs)
-
     class Meta:
         """
         Metadata for the UserProfile serializer.
@@ -36,9 +32,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
         read_only_fields = ('completed',)
 
     def update(self, instance, validated_data):
-        print(validated_data)
         """Update user profile, automatically populates completed field if all data is updated properly"""
         super().update(instance, validated_data)
+
+        if ('business_area' in self.initial_data):
+            instance.business_area = self.initial_data['business_area']
 
         if (instance.pronoun and instance.years_experience and instance.title and instance.business_area):
             instance.completed = True

@@ -1,5 +1,5 @@
 import {
-  IUserProfile,
+  IUserProfile, IUserProfileDTO,
 } from 'customTypes/auth';
 import urljoin from 'url-join';
 import BaseAPI from './base.api';
@@ -24,8 +24,8 @@ class UserProfileAPI {
 
   updateProfile = async (
     id: number,
-    payload: Partial<IUserProfile>,
-  ): Promise<IUserProfile> => this.api.post<IUserProfile, Partial<IUserProfile>>({
+    payload: Partial<IUserProfileDTO>,
+  ): Promise<IUserProfile> => this.api.post<IUserProfile, Partial<IUserProfileDTO>>({
     path: this.getPath(id, '/'),
     body: payload,
   });
