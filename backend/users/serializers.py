@@ -1,9 +1,11 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
+from business_area.models import BusinessArea
+from business_area.serializers import BusinessAreaSerializer
 from .models import UserProfile
 
 class GroupSerializer(serializers.ModelSerializer):
@@ -18,15 +20,35 @@ class GroupSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the UserProfile model.
-    """
+    """Serializer for UserProfile objects."""
+    business_area = BusinessAreaSerializer()
+    business_area_id = serializers.PrimaryKeyRelatedField(
+        queryset=BusinessArea.objects.all(),
+        source='business_area')
+
     class Meta:
         """
         Metadata for the UserProfile serializer.
         """
         model = UserProfile
         exclude = ('id', 'user')
+        read_only_fields = ('completed',)
+
+
+    def update(self, instance, validated_data):
+        super().update(instance, validated_data)
+
+        """Update user profile,
+        automatically populates completed field if all data is updated properly"""
+        if (instance.pronoun
+            and instance.years_experience
+            and instance.title
+            and instance.business_area):
+            instance.completed = True
+
+        instance.save()
+
+        return instance
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -39,7 +61,7 @@ class UserSerializer(serializers.ModelSerializer):
     groups = GroupSerializer(many=True)
     full_name = serializers.SerializerMethodField('get_full_name')
 
-    def get_full_name(self, obj: User) -> str:
+    def get_full_name(self, obj: get_user_model()) -> str:
         """_summary_
 
         Args:
@@ -128,4 +150,3 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
-

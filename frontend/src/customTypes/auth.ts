@@ -22,6 +22,10 @@ export interface IUserProfile {
   business_area: IBusinessArea | null;
 }
 
+export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area'> {
+  business_area_id: number;
+}
+
 export enum UserGroup {
   MENTOR = 'mentor',
   MENTEE = 'mentee',
