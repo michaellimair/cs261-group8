@@ -27,22 +27,6 @@ class TestUserFeedbackViewSet(TestCase):
         )
         return super().setUp()
 
-    def test_destroy(self):
-        """
-        Deletion of feedback by a user should not be allowed.
-        """
-        feedback_id = self.feedback.id
-
-        url = reverse('my_feedbacks-detail', kwargs={'pk': feedback_id})
-        request = self.request_factory.delete(url)
-        request.user = self.user
-        force_authenticate(request, user=self.user)
-
-        feedback_detail = UserFeedbackViewSet.as_view({'delete': 'destroy'})
-        response = feedback_detail(request)
-
-        self.assertEqual(response.status_code, 403)
-
     def test_list_otheruser(self):
         """
         Users will only by able to see their own feedbacks.
