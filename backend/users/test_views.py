@@ -90,7 +90,7 @@ class TestLoginView(TestCase):
             "password": self.password
         }
 
-        response = self.client.post('/api/v1/auth/login', body)
+        response = self.client.post(reverse('knox_login'), body)
 
         self.assertEqual(response.status_code, 200)
 
@@ -111,7 +111,7 @@ class TestMyDataView(TestCase):
         """
         User can see their own profile as expected.
         """
-        request = self.request_factory.get('/api/me')
+        request = self.request_factory.get(reverse('me'))
 
         request.user = self.user
 

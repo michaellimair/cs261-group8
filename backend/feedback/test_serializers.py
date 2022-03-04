@@ -50,7 +50,7 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
         Test updating replies for a user feedback.
         """
         data = {
-            "title": "Updated Title"
+            "title": "Updated Title",
             "content": "Updated Content",
         }
 
@@ -61,7 +61,6 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
         reply = UserFeedbackReply.objects.create(
             feedback=self.feedback,
             content="Initial Content",
-            title="Initial Title",
             admin=self.admin
         )
 
@@ -72,7 +71,6 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
         serializer.update(reply, data)
 
         self.assertEqual(reply.admin, self.other_admin)
-        self.assertEqual(reply.title, data['title'])
         self.assertEqual(reply.content, data['content'])
 
 
