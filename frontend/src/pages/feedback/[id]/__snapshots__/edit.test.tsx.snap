@@ -187,7 +187,7 @@ Object {
               </button>
               <a
                 class="chakra-link chakra-button css-ogxy0s"
-                href="/feedbacks/undefined"
+                href="/feedbacks/54881"
               >
                 dashboard.edit_feedback.cancel
               </a>
@@ -352,7 +352,7 @@ Object {
             </button>
             <a
               class="chakra-link chakra-button css-ogxy0s"
-              href="/feedbacks/undefined"
+              href="/feedbacks/54881"
             >
               dashboard.edit_feedback.cancel
             </a>
