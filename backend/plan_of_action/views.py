@@ -1,5 +1,9 @@
-from rest_framework.generics import *
-from .serializers import *
+from rest_framework.generics import ListAPIView, ListCreateAPIView,\
+    CreateAPIView, UpdateAPIView
+from .serializers import CommentMentorSerializer, CommentMenteeSerializer, \
+    MilestoneMenteeSerializer, MilestoneMentorSerializer, PlanOfActionMenteeSerializer, \
+    PlanOfActionMentorSerializer
+from .models import Comment, Milestone, PlanOfAction
 from users.permissions import IsMentee, IsMentor
 
 #  Haven't linked to pair yet, test mentor and mentee for permission first
@@ -12,6 +16,7 @@ class CommentMenteeView(ListAPIView):
     """
     serializer_class = CommentMenteeSerializer
     permission_classes = [IsMentee]
+
 
 class CommentMentorView(ListCreateAPIView):
     """
@@ -53,6 +58,6 @@ class PlanOfActionMentorView(ListAPIView, UpdateAPIView):
     """
     Mentor can update plan of action
     """
-    serializer_class = PlanOfActionMenteeSerializer
+    serializer_class = PlanOfActionMentorSerializer
     permission_classes = [IsMentee]
     queryset = PlanOfAction.objects.all()

@@ -94,7 +94,8 @@ class MilestoneMenteeSerializer(serializers.ModelSerializer):
         milestone = Milestone.objects.create(
             description=validated_data['description'],
             type=validated_data['type'],
-            #  should I don't ask them to provide completion in the first time since it always been false?
+            #  should I don't ask them to provide completion
+            #  in the first time since it always been false?
             #  already set it to false at model
             completed=False,
             # approved=False

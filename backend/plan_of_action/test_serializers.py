@@ -1,6 +1,7 @@
 from django.test import TestCase
-import models
-from .serializers import CommentMentorSerializer, MilestoneMenteeSerializer, PlanOfActionMentorSerializer, PlanOfActionMenteeSerializer
+from .models import PlanOfAction
+from .serializers import CommentMentorSerializer, MilestoneMenteeSerializer, PlanOfActionMentorSerializer,\
+    PlanOfActionMenteeSerializer
 
 
 class TestPlanOfActionMentee(TestCase):
@@ -8,6 +9,9 @@ class TestPlanOfActionMentee(TestCase):
     Test for mentee to create plan of action
     """
     def test_create(self):
+        """
+        Test creation of plan of action
+        """
         data = {
             "description": "test"
         }
@@ -25,8 +29,10 @@ class TestPlanOfActionMentor(TestCase):
     """
 
     def test_update(self):
-
-        init = models.PlanOfAction.objects.create(
+        """
+        Test if mentor can approve plan of action
+        """
+        init = PlanOfAction.objects.create(
             description="init",
             approved=False
         )
@@ -99,5 +105,3 @@ class TestMilestoneMentee(TestCase):
         }
         serializer.update(result, data)
         self.assertTrue(result.completed)
-
-
