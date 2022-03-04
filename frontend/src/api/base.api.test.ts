@@ -83,7 +83,7 @@ describe('base.api.ts', () => {
     let api: BaseAPI;
     let mockCredentialManager: CredentialManager;
     let mockClient: AxiosInstance;
-    const mockPath = '/hello/there';
+    const mockPath = '/hello/there/';
 
     beforeEach(() => {
       mockClient = createMockClient();
@@ -260,6 +260,13 @@ describe('base.api.ts', () => {
         expect(mockClient.get).toHaveBeenCalledWith(mockPath, {
           params: { a: 1 },
         });
+      });
+
+      it('removes duplicate trailing slashes', async () => {
+        await api.get({
+          path: 'there////',
+        });
+        expect(mockClient.get).toHaveBeenCalledWith(mockPath, {});
       });
     });
 
