@@ -26,25 +26,9 @@ const App: FC = () => {
         </Route>
         <Route path="dashboard" element={<UserLayout />}>
           {allowedDashboardRoutes.map(({
-            name, path, element, index, children,
+            name, path, element, index,
           }) => (
-            <>
-              <Route key={name} path={path} element={element} index={index} />
-              {children && (
-                <>
-                  {children.map(({
-                    name: childName, path: childPath, element: childElement, index: childIndex,
-                  }) => (
-                    <Route
-                      key={childName}
-                      path={childPath}
-                      element={childElement}
-                      index={childIndex}
-                    />
-                  ))}
-                </>
-              )}
-            </>
+            <Route key={name} path={path} element={element} index={index} />
           ))}
         </Route>
         <Route path="*" element={<FallbackPage />} />
