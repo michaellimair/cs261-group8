@@ -27,8 +27,6 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
         Test creation of replies for a user feedback.
         """
         data = {
-            "title": "Title",
-            "type": UserFeedback.FeedbackType.IMPROVEMENT,
             "content": "Feedback Reply Content",
         }
 
@@ -41,7 +39,6 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
 
         self.assertEqual(result.admin, self.admin)
         self.assertEqual(result.feedback, self.feedback)
-        self.assertEqual(result.type, data['type'])
         self.assertEqual(result.content, data['content'])
 
     def test_update(self):
