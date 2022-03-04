@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { queryClient } from 'libs/query-client';
 import { QueryClientProvider } from 'react-query';
-import FeedbackPage from './feedback';
+import FeedbackPage from '.';
 
 describe('pages/feedback', () => {
   it('renders correctly', () => {
