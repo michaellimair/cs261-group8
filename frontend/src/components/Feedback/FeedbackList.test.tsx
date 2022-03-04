@@ -19,6 +19,12 @@ describe('components/Feedback/FeedbackList', () => {
     expect(result.container.innerHTML).toMatchSnapshot(expected.container.innerHTML);
   });
 
+  it('displays no feedback text if there is no feedback', () => {
+    const result = render(<FeedbackList isLoading={false} feedbacks={[]} />);
+
+    expect(result.container.innerHTML).toBe('<div>description.feedback.no_feedback</div>');
+  });
+
   it('renders correctly', () => {
     const result = render(<FeedbackList feedbacks={feedbacks} isLoading={false} />);
 
