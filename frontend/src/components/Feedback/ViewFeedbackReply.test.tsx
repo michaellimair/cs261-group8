@@ -21,4 +21,14 @@ describe('components/Feedback/ViewFeedbackReply', () => {
 
     expect(result).toMatchSnapshot();
   });
+
+  it('shows a no reply component when there is no reply', () => {
+    const result = render(
+      <QueryRouterWrapper>
+        <ViewFeedbackReply />
+      </QueryRouterWrapper>,
+    );
+
+    expect(result.queryByText('-')).toBeTruthy();
+  });
 });
