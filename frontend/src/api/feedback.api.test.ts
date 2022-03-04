@@ -21,6 +21,28 @@ describe('feedback.api.ts', () => {
     expect(() => new FeedbackAPI(api)).not.toThrow();
   });
 
+  describe('getFeedback', () => {
+    it('can get feedback successfully', async () => {
+      await feedbackApi.getFeedback(1);
+
+      expect(api.get).toHaveBeenCalledTimes(1);
+      expect(api.get).toHaveBeenCalledWith({
+        path: '/feedbacks/1',
+      });
+    });
+  });
+
+  describe('listFeedback', () => {
+    it('can list feedback successfully', async () => {
+      await feedbackApi.listFeedback();
+
+      expect(api.get).toHaveBeenCalledTimes(1);
+      expect(api.get).toHaveBeenCalledWith({
+        path: '/feedbacks',
+      });
+    });
+  });
+
   describe('createFeedback', () => {
     it('can create feedback successfully', async () => {
       await feedbackApi.createFeedback(feedback);

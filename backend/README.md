@@ -47,7 +47,7 @@ Sample data such as business area and users can be loaded by performing `python 
 
 ### Admin
 - Username: superadmin
-- Password: superadmin124
+- Password: superadmin134
 
 ## Creating Models
 - All models can be placed in `models.py` for now. Refactoring will be done in the near future.

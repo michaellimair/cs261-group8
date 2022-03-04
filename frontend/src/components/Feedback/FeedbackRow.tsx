@@ -1,6 +1,8 @@
 import {
-  Stack, Text, Button, Box, useColorModeValue, VStack, HStack,
+  Stack, Text, Button, VStack, HStack,
 } from '@chakra-ui/react';
+import ContainerBox from 'components/ContainerBox';
+import RouterLink from 'components/RouterLink';
 import { IFeedback } from 'customTypes/feedback';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -8,19 +10,23 @@ import FeedbackIcon from './FeedbackIcon';
 
 interface IFeedbackRowProps {
   feedback: IFeedback;
+  showView?: boolean;
+  showEdit?: boolean;
 }
 
 const FeedbackRow: FC<IFeedbackRowProps> = ({
   feedback: {
-    title, content, created, modified, type,
+    title, content, created, modified, type, id,
   },
+  showView = true,
+  showEdit = true,
 }) => {
   const { t } = useTranslation();
 
   return (
-    <Box p="4" boxShadow="lg" my="4" borderRadius="md" bg={useColorModeValue('white', 'gray.700')}>
+    <ContainerBox>
       <Stack direction="row" alignItems="center" mb="2">
-        <Text fontWeight="semibold" fontSize="xl">{title}</Text>
+        <Text fontWeight="semibold" fontSize="xl" mr={2}>{title}</Text>
         <FeedbackIcon type={type} />
       </Stack>
       <VStack
@@ -47,18 +53,19 @@ const FeedbackRow: FC<IFeedbackRowProps> = ({
           )}
         </VStack>
         <HStack>
-          <Button colorScheme="green">
-            View
+          {showView && (
+          <Button as={RouterLink} to={`${id}`} colorScheme="blue">
+            {t('view')}
           </Button>
-          <Button colorScheme="blue">
-            Edit
+          )}
+          {showEdit && (
+          <Button as={RouterLink} to={`${id}/edit`} colorScheme="green">
+            {t('edit')}
           </Button>
-          <Button colorScheme="red">
-            Delete
-          </Button>
+          )}
         </HStack>
       </Stack>
-    </Box>
+    </ContainerBox>
   );
 };
 

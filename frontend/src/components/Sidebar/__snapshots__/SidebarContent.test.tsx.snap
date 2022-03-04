@@ -159,7 +159,43 @@ Object {
         </a>
         <a
           class="chakra-link css-jgup0q"
-          href="/feedback"
+          href="/feedbacks/create"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            dashboard.create_feedback.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/feedbacks/:id"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            dashboard.view_feedback.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/feedbacks/:id/edit"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            dashboard.edit_feedback.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/feedbacks"
           style="text-decoration: none;"
         >
           <div
@@ -315,7 +351,43 @@ Object {
       </a>
       <a
         class="chakra-link css-jgup0q"
-        href="/feedback"
+        href="/feedbacks/create"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          dashboard.create_feedback.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/feedbacks/:id"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          dashboard.view_feedback.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/feedbacks/:id/edit"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          dashboard.edit_feedback.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/feedbacks"
         style="text-decoration: none;"
       >
         <div

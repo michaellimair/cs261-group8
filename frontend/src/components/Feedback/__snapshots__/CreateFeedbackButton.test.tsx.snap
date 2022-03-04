@@ -34,19 +34,51 @@ Object {
     </div>
     <div>
       <button
-        class="chakra-button css-5c2176"
-        type="button"
+        class="chakra-button css-q1ts0i"
+        data-loading=""
+        data-testid="create-feedback-button"
+        disabled=""
+        type="submit"
       >
-        Create Feedback
+        <div
+          class="chakra-button__spinner chakra-button__spinner--start css-i5qkey"
+        >
+          <div
+            class="chakra-spinner css-1plzyg6"
+          >
+            <span
+              class="css-f8n5zr"
+            >
+              Loading...
+            </span>
+          </div>
+        </div>
+        dashboard.create_feedback.loading
       </button>
     </div>
   </body>,
   "container": <div>
     <button
-      class="chakra-button css-5c2176"
-      type="button"
+      class="chakra-button css-q1ts0i"
+      data-loading=""
+      data-testid="create-feedback-button"
+      disabled=""
+      type="submit"
     >
-      Create Feedback
+      <div
+        class="chakra-button__spinner chakra-button__spinner--start css-i5qkey"
+      >
+        <div
+          class="chakra-spinner css-1plzyg6"
+        >
+          <span
+            class="css-f8n5zr"
+          >
+            Loading...
+          </span>
+        </div>
+      </div>
+      dashboard.create_feedback.loading
     </button>
   </div>,
   "debug": [Function],

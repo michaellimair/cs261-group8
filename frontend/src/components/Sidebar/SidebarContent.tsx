@@ -16,7 +16,7 @@ interface ISidebarContentProps extends BoxProps {
 }
 
 const SidebarContent: FC<ISidebarContentProps> = ({ onClose, ...rest }) => {
-  const routes = useUserDashboardRoutes();
+  const routes = useUserDashboardRoutes(true);
   const { t } = useTranslation();
 
   return (

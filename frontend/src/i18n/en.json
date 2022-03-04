@@ -42,9 +42,35 @@
       "title": "Feedback",
       "description": "Give us feedback and take part in improving our application!",
       "no_feedback": "You have not submitted any feedback yet.",
-      "your_feedbacks": "Your Feedbacks"
+      "your_feedbacks": "Your Feedbacks",
+      "type": "Feedback Type",
+      "bug": "Bug",
+      "improvement": "Improvement",
+      "question": "Question",
+      "select": "Select a feedback type",
+      "invalid": "Unable to obtain your feedback(s). Please try again later.",
+      "back_to_all": "Back to all feedbacks",
+      "admin_reply": "Reply from Administrator",
+      "replied_on": "Administrator replied on {{replied}}"
+    },
+    "create_feedback": {
+      "title": "Create Feedback",
+      "description": "Give us feedback and take part in improving our application!",
+      "loading": "Creating feedback...",
+      "placeholder": "Write the content of your feedback here"
+    },
+    "edit_feedback": {
+      "title": "Edit Feedback",
+      "description": "Something wrong with the feedback that you created? Edit it here!",
+      "loading": "Editing feedback...",
+      "cancel": "Cancel Editing"
     }
   },
+  "title": "Title",
+  "content": "Content",
   "created": "Created at {{created}}",
-  "modified": "Last modified at {{modified}}"
+  "modified": "Last modified at {{modified}}",
+  "view": "View",
+  "edit": "Edit",
+  "delete": "Delete"
 }

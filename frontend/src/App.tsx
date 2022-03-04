@@ -12,7 +12,7 @@ import UserLayout from 'layouts/UserLayout';
 import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
 
 const App: FC = () => {
-  const allowedDashboardRoutes = useUserDashboardRoutes();
+  const allowedDashboardRoutes = useUserDashboardRoutes(false);
 
   return (
     <Router>

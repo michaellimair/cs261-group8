@@ -3,7 +3,7 @@ import * as useUser from 'hooks/useUser';
 import {
   MemoryRouter, Route, Routes,
 } from 'react-router-dom';
-import FallbackPage from './fallback';
+import FallbackPage from '.';
 
 describe('fallback', () => {
   const MockRouterComponent = () => (

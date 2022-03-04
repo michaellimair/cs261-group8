@@ -23,3 +23,5 @@ export interface IFeedback {
   modified: Date;
   reply: null | IFeedbackReply;
 }
+
+export interface IFeedbackDTO extends Pick<IFeedback, 'title' | 'content' | 'type'> {}
