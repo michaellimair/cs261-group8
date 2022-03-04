@@ -29,7 +29,7 @@ class UserFeedbackViewSet(mixins.CreateModelMixin,
         Limit queryset to feedback created by a specific user.
         """
         user = self.request.user
-        return UserFeedback.objects.filter(user=user)
+        return UserFeedback.objects.filter(user=user).order_by('-modified')
 
 
 class UserFeedbackAdminViewSet(viewsets.ReadOnlyModelViewSet):
