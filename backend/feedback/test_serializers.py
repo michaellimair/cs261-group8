@@ -41,7 +41,6 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
 
         self.assertEqual(result.admin, self.admin)
         self.assertEqual(result.feedback, self.feedback)
-        self.assertEqual(result.title, data['title'])
         self.assertEqual(result.type, data['type'])
         self.assertEqual(result.content, data['content'])
 
