@@ -2,6 +2,7 @@ import { UserGroup } from 'customTypes/auth';
 import DashboardHomePage from 'pages/dashboard/dashboard';
 import DashboardMenteeOnlyPage from 'pages/dashboard/mentee-only';
 import DashboardMentorOnlyPage from 'pages/dashboard/mentor-only';
+import FeedbackPage from 'pages/feedback';
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
 import { ReactElement } from 'react';
@@ -10,6 +11,7 @@ import {
   FiHome,
   FiShield,
 } from 'react-icons/fi';
+import { VscFeedback } from 'react-icons/vsc';
 import { IoSchool } from 'react-icons/io5';
 
 export enum RouteLayout {
@@ -86,5 +88,14 @@ export const dashboardRoutes: IDashboardRoute[] = [
     icon: IoSchool,
     description: 'dashboard.mentee_only.description',
     allowedGroups: MENTEE_ONLY,
+  },
+  {
+    name: 'feedback',
+    element: <FeedbackPage />,
+    layout: RouteLayout.USER,
+    path: 'feedback',
+    icon: VscFeedback,
+    description: 'dashboard.feedback.description',
+    allowedGroups: ALLOW_ALL_USERS,
   },
 ];

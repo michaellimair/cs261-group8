@@ -37,6 +37,10 @@
     "mentee_only": {
       "title": "Mentee Only",
       "description": "This page can only be viewed by a mentee."
+    },
+    "feedback": {
+      "title": "Feedback",
+      "description": "Give us feedback and take part in improving our application!"
     }
   }
 }
