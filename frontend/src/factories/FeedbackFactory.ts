@@ -9,13 +9,16 @@ class FeedbackFactory {
     const replyFactory = new FeedbackReplyFactory();
     return merge({
       id: faker.datatype.number(),
+      title: faker.lorem.lines(1),
       content: faker.lorem.paragraph(3),
       type: FeedbackType.BUG,
       created: new Date(),
-      updated: new Date(),
+      modified: new Date(),
       reply: replyFactory.create(),
     }, feedback);
   };
+
+  createMany = (count: number) => Array(count).fill(null).map((_, i) => this.create({ id: i }));
 }
 
 export default FeedbackFactory;

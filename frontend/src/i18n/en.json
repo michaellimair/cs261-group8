@@ -40,7 +40,11 @@
     },
     "feedback": {
       "title": "Feedback",
-      "description": "Give us feedback and take part in improving our application!"
+      "description": "Give us feedback and take part in improving our application!",
+      "no_feedback": "You have not submitted any feedback yet.",
+      "your_feedbacks": "Your Feedbacks"
     }
-  }
+  },
+  "created": "Created at {{created}}",
+  "modified": "Last modified at {{modified}}"
 }

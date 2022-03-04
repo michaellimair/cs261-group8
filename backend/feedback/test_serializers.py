@@ -27,6 +27,8 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
         Test creation of replies for a user feedback.
         """
         data = {
+            "title": "Title",
+            "type": UserFeedback.FeedbackType.IMPROVEMENT,
             "content": "Feedback Reply Content",
         }
 
@@ -39,6 +41,8 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
 
         self.assertEqual(result.admin, self.admin)
         self.assertEqual(result.feedback, self.feedback)
+        self.assertEqual(result.title, data['title'])
+        self.assertEqual(result.type, data['type'])
         self.assertEqual(result.content, data['content'])
 
     def test_update(self):
@@ -46,6 +50,7 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
         Test updating replies for a user feedback.
         """
         data = {
+            "title": "Updated Title"
             "content": "Updated Content",
         }
 
@@ -56,6 +61,7 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
         reply = UserFeedbackReply.objects.create(
             feedback=self.feedback,
             content="Initial Content",
+            title="Initial Title",
             admin=self.admin
         )
 
@@ -66,6 +72,7 @@ class TestUserFeedbackReplyAdminSerializer(TestCase):
         serializer.update(reply, data)
 
         self.assertEqual(reply.admin, self.other_admin)
+        self.assertEqual(reply.title, data['title'])
         self.assertEqual(reply.content, data['content'])
 
 
@@ -85,7 +92,8 @@ class TestUserFeedbackSerializer(TestCase):
         """
         data = {
             "content": "User Feedback Content",
-            "type": UserFeedback.FeedbackType.IMPROVEMENT
+            "type": UserFeedback.FeedbackType.IMPROVEMENT,
+            "title": "FeedbackTitle"
         }
 
         serializer = UserFeedbackSerializer(context={
@@ -95,5 +103,6 @@ class TestUserFeedbackSerializer(TestCase):
         result = serializer.create(data)
 
         self.assertEqual(result.user, self.user)
+        self.assertEqual(result.title, data['title'])
         self.assertEqual(result.content, data['content'])
         self.assertEqual(result.type, data['type'])

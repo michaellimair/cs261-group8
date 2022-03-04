@@ -1,16 +1,9 @@
 /* eslint-disable max-classes-per-file */
 import FeedbackFactory from 'factories/FeedbackFactory';
 import { IFeedback } from 'customTypes/feedback';
+import { ApiFactory } from 'factories/ApiFactory';
 import FeedbackAPI from './feedback.api';
 import BaseAPI from './base.api';
-
-class StubBaseAPI extends BaseAPI {
-  public get = jest.fn();
-
-  public post = jest.fn();
-
-  public patch = jest.fn();
-}
 
 describe('feedback.api.ts', () => {
   let feedbackApi: FeedbackAPI;
@@ -18,7 +11,8 @@ describe('feedback.api.ts', () => {
   let feedback: IFeedback;
 
   beforeEach(() => {
-    api = new StubBaseAPI();
+    const apiFactory = new ApiFactory();
+    api = apiFactory.create();
     feedbackApi = new FeedbackAPI(api);
     feedback = (new FeedbackFactory()).create();
   });

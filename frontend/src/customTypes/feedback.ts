@@ -10,15 +10,16 @@ export interface IFeedbackReply {
   id: number;
   content: string;
   created: Date;
-  updated: Date;
+  modified: Date;
   admin: IUser;
 }
 
 export interface IFeedback {
   id: number;
   type: FeedbackType;
+  title: string;
   content: string;
   created: Date;
-  updated: Date;
+  modified: Date;
   reply: null | IFeedbackReply;
 }

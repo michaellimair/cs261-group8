@@ -65,12 +65,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include([
         path('', include(router.urls)),
-        path('groups', GroupView.as_view(), name='group'),
-        path('auth', MyDataView.as_view(), name='me'),
-        path('auth/login', LoginView.as_view(), name='knox_login'),
-        path('auth/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
-        path('auth/logout-all', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
-        path('auth/register', RegisterView.as_view(), name='auth_register'),
+        path(r'groups/', GroupView.as_view(), name='group'),
+        path(r'auth/', MyDataView.as_view(), name='me'),
+        path(r'auth/login/', LoginView.as_view(), name='knox_login'),
+        path(r'auth/logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
+        path(r'auth/logout-all/', knox_views.LogoutAllView.as_view(), name='knox_logoutall'),
+        path(r'auth/register/', RegisterView.as_view(), name='auth_register'),
         re_path(r'^users/', include(user_patterns)),
         path('openapi', get_schema_view(
             title="Mentoring API Documentation",

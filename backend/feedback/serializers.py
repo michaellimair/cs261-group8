@@ -63,7 +63,7 @@ class UserFeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         """Metadata for user feedback serializer."""
         model = UserFeedback
-        fields = ('id', 'content', 'reply', 'type', 'created', 'modified')
+        fields = ('id', 'title', 'content', 'reply', 'type', 'created', 'modified')
         extra_kwargs = {
             'content': {'required': True},
             'type': {'required': True},
@@ -76,6 +76,7 @@ class UserFeedbackSerializer(serializers.ModelSerializer):
         feedback = UserFeedback.objects.create(
             content=validated_data['content'],
             type=validated_data['type'],
+            title=validated_data['title'],
             user=user
         )
 
@@ -96,6 +97,7 @@ class UserFeedbackAdminSerializer(serializers.ModelSerializer):
         model = UserFeedback
         fields = (
             'id',
+            'title',
             'content',
             'reply',
             'type',

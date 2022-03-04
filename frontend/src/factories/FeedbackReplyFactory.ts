@@ -11,7 +11,7 @@ class FeedbackReplyFactory {
       id: faker.datatype.number(),
       content: faker.lorem.paragraph(3),
       created: new Date(),
-      updated: new Date(),
+      modified: new Date(),
       admin: user.create(),
     }, reply);
   };
