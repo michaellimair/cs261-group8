@@ -12,7 +12,6 @@ interface IFeedbackRowProps {
   feedback: IFeedback;
   showView?: boolean;
   showEdit?: boolean;
-  showDelete?: boolean;
 }
 
 const FeedbackRow: FC<IFeedbackRowProps> = ({
@@ -21,7 +20,6 @@ const FeedbackRow: FC<IFeedbackRowProps> = ({
   },
   showView = true,
   showEdit = true,
-  showDelete = true,
 }) => {
   const { t } = useTranslation();
 
@@ -63,11 +61,6 @@ const FeedbackRow: FC<IFeedbackRowProps> = ({
           {showEdit && (
           <Button as={RouterLink} to={`${id}/edit`} colorScheme="green">
             {t('edit')}
-          </Button>
-          )}
-          {showDelete && (
-          <Button colorScheme="red">
-            {t('delete')}
           </Button>
           )}
         </HStack>

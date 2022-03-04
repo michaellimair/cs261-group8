@@ -135,12 +135,6 @@ Object {
               >
                 edit
               </a>
-              <button
-                class="chakra-button css-5c2176"
-                type="button"
-              >
-                delete
-              </button>
             </div>
           </div>
         </div>
@@ -228,12 +222,6 @@ Object {
               >
                 edit
               </a>
-              <button
-                class="chakra-button css-5c2176"
-                type="button"
-              >
-                delete
-              </button>
             </div>
           </div>
         </div>
@@ -321,12 +309,6 @@ Object {
               >
                 edit
               </a>
-              <button
-                class="chakra-button css-5c2176"
-                type="button"
-              >
-                delete
-              </button>
             </div>
           </div>
         </div>
@@ -414,12 +396,6 @@ Object {
               >
                 edit
               </a>
-              <button
-                class="chakra-button css-5c2176"
-                type="button"
-              >
-                delete
-              </button>
             </div>
           </div>
         </div>
@@ -507,12 +483,6 @@ Object {
               >
                 edit
               </a>
-              <button
-                class="chakra-button css-5c2176"
-                type="button"
-              >
-                delete
-              </button>
             </div>
           </div>
         </div>
@@ -600,12 +570,6 @@ Object {
               >
                 edit
               </a>
-              <button
-                class="chakra-button css-5c2176"
-                type="button"
-              >
-                delete
-              </button>
             </div>
           </div>
         </div>
@@ -693,12 +657,6 @@ Object {
               >
                 edit
               </a>
-              <button
-                class="chakra-button css-5c2176"
-                type="button"
-              >
-                delete
-              </button>
             </div>
           </div>
         </div>
@@ -786,12 +744,6 @@ Object {
               >
                 edit
               </a>
-              <button
-                class="chakra-button css-5c2176"
-                type="button"
-              >
-                delete
-              </button>
             </div>
           </div>
         </div>
@@ -879,12 +831,6 @@ Object {
               >
                 edit
               </a>
-              <button
-                class="chakra-button css-5c2176"
-                type="button"
-              >
-                delete
-              </button>
             </div>
           </div>
         </div>
@@ -972,12 +918,6 @@ Object {
               >
                 edit
               </a>
-              <button
-                class="chakra-button css-5c2176"
-                type="button"
-              >
-                delete
-              </button>
             </div>
           </div>
         </div>
@@ -1087,12 +1027,6 @@ Object {
             >
               edit
             </a>
-            <button
-              class="chakra-button css-5c2176"
-              type="button"
-            >
-              delete
-            </button>
           </div>
         </div>
       </div>
@@ -1180,12 +1114,6 @@ Object {
             >
               edit
             </a>
-            <button
-              class="chakra-button css-5c2176"
-              type="button"
-            >
-              delete
-            </button>
           </div>
         </div>
       </div>
@@ -1273,12 +1201,6 @@ Object {
             >
               edit
             </a>
-            <button
-              class="chakra-button css-5c2176"
-              type="button"
-            >
-              delete
-            </button>
           </div>
         </div>
       </div>
@@ -1366,12 +1288,6 @@ Object {
             >
               edit
             </a>
-            <button
-              class="chakra-button css-5c2176"
-              type="button"
-            >
-              delete
-            </button>
           </div>
         </div>
       </div>
@@ -1459,12 +1375,6 @@ Object {
             >
               edit
             </a>
-            <button
-              class="chakra-button css-5c2176"
-              type="button"
-            >
-              delete
-            </button>
           </div>
         </div>
       </div>
@@ -1552,12 +1462,6 @@ Object {
             >
               edit
             </a>
-            <button
-              class="chakra-button css-5c2176"
-              type="button"
-            >
-              delete
-            </button>
           </div>
         </div>
       </div>
@@ -1645,12 +1549,6 @@ Object {
             >
               edit
             </a>
-            <button
-              class="chakra-button css-5c2176"
-              type="button"
-            >
-              delete
-            </button>
           </div>
         </div>
       </div>
@@ -1738,12 +1636,6 @@ Object {
             >
               edit
             </a>
-            <button
-              class="chakra-button css-5c2176"
-              type="button"
-            >
-              delete
-            </button>
           </div>
         </div>
       </div>
@@ -1831,12 +1723,6 @@ Object {
             >
               edit
             </a>
-            <button
-              class="chakra-button css-5c2176"
-              type="button"
-            >
-              delete
-            </button>
           </div>
         </div>
       </div>
@@ -1924,12 +1810,6 @@ Object {
             >
               edit
             </a>
-            <button
-              class="chakra-button css-5c2176"
-              type="button"
-            >
-              delete
-            </button>
           </div>
         </div>
       </div>

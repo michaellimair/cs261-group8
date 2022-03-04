@@ -81,11 +81,7 @@ const ViewFeedbackPage: FC = () => {
             <Button as={RouterLink} to="edit" colorScheme="green">
               {t('edit')}
             </Button>
-            <Button colorScheme="red">
-              {t('delete')}
-            </Button>
           </HStack>
-
         </LoadingComponent>
       </ContainerBox>
     </Stack>
