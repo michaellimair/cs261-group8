@@ -14,8 +14,6 @@ import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
 const App: FC = () => {
   const allowedDashboardRoutes = useUserDashboardRoutes(false);
 
-  console.log(allowedDashboardRoutes);
-
   return (
     <Router>
       <Routes>
