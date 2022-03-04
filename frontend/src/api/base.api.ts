@@ -136,7 +136,7 @@ class BaseAPI {
   }
 
   protected getFullPath(path: string) {
-    return urljoin(this.basePath, path);
+    return urljoin(this.basePath, path, '/');
   }
 
   async get<T = Record<string, unknown>, Qs = Record<string, unknown>>({
