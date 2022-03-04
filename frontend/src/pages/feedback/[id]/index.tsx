@@ -31,8 +31,13 @@ const ViewFeedbackPage: FC = () => {
   );
 
   const {
-    title, type, content, created, modified, reply,
-  } = data!;
+    title,
+    type,
+    content,
+    created,
+    modified,
+    reply,
+  } = data || {};
 
   return (
     <Stack>
@@ -48,7 +53,7 @@ const ViewFeedbackPage: FC = () => {
         <LoadingComponent hasData={!!data} isLoading={isLoading} noDataText={t('dashboard.feedback.invalid')}>
           <HStack alignItems="center">
             <Text mr={2} fontWeight="bold" fontSize="xl">{title}</Text>
-            <FeedbackIcon type={type} />
+            {type && <FeedbackIcon type={type} />}
           </HStack>
           <VStack
             mt={2}
