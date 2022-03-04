@@ -12,7 +12,9 @@ import UserLayout from 'layouts/UserLayout';
 import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
 
 const App: FC = () => {
-  const allowedDashboardRoutes = useUserDashboardRoutes();
+  const allowedDashboardRoutes = useUserDashboardRoutes(false);
+
+  console.log(allowedDashboardRoutes);
 
   return (
     <Router>
@@ -26,9 +28,25 @@ const App: FC = () => {
         </Route>
         <Route path="dashboard" element={<UserLayout />}>
           {allowedDashboardRoutes.map(({
-            name, path, element, index,
+            name, path, element, index, children,
           }) => (
-            <Route key={name} path={path} element={element} index={index} />
+            <>
+              <Route key={name} path={path} element={element} index={index} />
+              {children && (
+                <>
+                  {children.map(({
+                    name: childName, path: childPath, element: childElement, index: childIndex,
+                  }) => (
+                    <Route
+                      key={childName}
+                      path={childPath}
+                      element={childElement}
+                      index={childIndex}
+                    />
+                  ))}
+                </>
+              )}
+            </>
           ))}
         </Route>
         <Route path="*" element={<FallbackPage />} />

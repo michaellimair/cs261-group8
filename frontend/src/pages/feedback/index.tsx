@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Heading, HStack, Stack } from '@chakra-ui/react';
 import FeedbackList from 'components/Feedback/FeedbackList';
-import CreateFeedbackButton from 'components/Feedback/CreateFeedbackButton';
+import CreateFeedbackLink from 'components/Feedback/CreateFeedbackLink';
 import { httpClient } from 'api';
 import { useQuery } from 'react-query';
 
@@ -19,7 +19,7 @@ const FeedbackPage: FC = () => {
         <Heading as="h2" size="md">
           {t('dashboard.feedback.your_feedbacks')}
         </Heading>
-        <CreateFeedbackButton />
+        <CreateFeedbackLink />
       </HStack>
       <FeedbackList isLoading={isLoading} feedbacks={data} />
     </Stack>

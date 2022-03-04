@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pages/feedback renders correctly 1`] = `
+exports[`components/Feedback/ViewFeedbackReply renders correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -33,65 +33,39 @@ Object {
       />
     </div>
     <div>
-      <div
-        class="chakra-stack css-n21gh5"
+      <p
+        class="chakra-text css-sfhhng"
       >
-        <div
-          class="chakra-stack css-1oeb4ru"
-        >
-          <h2
-            class="chakra-heading css-0"
-          >
-            dashboard.feedback.your_feedbacks
-          </h2>
-          <button
-            class="chakra-button css-5c2176"
-            type="button"
-          >
-            Create Feedback
-          </button>
-        </div>
-        <div
-          class="chakra-spinner css-1y7joxr"
-        >
-          <span
-            class="css-f8n5zr"
-          >
-            Loading...
-          </span>
-        </div>
-      </div>
+        dashboard.feedback.admin_reply
+      </p>
+      <p
+        class="chakra-text css-1k6unk6"
+      >
+        Nulla id vero perspiciatis nulla nihil fuga facilis. Iusto ullam saepe inventore sapiente enim. Voluptatum autem vel non deleniti similique. Molestiae quo quasi laboriosam dicta est. Consequatur fugiat a.
+      </p>
+      <p
+        class="chakra-text css-1859sd4"
+      >
+        dashboard.feedback.replied_on
+      </p>
     </div>
   </body>,
   "container": <div>
-    <div
-      class="chakra-stack css-n21gh5"
+    <p
+      class="chakra-text css-sfhhng"
     >
-      <div
-        class="chakra-stack css-1oeb4ru"
-      >
-        <h2
-          class="chakra-heading css-0"
-        >
-          dashboard.feedback.your_feedbacks
-        </h2>
-        <button
-          class="chakra-button css-5c2176"
-          type="button"
-        >
-          Create Feedback
-        </button>
-      </div>
-      <div
-        class="chakra-spinner css-1y7joxr"
-      >
-        <span
-          class="css-f8n5zr"
-        >
-          Loading...
-        </span>
-      </div>
-    </div>
+      dashboard.feedback.admin_reply
+    </p>
+    <p
+      class="chakra-text css-1k6unk6"
+    >
+      Nulla id vero perspiciatis nulla nihil fuga facilis. Iusto ullam saepe inventore sapiente enim. Voluptatum autem vel non deleniti similique. Molestiae quo quasi laboriosam dicta est. Consequatur fugiat a.
+    </p>
+    <p
+      class="chakra-text css-1859sd4"
+    >
+      dashboard.feedback.replied_on
+    </p>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

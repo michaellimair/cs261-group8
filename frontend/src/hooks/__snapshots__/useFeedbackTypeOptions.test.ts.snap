@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hooks/useFeedbackTypeOptions shows all the available options properly 1`] = `
+Array [
+  Object {
+    "label": "dashboard.feedback.bug",
+    "value": "bug",
+  },
+  Object {
+    "label": "dashboard.feedback.improvement",
+    "value": "improvement",
+  },
+  Object {
+    "label": "dashboard.feedback.question",
+    "value": "question",
+  },
+]
+`;

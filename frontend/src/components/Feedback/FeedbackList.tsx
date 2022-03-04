@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { Spinner } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { IFeedback } from 'customTypes/feedback';
+import LoadingComponent from 'components/LoadingComponent';
 import FeedbackRow from './FeedbackRow';
 
 interface IFeedbackListProps {
@@ -15,20 +15,16 @@ const FeedbackList: FC<IFeedbackListProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  if (isLoading) {
-    return <Spinner />;
-  }
-
-  if (!feedbacks || !feedbacks.length) {
-    return <div>{t('description.feedback.no_feedback')}</div>;
-  }
-
   return (
-    <div>
-      {feedbacks.map((feedback) => (
+    <LoadingComponent
+      isLoading={isLoading}
+      hasData={Boolean(feedbacks && feedbacks.length)}
+      noDataText={t('description.feedback.no_feedback')}
+    >
+      {feedbacks!.map((feedback) => (
         <FeedbackRow feedback={feedback} key={feedback.id} />
       ))}
-    </div>
+    </LoadingComponent>
   );
 };
 

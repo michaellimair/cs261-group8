@@ -13,6 +13,9 @@ import {
 } from 'react-icons/fi';
 import { VscFeedback } from 'react-icons/vsc';
 import { IoSchool } from 'react-icons/io5';
+import CreateFeedbackPage from 'pages/feedback/create';
+import ViewFeedbackPage from 'pages/feedback/[id]';
+import EditFeedbackPage from 'pages/feedback/[id]/edit';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -36,8 +39,14 @@ export interface IRoute {
 }
 
 export interface IDashboardRoute extends IRoute {
+  /** Defines the user groups which are allowed to access the route. */
   allowedGroups: UserGroup[];
-  icon: IconType;
+  /** Icon to be displayed in the sidebar. */
+  icon?: IconType;
+  /** Hides the route from the sidebar. */
+  hide?: boolean;
+  /** Subroutes under the same dashboard route. */
+  children?: IDashboardRoute[];
 }
 
 const ALLOW_ALL_USERS: UserGroup[] = [UserGroup.MENTOR, UserGroup.MENTEE];
@@ -90,10 +99,37 @@ export const dashboardRoutes: IDashboardRoute[] = [
     allowedGroups: MENTEE_ONLY,
   },
   {
+    name: 'create_feedback',
+    element: <CreateFeedbackPage />,
+    layout: RouteLayout.USER,
+    path: 'feedbacks/create',
+    description: 'dashboard.create_feedback.description',
+    allowedGroups: ALLOW_ALL_USERS,
+    hide: true,
+  },
+  {
+    name: 'view_feedback',
+    element: <ViewFeedbackPage />,
+    layout: RouteLayout.USER,
+    path: 'feedbacks/:id',
+    description: 'dashboard.feedback.description',
+    allowedGroups: ALLOW_ALL_USERS,
+    hide: true,
+  },
+  {
+    name: 'edit_feedback',
+    element: <EditFeedbackPage />,
+    layout: RouteLayout.USER,
+    path: 'feedbacks/:id/edit',
+    description: 'dashboard.edit_feedback.description',
+    allowedGroups: ALLOW_ALL_USERS,
+    hide: true,
+  },
+  {
     name: 'feedback',
     element: <FeedbackPage />,
     layout: RouteLayout.USER,
-    path: 'feedback',
+    path: 'feedbacks',
     icon: VscFeedback,
     description: 'dashboard.feedback.description',
     allowedGroups: ALLOW_ALL_USERS,

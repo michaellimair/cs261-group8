@@ -1,0 +1,416 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages/feedback/[id]/edit shows edit form properly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div
+      id="chakra-toast-portal"
+    >
+      <ul
+        id="chakra-toast-manager-top"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-top-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-top-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
+    <div>
+      <div
+        class="chakra-stack css-n21gh5"
+      >
+        <h2
+          class="chakra-heading css-0"
+        >
+          dashboard.edit_feedback.title
+        </h2>
+        <div
+          class="css-jhpxgx"
+        >
+          <form
+            data-testid="feedbackForm"
+          >
+            <div
+              class="chakra-form-control css-wlea3r"
+              data-testid="type-formcontrol"
+              role="group"
+            >
+              <label
+                class="chakra-form__label css-uvho5g"
+                data-testid="type-label"
+                for="type"
+                id="type-label"
+              >
+                dashboard.feedback.type
+                <span
+                  aria-hidden="true"
+                  class="chakra-form__required-indicator css-0"
+                  role="presentation"
+                >
+                  *
+                </span>
+              </label>
+              <div
+                class="chakra-select__wrapper css-42b2qy"
+              >
+                <select
+                  aria-required="true"
+                  class="chakra-select css-1ik61og"
+                  id="type"
+                  required=""
+                >
+                  <option
+                    value="bug"
+                  >
+                    dashboard.feedback.bug
+                  </option>
+                  <option
+                    value="improvement"
+                  >
+                    dashboard.feedback.improvement
+                  </option>
+                  <option
+                    value="question"
+                  >
+                    dashboard.feedback.question
+                  </option>
+                </select>
+                <div
+                  class="chakra-select__icon-wrapper css-162mkon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="chakra-select__icon"
+                    focusable="false"
+                    role="presentation"
+                    style="width: 1em; height: 1em; color: currentColor;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div
+              class="chakra-form-control css-wlea3r"
+              data-testid="title-formcontrol"
+              role="group"
+            >
+              <label
+                class="chakra-form__label css-uvho5g"
+                data-testid="title-label"
+                for="title"
+                id="title-label"
+              >
+                title
+                <span
+                  aria-hidden="true"
+                  class="chakra-form__required-indicator css-0"
+                  role="presentation"
+                >
+                  *
+                </span>
+              </label>
+              <div
+                class="chakra-input__group css-4302v8"
+              >
+                <input
+                  aria-required="true"
+                  class="chakra-input css-0"
+                  data-testid="title"
+                  id="title"
+                  required=""
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              class="chakra-form-control css-wlea3r"
+              data-testid="content-formcontrol"
+              role="group"
+            >
+              <label
+                class="chakra-form__label css-uvho5g"
+                data-testid="content-label"
+                for="content"
+                id="content-label"
+              >
+                content
+                <span
+                  aria-hidden="true"
+                  class="chakra-form__required-indicator css-0"
+                  role="presentation"
+                >
+                  *
+                </span>
+              </label>
+              <textarea
+                aria-required="true"
+                class="chakra-textarea css-0"
+                id="content"
+                required=""
+              />
+            </div>
+            <div
+              class="chakra-form-control css-t9xfd"
+              role="group"
+            />
+            <div
+              class="chakra-stack css-17vvmxc"
+            >
+              <button
+                class="chakra-button css-5c2176"
+                data-testid="edit-feedback-button"
+                type="submit"
+              >
+                dashboard.edit_feedback.title
+              </button>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/feedbacks/undefined"
+              >
+                dashboard.edit_feedback.cancel
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="chakra-stack css-n21gh5"
+    >
+      <h2
+        class="chakra-heading css-0"
+      >
+        dashboard.edit_feedback.title
+      </h2>
+      <div
+        class="css-jhpxgx"
+      >
+        <form
+          data-testid="feedbackForm"
+        >
+          <div
+            class="chakra-form-control css-wlea3r"
+            data-testid="type-formcontrol"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-uvho5g"
+              data-testid="type-label"
+              for="type"
+              id="type-label"
+            >
+              dashboard.feedback.type
+              <span
+                aria-hidden="true"
+                class="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <div
+              class="chakra-select__wrapper css-42b2qy"
+            >
+              <select
+                aria-required="true"
+                class="chakra-select css-1ik61og"
+                id="type"
+                required=""
+              >
+                <option
+                  value="bug"
+                >
+                  dashboard.feedback.bug
+                </option>
+                <option
+                  value="improvement"
+                >
+                  dashboard.feedback.improvement
+                </option>
+                <option
+                  value="question"
+                >
+                  dashboard.feedback.question
+                </option>
+              </select>
+              <div
+                class="chakra-select__icon-wrapper css-162mkon"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="chakra-select__icon"
+                  focusable="false"
+                  role="presentation"
+                  style="width: 1em; height: 1em; color: currentColor;"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="chakra-form-control css-wlea3r"
+            data-testid="title-formcontrol"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-uvho5g"
+              data-testid="title-label"
+              for="title"
+              id="title-label"
+            >
+              title
+              <span
+                aria-hidden="true"
+                class="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <div
+              class="chakra-input__group css-4302v8"
+            >
+              <input
+                aria-required="true"
+                class="chakra-input css-0"
+                data-testid="title"
+                id="title"
+                required=""
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="chakra-form-control css-wlea3r"
+            data-testid="content-formcontrol"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-uvho5g"
+              data-testid="content-label"
+              for="content"
+              id="content-label"
+            >
+              content
+              <span
+                aria-hidden="true"
+                class="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <textarea
+              aria-required="true"
+              class="chakra-textarea css-0"
+              id="content"
+              required=""
+            />
+          </div>
+          <div
+            class="chakra-form-control css-t9xfd"
+            role="group"
+          />
+          <div
+            class="chakra-stack css-17vvmxc"
+          >
+            <button
+              class="chakra-button css-5c2176"
+              data-testid="edit-feedback-button"
+              type="submit"
+            >
+              dashboard.edit_feedback.title
+            </button>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/feedbacks/undefined"
+            >
+              dashboard.edit_feedback.cancel
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

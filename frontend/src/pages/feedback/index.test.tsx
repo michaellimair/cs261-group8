@@ -1,14 +1,22 @@
 import { render } from '@testing-library/react';
-import { queryClient } from 'libs/query-client';
-import { QueryClientProvider } from 'react-query';
+import { QueryRouterWrapper } from 'libs/testing';
+import { useQuery } from 'react-query';
+import FeedbackFactory from 'factories/FeedbackFactory';
 import FeedbackPage from '.';
+
+jest.mock('react-query');
 
 describe('pages/feedback', () => {
   it('renders correctly', () => {
+    const feedbackFactory = new FeedbackFactory();
+    (useQuery as jest.Mock).mockImplementationOnce(() => ({
+      isLoading: false,
+      data: feedbackFactory.createMany(10),
+    }));
     const result = render(
-      <QueryClientProvider client={queryClient}>
+      <QueryRouterWrapper>
         <FeedbackPage />
-      </QueryClientProvider>,
+      </QueryRouterWrapper>,
     );
 
     expect(result).toMatchSnapshot();

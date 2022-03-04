@@ -1,4 +1,4 @@
-import { IFeedback } from 'customTypes/feedback';
+import { IFeedback, IFeedbackDTO } from 'customTypes/feedback';
 import urljoin from 'url-join';
 import BaseAPI from './base.api';
 
@@ -17,8 +17,8 @@ class FeedbackAPI {
   private getPath = (path: string) => urljoin(this.basePath, path);
 
   createFeedback = (
-    feedback: IFeedback,
-  ): Promise<IFeedback> => this.api.post<IFeedback, IFeedback>({
+    feedback: IFeedbackDTO,
+  ): Promise<IFeedback> => this.api.post<IFeedback, IFeedbackDTO>({
     path: this.getPath(''),
     body: feedback,
   });
@@ -27,10 +27,14 @@ class FeedbackAPI {
     path: this.getPath(''),
   });
 
+  getFeedback = (id: number): Promise<IFeedback> => this.api.get<IFeedback>({
+    path: this.getPath(`/${id}`),
+  });
+
   updateFeedback = (
     id: number,
-    feedback: Partial<Omit<IFeedback, 'reply'>>,
-  ): Promise<IFeedback> => this.api.patch<IFeedback, Partial<Omit<IFeedback, 'reply'>>>({
+    feedback: Partial<IFeedbackDTO>,
+  ): Promise<IFeedback> => this.api.patch<IFeedback, Partial<IFeedbackDTO>>({
     path: this.getPath(`/${id}`),
     body: feedback,
   });

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/FormTextareaField renders correctly with the right set of attributes 1`] = `
+<div
+  class="chakra-form-control css-wlea3r"
+  data-testid="field-formcontrol"
+  role="group"
+>
+  <label
+    class="chakra-form__label css-uvho5g"
+    data-testid="field-label"
+    for="field"
+    id="field-label"
+  >
+    customlabel
+  </label>
+  <textarea
+    autocomplete="email"
+    class="chakra-textarea css-0"
+    id="field"
+    placeholder="testplaceholder"
+  />
+</div>
+`;
+
+exports[`components/FormTextareaField renders correctly with the right set of attributes 2`] = `
+<textarea
+  autocomplete="email"
+  class="chakra-textarea css-0"
+  id="field"
+  placeholder="testplaceholder"
+/>
+`;

@@ -1,0 +1,1990 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages/feedback renders correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div
+      id="chakra-toast-portal"
+    >
+      <ul
+        id="chakra-toast-manager-top"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-top-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-top-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
+    <div>
+      <div
+        class="chakra-stack css-n21gh5"
+      >
+        <div
+          class="chakra-stack css-1oeb4ru"
+        >
+          <h2
+            class="chakra-heading css-0"
+          >
+            dashboard.feedback.your_feedbacks
+          </h2>
+          <a
+            class="chakra-link chakra-button css-ogxy0s"
+            href="/dashboard/feedbacks/create"
+          >
+            Create Feedback
+          </a>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-1u8k0pa"
+          >
+            <p
+              class="chakra-text css-d3lk8w"
+            >
+              Porro nulla id vero perspiciatis nulla nihil.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1dmv4b0"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Eum iusto ullam saepe inventore sapiente enim eum. Autem vel non deleniti similique reprehenderit. Quo quasi laboriosam dicta est voluptatem consequatur fugiat a omnis. Accusamus accusamus reiciendis rem. Et praesentium occaecati dolor soluta sed quisquam rerum culpa.
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-993yte"
+          >
+            <div
+              class="chakra-stack css-1h4ws66"
+            >
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                created
+              </p>
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                modified
+              </p>
+            </div>
+            <div
+              class="chakra-stack css-84zodg"
+            >
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/0"
+              >
+                view
+              </a>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/0/edit"
+              >
+                edit
+              </a>
+              <button
+                class="chakra-button css-5c2176"
+                type="button"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-1u8k0pa"
+          >
+            <p
+              class="chakra-text css-d3lk8w"
+            >
+              Esse totam voluptatum et fuga.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1dmv4b0"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Aut cum expedita ipsam eos. Adipisci hic consequatur distinctio qui perferendis aspernatur fuga quo. Explicabo aut reiciendis debitis totam molestias reiciendis illo.
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-993yte"
+          >
+            <div
+              class="chakra-stack css-1h4ws66"
+            >
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                created
+              </p>
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                modified
+              </p>
+            </div>
+            <div
+              class="chakra-stack css-84zodg"
+            >
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/1"
+              >
+                view
+              </a>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/1/edit"
+              >
+                edit
+              </a>
+              <button
+                class="chakra-button css-5c2176"
+                type="button"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-1u8k0pa"
+          >
+            <p
+              class="chakra-text css-d3lk8w"
+            >
+              Omnis voluptatem dolorem eum quis consequatur ratione.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1dmv4b0"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Enim nihil id quis sapiente et dolore. In qui deserunt eveniet sunt rerum modi necessitatibus tenetur. Ducimus ducimus nulla reiciendis cumque fugit ullam voluptas. Velit qui cum aut magnam culpa enim aut delectus. Officia est distinctio et provident a incidunt facilis.
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-993yte"
+          >
+            <div
+              class="chakra-stack css-1h4ws66"
+            >
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                created
+              </p>
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                modified
+              </p>
+            </div>
+            <div
+              class="chakra-stack css-84zodg"
+            >
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/2"
+              >
+                view
+              </a>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/2/edit"
+              >
+                edit
+              </a>
+              <button
+                class="chakra-button css-5c2176"
+                type="button"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-1u8k0pa"
+          >
+            <p
+              class="chakra-text css-d3lk8w"
+            >
+              Accusamus eaque neque molestias et dolorem quia omnis pariatur et.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1dmv4b0"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Similique eos voluptate aperiam quasi voluptatibus. Quis qui quam quisquam ab et consequatur aut. Vero incidunt aut. Ea rerum qui placeat ipsum laboriosam occaecati corrupti illo. Velit dolor sit ipsum autem. Modi officiis nisi rerum non est.
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-993yte"
+          >
+            <div
+              class="chakra-stack css-1h4ws66"
+            >
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                created
+              </p>
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                modified
+              </p>
+            </div>
+            <div
+              class="chakra-stack css-84zodg"
+            >
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/3"
+              >
+                view
+              </a>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/3/edit"
+              >
+                edit
+              </a>
+              <button
+                class="chakra-button css-5c2176"
+                type="button"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-1u8k0pa"
+          >
+            <p
+              class="chakra-text css-d3lk8w"
+            >
+              Perspiciatis accusantium at et.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1dmv4b0"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Deleniti qui cum sed est eveniet quo doloribus. Eius blanditiis nam et voluptatem eos. Incidunt possimus aut. Et eum facilis officia quia. Occaecati et alias officiis enim ad nihil quibusdam rerum.
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-993yte"
+          >
+            <div
+              class="chakra-stack css-1h4ws66"
+            >
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                created
+              </p>
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                modified
+              </p>
+            </div>
+            <div
+              class="chakra-stack css-84zodg"
+            >
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/4"
+              >
+                view
+              </a>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/4/edit"
+              >
+                edit
+              </a>
+              <button
+                class="chakra-button css-5c2176"
+                type="button"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-1u8k0pa"
+          >
+            <p
+              class="chakra-text css-d3lk8w"
+            >
+              Voluptas placeat placeat.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1dmv4b0"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Eius vitae placeat omnis minus qui quae sapiente non nostrum. Labore cum aspernatur veritatis sit. Non aut libero fugiat repellendus maiores veniam.
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-993yte"
+          >
+            <div
+              class="chakra-stack css-1h4ws66"
+            >
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                created
+              </p>
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                modified
+              </p>
+            </div>
+            <div
+              class="chakra-stack css-84zodg"
+            >
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/5"
+              >
+                view
+              </a>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/5/edit"
+              >
+                edit
+              </a>
+              <button
+                class="chakra-button css-5c2176"
+                type="button"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-1u8k0pa"
+          >
+            <p
+              class="chakra-text css-d3lk8w"
+            >
+              Voluptatibus aspernatur voluptate eos.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1dmv4b0"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Nisi sapiente temporibus et velit est ea sit in vitae. Voluptate omnis incidunt molestiae magni. Illo tenetur est perferendis aut. Assumenda corporis ratione aut beatae magnam sunt. Tempore consequatur dolore et quam facere iste eum.
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-993yte"
+          >
+            <div
+              class="chakra-stack css-1h4ws66"
+            >
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                created
+              </p>
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                modified
+              </p>
+            </div>
+            <div
+              class="chakra-stack css-84zodg"
+            >
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/6"
+              >
+                view
+              </a>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/6/edit"
+              >
+                edit
+              </a>
+              <button
+                class="chakra-button css-5c2176"
+                type="button"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-1u8k0pa"
+          >
+            <p
+              class="chakra-text css-d3lk8w"
+            >
+              Molestiae quae porro et quos beatae.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1dmv4b0"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Aut nemo corrupti in esse a quia. Voluptatum aperiam repellendus et iste molestias nesciunt sed. Soluta est minima ut. Voluptas reprehenderit ratione a.
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-993yte"
+          >
+            <div
+              class="chakra-stack css-1h4ws66"
+            >
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                created
+              </p>
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                modified
+              </p>
+            </div>
+            <div
+              class="chakra-stack css-84zodg"
+            >
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/7"
+              >
+                view
+              </a>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/7/edit"
+              >
+                edit
+              </a>
+              <button
+                class="chakra-button css-5c2176"
+                type="button"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-1u8k0pa"
+          >
+            <p
+              class="chakra-text css-d3lk8w"
+            >
+              Blanditiis aspernatur tenetur dolorum in eos qui.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1dmv4b0"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Asperiores illum dicta nesciunt explicabo et harum in hic veritatis. Nihil ducimus quaerat qui pariatur quod aperiam nemo a sed. Dignissimos ex reprehenderit sit provident.
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-993yte"
+          >
+            <div
+              class="chakra-stack css-1h4ws66"
+            >
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                created
+              </p>
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                modified
+              </p>
+            </div>
+            <div
+              class="chakra-stack css-84zodg"
+            >
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/8"
+              >
+                view
+              </a>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/8/edit"
+              >
+                edit
+              </a>
+              <button
+                class="chakra-button css-5c2176"
+                type="button"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-1u8k0pa"
+          >
+            <p
+              class="chakra-text css-d3lk8w"
+            >
+              Neque fugiat rerum aut quos.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1dmv4b0"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Consequatur et enim repellendus et quis quasi et nobis distinctio. Dolore harum nam molestiae sint at. Dolores iste molestiae quis qui nihil. Esse ducimus ea ut eum commodi molestiae qui. Id incidunt ducimus.
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-993yte"
+          >
+            <div
+              class="chakra-stack css-1h4ws66"
+            >
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                created
+              </p>
+              <p
+                class="chakra-text css-1859sd4"
+              >
+                modified
+              </p>
+            </div>
+            <div
+              class="chakra-stack css-84zodg"
+            >
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/9"
+              >
+                view
+              </a>
+              <a
+                class="chakra-link chakra-button css-ogxy0s"
+                href="/9/edit"
+              >
+                edit
+              </a>
+              <button
+                class="chakra-button css-5c2176"
+                type="button"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="chakra-stack css-n21gh5"
+    >
+      <div
+        class="chakra-stack css-1oeb4ru"
+      >
+        <h2
+          class="chakra-heading css-0"
+        >
+          dashboard.feedback.your_feedbacks
+        </h2>
+        <a
+          class="chakra-link chakra-button css-ogxy0s"
+          href="/dashboard/feedbacks/create"
+        >
+          Create Feedback
+        </a>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-1u8k0pa"
+        >
+          <p
+            class="chakra-text css-d3lk8w"
+          >
+            Porro nulla id vero perspiciatis nulla nihil.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1dmv4b0"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Eum iusto ullam saepe inventore sapiente enim eum. Autem vel non deleniti similique reprehenderit. Quo quasi laboriosam dicta est voluptatem consequatur fugiat a omnis. Accusamus accusamus reiciendis rem. Et praesentium occaecati dolor soluta sed quisquam rerum culpa.
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-993yte"
+        >
+          <div
+            class="chakra-stack css-1h4ws66"
+          >
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/0"
+            >
+              view
+            </a>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/0/edit"
+            >
+              edit
+            </a>
+            <button
+              class="chakra-button css-5c2176"
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-1u8k0pa"
+        >
+          <p
+            class="chakra-text css-d3lk8w"
+          >
+            Esse totam voluptatum et fuga.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1dmv4b0"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Aut cum expedita ipsam eos. Adipisci hic consequatur distinctio qui perferendis aspernatur fuga quo. Explicabo aut reiciendis debitis totam molestias reiciendis illo.
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-993yte"
+        >
+          <div
+            class="chakra-stack css-1h4ws66"
+          >
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/1"
+            >
+              view
+            </a>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/1/edit"
+            >
+              edit
+            </a>
+            <button
+              class="chakra-button css-5c2176"
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-1u8k0pa"
+        >
+          <p
+            class="chakra-text css-d3lk8w"
+          >
+            Omnis voluptatem dolorem eum quis consequatur ratione.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1dmv4b0"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Enim nihil id quis sapiente et dolore. In qui deserunt eveniet sunt rerum modi necessitatibus tenetur. Ducimus ducimus nulla reiciendis cumque fugit ullam voluptas. Velit qui cum aut magnam culpa enim aut delectus. Officia est distinctio et provident a incidunt facilis.
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-993yte"
+        >
+          <div
+            class="chakra-stack css-1h4ws66"
+          >
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/2"
+            >
+              view
+            </a>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/2/edit"
+            >
+              edit
+            </a>
+            <button
+              class="chakra-button css-5c2176"
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-1u8k0pa"
+        >
+          <p
+            class="chakra-text css-d3lk8w"
+          >
+            Accusamus eaque neque molestias et dolorem quia omnis pariatur et.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1dmv4b0"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Similique eos voluptate aperiam quasi voluptatibus. Quis qui quam quisquam ab et consequatur aut. Vero incidunt aut. Ea rerum qui placeat ipsum laboriosam occaecati corrupti illo. Velit dolor sit ipsum autem. Modi officiis nisi rerum non est.
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-993yte"
+        >
+          <div
+            class="chakra-stack css-1h4ws66"
+          >
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/3"
+            >
+              view
+            </a>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/3/edit"
+            >
+              edit
+            </a>
+            <button
+              class="chakra-button css-5c2176"
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-1u8k0pa"
+        >
+          <p
+            class="chakra-text css-d3lk8w"
+          >
+            Perspiciatis accusantium at et.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1dmv4b0"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Deleniti qui cum sed est eveniet quo doloribus. Eius blanditiis nam et voluptatem eos. Incidunt possimus aut. Et eum facilis officia quia. Occaecati et alias officiis enim ad nihil quibusdam rerum.
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-993yte"
+        >
+          <div
+            class="chakra-stack css-1h4ws66"
+          >
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/4"
+            >
+              view
+            </a>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/4/edit"
+            >
+              edit
+            </a>
+            <button
+              class="chakra-button css-5c2176"
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-1u8k0pa"
+        >
+          <p
+            class="chakra-text css-d3lk8w"
+          >
+            Voluptas placeat placeat.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1dmv4b0"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Eius vitae placeat omnis minus qui quae sapiente non nostrum. Labore cum aspernatur veritatis sit. Non aut libero fugiat repellendus maiores veniam.
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-993yte"
+        >
+          <div
+            class="chakra-stack css-1h4ws66"
+          >
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/5"
+            >
+              view
+            </a>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/5/edit"
+            >
+              edit
+            </a>
+            <button
+              class="chakra-button css-5c2176"
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-1u8k0pa"
+        >
+          <p
+            class="chakra-text css-d3lk8w"
+          >
+            Voluptatibus aspernatur voluptate eos.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1dmv4b0"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Nisi sapiente temporibus et velit est ea sit in vitae. Voluptate omnis incidunt molestiae magni. Illo tenetur est perferendis aut. Assumenda corporis ratione aut beatae magnam sunt. Tempore consequatur dolore et quam facere iste eum.
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-993yte"
+        >
+          <div
+            class="chakra-stack css-1h4ws66"
+          >
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/6"
+            >
+              view
+            </a>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/6/edit"
+            >
+              edit
+            </a>
+            <button
+              class="chakra-button css-5c2176"
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-1u8k0pa"
+        >
+          <p
+            class="chakra-text css-d3lk8w"
+          >
+            Molestiae quae porro et quos beatae.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1dmv4b0"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Aut nemo corrupti in esse a quia. Voluptatum aperiam repellendus et iste molestias nesciunt sed. Soluta est minima ut. Voluptas reprehenderit ratione a.
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-993yte"
+        >
+          <div
+            class="chakra-stack css-1h4ws66"
+          >
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/7"
+            >
+              view
+            </a>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/7/edit"
+            >
+              edit
+            </a>
+            <button
+              class="chakra-button css-5c2176"
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-1u8k0pa"
+        >
+          <p
+            class="chakra-text css-d3lk8w"
+          >
+            Blanditiis aspernatur tenetur dolorum in eos qui.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1dmv4b0"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Asperiores illum dicta nesciunt explicabo et harum in hic veritatis. Nihil ducimus quaerat qui pariatur quod aperiam nemo a sed. Dignissimos ex reprehenderit sit provident.
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-993yte"
+        >
+          <div
+            class="chakra-stack css-1h4ws66"
+          >
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/8"
+            >
+              view
+            </a>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/8/edit"
+            >
+              edit
+            </a>
+            <button
+              class="chakra-button css-5c2176"
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-1u8k0pa"
+        >
+          <p
+            class="chakra-text css-d3lk8w"
+          >
+            Neque fugiat rerum aut quos.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1dmv4b0"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Consequatur et enim repellendus et quis quasi et nobis distinctio. Dolore harum nam molestiae sint at. Dolores iste molestiae quis qui nihil. Esse ducimus ea ut eum commodi molestiae qui. Id incidunt ducimus.
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-993yte"
+        >
+          <div
+            class="chakra-stack css-1h4ws66"
+          >
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/9"
+            >
+              view
+            </a>
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/9/edit"
+            >
+              edit
+            </a>
+            <button
+              class="chakra-button css-5c2176"
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

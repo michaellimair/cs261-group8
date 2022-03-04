@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import { IFeedback } from 'customTypes/feedback';
 import FeedbackFactory from 'factories/FeedbackFactory';
+import { QueryRouterWrapper } from 'libs/testing';
 import FeedbackRow from './FeedbackRow';
 
 describe('components/Feedback/FeedbackRow', () => {
@@ -12,7 +13,11 @@ describe('components/Feedback/FeedbackRow', () => {
   });
 
   it('renders correctly', () => {
-    const result = render(<FeedbackRow feedback={feedback} />);
+    const result = render(
+      <QueryRouterWrapper>
+        <FeedbackRow feedback={feedback} />
+      </QueryRouterWrapper>,
+    );
 
     expect(result).toMatchSnapshot();
   });

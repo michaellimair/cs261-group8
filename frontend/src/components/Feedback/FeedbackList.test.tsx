@@ -1,7 +1,7 @@
-import { Spinner } from '@chakra-ui/react';
 import { render } from '@testing-library/react';
 import { IFeedback } from 'customTypes/feedback';
 import FeedbackFactory from 'factories/FeedbackFactory';
+import { QueryRouterWrapper } from 'libs/testing';
 import FeedbackList from './FeedbackList';
 
 describe('components/Feedback/FeedbackList', () => {
@@ -12,21 +12,12 @@ describe('components/Feedback/FeedbackList', () => {
     feedbacks = feedbackFactory.createMany(10);
   });
 
-  it('renders loading spinner if not loaded', () => {
-    const result = render(<FeedbackList isLoading />);
-    const expected = render(<Spinner />);
-
-    expect(result.container.innerHTML).toMatchSnapshot(expected.container.innerHTML);
-  });
-
-  it('displays no feedback text if there is no feedback', () => {
-    const result = render(<FeedbackList isLoading={false} feedbacks={[]} />);
-
-    expect(result.container.innerHTML).toBe('<div>description.feedback.no_feedback</div>');
-  });
-
   it('renders correctly', () => {
-    const result = render(<FeedbackList feedbacks={feedbacks} isLoading={false} />);
+    const result = render(
+      <QueryRouterWrapper>
+        <FeedbackList feedbacks={feedbacks} isLoading={false} />
+      </QueryRouterWrapper>,
+    );
 
     expect(result).toMatchSnapshot();
   });
