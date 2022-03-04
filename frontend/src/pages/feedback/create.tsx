@@ -12,9 +12,11 @@ import useCommonForm from 'hooks/useCommonForm';
 import ContainerBox from 'components/ContainerBox';
 import FeedbackFormFields from 'components/Feedback/FeedbackFormFields';
 import CreateFeedbackButton from 'components/Feedback/CreateFeedbackButton';
+import { useNavigate } from 'react-router-dom';
 
 const CreateFeedbackPage: FC = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const {
     onSubmit,
     errors,
@@ -23,6 +25,9 @@ const CreateFeedbackPage: FC = () => {
   } = useCommonForm<IFeedbackDTO, ApiError<any>, IFeedback>({
     mutationFn: (feedback: IFeedbackDTO) => httpClient.feedback.createFeedback(feedback),
     mutationId: ['feedback', 'create'],
+    onSuccess: ({ id }) => {
+      navigate(`../feedbacks/${id}`);
+    },
   });
 
   return (
