@@ -201,17 +201,3 @@ class PlanOfActionMenteeSerializer(serializers.ModelSerializer):
         )
 
         return plan_of_action
-
-    def update(self, instance, validated_data):
-        """
-        update weather plan of action is completed
-        """
-        # request = self.context.get("request")
-        if "completed" in validated_data:
-            instance.completed = validated_data['completed']
-            # instance.approved = False
-
-        instance.save()
-
-        return instance
-

@@ -1,20 +1,19 @@
-from rest_framework import viewsets, generics
+from rest_framework.generics import *
 from .serializers import *
 from users.permissions import IsMentee, IsMentor
 
 #  Haven't linked to pair yet, test mentor and mentee for permission first
+# retrieve is limit to visit
 
 
-class CommentMenteeViewSet(viewsets.ReadOnlyModelViewSet):
+class CommentMenteeView(ListAPIView):
     """
     Mentee can only read comment
     """
     serializer_class = CommentMenteeSerializer
     permission_classes = [IsMentee]
-    queryset = Comment.objects.all()
 
-
-class CommentMentorView(generics.ListCreateAPIView):
+class CommentMentorView(ListCreateAPIView):
     """
     Mentor can create comment
     """
@@ -23,7 +22,7 @@ class CommentMentorView(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
 
 
-class MilestoneMenteeView(generics.ListCreateAPIView, generics.UpdateAPIView):
+class MilestoneMenteeView(ListCreateAPIView, CreateAPIView):
     """
     Mentee can create and update if completed milestone
     """
@@ -32,7 +31,7 @@ class MilestoneMenteeView(generics.ListCreateAPIView, generics.UpdateAPIView):
     queryset = Milestone.objects.all()
 
 
-class MilestoneMentorViewSet(viewsets.ReadOnlyModelViewSet):
+class MilestoneMentorView(ListAPIView):
     """
     Mentor can only read milestone
     """
@@ -41,7 +40,7 @@ class MilestoneMentorViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Milestone.objects.all()
 
 
-class PlanOfActionMenteeView(generics.ListCreateAPIView, generics.UpdateAPIView):
+class PlanOfActionMenteeView(ListCreateAPIView, UpdateAPIView):
     """
     Mentee can create and update plan of action
     """
@@ -50,9 +49,9 @@ class PlanOfActionMenteeView(generics.ListCreateAPIView, generics.UpdateAPIView)
     queryset = PlanOfAction.objects.all()
 
 
-class PlanOfActionMentorView(generics.RetrieveUpdateAPIView):
+class PlanOfActionMentorView(ListAPIView, UpdateAPIView):
     """
-    Mentee can create and update plan of action
+    Mentor can update plan of action
     """
     serializer_class = PlanOfActionMenteeSerializer
     permission_classes = [IsMentee]
