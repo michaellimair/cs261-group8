@@ -11,13 +11,6 @@ const useUserDashboardRoutes = (shouldHide?: boolean): IDashboardRoute[] => {
 
   return dashboardRoutes
     .filter(({ hide }) => !(shouldHide && hide))
-    .map((route) => {
-      const children = route.children?.filter(({ hide }) => !(shouldHide && hide));
-      return {
-        ...route,
-        children,
-      };
-    })
     .filter(({ allowedGroups }) => checkAllowed({ allowedGroups, userGroups: user.groups }));
 };
 
