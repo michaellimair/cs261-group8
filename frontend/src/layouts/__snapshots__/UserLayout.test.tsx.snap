@@ -66,172 +66,6 @@ Object {
               </svg>
             </button>
           </div>
-          <a
-            class="chakra-link css-jgup0q"
-            href="/"
-            style="text-decoration: none;"
-          >
-            <div
-              class="css-cpuzs9"
-              role="group"
-            >
-              <svg
-                class="chakra-icon css-1b1fm3x"
-                data-testid="sidebarNavIcon"
-                fill="none"
-                focusable="false"
-                height="1em"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-                />
-                <polyline
-                  points="9 22 9 12 15 12 15 22"
-                />
-              </svg>
-              Home
-            </div>
-          </a>
-          <a
-            class="chakra-link css-jgup0q"
-            href="/"
-            style="text-decoration: none;"
-          >
-            <div
-              class="css-cpuzs9"
-              role="group"
-            >
-              <svg
-                class="chakra-icon css-1b1fm3x"
-                data-testid="sidebarNavIcon"
-                fill="none"
-                focusable="false"
-                height="1em"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <polyline
-                  points="23 6 13.5 15.5 8.5 10.5 1 18"
-                />
-                <polyline
-                  points="17 6 23 6 23 12"
-                />
-              </svg>
-              Trending
-            </div>
-          </a>
-          <a
-            class="chakra-link css-jgup0q"
-            href="/"
-            style="text-decoration: none;"
-          >
-            <div
-              class="css-cpuzs9"
-              role="group"
-            >
-              <svg
-                class="chakra-icon css-1b1fm3x"
-                data-testid="sidebarNavIcon"
-                fill="none"
-                focusable="false"
-                height="1em"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10"
-                />
-                <polygon
-                  points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"
-                />
-              </svg>
-              Explore
-            </div>
-          </a>
-          <a
-            class="chakra-link css-jgup0q"
-            href="/"
-            style="text-decoration: none;"
-          >
-            <div
-              class="css-cpuzs9"
-              role="group"
-            >
-              <svg
-                class="chakra-icon css-1b1fm3x"
-                data-testid="sidebarNavIcon"
-                fill="none"
-                focusable="false"
-                height="1em"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <polygon
-                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                />
-              </svg>
-              Favourites
-            </div>
-          </a>
-          <a
-            class="chakra-link css-jgup0q"
-            href="/"
-            style="text-decoration: none;"
-          >
-            <div
-              class="css-cpuzs9"
-              role="group"
-            >
-              <svg
-                class="chakra-icon css-1b1fm3x"
-                data-testid="sidebarNavIcon"
-                fill="none"
-                focusable="false"
-                height="1em"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="3"
-                />
-                <path
-                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
-                />
-              </svg>
-              Settings
-            </div>
-          </a>
         </div>
         <div
           class="css-g8fv48"
@@ -313,11 +147,12 @@ Object {
               class="css-70qvj9"
             >
               <button
-                aria-controls="menu-list-7"
+                aria-controls="menu-list-4"
                 aria-expanded="false"
                 aria-haspopup="menu"
                 class="chakra-menu__menu-button css-10lilp"
-                id="menu-button-7"
+                data-testid="menuButton"
+                id="menu-button-4"
               >
                 <span
                   class="css-xl71ch"
@@ -349,14 +184,7 @@ Object {
                     >
                       <p
                         class="chakra-text css-g5hezf"
-                      >
-                        Justina Clark
-                      </p>
-                      <p
-                        class="chakra-text css-65bt76"
-                      >
-                        Admin
-                      </p>
+                      />
                     </div>
                     <div
                       class="css-1t6irk0"
@@ -387,41 +215,11 @@ Object {
                 <div
                   aria-orientation="vertical"
                   class="chakra-menu__menu-list css-w8sf4k"
-                  id="menu-list-7"
+                  id="menu-list-4"
                   role="menu"
                   style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
                   tabindex="-1"
                 >
-                  <button
-                    class="chakra-menu__menuitem css-1k756t9"
-                    data-index="0"
-                    id="menu-list-7-menuitem-2"
-                    role="menuitem"
-                    tabindex="-1"
-                    type="button"
-                  >
-                    Profile
-                  </button>
-                  <button
-                    class="chakra-menu__menuitem css-1k756t9"
-                    data-index="1"
-                    id="menu-list-7-menuitem-3"
-                    role="menuitem"
-                    tabindex="-1"
-                    type="button"
-                  >
-                    Settings
-                  </button>
-                  <button
-                    class="chakra-menu__menuitem css-1k756t9"
-                    data-index="2"
-                    id="menu-list-7-menuitem-4"
-                    role="menuitem"
-                    tabindex="-1"
-                    type="button"
-                  >
-                    Billing
-                  </button>
                   <hr
                     aria-orientation="horizontal"
                     class="chakra-menu__divider css-0"
@@ -429,13 +227,14 @@ Object {
                   />
                   <button
                     class="chakra-menu__menuitem css-1k756t9"
-                    data-index="3"
-                    id="menu-list-7-menuitem-5"
+                    data-index="0"
+                    data-testid="logoutButton"
+                    id="menu-list-4-menuitem-2"
                     role="menuitem"
                     tabindex="-1"
                     type="button"
                   >
-                    Sign out
+                    logout
                   </button>
                 </div>
               </div>
@@ -482,172 +281,6 @@ Object {
             </svg>
           </button>
         </div>
-        <a
-          class="chakra-link css-jgup0q"
-          href="/"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            <svg
-              class="chakra-icon css-1b1fm3x"
-              data-testid="sidebarNavIcon"
-              fill="none"
-              focusable="false"
-              height="1em"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-              />
-              <polyline
-                points="9 22 9 12 15 12 15 22"
-              />
-            </svg>
-            Home
-          </div>
-        </a>
-        <a
-          class="chakra-link css-jgup0q"
-          href="/"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            <svg
-              class="chakra-icon css-1b1fm3x"
-              data-testid="sidebarNavIcon"
-              fill="none"
-              focusable="false"
-              height="1em"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <polyline
-                points="23 6 13.5 15.5 8.5 10.5 1 18"
-              />
-              <polyline
-                points="17 6 23 6 23 12"
-              />
-            </svg>
-            Trending
-          </div>
-        </a>
-        <a
-          class="chakra-link css-jgup0q"
-          href="/"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            <svg
-              class="chakra-icon css-1b1fm3x"
-              data-testid="sidebarNavIcon"
-              fill="none"
-              focusable="false"
-              height="1em"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle
-                cx="12"
-                cy="12"
-                r="10"
-              />
-              <polygon
-                points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"
-              />
-            </svg>
-            Explore
-          </div>
-        </a>
-        <a
-          class="chakra-link css-jgup0q"
-          href="/"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            <svg
-              class="chakra-icon css-1b1fm3x"
-              data-testid="sidebarNavIcon"
-              fill="none"
-              focusable="false"
-              height="1em"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <polygon
-                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-              />
-            </svg>
-            Favourites
-          </div>
-        </a>
-        <a
-          class="chakra-link css-jgup0q"
-          href="/"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            <svg
-              class="chakra-icon css-1b1fm3x"
-              data-testid="sidebarNavIcon"
-              fill="none"
-              focusable="false"
-              height="1em"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle
-                cx="12"
-                cy="12"
-                r="3"
-              />
-              <path
-                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
-              />
-            </svg>
-            Settings
-          </div>
-        </a>
       </div>
       <div
         class="css-g8fv48"
@@ -729,11 +362,12 @@ Object {
             class="css-70qvj9"
           >
             <button
-              aria-controls="menu-list-7"
+              aria-controls="menu-list-4"
               aria-expanded="false"
               aria-haspopup="menu"
               class="chakra-menu__menu-button css-10lilp"
-              id="menu-button-7"
+              data-testid="menuButton"
+              id="menu-button-4"
             >
               <span
                 class="css-xl71ch"
@@ -765,14 +399,7 @@ Object {
                   >
                     <p
                       class="chakra-text css-g5hezf"
-                    >
-                      Justina Clark
-                    </p>
-                    <p
-                      class="chakra-text css-65bt76"
-                    >
-                      Admin
-                    </p>
+                    />
                   </div>
                   <div
                     class="css-1t6irk0"
@@ -803,41 +430,11 @@ Object {
               <div
                 aria-orientation="vertical"
                 class="chakra-menu__menu-list css-w8sf4k"
-                id="menu-list-7"
+                id="menu-list-4"
                 role="menu"
                 style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
                 tabindex="-1"
               >
-                <button
-                  class="chakra-menu__menuitem css-1k756t9"
-                  data-index="0"
-                  id="menu-list-7-menuitem-2"
-                  role="menuitem"
-                  tabindex="-1"
-                  type="button"
-                >
-                  Profile
-                </button>
-                <button
-                  class="chakra-menu__menuitem css-1k756t9"
-                  data-index="1"
-                  id="menu-list-7-menuitem-3"
-                  role="menuitem"
-                  tabindex="-1"
-                  type="button"
-                >
-                  Settings
-                </button>
-                <button
-                  class="chakra-menu__menuitem css-1k756t9"
-                  data-index="2"
-                  id="menu-list-7-menuitem-4"
-                  role="menuitem"
-                  tabindex="-1"
-                  type="button"
-                >
-                  Billing
-                </button>
                 <hr
                   aria-orientation="horizontal"
                   class="chakra-menu__divider css-0"
@@ -845,13 +442,14 @@ Object {
                 />
                 <button
                   class="chakra-menu__menuitem css-1k756t9"
-                  data-index="3"
-                  id="menu-list-7-menuitem-5"
+                  data-index="0"
+                  data-testid="logoutButton"
+                  id="menu-list-4-menuitem-2"
                   role="menuitem"
                   tabindex="-1"
                   type="button"
                 >
-                  Sign out
+                  logout
                 </button>
               </div>
             </div>

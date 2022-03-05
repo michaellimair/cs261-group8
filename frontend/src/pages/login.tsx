@@ -9,9 +9,7 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import RouterLink from 'components/RouterLink';
-import React, {
-  FC, useCallback,
-} from 'react';
+import React, { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { httpClient } from 'api';
 import BadRequestApiError from 'api/error/BadRequestApiError';
@@ -24,10 +22,20 @@ import {
 import useCommonForm from 'hooks/useCommonForm';
 import AlternateAuthAction from 'components/AlternateAuthAction';
 import SubmitButton from 'components/Forms/SubmitButton';
+import { useUser } from 'hooks/useUser';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage: FC = () => {
   const { t } = useTranslation();
   const mutationFn = useCallback((values: ILogin) => httpClient.auth.login(values), []);
+  const { reauthenticate } = useUser();
+  const navigate = useNavigate();
+
+  const onLoginSuccess = useCallback(async () => {
+    await reauthenticate();
+    navigate('../dashboard', { replace: true });
+  }, [reauthenticate, navigate]);
+
   const {
     register,
     onSubmit,
@@ -37,6 +45,7 @@ const LoginPage: FC = () => {
   } = useCommonForm<ILogin, BadRequestApiError<ILoginError>, ILoginResult>({
     mutationId: 'login',
     mutationFn,
+    onSuccess: onLoginSuccess,
   });
 
   return (

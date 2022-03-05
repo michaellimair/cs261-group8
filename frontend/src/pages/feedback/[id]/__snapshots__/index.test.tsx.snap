@@ -1,0 +1,330 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages/feedback/[id] returns data as usual when there are feedbacks 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div
+      id="chakra-toast-portal"
+    >
+      <ul
+        id="chakra-toast-manager-top"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-top-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-top-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
+    <div>
+      <div
+        class="chakra-stack css-n21gh5"
+      >
+        <div
+          class="chakra-stack css-buj9s7"
+        >
+          <a
+            class="chakra-link css-wlea3r"
+            href="/feedbacks"
+          >
+            &lt; dashboard.feedback.back_to_all
+          </a>
+          <h2
+            class="chakra-heading css-0"
+          >
+            dashboard.feedback.title
+          </h2>
+        </div>
+        <div
+          class="css-jhpxgx"
+        >
+          <div
+            class="chakra-stack css-84zodg"
+          >
+            <p
+              class="chakra-text css-1d96wps"
+            >
+              Porro nulla id vero perspiciatis nulla nihil.
+            </p>
+            <span
+              class="css-1qm7lvz"
+            >
+              <svg
+                class="chakra-icon css-1azbes1"
+                enable-background="new 0 0 48 48"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                version="1"
+                viewBox="0 0 48 48"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                  fill="#F44336"
+                />
+                <path
+                  d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                  fill="#fff"
+                />
+              </svg>
+              <span
+                class="css-8uhtka"
+              >
+                dashboard.feedback.bug
+              </span>
+            </span>
+          </div>
+          <div
+            class="chakra-stack css-1xqdd13"
+          >
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Eum iusto ullam saepe inventore sapiente enim eum. Autem vel non deleniti similique reprehenderit. Quo quasi laboriosam dicta est voluptatem consequatur fugiat a omnis. Accusamus accusamus reiciendis rem. Et praesentium occaecati dolor soluta sed quisquam rerum culpa.
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              created
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              modified
+            </p>
+          </div>
+          <hr
+            aria-orientation="horizontal"
+            class="chakra-divider css-1upb9tn"
+          />
+          <div
+            class="chakra-stack css-1x5vwo5"
+          >
+            <p
+              class="chakra-text css-sfhhng"
+            >
+              dashboard.feedback.admin_reply
+            </p>
+            <p
+              class="chakra-text css-1k6unk6"
+            >
+              Possimus occaecati odit esse rem voluptatem amet est id blanditiis. Similique dolores sit quia. Voluptatem laborum modi et iure earum ut. Qui ea laborum iusto ut optio aspernatur inventore. Libero et libero ipsum non ea magni placeat ipsam est.
+            </p>
+            <p
+              class="chakra-text css-1859sd4"
+            >
+              dashboard.feedback.replied_on
+            </p>
+          </div>
+          <hr
+            aria-orientation="horizontal"
+            class="chakra-divider css-1upb9tn"
+          />
+          <div
+            class="chakra-stack css-17vvmxc"
+          >
+            <a
+              class="chakra-link chakra-button css-ogxy0s"
+              href="/edit"
+            >
+              edit
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="chakra-stack css-n21gh5"
+    >
+      <div
+        class="chakra-stack css-buj9s7"
+      >
+        <a
+          class="chakra-link css-wlea3r"
+          href="/feedbacks"
+        >
+          &lt; dashboard.feedback.back_to_all
+        </a>
+        <h2
+          class="chakra-heading css-0"
+        >
+          dashboard.feedback.title
+        </h2>
+      </div>
+      <div
+        class="css-jhpxgx"
+      >
+        <div
+          class="chakra-stack css-84zodg"
+        >
+          <p
+            class="chakra-text css-1d96wps"
+          >
+            Porro nulla id vero perspiciatis nulla nihil.
+          </p>
+          <span
+            class="css-1qm7lvz"
+          >
+            <svg
+              class="chakra-icon css-1azbes1"
+              enable-background="new 0 0 48 48"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              version="1"
+              viewBox="0 0 48 48"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.2,44.8l-18-18c-1.6-1.6-1.6-4.1,0-5.7l18-18c1.6-1.6,4.1-1.6,5.7,0l18,18c1.6,1.6,1.6,4.1,0,5.7l-18,18 C25.3,46.4,22.7,46.4,21.2,44.8z"
+                fill="#F44336"
+              />
+              <path
+                d="M21.6,32.7c0-0.3,0.1-0.6,0.2-0.9c0.1-0.3,0.3-0.5,0.5-0.7c0.2-0.2,0.5-0.4,0.8-0.5s0.6-0.2,1-0.2 s0.7,0.1,1,0.2c0.3,0.1,0.6,0.3,0.8,0.5c0.2,0.2,0.4,0.4,0.5,0.7c0.1,0.3,0.2,0.6,0.2,0.9s-0.1,0.6-0.2,0.9s-0.3,0.5-0.5,0.7 c-0.2,0.2-0.5,0.4-0.8,0.5c-0.3,0.1-0.6,0.2-1,0.2s-0.7-0.1-1-0.2s-0.5-0.3-0.8-0.5c-0.2-0.2-0.4-0.4-0.5-0.7S21.6,33.1,21.6,32.7z M25.8,28.1h-3.6L21.7,13h4.6L25.8,28.1z"
+                fill="#fff"
+              />
+            </svg>
+            <span
+              class="css-8uhtka"
+            >
+              dashboard.feedback.bug
+            </span>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-1xqdd13"
+        >
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Eum iusto ullam saepe inventore sapiente enim eum. Autem vel non deleniti similique reprehenderit. Quo quasi laboriosam dicta est voluptatem consequatur fugiat a omnis. Accusamus accusamus reiciendis rem. Et praesentium occaecati dolor soluta sed quisquam rerum culpa.
+          </p>
+          <p
+            class="chakra-text css-1859sd4"
+          >
+            created
+          </p>
+          <p
+            class="chakra-text css-1859sd4"
+          >
+            modified
+          </p>
+        </div>
+        <hr
+          aria-orientation="horizontal"
+          class="chakra-divider css-1upb9tn"
+        />
+        <div
+          class="chakra-stack css-1x5vwo5"
+        >
+          <p
+            class="chakra-text css-sfhhng"
+          >
+            dashboard.feedback.admin_reply
+          </p>
+          <p
+            class="chakra-text css-1k6unk6"
+          >
+            Possimus occaecati odit esse rem voluptatem amet est id blanditiis. Similique dolores sit quia. Voluptatem laborum modi et iure earum ut. Qui ea laborum iusto ut optio aspernatur inventore. Libero et libero ipsum non ea magni placeat ipsam est.
+          </p>
+          <p
+            class="chakra-text css-1859sd4"
+          >
+            dashboard.feedback.replied_on
+          </p>
+        </div>
+        <hr
+          aria-orientation="horizontal"
+          class="chakra-divider css-1upb9tn"
+        />
+        <div
+          class="chakra-stack css-17vvmxc"
+        >
+          <a
+            class="chakra-link chakra-button css-ogxy0s"
+            href="/edit"
+          >
+            edit
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
