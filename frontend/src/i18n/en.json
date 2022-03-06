@@ -5,6 +5,7 @@
   "forgot_password": "Forgot password?",
   "last_name": "Last Name",
   "login": "Login",
+  "logout": "Logout",
   "login_description": "Log in to your mentoring platform account now!",
   "logging_in": "Logging you in...",
   "mentoring_platform": "Mentoring Platform",
@@ -13,6 +14,7 @@
   "not_found": {
     "title": "Page not found."
   },
+  "initializing_app": "The application is currently being initialized, please wait.",
   "password": "Password",
   "register": "Register",
   "register_description": "Register to your mentoring platform account and start getting mentorship or start mentoring others!",
@@ -37,5 +39,53 @@
   "country": "Country",
   "mentor_recs": "Select a mentor",
   "select_mentors": "Select Mentors",
-  "submit_mentors": "Submit"
+  "submit_mentors": "Submit",
+  "dashboard": {
+    "home": {
+      "title": "Home",
+      "description": "Home page of the dasboard for all users."
+    },
+    "mentor_only": {
+      "title": "Mentor Only",
+      "description": "This page can only be viewed by a mentor."
+    },
+    "mentee_only": {
+      "title": "Mentee Only",
+      "description": "This page can only be viewed by a mentee."
+    },
+    "feedback": {
+      "title": "Feedback",
+      "description": "Give us feedback and take part in improving our application!",
+      "no_feedback": "You have not submitted any feedback yet.",
+      "your_feedbacks": "Your Feedbacks",
+      "type": "Feedback Type",
+      "bug": "Bug",
+      "improvement": "Improvement",
+      "question": "Question",
+      "select": "Select a feedback type",
+      "invalid": "Unable to obtain your feedback(s). Please try again later.",
+      "back_to_all": "Back to all feedbacks",
+      "admin_reply": "Reply from Administrator",
+      "replied_on": "Administrator replied on {{replied}}"
+    },
+    "create_feedback": {
+      "title": "Create Feedback",
+      "description": "Give us feedback and take part in improving our application!",
+      "loading": "Creating feedback...",
+      "placeholder": "Write the content of your feedback here"
+    },
+    "edit_feedback": {
+      "title": "Edit Feedback",
+      "description": "Something wrong with the feedback that you created? Edit it here!",
+      "loading": "Editing feedback...",
+      "cancel": "Cancel Editing"
+    }
+  },
+  "title": "Title",
+  "content": "Content",
+  "created": "Created at {{created}}",
+  "modified": "Last modified at {{modified}}",
+  "view": "View",
+  "edit": "Edit",
+  "delete": "Delete"
 }

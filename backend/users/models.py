@@ -13,12 +13,12 @@ class UserProfile(models.Model):
         """
         Choices for the possible job title of an employee in the system.
         """
-        ANALYST = 'ANLST', _('title.anlst')
-        ASSOCIATE = 'ASSOC', _('title.assoc')
-        ASSISTANT_VICE_PRESIDENT = 'AVP', _('title.avp')
-        VICE_PRESIDENT = 'VP', _('title.vp')
-        DIRECTOR = 'DIR', _('title.dir')
-        MANAGING_DIRECTOR = 'MD', _('title.md')
+        ANALYST = 'anlst', _('title.anlst')
+        ASSOCIATE = 'assoc', _('title.assoc')
+        ASSISTANT_VICE_PRESIDENT = 'avp', _('title.avp')
+        VICE_PRESIDENT = 'vp', _('title.vp')
+        DIRECTOR = 'dir', _('title.dir')
+        MANAGING_DIRECTOR = 'md', _('title.md')
 
     # AutoOneToOneField used such that the creation of a user
     # automatically triggers insertion of a UserProfile model.

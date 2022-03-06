@@ -26,6 +26,7 @@ class UserFeedback(SafeDeleteModel, TimeStampedModel):
         null=False
     )
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=False)
+    title = models.TextField()
     content = models.TextField()
 
 
