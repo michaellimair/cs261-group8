@@ -4,7 +4,7 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import MeetingCardInfo from 'components/Meetings/MeetingCardInfo';
-import MeetingCardDateTimeIcon from './MeetingCardDateTimeIcon';
+import MeetingCardDateTimeIcon from './MeetingCardDateTime';
 
 interface IMeetingCardProps {
   title: string;

@@ -16,7 +16,7 @@ interface IMeetingCardProps {
   meetingDate: string;
 }
 
-const CompletedMeetingCardAlternate: FC<IMeetingCardProps> = ({
+const MentorCompletedMeetingCard: FC<IMeetingCardProps> = ({
   title,
   body,
   linkToMeeting,
@@ -41,4 +41,4 @@ const CompletedMeetingCardAlternate: FC<IMeetingCardProps> = ({
 
 );
 
-export default CompletedMeetingCardAlternate;
+export default MentorCompletedMeetingCard;

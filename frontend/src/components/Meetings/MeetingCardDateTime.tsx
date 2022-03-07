@@ -7,12 +7,12 @@ import {
   Avatar,
 } from '@chakra-ui/react';
 
-interface IMeetingCardDateTimeIconProps {
+interface IMeetingCardDateTimeProps {
   meetingTime: string;
   meetingDate: string;
 }
 
-const MeetingCardDateTimeIcon: FC<IMeetingCardDateTimeIconProps> = ({
+const MeetingCardDateTime: FC<IMeetingCardDateTimeProps> = ({
   meetingTime,
   meetingDate,
 }) => (
@@ -40,4 +40,4 @@ const MeetingCardDateTimeIcon: FC<IMeetingCardDateTimeIconProps> = ({
   </VStack>
 );
 
-export default MeetingCardDateTimeIcon;
+export default MeetingCardDateTime;

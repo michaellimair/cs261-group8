@@ -6,7 +6,7 @@ import {
   // Spacer,
 } from '@chakra-ui/react';
 import MeetingCardLeft from './MeetingCardLeft';
-import FeedbackButton from './FeedbackButton';
+import MenteeFeedbackBox from './MenteeFeedbackBox';
 
 interface IMeetingCardProps {
   title: string;
@@ -16,7 +16,7 @@ interface IMeetingCardProps {
   meetingDate: string;
 }
 
-const CompletedMeetingCard: FC<IMeetingCardProps> = ({
+const MenteeCompletedMeetingCard: FC<IMeetingCardProps> = ({
   title,
   body,
   linkToMeeting,
@@ -35,9 +35,10 @@ const CompletedMeetingCard: FC<IMeetingCardProps> = ({
     </Box>
     {/* <Spacer flex="0.5" borderRightWidth="2px" borderColor="gray.100" /> */}
     <Box flex="1.5">
-      <FeedbackButton />
+      <MenteeFeedbackBox />
     </Box>
   </Flex>
+
 );
 
-export default CompletedMeetingCard;
+export default MenteeCompletedMeetingCard;
