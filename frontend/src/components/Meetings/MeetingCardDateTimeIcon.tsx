@@ -29,6 +29,7 @@ const MeetingCardDateTimeIcon: FC<IMeetingCardDateTimeIconProps> = ({
     <Text fontSize={{ base: 'lg' }} maxW="4xl">
       {meetingDate}
     </Text>
+    {/* TODO: get all this from backend */}
     <HStack>
       <Text fontSize="sm">Justina Clark</Text>
       <Avatar
