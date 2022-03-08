@@ -1,8 +1,9 @@
 from snapshottest.django import TestCase
 from django.urls import reverse
-from .views import CountryViewSet
 from rest_framework.test import force_authenticate, APIRequestFactory
 from users.factories import UserFactory
+
+from .views import CountryViewSet
 
 class TestCountryViewSet(TestCase):
     """Test cases for view set for the country app."""

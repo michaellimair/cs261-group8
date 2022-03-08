@@ -1,5 +1,4 @@
 from django.test import TestCase, Client
-from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework.test import force_authenticate, APIRequestFactory
 
@@ -14,7 +13,9 @@ class TestUserProfileViewSet(TestCase):
     """Test case related to user profile."""
     def setUp(self) -> None:
         self.user = UserFactory()
-        self.business_area = BusinessAreaFactory(name="pb", label="Private Bank (Wealth Management)")
+        self.business_area = BusinessAreaFactory(
+            name="pb",
+            label="Private Bank (Wealth Management)")
         self.profile = UserProfileFactory(
             user=self.user,
             business_area=self.business_area)

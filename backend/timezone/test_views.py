@@ -1,8 +1,8 @@
 from snapshottest.django import TestCase
 from django.urls import reverse
-from .views import TimezoneViewSet
 from rest_framework.test import force_authenticate, APIRequestFactory
 from users.factories import UserFactory
+from .views import TimezoneViewSet
 
 class TestTimezoneViewSet(TestCase):
     """Test cases for view set for the timezone app."""
