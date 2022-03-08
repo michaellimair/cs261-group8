@@ -1,9 +1,17 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from annoying.fields import AutoOneToOneField
+from country.utils import is_valid_country
 from business_area.models import BusinessArea
 
+def _validate_country(value: str):
+    if not is_valid_country(value):
+        raise ValidationError(
+            _('%(code)s is not a valid country'),
+            params={'code': value},
+        )
 
 class UserProfile(models.Model):
     """
@@ -42,4 +50,9 @@ class UserProfile(models.Model):
         max_length=5,
         choices=Title.choices,
         null=True,
+    )
+    country = models.CharField(
+        max_length=3,
+        validators=[_validate_country],
+        null=True
     )
