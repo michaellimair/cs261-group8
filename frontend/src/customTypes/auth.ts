@@ -23,10 +23,12 @@ export interface IUserProfile {
   country: string | null;
   timezone: string | null;
   skills: string[] | null;
+  avatar: string;
 }
 
-export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area'> {
+export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area' | 'avatar'> {
   business_area_id: number;
+  avatar: File;
 }
 
 export enum UserGroup {
