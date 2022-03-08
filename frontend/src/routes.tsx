@@ -5,8 +5,8 @@ import DashboardMentorOnlyPage from 'pages/dashboard/mentor-only';
 import FeedbackPage from 'pages/feedback';
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
-import MenteeMeetingsPage from 'pages/mentee-meetings';
-import MentorMeetingsPage from 'pages/mentor-meetings';
+import MenteeMeetingsPage from 'pages/dashboard/mentee-meetings';
+import MentorMeetingsPage from 'pages/dashboard/mentor-meetings';
 import { ReactElement } from 'react';
 import { IconType } from 'react-icons';
 import {
@@ -15,6 +15,7 @@ import {
 } from 'react-icons/fi';
 import { VscFeedback } from 'react-icons/vsc';
 import { IoSchool } from 'react-icons/io5';
+import { MdComputer } from 'react-icons/md';
 import CreateFeedbackPage from 'pages/feedback/create';
 import ViewFeedbackPage from 'pages/feedback/[id]';
 import EditFeedbackPage from 'pages/feedback/[id]/edit';
@@ -70,6 +71,13 @@ export const authRoutes: IRoute[] = [
     path: 'register',
     description: 'register_description',
   },
+  {
+    name: 'mentee_only',
+    element: <MenteeMeetingsPage />,
+    layout: RouteLayout.USER,
+    path: 'mentee-only',
+    description: 'dashboard.mentee_only.description',
+  },
 ];
 
 export const dashboardRoutes: IDashboardRoute[] = [
@@ -99,6 +107,24 @@ export const dashboardRoutes: IDashboardRoute[] = [
     icon: IoSchool,
     description: 'dashboard.mentee_only.description',
     allowedGroups: MENTEE_ONLY,
+  },
+  {
+    name: 'mentee-meetings',
+    element: <MenteeMeetingsPage />,
+    layout: RouteLayout.USER,
+    path: 'mentee-meetings',
+    icon: MdComputer,
+    description: 'dashboard.mentee_meetings_description',
+    allowedGroups: MENTEE_ONLY,
+  },
+  {
+    name: 'mentor-meetings',
+    element: <MentorMeetingsPage />,
+    layout: RouteLayout.USER,
+    icon: MdComputer,
+    path: 'mentor-meetings',
+    description: 'dashboard.mentor_meetings_description',
+    allowedGroups: MENTOR_ONLY,
   },
   {
     name: 'create_feedback',
@@ -135,21 +161,5 @@ export const dashboardRoutes: IDashboardRoute[] = [
     icon: VscFeedback,
     description: 'dashboard.feedback.description',
     allowedGroups: ALLOW_ALL_USERS,
-  },
-  {
-    name: 'mentee-meetings',
-    element: <MenteeMeetingsPage />,
-    layout: RouteLayout.USER,
-    path: 'mentee-meetings',
-    description: 'mentee_meetings_description',
-    allowedGroups: MENTEE_ONLY,
-  },
-  {
-    name: 'mentor-meetings',
-    element: <MentorMeetingsPage />,
-    layout: RouteLayout.USER,
-    path: 'mentor-meetings',
-    description: 'mentor_meetings_description',
-    allowedGroups: MENTOR_ONLY,
   },
 ];
