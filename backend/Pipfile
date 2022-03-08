@@ -30,6 +30,8 @@ hypercorn = "*"
 pycountry = "*"
 snapshottest = "*"
 pytz = "*"
+thefuzz = "*"
+python-levenshtein = "*"
 
 [dev-packages]
 

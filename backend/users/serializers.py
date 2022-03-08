@@ -43,6 +43,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
         if (instance.pronoun
             and instance.years_experience
             and instance.title
+            and instance.skills
+            and len(instance.skills) > 0
+            and instance.country
+            and instance.timezone
             and instance.business_area):
             instance.completed = True
 

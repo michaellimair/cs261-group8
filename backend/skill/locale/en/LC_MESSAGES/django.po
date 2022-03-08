@@ -17,8 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: timezone/utils.py:13
+#: skill/utils.py:24
 #, python-format
-msgid "%(zone) is not a valid timezone."
-msgstr "%(zone) is not a valid timezone."
+msgid "%(skill) is not a valid skill."
+msgstr "%(skill) is not a valid skill."

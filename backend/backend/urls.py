@@ -19,6 +19,7 @@ from django.urls import path, include, re_path
 from rest_framework.schemas import get_schema_view
 from rest_framework_nested import routers
 from timezone.views import TimezoneViewSet
+from skill.views import SkillViewSet
 
 from feedback.views import (
     UserFeedbackViewSet,
@@ -51,6 +52,7 @@ router.register(r'business-areas', BusinessAreaView, basename='business_area')
 router.register(r'profiles', UserProfileViewSet, basename='profile')
 router.register(r'countries', CountryViewSet, basename='country')
 router.register(r'timezones', TimezoneViewSet, basename='timezone')
+router.register(r'skills', SkillViewSet, basename='skill')
 
 admin_router = routers.DefaultRouter()
 admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)

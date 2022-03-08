@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
+from django.contrib.postgres.fields import ArrayField
 from django.utils.translation import gettext_lazy as _
 from annoying.fields import AutoOneToOneField
 from country.utils import is_valid_country
 from timezone.utils import is_valid_timezone
+from skill.utils import validate_skill
 from business_area.models import BusinessArea
 
 class UserProfile(models.Model):
@@ -54,4 +55,7 @@ class UserProfile(models.Model):
         max_length=256,
         validators=[is_valid_timezone],
         null=True
+    )
+    skills = ArrayField(
+        models.CharField(max_length=512, validators=[validate_skill]),
     )
