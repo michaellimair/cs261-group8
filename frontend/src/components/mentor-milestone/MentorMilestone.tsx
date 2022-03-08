@@ -9,11 +9,17 @@ import PlanOfAction from 'components/shared-components/PlanOfAction';
 import { FC } from 'react';
 
 const MentorMilestone: FC = () => (
-  <Box m="20px" border="1px" width="fit-content" height="fit-content">
+  <Stack
+    m="20px"
+    rounded="xl"
+    boxShadow="lg"
+    width="fit-content"
+    height="fit-content"
+  >
     <Box width="fit-content" height="fit-content">
       <Stack m="20px" spacing={6} direction="row">
         <Box>
-          <Heading size="md">Milestone 1</Heading>
+          <Heading size="md">Milestone</Heading>
         </Box>
         <Progress width="400px" height="30px" colorScheme="red" value={10} />
       </Stack>
@@ -40,7 +46,7 @@ const MentorMilestone: FC = () => (
         </Center>
       </Stack>
     </Box>
-  </Box>
+  </Stack>
 );
 
 export default MentorMilestone;

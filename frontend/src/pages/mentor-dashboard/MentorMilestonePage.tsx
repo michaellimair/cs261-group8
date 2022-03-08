@@ -1,11 +1,19 @@
 import { FC } from 'react';
-import MentorMilestone from 'components/mentor-milestone/MentorMilestone';
+// import MentorMilestone from 'components/mentor-milestone/MentorMilestone';
 import { Box, Container, Stack } from '@chakra-ui/react';
 import ViewMenteeMilestone from 'components/mentor-milestone/ViewMenteeMilestone';
+import MenteeMilestone from 'components/mentee-milestone/MenteeMilestone';
 
 const MentorMilestonePage: FC = () => (
   <Stack direction="row">
-    <Box m="20px" border="1px" height="fixed" width="fit-content" scrollBehavior="smooth">
+    <Box
+      m="20px"
+      rounded="xl"
+      boxShadow="lg"
+      height="fixed"
+      width="fit-content"
+      scrollBehavior="smooth"
+    >
       <ViewMenteeMilestone />
       <ViewMenteeMilestone />
       <ViewMenteeMilestone />
@@ -13,8 +21,9 @@ const MentorMilestonePage: FC = () => (
       <ViewMenteeMilestone />
     </Box>
     <Container>
-      <MentorMilestone />
-      <MentorMilestone />
+      <MenteeMilestone />
+      <MenteeMilestone />
+      <MenteeMilestone />
     </Container>
   </Stack>
 );
