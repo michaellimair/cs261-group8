@@ -13,8 +13,14 @@
     "html",
     "typescriptreact"
   ],
-  "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": [
+    "--load-plugins",
+    "pylint_django",
+    "--django-settings-module",
+    "backend.settings"
+  ],
   "[python]": {
     "editor.tabSize": 4
   },
