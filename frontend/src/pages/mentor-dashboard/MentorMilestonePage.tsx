@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import MentorMilestoneEdit from 'components/mentor-milestone/MentorMilestoneEdit';
+import MentorMilestone from 'components/mentor-milestone/MentorMilestone';
 import { Box, Container, Stack } from '@chakra-ui/react';
 import ViewMenteeMilestone from 'components/mentor-milestone/ViewMenteeMilestone';
 
@@ -13,8 +13,8 @@ const MentorMilestonePage: FC = () => (
       <ViewMenteeMilestone />
     </Box>
     <Container>
-      <MentorMilestoneEdit />
-      <MentorMilestoneEdit />
+      <MentorMilestone />
+      <MentorMilestone />
     </Container>
   </Stack>
 );
