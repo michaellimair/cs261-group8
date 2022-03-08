@@ -40,6 +40,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
         """Update user profile,
         automatically populates completed field if all data is updated properly"""
+        # TODO: Refactor if statement
         if (instance.pronoun
             and instance.years_experience
             and instance.title

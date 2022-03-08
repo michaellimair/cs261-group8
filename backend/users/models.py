@@ -59,3 +59,4 @@ class UserProfile(models.Model):
     skills = ArrayField(
         models.CharField(max_length=512, validators=[validate_skill]),
     )
+    avatar = models.ImageField(upload_to='files/avatar/', null=True)

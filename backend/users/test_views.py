@@ -75,10 +75,8 @@ class TestLoginView(TestCase):
     """
     def setUp(self):
         self.username = 'testuser'
-        self.password = 'testpass124'
-        self.user = get_user_model().objects.create(username=self.username)
-        self.user.set_password(self.password)
-        self.user.save()
+        self.user = UserFactory(username=self.username)
+        self.profile = UserProfileFactory(user=self.user)
         self.client = Client()
 
     def test_post(self):
@@ -87,7 +85,7 @@ class TestLoginView(TestCase):
         """
         body = {
             "username": self.username,
-            "password": self.password
+            "password": 'testpass124'
         }
 
         response = self.client.post(reverse('knox_login'), body)
@@ -100,11 +98,8 @@ class TestMyDataView(TestCase):
     Test cases related to viewing the information of a logged in user.
     """
     def setUp(self):
-        self.username = 'testuser'
-        self.password = 'testpass124'
-        self.user = get_user_model().objects.create(username=self.username)
-        self.user.set_password(self.password)
-        self.user.save()
+        self.user = UserFactory()
+        self.profile = UserProfileFactory(user=self.user)
         self.request_factory = APIRequestFactory()
 
     def test_get(self):
