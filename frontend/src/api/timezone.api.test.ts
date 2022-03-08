@@ -24,9 +24,6 @@ describe('timezone.api.ts', () => {
       expect(api.get).toHaveBeenCalledTimes(1);
       expect(api.get).toHaveBeenCalledWith({
         path: '/timezones',
-        query: {
-          q: undefined,
-        },
       });
     });
   });
