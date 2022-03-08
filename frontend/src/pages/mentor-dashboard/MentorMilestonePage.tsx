@@ -1,8 +1,8 @@
 import { FC } from 'react';
 // import MentorMilestone from 'components/mentor-milestone/MentorMilestone';
 import { Box, Container, Stack } from '@chakra-ui/react';
-import ViewMenteeMilestone from 'components/mentor-milestone/ViewMenteeMilestone';
-import MenteeMilestone from 'components/mentee-milestone/MenteeMilestone';
+import ViewMenteeMilestone from 'components/PlanOfAction/mentor-milestone/ViewMenteeMilestone';
+import MenteeMilestone from 'components/PlanOfAction/mentee-milestone/MenteeMilestone';
 
 const MentorMilestonePage: FC = () => (
   <Stack direction="row">

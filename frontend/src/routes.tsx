@@ -16,6 +16,7 @@ import { IoSchool } from 'react-icons/io5';
 import CreateFeedbackPage from 'pages/feedback/create';
 import ViewFeedbackPage from 'pages/feedback/[id]';
 import EditFeedbackPage from 'pages/feedback/[id]/edit';
+import UserProfile from 'pages/identity/UserProfile';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -112,6 +113,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     element: <ViewFeedbackPage />,
     layout: RouteLayout.USER,
     path: 'feedbacks/:id',
+    // eslint-disable-next-line sonarjs/no-duplicate-string
     description: 'dashboard.feedback.description',
     allowedGroups: ALLOW_ALL_USERS,
     hide: true,
@@ -131,6 +133,14 @@ export const dashboardRoutes: IDashboardRoute[] = [
     layout: RouteLayout.USER,
     path: 'feedbacks',
     icon: VscFeedback,
+    description: 'dashboard.feedback.description',
+    allowedGroups: ALLOW_ALL_USERS,
+  },
+  {
+    name: 'profile',
+    element: <UserProfile />,
+    layout: RouteLayout.USER,
+    path: 'my-profile',
     description: 'dashboard.feedback.description',
     allowedGroups: ALLOW_ALL_USERS,
   },

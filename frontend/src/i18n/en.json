@@ -64,6 +64,10 @@
       "description": "Something wrong with the feedback that you created? Edit it here!",
       "loading": "Editing feedback...",
       "cancel": "Cancel Editing"
+    },
+    "profile": {
+      "title": "Profile",
+      "description" : "User profile for all users"
     }
   },
   "title": "Title",
