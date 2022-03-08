@@ -16,6 +16,7 @@ import { IoSchool } from 'react-icons/io5';
 import CreateFeedbackPage from 'pages/feedback/create';
 import ViewFeedbackPage from 'pages/feedback/[id]';
 import EditFeedbackPage from 'pages/feedback/[id]/edit';
+// import UserProfile from 'pages/identity/UserProfile';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -133,5 +134,14 @@ export const dashboardRoutes: IDashboardRoute[] = [
     icon: VscFeedback,
     description: 'dashboard.feedback.description',
     allowedGroups: ALLOW_ALL_USERS,
+  },
+  {
+    name: 'profile',
+    element: <FeedbackPage />,
+    layout: RouteLayout.USER,
+    path: 'pages/identity',
+    description: 'User profile',
+    allowedGroups: ALLOW_ALL_USERS,
+    hide: true,
   },
 ];
