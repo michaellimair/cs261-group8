@@ -23,7 +23,7 @@ export interface IUserProfile {
   country: string | null;
   timezone: string | null;
   skills: string[] | null;
-  avatar: string;
+  avatar: string | null;
 }
 
 export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area' | 'avatar'> {
