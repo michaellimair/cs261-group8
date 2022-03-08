@@ -65,9 +65,9 @@
       "loading": "Editing feedback...",
       "cancel": "Cancel Editing"
     },
-    "profile": {
-      "title": "My Profile",
-      "description": "User profile for all users"
+    "mentee_milestones": {
+      "title": "Mentee Milestones",
+      "description": "Milestones for mentees set out in the mentoring arrangement."
     }
   },
   "title": "Title",
