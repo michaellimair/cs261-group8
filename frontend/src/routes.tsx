@@ -113,7 +113,6 @@ export const dashboardRoutes: IDashboardRoute[] = [
     element: <ViewFeedbackPage />,
     layout: RouteLayout.USER,
     path: 'feedbacks/:id',
-    // eslint-disable-next-line sonarjs/no-duplicate-string
     description: 'dashboard.feedback.description',
     allowedGroups: ALLOW_ALL_USERS,
     hide: true,
@@ -141,7 +140,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     element: <UserProfile />,
     layout: RouteLayout.USER,
     path: 'my-profile',
-    description: 'dashboard.feedback.description',
+    description: 'dashboard.profile.description',
     allowedGroups: ALLOW_ALL_USERS,
   },
 ];
