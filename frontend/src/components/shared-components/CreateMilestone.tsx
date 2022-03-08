@@ -4,11 +4,26 @@ import {
 import { FC } from 'react';
 
 const CreateMilestone: FC = () => (
-  <Box m="20px" maxWidth="300px">
-    <Box m="10px" backgroundColor="purple" color="white">
+  <Stack
+    m="20px"
+    rounded="xl"
+    boxShadow="lg"
+    width="fit-content"
+    height="fit-content"
+  >
+    <Box
+      m="20px"
+      rounded="xl"
+      boxShadow="lg"
+      backgroundColor="purple"
+      color="white"
+      width="500px"
+    >
       <Center><Heading size="md">Create new milestone</Heading></Center>
     </Box>
-    <Box border="1px">
+    <Box
+      m="20px"
+    >
       <Stack m="20px">
         <Box>
           <Heading size="sm">Title</Heading>
@@ -19,7 +34,7 @@ const CreateMilestone: FC = () => (
         </Box>
       </Stack>
     </Box>
-  </Box>
+  </Stack>
 );
 
 export default CreateMilestone;

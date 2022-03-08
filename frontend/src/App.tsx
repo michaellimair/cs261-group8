@@ -7,9 +7,9 @@ import {
 import './App.css';
 import { authRoutes } from 'routes';
 import AuthLayout from 'layouts/AuthLayout';
-import FallbackPage from 'pages/fallback';
 import UserLayout from 'layouts/UserLayout';
 import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
+import MenteeMilestonePage from 'pages/mentee-dashboard/MenteeMilestonePage';
 
 const App: FC = () => {
   const allowedDashboardRoutes = useUserDashboardRoutes(false);
@@ -31,7 +31,7 @@ const App: FC = () => {
             <Route key={name} path={path} element={element} index={index} />
           ))}
         </Route>
-        <Route path="*" element={<FallbackPage />} />
+        <Route path="*" element={<MenteeMilestonePage />} />
       </Routes>
     </Router>
   );
