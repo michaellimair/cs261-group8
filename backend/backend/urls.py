@@ -32,6 +32,7 @@ from users.views import (
     UserProfileViewSet,
 )
 from business_area.views import BusinessAreaView
+from country.views import CountryViewSet
 
 user_patterns = [
     path(
@@ -47,6 +48,7 @@ router = routers.DefaultRouter()
 router.register(r'feedbacks', UserFeedbackViewSet, basename='my_feedbacks')
 router.register(r'business-areas', BusinessAreaView, basename='business_area')
 router.register(r'profiles', UserProfileViewSet, basename='profile')
+router.register(r'countries', CountryViewSet, basename='country')
 
 admin_router = routers.DefaultRouter()
 admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)

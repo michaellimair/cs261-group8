@@ -27,6 +27,8 @@ autopep8 = "*"
 pycodestyle = "*"
 autoflake = "*"
 hypercorn = "*"
+pycountry = "*"
+snapshottest = "*"
 
 [dev-packages]
 
