@@ -71,13 +71,6 @@ export const authRoutes: IRoute[] = [
     path: 'register',
     description: 'register_description',
   },
-  {
-    name: 'mentee_only',
-    element: <MenteeMeetingsPage />,
-    layout: RouteLayout.USER,
-    path: 'mentee-only',
-    description: 'dashboard.mentee_only.description',
-  },
 ];
 
 export const dashboardRoutes: IDashboardRoute[] = [
