@@ -68,6 +68,23 @@
     "mentee_milestones": {
       "title": "Mentee Milestones",
       "description": "Milestones for mentees set out in the mentoring arrangement."
+    },
+    "meetings": {
+      "past_meetings": "Past Meetings",
+      "requested_meetings": "Requested Meetings",
+      "upcoming_meetings": "Upcoming Meetings"
+    },
+    "mentee_meetings": {
+      "title": "Meetings (Mentee)",
+      "description": "See all the meetings that you have scheduled with your mentor here."
+    },
+    "mentor_meetings": {
+      "title": "Meetings (Mentor)",
+      "description": "See all the meetings that you have scheduled with your mentee here."
+    },
+    "profile": {
+      "title": "Profile",
+      "description": "Make changes to your user profile in this page."
     }
   },
   "title": "Title",
