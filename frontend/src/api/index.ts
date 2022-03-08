@@ -9,10 +9,10 @@ import TimezoneAPI from './timezone.api';
 
 class HttpClient {
   constructor(
-    private readonly credentialManager = new CredentialManager(),
+    private readonly storage: Storage = localStorage,
+    private readonly credentialManager = new CredentialManager(storage),
     private readonly baseApi: BaseAPI = new BaseAPI({ credentialManager }),
     readonly auth: AuthAPI = new AuthAPI(baseApi, credentialManager),
-    private readonly storage: Storage = localStorage,
     readonly feedback: FeedbackAPI = new FeedbackAPI(baseApi),
     readonly profile: UserProfileAPI = new UserProfileAPI(baseApi),
     readonly skill: SkillAPI = new SkillAPI(baseApi),
