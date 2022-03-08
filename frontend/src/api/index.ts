@@ -1,6 +1,7 @@
 import CredentialManager from 'libs/credential-manager';
 import AuthAPI from './auth.api';
 import BaseAPI from './base.api';
+import BusinessAreaAPI from './business-area.api';
 import CountryAPI from './country.api';
 import FeedbackAPI from './feedback.api';
 import UserProfileAPI from './profile.api';
@@ -18,6 +19,7 @@ class HttpClient {
     readonly skill: SkillAPI = new SkillAPI(baseApi),
     readonly country: CountryAPI = new CountryAPI(baseApi),
     readonly timezone: TimezoneAPI = new TimezoneAPI(baseApi),
+    readonly businessArea: BusinessAreaAPI = new BusinessAreaAPI(baseApi),
   ) {}
 }
 
