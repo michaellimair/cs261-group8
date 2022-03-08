@@ -29,6 +29,7 @@ autoflake = "*"
 hypercorn = "*"
 pycountry = "*"
 snapshottest = "*"
+pytz = "*"
 
 [dev-packages]
 

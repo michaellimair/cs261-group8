@@ -17,19 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: feedback/models.py:18
-msgid "bug_fixes"
-msgstr "Bug Fixes"
-
-#: feedback/models.py:19
-msgid "improvements"
-msgstr "Improvements"
-
-#: feedback/models.py:20
-msgid "question"
-msgstr "Question"
-
-#: feedback/test_views.py:136 feedback/views.py:65
-msgid "reply_once_only"
-msgstr "You are only allowed to reply to a feedback once."
+#: timezone/utils.py:13
+#, python-format
+msgid "%(zone) is not a valid timezone."
+msgstr "%(zone) is not a valid timezone."

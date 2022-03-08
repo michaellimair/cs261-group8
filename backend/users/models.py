@@ -4,14 +4,8 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from annoying.fields import AutoOneToOneField
 from country.utils import is_valid_country
+from timezone.utils import is_valid_timezone
 from business_area.models import BusinessArea
-
-def _validate_country(value: str):
-    if not is_valid_country(value):
-        raise ValidationError(
-            _('%(code)s is not a valid country'),
-            params={'code': value},
-        )
 
 class UserProfile(models.Model):
     """
@@ -53,6 +47,11 @@ class UserProfile(models.Model):
     )
     country = models.CharField(
         max_length=3,
-        validators=[_validate_country],
+        validators=[is_valid_country],
+        null=True
+    )
+    timezone = models.CharField(
+        max_length=256,
+        validators=[is_valid_timezone],
         null=True
     )
