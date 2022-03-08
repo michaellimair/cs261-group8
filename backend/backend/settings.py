@@ -166,8 +166,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_STORAGE = os.environ.get(
-    'STATICFILES_STORAGE', 'django.contrib.staticfiles.storage.StaticFilesStorage')
+DEFAULT_FILE_STORAGE = os.environ.get('DEFAULT_FILE_STORAGE', 'django.contrib.staticfiles.storage.StaticFilesStorage')
 
 GS_BUCKET_NAME = os.environ.get('GCS_BUCKET')
 
