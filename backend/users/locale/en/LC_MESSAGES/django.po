@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-16 02:29+0000\n"
+"POT-Creation-Date: 2022-03-08 10:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,38 +18,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\users\models.py:9
+#: users/models.py:19
 msgid "title.anlst"
 msgstr "Analyst"
 
-#: .\users\models.py:10
+#: users/models.py:20
 msgid "title.assoc"
 msgstr "Associate"
 
-#: .\users\models.py:11
+#: users/models.py:21
 msgid "title.avp"
 msgstr "Assistant Vice President"
 
-#: .\users\models.py:12
+#: users/models.py:22
 msgid "title.vp"
 msgstr "Vice President"
 
-#: .\users\models.py:13
+#: users/models.py:23
 msgid "title.dir"
 msgstr "Director"
 
-#: .\users\models.py:14
+#: users/models.py:24
 msgid "title.md"
 msgstr "Managing Director"
 
-#: .\users\serializers.py:25
+#: users/serializers.py:97
 msgid "email_taken"
 msgstr "Email is currently linked to another account."
 
-#: .\users\serializers.py:29
+#: users/serializers.py:105
 msgid "username_taken"
 msgstr "Username has been taken by another account."
 
-#: .\users\serializers.py:44
+#: users/serializers.py:134
 msgid "password_not_match"
 msgstr "Passwords do not match."

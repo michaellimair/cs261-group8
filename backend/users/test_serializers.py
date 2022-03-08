@@ -24,7 +24,7 @@ class TestUserProfileSerializer(TestCase):
         data = {
             "years_experience": 20,
             "pronoun": "she",
-            "business_area": self.business_area
+            "business_area": self.business_area,
         }
 
         self.serializer.update(self.profile, validated_data=data)

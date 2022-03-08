@@ -1,5 +1,4 @@
 from django.test import TestCase, Client
-from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework.test import force_authenticate, APIRequestFactory
 
@@ -14,7 +13,9 @@ class TestUserProfileViewSet(TestCase):
     """Test case related to user profile."""
     def setUp(self) -> None:
         self.user = UserFactory()
-        self.business_area = BusinessAreaFactory(name="pb", label="Private Bank (Wealth Management)")
+        self.business_area = BusinessAreaFactory(
+            name="pb",
+            label="Private Bank (Wealth Management)")
         self.profile = UserProfileFactory(
             user=self.user,
             business_area=self.business_area)
@@ -75,10 +76,8 @@ class TestLoginView(TestCase):
     """
     def setUp(self):
         self.username = 'testuser'
-        self.password = 'testpass124'
-        self.user = get_user_model().objects.create(username=self.username)
-        self.user.set_password(self.password)
-        self.user.save()
+        self.user = UserFactory(username=self.username)
+        self.profile = UserProfileFactory(user=self.user)
         self.client = Client()
 
     def test_post(self):
@@ -87,7 +86,7 @@ class TestLoginView(TestCase):
         """
         body = {
             "username": self.username,
-            "password": self.password
+            "password": 'testpass124'
         }
 
         response = self.client.post(reverse('knox_login'), body)
@@ -100,11 +99,8 @@ class TestMyDataView(TestCase):
     Test cases related to viewing the information of a logged in user.
     """
     def setUp(self):
-        self.username = 'testuser'
-        self.password = 'testpass124'
-        self.user = get_user_model().objects.create(username=self.username)
-        self.user.set_password(self.password)
-        self.user.save()
+        self.user = UserFactory()
+        self.profile = UserProfileFactory(user=self.user)
         self.request_factory = APIRequestFactory()
 
     def test_get(self):

@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework.schemas import get_schema_view
 from rest_framework_nested import routers
+from timezone.views import TimezoneViewSet
+from skill.views import SkillViewSet
 
 from feedback.views import (
     UserFeedbackViewSet,
@@ -32,6 +34,7 @@ from users.views import (
     UserProfileViewSet,
 )
 from business_area.views import BusinessAreaView
+from country.views import CountryViewSet
 
 user_patterns = [
     path(
@@ -47,6 +50,9 @@ router = routers.DefaultRouter()
 router.register(r'feedbacks', UserFeedbackViewSet, basename='my_feedbacks')
 router.register(r'business-areas', BusinessAreaView, basename='business_area')
 router.register(r'profiles', UserProfileViewSet, basename='profile')
+router.register(r'countries', CountryViewSet, basename='country')
+router.register(r'timezones', TimezoneViewSet, basename='timezone')
+router.register(r'skills', SkillViewSet, basename='skill')
 
 admin_router = routers.DefaultRouter()
 admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)

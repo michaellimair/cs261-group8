@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from rest_framework.test import force_authenticate, APIRequestFactory
-from users.factories import AdminFactory, UserFactory
+from users.factories import AdminFactory, UserFactory, UserProfileFactory
 from .models import UserFeedback, UserFeedbackReply
 from .views import UserFeedbackAdminReplyView, UserFeedbackViewSet
 from .factories import UserFeedbackFactory, UserFeedbackReplyFactory
@@ -78,7 +78,9 @@ class TestUserFeedbackAdminReplyView(TestCase):
     """
     def setUp(self) -> None:
         self.admin = AdminFactory()
+        self.admin_profile = UserProfileFactory(user=self.admin)
         self.other_admin = AdminFactory()
+        self.other_admin_profile = UserProfileFactory(user=self.other_admin)
         self.feedback = UserFeedbackFactory()
         self.feedback_reply = UserFeedbackReplyFactory(
             feedback=self.feedback, admin=self.admin)
