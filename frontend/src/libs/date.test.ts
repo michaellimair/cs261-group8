@@ -1,4 +1,4 @@
-import { formatDate, formatTime } from './date';
+import { formatDate, formatDateTime, formatTime } from './date';
 
 describe('libs/date', () => {
   const timeZone = 'America/Los_Angeles';
@@ -21,10 +21,10 @@ describe('libs/date', () => {
   });
 
   describe('formatDateTime', () => {
-    it('formats time strings as intended', () => {
+    it('formats date time strings as intended', () => {
       const dt = new Date(timeString);
 
-      expect(formatTime(dt, timeZone)).toBe('Saturday, 31 December 2011, 16:00 GMT-8');
+      expect(formatDateTime(dt, timeZone)).toBe('Saturday, 31 December 2011, 16:00 GMT-8');
     });
   });
 });
