@@ -14,34 +14,54 @@ import {
   Center,
   ListItem,
   UnorderedList,
+  List,
 } from '@chakra-ui/react';
 
 import { SmallCloseIcon } from '@chakra-ui/icons';
-import { FC, useCallback, useState } from 'react';
+import {
+  FC, useCallback, useEffect, useState,
+} from 'react';
 import BusinessAreas from 'components/user-profile-components/BusinessAreas';
 import { useTranslation } from 'react-i18next';
 import { useUser } from 'hooks/useUser';
-import { ILoginResult, IUser, IUserProfile } from 'customTypes/auth';
+import {
+  ILoginResult, IUser, IUserProfile, JobTitle,
+} from 'customTypes/auth';
 import { httpClient } from 'api';
-import { ApiFactory } from 'factories/ApiFactory';
-import BaseAPI from 'api/base.api';
-import SkillAPI from '../../api/skill.api';
 
 const UserProfile: FC = () => {
   const { t } = useTranslation();
   const { user } = useUser();
-  const [country, setCountry] = useState(user?.profile.country);
-  const [skillItems, setSkillItems] = useState([]);
+  const [skillItems, setSkillItems] = useState<string[]>([]);
+  const [seniority, setSeniority] = useState<string>('');
+  const [country, setCountry] = useState<string>('');
+  const [flag, setFlag] = useState<string>('');
+  const [businessLabel, setBusinessLabel] = useState('');
 
-  // const skillsList = user?.profile.skills;
-  const countryName = async () => {
-    try {
-      const response = await httpClient.country.getCountryByCode('ID');
-      console.log(response);
-    } catch (error) {
-      console.log(`Error:${error}`);
+  useEffect(() => {
+    const countryCode = user?.profile.country;
+    if (countryCode) {
+      httpClient.country.getCountryByCode(countryCode)
+        .then((response) => {
+          setCountry(response.name);
+          setFlag(response.flag);
+        });
     }
-  };
+  }, [user?.profile.country]);
+
+  useEffect(() => {
+    const skillList = user?.profile.skills;
+    if (skillList) {
+      setSkillItems(skillList);
+    }
+  }, [user?.profile.skills]);
+
+  useEffect(() => {
+    const title = user?.profile.title;
+    if (title) {
+      setSeniority(title);
+    }
+  }, [user?.profile.title]);
 
   return (
     <Flex
@@ -84,7 +104,7 @@ const UserProfile: FC = () => {
                 <Stack m="20px" spacing={2} direction="column">
                   <Heading size="xs">
                     Country:
-                    {user?.profile.country}
+                    {country}
                   </Heading>
                   <Heading size="xs">
                     Timezone:
@@ -118,13 +138,13 @@ const UserProfile: FC = () => {
         <BusinessAreas />
         <FormLabel>Skills</FormLabel>
         <UnorderedList m="20px" spacing={3} id="skills">
-          {/* {skillsList.map((skillItem:string) => <ListItem>{skillItem}</ListItem>)} */}
+          {skillItems.map((skill) => <ListItem>{skill}</ListItem>)}
         </UnorderedList>
         <FormControl id="seniority">
           <FormLabel>Seniority</FormLabel>
           <Input
             placeholder="seniority"
-            value={user?.profile.title?.toString()}
+            value={seniority}
             readOnly
             _placeholder={{ color: 'gray.500' }}
           />
