@@ -91,7 +91,7 @@ class TestMilestoneMentee(TestCase):
         Creation for milestone
         """
         data = {
-            "plan_of_action_id": self.init,
+            "plan_of_action": self.init,
             "description": "test milestone",
             "type": "personal"
         }
