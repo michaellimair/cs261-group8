@@ -15,6 +15,7 @@ import {
   ListItem,
   UnorderedList,
   List,
+  Select,
 } from '@chakra-ui/react';
 
 import { SmallCloseIcon } from '@chakra-ui/icons';
@@ -37,6 +38,9 @@ const UserProfile: FC = () => {
   const [country, setCountry] = useState<string>('');
   const [flag, setFlag] = useState<string>('');
   const [businessLabel, setBusinessLabel] = useState('');
+
+  const onSubmitHandler = () => {
+  };
 
   useEffect(() => {
     const countryCode = user?.profile.country;
@@ -64,124 +68,130 @@ const UserProfile: FC = () => {
   }, [user?.profile.title]);
 
   return (
-    <Flex
-      minH="100vh"
-      align="center"
-      justify="center"
-      bg={useColorModeValue('gray.50', 'gray.800')}
-    >
-      <Stack
-        spacing={4}
-        w="full"
-        maxW="md"
-        bg={useColorModeValue('white', 'gray.700')}
-        rounded="xl"
-        boxShadow="lg"
-        p={6}
-        my={12}
+    <FormControl id="frm-profile" onSubmit={onSubmitHandler}>
+      <Flex
+        minH="100vh"
+        align="center"
+        justify="center"
+        bg={useColorModeValue('gray.50', 'gray.800')}
       >
-        <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
-          My Profile
-        </Heading>
-        <FormControl id="userName">
-          <Stack direction={['column', 'row']} spacing={6}>
-            <Center>
-              <Avatar size="xl">
-                <AvatarBadge
-                  as={IconButton}
-                  size="sm"
-                  rounded="full"
-                  top="-10px"
-                  colorScheme="red"
-                  aria-label="remove Image"
-                  icon={<SmallCloseIcon />}
-                />
-              </Avatar>
-            </Center>
-            <Stack m="20px" spacing={6} direction="row">
+        <Stack
+          spacing={4}
+          w="full"
+          maxW="md"
+          bg={useColorModeValue('white', 'gray.700')}
+          rounded="xl"
+          boxShadow="lg"
+          p={6}
+          my={12}
+        >
+          <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
+            My Profile
+          </Heading>
+          <FormControl id="userName">
+            <Stack direction={['column', 'row']} spacing={6}>
               <Center>
-                <Avatar src="https://thumbs.dreamstime.com/z/globe-grid-vector-icon-isolated-white-background-181317661.jpg" />
-                <Stack m="20px" spacing={2} direction="column">
-                  <Heading size="xs">
-                    Country:
-                    {country}
-                  </Heading>
-                  <Heading size="xs">
-                    Timezone:
-                    {user?.profile.timezone}
-                  </Heading>
-                </Stack>
+                <Avatar size="xl">
+                  <AvatarBadge
+                    as={IconButton}
+                    size="sm"
+                    rounded="full"
+                    top="-10px"
+                    colorScheme="red"
+                    aria-label="remove Image"
+                    icon={<SmallCloseIcon />}
+                  />
+                </Avatar>
               </Center>
+              <Stack m="20px" spacing={6} direction="row">
+                <Center>
+                  <Avatar src="https://thumbs.dreamstime.com/z/globe-grid-vector-icon-isolated-white-background-181317661.jpg" />
+                  <Stack m="20px" spacing={2} direction="column">
+                    <Heading size="xs">
+                      Country:
+                      {country}
+                    </Heading>
+                    <Heading size="xs">
+                      Timezone:
+                      {user?.profile.timezone}
+                    </Heading>
+                  </Stack>
+                </Center>
+              </Stack>
             </Stack>
+          </FormControl>
+          <FormControl id="userName">
+            <FormLabel>User name</FormLabel>
+            <Input
+              placeholder="UserName"
+              value={user?.username}
+              readOnly
+              _placeholder={{ color: 'gray.500' }}
+              type="text"
+            />
+          </FormControl>
+          <FormControl id="email">
+            <FormLabel>Email address</FormLabel>
+            <Input
+              placeholder="your-email@example.com"
+              value={user?.email}
+              readOnly
+              _placeholder={{ color: 'gray.500' }}
+              type="email"
+            />
+          </FormControl>
+          <BusinessAreas />
+          <FormLabel>Skills</FormLabel>
+          <UnorderedList m="20px" spacing={3} id="skills">
+            {skillItems.map((skill) => <ListItem>{skill}</ListItem>)}
+          </UnorderedList>
+          <FormControl id="seniority">
+            <FormLabel>Seniority</FormLabel>
+            <Select
+              _placeholder={{ color: 'gray.500' }}
+            >
+              {Object.keys(JobTitle).map((key) => (
+                <option>{key}</option>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl id="years-of-experience">
+            <FormLabel>Years of experience</FormLabel>
+            <Input
+              placeholder="years of experience"
+              value={user?.profile.years_experience?.toString()}
+              readOnly
+              _placeholder={{ color: 'gray.500' }}
+            />
+          </FormControl>
+          <Stack spacing={6} direction={['column', 'row']}>
+            <Button
+              bg="red.400"
+              color="white"
+              w="full"
+              _hover={{
+                bg: 'red.500',
+              }}
+              type="submit"
+            >
+              Cancel
+            </Button>
+            <Button
+              bg="blue.400"
+              color="white"
+              w="full"
+              _hover={{
+                bg: 'blue.500',
+              }}
+              type="submit"
+            >
+              Submit
+            </Button>
           </Stack>
-        </FormControl>
-        <FormControl id="userName">
-          <FormLabel>User name</FormLabel>
-          <Input
-            placeholder="UserName"
-            value={user?.username}
-            readOnly
-            _placeholder={{ color: 'gray.500' }}
-            type="text"
-          />
-        </FormControl>
-        <FormControl id="email">
-          <FormLabel>Email address</FormLabel>
-          <Input
-            placeholder="your-email@example.com"
-            value={user?.email}
-            readOnly
-            _placeholder={{ color: 'gray.500' }}
-            type="email"
-          />
-        </FormControl>
-        <BusinessAreas />
-        <FormLabel>Skills</FormLabel>
-        <UnorderedList m="20px" spacing={3} id="skills">
-          {skillItems.map((skill) => <ListItem>{skill}</ListItem>)}
-        </UnorderedList>
-        <FormControl id="seniority">
-          <FormLabel>Seniority</FormLabel>
-          <Input
-            placeholder="seniority"
-            value={seniority}
-            readOnly
-            _placeholder={{ color: 'gray.500' }}
-          />
-        </FormControl>
-        <FormControl id="years-of-experience">
-          <FormLabel>Years of experience</FormLabel>
-          <Input
-            placeholder="years of experience"
-            value={user?.profile.years_experience?.toString()}
-            readOnly
-            _placeholder={{ color: 'gray.500' }}
-          />
-        </FormControl>
-        <Stack spacing={6} direction={['column', 'row']}>
-          <Button
-            bg="red.400"
-            color="white"
-            w="full"
-            _hover={{
-              bg: 'red.500',
-            }}
-          >
-            Cancel
-          </Button>
-          <Button
-            bg="blue.400"
-            color="white"
-            w="full"
-            _hover={{
-              bg: 'blue.500',
-            }}
-          >
-            Submit
-          </Button>
         </Stack>
-      </Stack>
-    </Flex>
+      </Flex>
+    </FormControl>
+
   );
 };
 

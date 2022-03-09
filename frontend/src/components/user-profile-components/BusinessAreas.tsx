@@ -9,11 +9,22 @@ import {
   FC, useEffect, useState,
 } from 'react';
 
-const BusinessAreas: FC = (props) => {
+const BusinessAreas: FC = () => {
   const [items, setItems] = useState([]);
   const { user } = useUser();
-  const [area, setArea] = useState<string>('');
+  const [areaID, setAreaID] = useState<number>(0);
   const [businessAreaList, setBusinessAreaList] = useState<IBusinessArea[]>([]);
+
+  useEffect(() => {
+    const id = user?.profile.business_area?.id;
+    if (id) {
+      httpClient.businessArea.getBusinessAreaById(id)
+        .then((response) => {
+          setAreaID(response.id);
+        });
+    }
+  });
+
   useEffect(() => {
     httpClient.businessArea.listBusinessAreas()
       .then((response) => {
@@ -21,23 +32,19 @@ const BusinessAreas: FC = (props) => {
       });
   }, []);
 
-  useEffect(() => {
-    const id = user?.profile.business_area?.id;
-    if (id) {
-      httpClient.businessArea.getBusinessAreaById(id)
-        .then((response) => {
-          setArea(response.name);
-        });
-    }
-  });
-
   return (
     <FormControl id="business-area">
       <FormLabel>Business area</FormLabel>
       <Select
         id="business-area"
       >
-        {businessAreaList.map((item) => <option key={item.id}>{item.label}</option>)}
+        {businessAreaList.map((item) => (
+          <option
+            key={item.id}
+          >
+            {item.label}
+          </option>
+        ))}
       </Select>
     </FormControl>
   );
