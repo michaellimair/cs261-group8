@@ -3,15 +3,19 @@ import {
   VStack,
   Button,
 } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
-const FeedbackButton = () => (
-  <VStack align="stretch" pl="8">
-    <Button colorScheme="blue">
-      Give Feedback
-      {' '}
-      <ChevronRightIcon />
-    </Button>
-  </VStack>
-);
+const FeedbackButton = () => {
+  const { t } = useTranslation();
+
+  return (
+    <VStack align="stretch" pl="8">
+      <Button colorScheme="blue">
+        {`${t('give_feedback')} `}
+        <ChevronRightIcon />
+      </Button>
+    </VStack>
+  );
+};
 
 export default FeedbackButton;

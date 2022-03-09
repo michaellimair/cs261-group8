@@ -4,14 +4,13 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import MeetingCardInfo from 'components/Meetings/MeetingCardInfo';
-import MeetingCardDateTimeIcon from './MeetingCardDateTime';
+import MeetingCardDateTime from './MeetingCardDateTime';
 
 interface IMeetingCardProps {
   title: string;
   body: string;
   linkToMeeting: string;
-  meetingTime: string;
-  meetingDate: string;
+  meetingTime: Date;
 }
 
 const MeetingCardLeft: FC<IMeetingCardProps> = ({
@@ -19,7 +18,6 @@ const MeetingCardLeft: FC<IMeetingCardProps> = ({
   body,
   linkToMeeting,
   meetingTime,
-  meetingDate,
 }) => (
   <Flex align="center">
     <Box flex="4">
@@ -30,9 +28,8 @@ const MeetingCardLeft: FC<IMeetingCardProps> = ({
       />
     </Box>
     <Box flex="2">
-      <MeetingCardDateTimeIcon
+      <MeetingCardDateTime
         meetingTime={meetingTime}
-        meetingDate={meetingDate}
       />
     </Box>
   </Flex>

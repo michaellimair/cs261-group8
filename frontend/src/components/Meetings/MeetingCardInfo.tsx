@@ -6,6 +6,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { useTranslation } from 'react-i18next';
 
 interface IMeetingCardInfoProps {
   title: string;
@@ -17,18 +18,22 @@ const MeetingCardInfo: FC<IMeetingCardInfoProps> = ({
   title,
   body,
   linkToMeeting,
-}) => (
-  <VStack align="left">
-    <Heading>{title}</Heading>
-    <Text fontSize={{ base: 'lg' }} textAlign="left" maxW="4xl">
-      {body}
-    </Text>
-    <Link color="teal.500" href={linkToMeeting} isExternal>
-      Link to meeting
-      {' '}
-      <ExternalLinkIcon mx="2px" />
-    </Link>
-  </VStack>
-);
+}) => {
+  const { t } = useTranslation();
+
+  return (
+    <VStack align="left">
+      <Heading>{title}</Heading>
+      <Text fontSize={{ base: 'lg' }} textAlign="left" maxW="4xl">
+        {body}
+      </Text>
+      <Link color="teal.500" href={linkToMeeting} isExternal>
+        {t('link_to_meeting')}
+        {' '}
+        <ExternalLinkIcon mx="2px" />
+      </Link>
+    </VStack>
+  );
+};
 
 export default MeetingCardInfo;

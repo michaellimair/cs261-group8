@@ -3,7 +3,6 @@ import {
   StackDivider,
   Flex,
   Box,
-  // Spacer,
 } from '@chakra-ui/react';
 import MeetingCardLeft from './MeetingCardLeft';
 import MenteeFeedbackBox from './MenteeFeedbackBox';
@@ -12,8 +11,7 @@ interface IMeetingCardProps {
   title: string;
   body: string;
   linkToMeeting: string;
-  meetingTime: string;
-  meetingDate: string;
+  meetingTime: Date;
 }
 
 const MenteeCompletedMeetingCard: FC<IMeetingCardProps> = ({
@@ -21,7 +19,6 @@ const MenteeCompletedMeetingCard: FC<IMeetingCardProps> = ({
   body,
   linkToMeeting,
   meetingTime,
-  meetingDate,
 }) => (
   <Flex verticalAlign="top" align="center" p="4" pl="8" pr="8" boxShadow="lg" m="4" borderRadius="lg" bg="white" divider={<StackDivider borderColor="gray.200" />}>
     <Box flex="5">
@@ -30,10 +27,8 @@ const MenteeCompletedMeetingCard: FC<IMeetingCardProps> = ({
         body={body}
         linkToMeeting={linkToMeeting}
         meetingTime={meetingTime}
-        meetingDate={meetingDate}
       />
     </Box>
-    {/* <Spacer flex="0.5" borderRightWidth="2px" borderColor="gray.100" /> */}
     <Box flex="1.5">
       <MenteeFeedbackBox />
     </Box>
