@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 
 import { SmallCloseIcon } from '@chakra-ui/icons';
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useState } from 'react';
 import BusinessAreas from 'components/user-profile-components/BusinessAreas';
 import { useTranslation } from 'react-i18next';
 import { useUser } from 'hooks/useUser';
@@ -30,6 +30,18 @@ import SkillAPI from '../../api/skill.api';
 const UserProfile: FC = () => {
   const { t } = useTranslation();
   const { user } = useUser();
+  const [country, setCountry] = useState(user?.profile.country);
+  const [skillItems, setSkillItems] = useState([]);
+
+  // const skillsList = user?.profile.skills;
+  const countryName = async () => {
+    try {
+      const response = await httpClient.country.getCountryByCode('ID');
+      console.log(response);
+    } catch (error) {
+      console.log(`Error:${error}`);
+    }
+  };
 
   return (
     <Flex
@@ -106,16 +118,13 @@ const UserProfile: FC = () => {
         <BusinessAreas />
         <FormLabel>Skills</FormLabel>
         <UnorderedList m="20px" spacing={3} id="skills">
-          <ListItem>First element</ListItem>
-          <ListItem>Second interest</ListItem>
-          <ListItem>Third interest</ListItem>
-          <ListItem>Fourth interest</ListItem>
-          {/* {skillList.map((skillItem:string) => <ListItem>{skillItem}</ListItem>)} */}
+          {/* {skillsList.map((skillItem:string) => <ListItem>{skillItem}</ListItem>)} */}
         </UnorderedList>
         <FormControl id="seniority">
           <FormLabel>Seniority</FormLabel>
           <Input
             placeholder="seniority"
+            value={user?.profile.title?.toString()}
             readOnly
             _placeholder={{ color: 'gray.500' }}
           />

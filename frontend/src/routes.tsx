@@ -16,6 +16,7 @@ import { IoSchool } from 'react-icons/io5';
 import CreateFeedbackPage from 'pages/feedback/create';
 import ViewFeedbackPage from 'pages/feedback/[id]';
 import EditFeedbackPage from 'pages/feedback/[id]/edit';
+import MenteeMilestonePage from 'pages/mentee-dashboard/MenteeMilestonePage';
 import UserProfile from 'pages/identity/UserProfile';
 
 export enum RouteLayout {
@@ -100,6 +101,15 @@ export const dashboardRoutes: IDashboardRoute[] = [
     allowedGroups: MENTEE_ONLY,
   },
   {
+    name: 'mentee_milestones',
+    element: <MenteeMilestonePage />,
+    layout: RouteLayout.USER,
+    path: 'mentee-milestones',
+    icon: IoSchool,
+    description: 'dashboard.mentee_milestones.description',
+    allowedGroups: MENTEE_ONLY,
+  },
+  {
     name: 'create_feedback',
     element: <CreateFeedbackPage />,
     layout: RouteLayout.USER,
@@ -139,7 +149,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     name: 'profile',
     element: <UserProfile />,
     layout: RouteLayout.USER,
-    path: 'my-profile',
+    path: 'profile',
     description: 'dashboard.profile.description',
     allowedGroups: ALLOW_ALL_USERS,
   },

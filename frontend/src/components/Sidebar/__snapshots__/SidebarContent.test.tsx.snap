@@ -159,6 +159,37 @@ Object {
         </a>
         <a
           class="chakra-link css-jgup0q"
+          href="/mentee-milestones"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            <svg
+              class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 368a16 16 0 01-7.94-2.11L108 285.84a8 8 0 00-12 6.94V368a16 16 0 008.23 14l144 80a16 16 0 0015.54 0l144-80a16 16 0 008.23-14v-75.22a8 8 0 00-12-6.94l-140.06 80.05A16 16 0 01256 368z"
+              />
+              <path
+                d="M495.92 190.5v-.11a16 16 0 00-8-12.28l-224-128a16 16 0 00-15.88 0l-224 128a16 16 0 000 27.78l224 128a16 16 0 0015.88 0L461 221.28a2 2 0 013 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 00496 368V192a14.76 14.76 0 00-.08-1.5z"
+              />
+            </svg>
+            dashboard.mentee_milestones.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
           href="/feedbacks/create"
           style="text-decoration: none;"
         >
@@ -219,6 +250,18 @@ Object {
               />
             </svg>
             dashboard.feedback.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/profile"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            dashboard.profile.title
           </div>
         </a>
       </div>
@@ -351,6 +394,37 @@ Object {
       </a>
       <a
         class="chakra-link css-jgup0q"
+        href="/mentee-milestones"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          <svg
+            class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M256 368a16 16 0 01-7.94-2.11L108 285.84a8 8 0 00-12 6.94V368a16 16 0 008.23 14l144 80a16 16 0 0015.54 0l144-80a16 16 0 008.23-14v-75.22a8 8 0 00-12-6.94l-140.06 80.05A16 16 0 01256 368z"
+            />
+            <path
+              d="M495.92 190.5v-.11a16 16 0 00-8-12.28l-224-128a16 16 0 00-15.88 0l-224 128a16 16 0 000 27.78l224 128a16 16 0 0015.88 0L461 221.28a2 2 0 013 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 00496 368V192a14.76 14.76 0 00-.08-1.5z"
+            />
+          </svg>
+          dashboard.mentee_milestones.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
         href="/feedbacks/create"
         style="text-decoration: none;"
       >
@@ -411,6 +485,18 @@ Object {
             />
           </svg>
           dashboard.feedback.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/profile"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          dashboard.profile.title
         </div>
       </a>
     </div>
