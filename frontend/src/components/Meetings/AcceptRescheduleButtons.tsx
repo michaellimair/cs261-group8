@@ -18,6 +18,7 @@ const AcceptRescheduleButtons = () => {
   const { setValue, reset, watch } = useCommonForm<IRescheduleDTO, any, any>({
     mutationId: 'meeting-reschedule',
     // TODO: Add backend implementation
+    // eslint-disable-next-line no-console
     mutationFn: async (values) => console.log(values),
   });
 
