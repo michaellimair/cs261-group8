@@ -21,7 +21,7 @@ const MeetingCardDateTime: FC<IMeetingCardDateTimeProps> = ({
   return (
     <VStack alignContent="right" borderRightWidth="2px" borderColor="gray.100">
       <Heading>
-        {meetingTime}
+        {formatDate(meetingTime)}
         {' '}
         GMT
       </Heading>

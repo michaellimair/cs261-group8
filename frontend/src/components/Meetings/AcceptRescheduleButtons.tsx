@@ -2,74 +2,54 @@ import {
   VStack,
   Button,
   Text,
-  HStack,
-  PinInput,
-  PinInputField,
-  Select,
 } from '@chakra-ui/react';
-import React from 'react';
+import CustomDatePicker from 'components/CustomDatePicker';
+import useCommonForm from 'hooks/useCommonForm';
+import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+
+interface IRescheduleDTO {
+  proposed: Date;
+}
 
 const AcceptRescheduleButtons = () => {
   const { t } = useTranslation();
 
+  const { setValue, reset, watch } = useCommonForm<IRescheduleDTO, any, any>({
+    mutationId: 'meeting-reschedule',
+    // TODO: Add backend implementation
+    mutationFn: async (values) => console.log(values),
+  });
+
+  const onChange = useCallback((date: Date | null) => {
+    if (date) {
+      setValue('proposed', date);
+    } else {
+      reset();
+    }
+  }, [setValue, reset]);
+
+  const selected = watch('proposed');
+
   return (
     <VStack align="stretch" pl="8">
       <Button colorScheme="green">{t('accept')}</Button>
-      <Button colorScheme="red">
+      <Text align="center" fontWeight="bold">
+        {t('or')}
+      </Text>
+      <Text>
+        {t('select_alternative_time')}
+      </Text>
+      <CustomDatePicker
+        showTimeSelect
+        selected={selected}
+        dateFormat="Pp"
+        onChange={onChange}
+        minDate={new Date()} // Date must be in the future
+      />
+      <Button colorScheme="red" disabled={!selected}>
         {t('reschedule')}
       </Button>
-      <HStack spacing="1">
-        <VStack align="left" spacing="3">
-          <Text>
-            {t('date')}
-            :
-          </Text>
-          <Text>
-            {t('time')}
-            :
-          </Text>
-        </VStack>
-        <VStack align="left">
-          <HStack spacing="0.5">
-            <PinInput placeholder="D" size="sm">
-              <PinInputField isRequired />
-              <PinInputField isRequired />
-            </PinInput>
-            <Text>
-              /
-            </Text>
-            <PinInput placeholder="M" size="sm">
-              <PinInputField isRequired />
-              <PinInputField isRequired />
-            </PinInput>
-            <Text>
-              /
-            </Text>
-            <PinInput placeholder="Y" size="sm">
-              <PinInputField isRequired />
-              <PinInputField isRequired />
-            </PinInput>
-          </HStack>
-          <HStack spacing="0.5">
-            <PinInput placeholder="H" size="sm">
-              <PinInputField isRequired />
-              <PinInputField isRequired />
-            </PinInput>
-            <Text>
-              :
-            </Text>
-            <PinInput placeholder="M" size="sm">
-              <PinInputField isRequired />
-              <PinInputField isRequired />
-            </PinInput>
-            <Select size="sm" width="180">
-              <option value="am">{t('am')}</option>
-              <option value="pm">{t('pm')}</option>
-            </Select>
-          </HStack>
-        </VStack>
-      </HStack>
     </VStack>
   );
 };
