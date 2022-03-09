@@ -5,26 +5,29 @@ from .models import PlanOfAction, Milestone, Comment
 class CommentMenteeSerializer(serializers.ModelSerializer):
     """
     serializer for comment to mentee's view, read only
+    input plan of action id that this comment related
     """
     class Meta:
         """
         Meta data for comment
         """
         model = Comment
-        fields = ('id', 'content', 'created', 'modified')
+        fields = ('id', 'plan_of_action_id', 'content', 'created', 'modified')
 
 
 class CommentMentorSerializer(serializers.ModelSerializer):
     """
     serializer for comment to mentor's view, can create
+    input plan of action id that this comment related
     """
     class Meta:
         """
         Meta data for comment
         """
         model = Comment
-        fields = ('id', 'content', 'created', 'modified')
+        fields = ('id', 'plan_of_action_id', 'content', 'created', 'modified')
         extra_kwargs = {
+            'plan_of_action_id': {'required': True},
             'content': {'required': True}
         }
 
@@ -32,9 +35,11 @@ class CommentMentorSerializer(serializers.ModelSerializer):
         """
         create comment for milestone based on
         the data provided in the serializer context
+        and plan of action as fk
         """
         # requests = self.context.get("request")
         comment = Comment.objects.create(
+            plan_of_action=validated_data['plan_of_action_id'],
             content=validated_data['content']
         )
 
@@ -44,6 +49,7 @@ class CommentMentorSerializer(serializers.ModelSerializer):
 class MilestoneMentorSerializer(serializers.ModelSerializer):
     """
     Serializer for milestone, mentor read only to content, can approve
+    input plan of action id that this milestone related
     """
 
     class Meta:
@@ -51,25 +57,20 @@ class MilestoneMentorSerializer(serializers.ModelSerializer):
         Meta data for milestone
         """
         model = Milestone
-        fields = ('id', 'description', 'type', 'completed', 'created', 'modified')
+        fields = ('id', 'plan_of_action_id', 'description', 'type', 'completed', 'created', 'modified')
         extra_kwargs = {
+            'plan_of_action_id': {'required': True},
             'description': {'required': True},
             'type': {'required': True},
             'completed': {'required': True},
             # 'approved': {'required': True}
         }
 
-    # def update(self, instance, validated_data):
-    #     """
-    #     mentor can approve the milestone
-    #     """
-    #     if "approved" in validated_data:
-    #         instance.approved = validated_data['approved']
-
 
 class MilestoneMenteeSerializer(serializers.ModelSerializer):
     """
     Serializer for milestone, mentee can create, and update if it is complete
+    input plan of action id that this milestone related
     """
 
     class Meta:
@@ -77,8 +78,9 @@ class MilestoneMenteeSerializer(serializers.ModelSerializer):
         Meta data for milestone
         """
         model = Milestone
-        fields = ('id', 'description', 'type', 'completed', 'created', 'modified')
+        fields = ('id', 'plan_of_action_id', 'description', 'type', 'completed', 'created', 'modified')
         extra_kwargs = {
+            'plan_of_action_id': {'required': True},
             'description': {'required': True},
             'type': {'required': True},
             'completed': {'required': True},
@@ -92,6 +94,7 @@ class MilestoneMenteeSerializer(serializers.ModelSerializer):
 
         # request = self.context.get("request")
         milestone = Milestone.objects.create(
+            plan_of_action_id=validated_data['plan_of_action_id'],
             description=validated_data['description'],
             type=validated_data['type'],
             #  should I don't ask them to provide completion
@@ -107,7 +110,7 @@ class MilestoneMenteeSerializer(serializers.ModelSerializer):
         """
         update weather milestone is completed
         """
-        # request = self.context.get("request")
+        # instance.plan_of_action_id = validated_data['plan_of_action_id']
         if "completed" in validated_data:
             instance.completed = validated_data['completed']
         instance.save()

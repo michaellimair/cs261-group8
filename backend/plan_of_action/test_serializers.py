@@ -8,6 +8,7 @@ class TestPlanOfActionMentee(TestCase):
     """
     Test for mentee to create plan of action
     """
+
     def test_create(self):
         """
         Test creation of plan of action
@@ -55,8 +56,13 @@ class TestCommentMentor(TestCase):
         """
         test mentor create comment
         """
+        init = PlanOfAction.objects.create(
+            description="init",
+            approved=False
+        )
 
         data = {
+            "plan_of_action_id": init.id,
             "content": "Test data"
         }
 
@@ -71,11 +77,22 @@ class TestMilestoneMentee(TestCase):
     Testing for mentee milestone creation and update completion
     """
 
+    def setUp(self):
+        """
+        create plan of action get id
+        """
+        init = PlanOfAction.objects.create(
+            description="init",
+            approved=False
+        )
+        self.pid = init.id
+
     def test_create(self):
         """
         Creation for milestone
         """
         data = {
+            "plan_of_action_id": self.pid,
             "description": "test milestone",
             "type": "personal"
         }
@@ -94,6 +111,7 @@ class TestMilestoneMentee(TestCase):
         """
 
         init_data = {
+            "plan_of_action_id": self.pid,
             "description": "test milestone",
             "type": "personal"
         }
