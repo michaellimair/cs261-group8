@@ -13,6 +13,7 @@ import {
   FiHome,
   FiShield,
 } from 'react-icons/fi';
+import { FaUserCircle } from 'react-icons/fa';
 import { VscFeedback } from 'react-icons/vsc';
 import { IoSchool } from 'react-icons/io5';
 import { MdComputer } from 'react-icons/md';
@@ -171,6 +172,8 @@ export const dashboardRoutes: IDashboardRoute[] = [
     element: <UserProfile />,
     layout: RouteLayout.USER,
     path: 'profile',
+    hide: true,
+    icon: FaUserCircle,
     description: 'dashboard.profile.description',
     allowedGroups: ALLOW_ALL_USERS,
   },

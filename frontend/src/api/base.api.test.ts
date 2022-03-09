@@ -213,11 +213,12 @@ describe('base.api.ts', () => {
         }
       }
 
-      it('intercepts unknown errors properly', async () => expect(() => errorInterceptor(new Error('Unknown error'))).rejects.toEqual(new ApiError('An error has occurred in the server.')));
+      const msg = 'An error has occurred in the server.';
+      it('intercepts unknown errors properly', async () => expect(() => errorInterceptor(new Error('Unknown error'))).rejects.toEqual(new ApiError(msg, { non_field_errors: msg })));
 
       it('intercepts unknown axios errors properly', async () => expect(async () => {
         await errorInterceptor(new MockAxiosError(503));
-      }).rejects.toEqual(new ApiError('An error has occurred in the server.')));
+      }).rejects.toEqual(new ApiError(msg, { non_field_errors: msg })));
 
       it('intercepts bad request errors with no error data properly', async () => expect(async () => {
         await errorInterceptor(new MockAxiosError(400));

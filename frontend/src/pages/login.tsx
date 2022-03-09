@@ -1,14 +1,12 @@
 import {
   Text,
   Box,
-  Checkbox,
   Stack,
   Heading,
   useColorModeValue,
   FormControl,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import RouterLink from 'components/RouterLink';
 import React, { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { httpClient } from 'api';
@@ -78,15 +76,7 @@ const LoginPage: FC = () => {
               error={errors?.password}
               register={register}
             />
-            <Stack spacing={10}>
-              <Stack
-                direction={{ base: 'column', sm: 'row' }}
-                align="start"
-                justify="space-between"
-              >
-                <Checkbox>{t('remember_me')}</Checkbox>
-                <RouterLink color="blue.400" to="/forgot-password">{t('forgot_password')}</RouterLink>
-              </Stack>
+            <Stack spacing={10} mt={4}>
               <SubmitButton
                 disabled={isLoading || isSuccess}
                 loadingText={t('logging_in')}

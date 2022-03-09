@@ -117,5 +117,7 @@
     "requested": "Requested Meetings",
     "new_requests": "New Meeting Requests"
   },
-  "feedback_required": "Feedback Required"
+  "feedback_required": "Feedback Required",
+  "select_alternative_time": "Select an alternative time",
+  "or": "or"
 }
