@@ -5,6 +5,8 @@ import DashboardMentorOnlyPage from 'pages/dashboard/mentor-only';
 import FeedbackPage from 'pages/feedback';
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
+import MenteeMeetingsPage from 'pages/dashboard/mentee-meetings';
+import MentorMeetingsPage from 'pages/dashboard/mentor-meetings';
 import { ReactElement } from 'react';
 import { IconType } from 'react-icons';
 import {
@@ -13,6 +15,7 @@ import {
 } from 'react-icons/fi';
 import { VscFeedback } from 'react-icons/vsc';
 import { IoSchool } from 'react-icons/io5';
+import { MdComputer } from 'react-icons/md';
 import CreateFeedbackPage from 'pages/feedback/create';
 import ViewFeedbackPage from 'pages/feedback/[id]';
 import EditFeedbackPage from 'pages/feedback/[id]/edit';
@@ -99,6 +102,24 @@ export const dashboardRoutes: IDashboardRoute[] = [
     icon: IoSchool,
     description: 'dashboard.mentee_only.description',
     allowedGroups: MENTEE_ONLY,
+  },
+  {
+    name: 'mentee_meetings',
+    element: <MenteeMeetingsPage />,
+    layout: RouteLayout.USER,
+    path: 'mentee-meetings',
+    icon: MdComputer,
+    description: 'dashboard.mentee_meetings.description',
+    allowedGroups: MENTEE_ONLY,
+  },
+  {
+    name: 'mentor_meetings',
+    element: <MentorMeetingsPage />,
+    layout: RouteLayout.USER,
+    icon: MdComputer,
+    path: 'mentor-meetings',
+    description: 'dashboard.mentor_meetings.description',
+    allowedGroups: MENTOR_ONLY,
   },
   {
     name: 'mentee_milestones',
