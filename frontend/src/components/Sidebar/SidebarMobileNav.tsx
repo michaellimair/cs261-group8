@@ -11,7 +11,6 @@ import {
   FlexProps,
   Menu,
   MenuButton,
-  MenuDivider,
   MenuItem,
   MenuList,
 } from '@chakra-ui/react';
@@ -22,8 +21,8 @@ import {
 } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 import { useUser } from 'hooks/useUser';
-import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
 import useLogout from 'hooks/useLogout';
+import RouterLink from 'components/RouterLink';
 
 interface ISidebarMobileNavProps extends FlexProps {
   onOpen: () => void;
@@ -32,7 +31,6 @@ interface ISidebarMobileNavProps extends FlexProps {
 const SidebarMobileNav: FC<ISidebarMobileNavProps> = ({ onOpen, ...rest }) => {
   const { t } = useTranslation();
   const { user } = useUser();
-  const routes = useUserDashboardRoutes();
   const { onLogout, isLoggingOut } = useLogout();
 
   return (
@@ -103,12 +101,7 @@ const SidebarMobileNav: FC<ISidebarMobileNavProps> = ({ onOpen, ...rest }) => {
               bg={useColorModeValue('white', 'gray.900')}
               borderColor={useColorModeValue('gray.200', 'gray.700')}
             >
-              {routes.map((route) => (
-                <MenuItem key={route.name}>
-                  {t(`dashboard.${route.name}.title`)}
-                </MenuItem>
-              ))}
-              <MenuDivider />
+              <MenuItem as={RouterLink} to="profile">{t('dashboard.profile.title')}</MenuItem>
               <MenuItem onClick={onLogout} data-testid="logoutButton" disabled={isLoggingOut}>{t('logout')}</MenuItem>
             </MenuList>
           </Menu>
