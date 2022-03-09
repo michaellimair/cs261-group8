@@ -159,6 +159,70 @@ Object {
         </a>
         <a
           class="chakra-link css-jgup0q"
+          href="/mentee-meetings"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            <svg
+              class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+              />
+            </svg>
+            dashboard.mentee_meetings.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/mentor-meetings"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            <svg
+              class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+              />
+            </svg>
+            dashboard.mentor_meetings.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
           href="/mentee-milestones"
           style="text-decoration: none;"
         >
@@ -390,6 +454,70 @@ Object {
             />
           </svg>
           dashboard.mentee_only.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/mentee-meetings"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          <svg
+            class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+            />
+          </svg>
+          dashboard.mentee_meetings.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/mentor-meetings"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          <svg
+            class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+            />
+          </svg>
+          dashboard.mentor_meetings.title
         </div>
       </a>
       <a

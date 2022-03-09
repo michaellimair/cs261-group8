@@ -93,5 +93,29 @@
   "modified": "Last modified at {{modified}}",
   "view": "View",
   "edit": "Edit",
-  "delete": "Delete"
+  "delete": "Delete",
+  "accept": "Accept",
+  "reschedule": "Reschedule",
+  "date": "Date",
+  "time": "Time",
+  "am": "AM",
+  "pm": "PM",
+  "accepted": "Accepted",
+  "description": "Description",
+  "create_meeting": "Create a new meeting",
+  "create": "Create",
+  "give_feedback": "Give Feedback",
+  "link_to_meeting": "Link to meeting",
+  "submit_feedback": "Submit feedback",
+  "write_feedback_here": "Write your feedback here",
+  "local_time": "Local time",
+  "meeting_requested": "Meeting requested",
+  "mentee_dashboard": "Mentee Dashboard",
+  "mentor_dashboard": "Mentor Dashboard",
+  "meetings": {
+    "accepted": "Accepted Meetings",
+    "requested": "Requested Meetings",
+    "new_requests": "New Meeting Requests"
+  },
+  "feedback_required": "Feedback Required"
 }
