@@ -5,29 +5,29 @@ from .models import PlanOfAction, Milestone, Comment
 class CommentMenteeSerializer(serializers.ModelSerializer):
     """
     serializer for comment to mentee's view, read only
-    input plan of action id that this comment related
+    input plan of action that this comment related
     """
     class Meta:
         """
         Meta data for comment
         """
         model = Comment
-        fields = ('id', 'plan_of_action_id', 'content', 'created', 'modified')
+        fields = ('id', 'plan_of_action', 'content', 'created', 'modified')
 
 
 class CommentMentorSerializer(serializers.ModelSerializer):
     """
     serializer for comment to mentor's view, can create
-    input plan of action id that this comment related
+    input plan of action that this comment related
     """
     class Meta:
         """
         Meta data for comment
         """
         model = Comment
-        fields = ('id', 'plan_of_action_id', 'content', 'created', 'modified')
+        fields = ('id', 'plan_of_action', 'content', 'created', 'modified')
         extra_kwargs = {
-            'plan_of_action_id': {'required': True},
+            'plan_of_action': {'required': True},
             'content': {'required': True}
         }
 
@@ -39,7 +39,7 @@ class CommentMentorSerializer(serializers.ModelSerializer):
         """
         # requests = self.context.get("request")
         comment = Comment.objects.create(
-            plan_of_action=validated_data['plan_of_action_id'],
+            plan_of_action=validated_data['plan_of_action'],
             content=validated_data['content']
         )
 
@@ -57,9 +57,10 @@ class MilestoneMentorSerializer(serializers.ModelSerializer):
         Meta data for milestone
         """
         model = Milestone
-        fields = ('id', 'plan_of_action_id', 'description', 'type', 'completed', 'created', 'modified')
+        fields = ('id', 'plan_of_action', 'description',
+                  'type', 'completed', 'created', 'modified')
         extra_kwargs = {
-            'plan_of_action_id': {'required': True},
+            'plan_of_action': {'required': True},
             'description': {'required': True},
             'type': {'required': True},
             'completed': {'required': True},
@@ -78,9 +79,10 @@ class MilestoneMenteeSerializer(serializers.ModelSerializer):
         Meta data for milestone
         """
         model = Milestone
-        fields = ('id', 'plan_of_action_id', 'description', 'type', 'completed', 'created', 'modified')
+        fields = ('id', 'plan_of_action', 'description',
+                  'type', 'completed', 'created', 'modified')
         extra_kwargs = {
-            'plan_of_action_id': {'required': True},
+            'plan_of_action': {'required': True},
             'description': {'required': True},
             'type': {'required': True},
             'completed': {'required': True},
@@ -94,7 +96,7 @@ class MilestoneMenteeSerializer(serializers.ModelSerializer):
 
         # request = self.context.get("request")
         milestone = Milestone.objects.create(
-            plan_of_action_id=validated_data['plan_of_action_id'],
+            plan_of_action=validated_data['plan_of_action'],
             description=validated_data['description'],
             type=validated_data['type'],
             #  should I don't ask them to provide completion

@@ -1,10 +1,10 @@
 from rest_framework.generics import ListAPIView, ListCreateAPIView,\
     CreateAPIView, UpdateAPIView
+from users.permissions import IsMentee, IsMentor
 from .serializers import CommentMentorSerializer, CommentMenteeSerializer, \
     MilestoneMenteeSerializer, MilestoneMentorSerializer, PlanOfActionMenteeSerializer, \
     PlanOfActionMentorSerializer
 from .models import Comment, Milestone, PlanOfAction
-from users.permissions import IsMentee, IsMentor
 
 #  Haven't linked to pair yet, test mentor and mentee for permission first
 # retrieve is limit to visit

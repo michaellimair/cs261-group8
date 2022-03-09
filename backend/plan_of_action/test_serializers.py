@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import PlanOfAction
-from .serializers import CommentMentorSerializer, MilestoneMenteeSerializer, PlanOfActionMentorSerializer,\
-    PlanOfActionMenteeSerializer
+from .serializers import CommentMentorSerializer, MilestoneMenteeSerializer, \
+    PlanOfActionMentorSerializer, PlanOfActionMenteeSerializer
 
 
 class TestPlanOfActionMentee(TestCase):
@@ -62,7 +62,7 @@ class TestCommentMentor(TestCase):
         )
 
         data = {
-            "plan_of_action_id": init.id,
+            "plan_of_action": init,
             "content": "Test data"
         }
 
@@ -81,18 +81,17 @@ class TestMilestoneMentee(TestCase):
         """
         create plan of action get id
         """
-        init = PlanOfAction.objects.create(
+        self.init = PlanOfAction.objects.create(
             description="init",
             approved=False
         )
-        self.pid = init.id
 
     def test_create(self):
         """
         Creation for milestone
         """
         data = {
-            "plan_of_action_id": self.pid,
+            "plan_of_action_id": self.init,
             "description": "test milestone",
             "type": "personal"
         }
@@ -111,7 +110,7 @@ class TestMilestoneMentee(TestCase):
         """
 
         init_data = {
-            "plan_of_action_id": self.pid,
+            "plan_of_action": self.init,
             "description": "test milestone",
             "type": "personal"
         }
