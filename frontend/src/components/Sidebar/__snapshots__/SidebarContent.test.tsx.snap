@@ -252,6 +252,18 @@ Object {
             dashboard.feedback.title
           </div>
         </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/profile"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            dashboard.profile.title
+          </div>
+        </a>
       </div>
     </div>
   </body>,
@@ -473,6 +485,18 @@ Object {
             />
           </svg>
           dashboard.feedback.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/profile"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          dashboard.profile.title
         </div>
       </a>
     </div>
