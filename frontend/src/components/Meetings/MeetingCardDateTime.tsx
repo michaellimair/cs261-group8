@@ -11,17 +11,19 @@ import { useTranslation } from 'react-i18next';
 
 interface IMeetingCardDateTimeProps {
   meetingTime: Date;
+  originalTimeZone?: string;
 }
 
 const MeetingCardDateTime: FC<IMeetingCardDateTimeProps> = ({
   meetingTime,
+  originalTimeZone,
 }) => {
   const { t } = useTranslation();
 
   return (
     <VStack alignContent="right" borderRightWidth="2px" borderColor="gray.100">
       <Heading>
-        {formatDate(meetingTime)}
+        {formatTime(meetingTime, originalTimeZone)}
         {' '}
         GMT
       </Heading>
