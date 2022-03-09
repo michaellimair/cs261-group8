@@ -28,8 +28,8 @@ const CreateMilestone: FC = () => (
         <Box>
           <Heading size="sm">Title</Heading>
           <Center>
-            <Input p="10px" />
-            <Button m="5px" size="sm" maxW="100px" colorScheme="blue">Create</Button>
+            <Input p="10px" width="400px" />
+            <Button m="5px" size="sm" width="100px" colorScheme="blue">Create</Button>
           </Center>
         </Box>
       </Stack>

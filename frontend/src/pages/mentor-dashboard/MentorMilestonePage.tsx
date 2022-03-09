@@ -1,5 +1,4 @@
 import { FC } from 'react';
-// import MentorMilestone from 'components/mentor-milestone/MentorMilestone';
 import { Box, Container, Stack } from '@chakra-ui/react';
 import ViewMenteeMilestone from 'components/mentor-milestone/ViewMenteeMilestone';
 import MenteeMilestone from 'components/mentee-milestone/MenteeMilestone';
