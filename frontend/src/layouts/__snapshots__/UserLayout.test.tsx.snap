@@ -147,12 +147,12 @@ Object {
               class="css-70qvj9"
             >
               <button
-                aria-controls="menu-list-4"
+                aria-controls="menu-list-5"
                 aria-expanded="false"
                 aria-haspopup="menu"
                 class="chakra-menu__menu-button css-10lilp"
                 data-testid="menuButton"
-                id="menu-button-4"
+                id="menu-button-5"
               >
                 <span
                   class="css-xl71ch"
@@ -215,21 +215,26 @@ Object {
                 <div
                   aria-orientation="vertical"
                   class="chakra-menu__menu-list css-w8sf4k"
-                  id="menu-list-4"
+                  id="menu-list-5"
                   role="menu"
                   style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
                   tabindex="-1"
                 >
-                  <hr
-                    aria-orientation="horizontal"
-                    class="chakra-menu__divider css-0"
-                    role="separator"
-                  />
+                  <a
+                    class="chakra-link chakra-menu__menuitem css-1ugpuvc"
+                    href="/profile"
+                    id="menu-list-5-menuitem-2"
+                    role="menuitem"
+                    tabindex="0"
+                    type="button"
+                  >
+                    dashboard.profile.title
+                  </a>
                   <button
                     class="chakra-menu__menuitem css-1k756t9"
                     data-index="0"
                     data-testid="logoutButton"
-                    id="menu-list-4-menuitem-2"
+                    id="menu-list-5-menuitem-3"
                     role="menuitem"
                     tabindex="-1"
                     type="button"
@@ -362,12 +367,12 @@ Object {
             class="css-70qvj9"
           >
             <button
-              aria-controls="menu-list-4"
+              aria-controls="menu-list-5"
               aria-expanded="false"
               aria-haspopup="menu"
               class="chakra-menu__menu-button css-10lilp"
               data-testid="menuButton"
-              id="menu-button-4"
+              id="menu-button-5"
             >
               <span
                 class="css-xl71ch"
@@ -430,21 +435,26 @@ Object {
               <div
                 aria-orientation="vertical"
                 class="chakra-menu__menu-list css-w8sf4k"
-                id="menu-list-4"
+                id="menu-list-5"
                 role="menu"
                 style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
                 tabindex="-1"
               >
-                <hr
-                  aria-orientation="horizontal"
-                  class="chakra-menu__divider css-0"
-                  role="separator"
-                />
+                <a
+                  class="chakra-link chakra-menu__menuitem css-1ugpuvc"
+                  href="/profile"
+                  id="menu-list-5-menuitem-2"
+                  role="menuitem"
+                  tabindex="0"
+                  type="button"
+                >
+                  dashboard.profile.title
+                </a>
                 <button
                   class="chakra-menu__menuitem css-1k756t9"
                   data-index="0"
                   data-testid="logoutButton"
-                  id="menu-list-4-menuitem-2"
+                  id="menu-list-5-menuitem-3"
                   role="menuitem"
                   tabindex="-1"
                   type="button"

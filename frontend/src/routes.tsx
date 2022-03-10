@@ -7,17 +7,23 @@ import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
 import WelcomeForm from 'pages/welcome';
 import MentorRec from 'pages/mentor-rec';
+import MenteeMeetingsPage from 'pages/dashboard/mentee-meetings';
+import MentorMeetingsPage from 'pages/dashboard/mentor-meetings';
 import { ReactElement } from 'react';
 import { IconType } from 'react-icons';
 import {
   FiHome,
   FiShield,
 } from 'react-icons/fi';
+import { FaUserCircle } from 'react-icons/fa';
 import { VscFeedback } from 'react-icons/vsc';
 import { IoSchool } from 'react-icons/io5';
+import { MdComputer } from 'react-icons/md';
 import CreateFeedbackPage from 'pages/feedback/create';
 import ViewFeedbackPage from 'pages/feedback/[id]';
 import EditFeedbackPage from 'pages/feedback/[id]/edit';
+import MenteeMilestonePage from 'pages/mentee-dashboard/MenteeMilestonePage';
+import UserProfile from 'pages/identity/UserProfile';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -128,6 +134,33 @@ export const dashboardRoutes: IDashboardRoute[] = [
     allowedGroups: MENTEE_ONLY,
   },
   {
+    name: 'mentee_meetings',
+    element: <MenteeMeetingsPage />,
+    layout: RouteLayout.USER,
+    path: 'mentee-meetings',
+    icon: MdComputer,
+    description: 'dashboard.mentee_meetings.description',
+    allowedGroups: MENTEE_ONLY,
+  },
+  {
+    name: 'mentor_meetings',
+    element: <MentorMeetingsPage />,
+    layout: RouteLayout.USER,
+    icon: MdComputer,
+    path: 'mentor-meetings',
+    description: 'dashboard.mentor_meetings.description',
+    allowedGroups: MENTOR_ONLY,
+  },
+  {
+    name: 'mentee_milestones',
+    element: <MenteeMilestonePage />,
+    layout: RouteLayout.USER,
+    path: 'mentee-milestones',
+    icon: IoSchool,
+    description: 'dashboard.mentee_milestones.description',
+    allowedGroups: MENTEE_ONLY,
+  },
+  {
     name: 'create_feedback',
     element: <CreateFeedbackPage />,
     layout: RouteLayout.USER,
@@ -161,6 +194,16 @@ export const dashboardRoutes: IDashboardRoute[] = [
     path: 'feedbacks',
     icon: VscFeedback,
     description: 'dashboard.feedback.description',
+    allowedGroups: ALLOW_ALL_USERS,
+  },
+  {
+    name: 'profile',
+    element: <UserProfile />,
+    layout: RouteLayout.USER,
+    path: 'profile',
+    hide: true,
+    icon: FaUserCircle,
+    description: 'dashboard.profile.description',
     allowedGroups: ALLOW_ALL_USERS,
   },
 ];

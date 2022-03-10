@@ -81,6 +81,27 @@
       "description": "Something wrong with the feedback that you created? Edit it here!",
       "loading": "Editing feedback...",
       "cancel": "Cancel Editing"
+    },
+    "mentee_milestones": {
+      "title": "Mentee Milestones",
+      "description": "Milestones for mentees set out in the mentoring arrangement."
+    },
+    "meetings": {
+      "past_meetings": "Past Meetings",
+      "requested_meetings": "Requested Meetings",
+      "upcoming_meetings": "Upcoming Meetings"
+    },
+    "mentee_meetings": {
+      "title": "Meetings (Mentee)",
+      "description": "See all the meetings that you have scheduled with your mentor here."
+    },
+    "mentor_meetings": {
+      "title": "Meetings (Mentor)",
+      "description": "See all the meetings that you have scheduled with your mentee here."
+    },
+    "profile": {
+      "title": "Profile",
+      "description": "Make changes to your user profile in this page."
     }
   },
   "title": "Title",
@@ -89,5 +110,31 @@
   "modified": "Last modified at {{modified}}",
   "view": "View",
   "edit": "Edit",
-  "delete": "Delete"
+  "delete": "Delete",
+  "accept": "Accept",
+  "reschedule": "Reschedule",
+  "date": "Date",
+  "time": "Time",
+  "am": "AM",
+  "pm": "PM",
+  "accepted": "Accepted",
+  "description": "Description",
+  "create_meeting": "Create a new meeting",
+  "create": "Create",
+  "give_feedback": "Give Feedback",
+  "link_to_meeting": "Link to meeting",
+  "submit_feedback": "Submit feedback",
+  "write_feedback_here": "Write your feedback here",
+  "local_time": "Local time",
+  "meeting_requested": "Meeting requested",
+  "mentee_dashboard": "Mentee Dashboard",
+  "mentor_dashboard": "Mentor Dashboard",
+  "meetings": {
+    "accepted": "Accepted Meetings",
+    "requested": "Requested Meetings",
+    "new_requests": "New Meeting Requests"
+  },
+  "feedback_required": "Feedback Required",
+  "select_alternative_time": "Select an alternative time",
+  "or": "or"
 }

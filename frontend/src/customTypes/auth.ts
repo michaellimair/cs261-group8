@@ -10,6 +10,7 @@ export enum JobTitle {
 }
 
 export interface IBusinessArea {
+  id: number;
   name: string;
   label: string;
 }

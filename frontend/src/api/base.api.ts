@@ -99,7 +99,10 @@ class BaseAPI {
         );
       }
     }
-    return Promise.reject(new ApiError('An error has occurred in the server.'));
+    const message = 'An error has occurred in the server.';
+    return Promise.reject(new ApiError(message, {
+      non_field_errors: message,
+    }));
   };
 
   // Use dependency injection for API client for testing purposes
