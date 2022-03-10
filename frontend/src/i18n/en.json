@@ -41,11 +41,19 @@
   "submit_form": "Submit",
   "mentor_recs": "Select a mentor",
   "select_mentors": "Select Mentors",
-  "submit_mentors": "Submit",
+  "submit_mentors": "Submit",  
   "dashboard": {
     "home": {
       "title": "Home",
       "description": "Home page of the dasboard for all users."
+    },
+    "welcome": {
+      "title": "Welcome",
+      "description": "Welcome form for new all users"
+    },
+    "mentor-rec": {
+      "title": "Mentor Recommendations",
+      "description": "Vote from a list of recommended mentors"
     },
     "mentor_only": {
       "title": "Mentor Only",
