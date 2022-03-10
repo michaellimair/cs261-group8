@@ -37,7 +37,6 @@ class CommentMentorSerializer(serializers.ModelSerializer):
         the data provided in the serializer context
         and plan of action as fk
         """
-        # requests = self.context.get("request")
         comment = Comment.objects.create(
             plan_of_action=validated_data['plan_of_action'],
             content=validated_data['content']

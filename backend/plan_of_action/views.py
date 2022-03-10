@@ -13,9 +13,14 @@ from .models import Comment, Milestone, PlanOfAction
 class CommentMenteeView(ListAPIView):
     """
     Mentee can only read comment
+    filter by plan of action
     """
     serializer_class = CommentMenteeSerializer
     permission_classes = [IsMentee]
+
+    def get_queryset(self):
+        p = self.request.query_params.get("plan_of_action")
+        return Comment.objects.filter(plan_of_action=p)
 
 
 class CommentMentorView(ListCreateAPIView):
@@ -26,6 +31,10 @@ class CommentMentorView(ListCreateAPIView):
     permission_classes = [IsMentor]
     queryset = Comment.objects.all()
 
+    def get_queryset(self):
+        p = self.request.query_params.get("plan_of_action")
+        return Comment.objects.filter(plan_of_action=p)
+
 
 class MilestoneMenteeView(ListCreateAPIView, CreateAPIView):
     """
@@ -33,7 +42,10 @@ class MilestoneMenteeView(ListCreateAPIView, CreateAPIView):
     """
     serializer_class = MilestoneMenteeSerializer
     permission_classes = [IsMentee]
-    queryset = Milestone.objects.all()
+
+    def get_queryset(self):
+        p = self.request.query_params.get("plan_of_action")
+        return Milestone.objects.filter(plan_of_action=p)
 
 
 class MilestoneMentorView(ListAPIView):
@@ -44,7 +56,12 @@ class MilestoneMentorView(ListAPIView):
     permission_classes = [IsMentor]
     queryset = Milestone.objects.all()
 
+    def get_queryset(self):
+        p = self.request.query_params.get("plan_of_action")
+        return Milestone.objects.filter(plan_of_action=p)
 
+
+# these 2 should use pair to filter
 class PlanOfActionMenteeView(ListCreateAPIView, UpdateAPIView):
     """
     Mentee can create and update plan of action
