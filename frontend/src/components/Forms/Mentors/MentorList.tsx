@@ -12,7 +12,7 @@ import { IMentor } from 'customTypes/mentor';
 
 interface IMentorListProps {
   mentors: IMentor[];
-  voteMentor: (id: IMentor['id']) => void;
+  voteMentor: (id: IMentor['user']['id']) => void;
 }
 
 const MentorList: FC<IMentorListProps> = ({ mentors, voteMentor }) => (
@@ -36,11 +36,11 @@ const MentorList: FC<IMentorListProps> = ({ mentors, voteMentor }) => (
                 <Avatar size="xl" />
               </VStack>
               <VStack w="70%" align="left" spacing="5px">
-                <Heading size="md" align="left">{mentor.name}</Heading>
-                <Heading size="md" align="left">{mentor.business_area}</Heading>
-                <Text align="left">{mentor.specialities.join(', ')}</Text>
-                <Text align="left">{mentor.location}</Text>
-                <Text align="left">{mentor.timezone}</Text>
+                <Heading size="md" align="left">{mentor.user.full_name}</Heading>
+                <Heading size="md" align="left">{mentor.user.profile.business_area?.label}</Heading>
+                <Text align="left">{mentor.user.profile.skills?.join(', ')}</Text>
+                <Text align="left">{mentor.user.profile.country}</Text>
+                <Text align="left">{mentor.user.profile.timezone}</Text>
               </VStack>
               <Center
                 w="25px"
@@ -51,7 +51,7 @@ const MentorList: FC<IMentorListProps> = ({ mentors, voteMentor }) => (
                 bgColor={mentor.vote === 0 ? 'gray.500' : 'turquoise'}
                 boxShadow="md"
                 p={10}
-                onClick={() => voteMentor(mentor.id)}
+                onClick={() => voteMentor(mentor.user.id)}
               >
                 <Text color="white" fontSize="6xl">{mentor.vote === 0 ? '' : mentor.vote}</Text>
               </Center>

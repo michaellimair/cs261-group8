@@ -1,6 +1,6 @@
 import {
-  Select,
   Stack,
+  HStack,
   Text,
 } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
@@ -21,15 +21,10 @@ const InterestList: FC<IInterestListProps> = ({ interests, deleteInterest }) => 
     ) : (
       <Stack>
         {interests.map((interest: IInterest) => (
-          <Stack>
+          <HStack>
             <Text>{interest.text}</Text>
             <DeleteIcon color="red.500" mr="2" onClick={() => deleteInterest(interest.id)} />
-            <Select placeholder="select_option" maxW="200px" size="md">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </Select>
-          </Stack>
+          </HStack>
         ))}
       </Stack>
     )

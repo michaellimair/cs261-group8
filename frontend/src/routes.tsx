@@ -72,14 +72,41 @@ export const authRoutes: IRoute[] = [
   },
 ];
 
+export const userRoutes: IRoute[] = [
+  {
+    name: 'welcome',
+    element: <WelcomeForm />,
+    layout: RouteLayout.USER,
+    path: 'welcome',
+    description: 'welcome_description',
+  },
+  {
+    name: 'recommendations',
+    element: <MentorRec />,
+    layout: RouteLayout.USER,
+    path: 'mentor-recs',
+    description: 'mentor_recs',
+  },
+];
+
 export const dashboardRoutes: IDashboardRoute[] = [
+  {
+    name: 'welcome',
+    element: <WelcomeForm />,
+    layout: RouteLayout.USER,
+    path: 'welcome',
+    icon: FiHome,
+    index: true,
+    description: 'dashboard.home.description',
+    allowedGroups: ALLOW_ALL_USERS,
+  },
   {
     name: 'home',
     element: <DashboardHomePage />,
     layout: RouteLayout.USER,
     icon: FiHome,
     index: true,
-    description: 'dashboard.home.description',
+    description: 'dashboard.home.descriptiogin',
     allowedGroups: ALLOW_ALL_USERS,
   },
   {

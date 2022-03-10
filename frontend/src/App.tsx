@@ -7,9 +7,9 @@ import {
 import './App.css';
 import { authRoutes, userRoutes } from 'routes';
 import AuthLayout from 'layouts/AuthLayout';
-import FallbackPage from 'pages/fallback';
 import UserLayout from 'layouts/UserLayout';
 import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
+import FallbackPage from 'pages/fallback';
 
 const App: FC = () => {
   const allowedDashboardRoutes = useUserDashboardRoutes(false);

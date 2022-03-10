@@ -27,6 +27,12 @@ autopep8 = "*"
 pycodestyle = "*"
 autoflake = "*"
 hypercorn = "*"
+pycountry = "*"
+snapshottest = "*"
+pytz = "*"
+thefuzz = "*"
+python-levenshtein = "*"
+pillow = "*"
 
 [dev-packages]
 

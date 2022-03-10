@@ -36,14 +36,21 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
     def update(self, instance, validated_data):
+        """Update user profile"""
         super().update(instance, validated_data)
 
-        """Update user profile,
-        automatically populates completed field if all data is updated properly"""
-        if (instance.pronoun
+        # Automatically populate completed field if all data is updated properly
+        is_complete: bool = (instance.pronoun
             and instance.years_experience
             and instance.title
-            and instance.business_area):
+            and instance.skills
+            and len(instance.skills) > 0
+            and instance.country
+            and instance.timezone
+            and instance.business_area)
+
+        # TODO: Refactor if statement
+        if is_complete:
             instance.completed = True
 
         instance.save()
@@ -61,6 +68,7 @@ class UserSerializer(serializers.ModelSerializer):
     groups = GroupSerializer(many=True)
     full_name = serializers.SerializerMethodField('get_full_name')
 
+    # pylint: disable=no-self-use
     def get_full_name(self, obj: get_user_model()) -> str:
         """_summary_
 

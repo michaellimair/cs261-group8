@@ -1,9 +1,6 @@
+import { IUser } from './auth';
+
 export interface IMentor {
-  id: number;
-  name: string;
-  business_area: string;
-  specialities: string[];
-  location: string;
-  timezone: string;
+  user: IUser;
   vote: number;
 }
