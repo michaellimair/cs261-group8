@@ -88,8 +88,7 @@ describe('welcome', () => {
     Object.entries(userData).forEach(([key, value]) => {
       const inputField = result.queryByTestId(key);
       if (!inputField) {
-        // throw new Error(`Field "${key}" does not exist!`);
-        return;
+        throw new Error(`Field "${key}" does not exist!`);
       }
       fireEvent.change(inputField, { target: { value } });
     });
