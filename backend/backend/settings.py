@@ -32,6 +32,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '0.0.0.0', '.run.app', '.michaellimair.me']
 
+CORS_ALLOWED_ORIGINS = [
+    "https://cs261.michaellimair.me",
+    "http://localhost:3000",
+]
 
 # Application definition
 
@@ -163,10 +167,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_STORAGE = os.environ.get(
-    'STATICFILES_STORAGE', 'django.contrib.staticfiles.storage.StaticFilesStorage')
+DEFAULT_FILE_STORAGE = os.environ.get('DEFAULT_FILE_STORAGE',
+    'django.contrib.staticfiles.storage.StaticFilesStorage')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 GS_BUCKET_NAME = os.environ.get('GCS_BUCKET')
+
+if DEFAULT_FILE_STORAGE == "storages.backends.gcloud.GoogleCloudStorage":
+    STATIC_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

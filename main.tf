@@ -274,7 +274,7 @@ resource "google_cloud_run_service" "gcr_service_main" {
         }
 
         env {
-          name = "STATICFILES_STORAGE"
+          name = "DEFAULT_FILE_STORAGE"
           value = "storages.backends.gcloud.GoogleCloudStorage"
         }
 

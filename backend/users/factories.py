@@ -3,6 +3,9 @@ import string
 import factory
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
+from business_area.factories import BusinessAreaFactory
+
+from .models import UserProfile
 
 
 def _generate_username() -> str:
@@ -12,6 +15,26 @@ def _generate_username() -> str:
     username_length = 10
     return ''.join(random.choices(
         string.ascii_uppercase + string.digits, k=username_length))
+
+class UserProfileFactory(factory.django.DjangoModelFactory):
+    """Factory class to create UserProfile for testing."""
+    class Meta:
+        """Metadata of UserProfile factory."""
+        model = UserProfile
+
+    title = UserProfile.Title.ASSOCIATE
+    completed = True
+    years_experience = 10
+    business_area = factory.SubFactory(BusinessAreaFactory)
+    pronoun = "he"
+    country = "ID"
+    timezone = "Asia/Hong_Kong"
+    avatar = factory.django.ImageField(filename='the_file.jpg')
+    skills = ["Real Estate Transactions",
+        "Sales Management",
+        "Sales Operations",
+        "Transportation Management",
+]
 
 
 class UserFactory(factory.django.DjangoModelFactory):

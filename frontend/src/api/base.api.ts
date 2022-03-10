@@ -2,11 +2,13 @@ import { parseISO } from 'date-fns';
 import urljoin from 'url-join';
 import axios, { AxiosInstance } from 'axios';
 import { API_HOST } from 'appenv';
+import CredentialManager from 'libs/credential-manager';
 import ApiError from './error/ApiError';
 import ValidationApiError from './error/BadRequestApiError';
 import TooLargeError from './error/TooLargeError';
 import UnprocessableEntityApiError from './error/UnprocessableEntityApiError';
 import UnauthorizedError from './error/UnauthorizedError';
+import NotFoundError from './error/NotFoundError';
 
 const isoDateFormat = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/;
 
@@ -49,6 +51,7 @@ interface IBaseAPISettings {
   basePath?: string;
   host?: string;
   client?: AxiosInstance;
+  credentialManager?: CredentialManager;
 }
 
 /**
@@ -60,6 +63,8 @@ class BaseAPI {
   private host: string;
 
   private client: AxiosInstance;
+
+  private credentialManager: CredentialManager;
 
   protected basePath: string;
 
@@ -79,6 +84,9 @@ class BaseAPI {
       if (err.response?.status === 401) {
         return Promise.reject(new UnauthorizedError(err.response.data.message));
       }
+      if (err.response?.status === 404) {
+        return Promise.reject(new NotFoundError(err.response.data.message));
+      }
       if (err.response?.status === 413) {
         return Promise.reject(new TooLargeError(err.response.data?.message, err.response.data));
       }
@@ -91,7 +99,10 @@ class BaseAPI {
         );
       }
     }
-    return Promise.reject(new ApiError('An error has occurred in the server.'));
+    const message = 'An error has occurred in the server.';
+    return Promise.reject(new ApiError(message, {
+      non_field_errors: message,
+    }));
   };
 
   // Use dependency injection for API client for testing purposes
@@ -101,6 +112,19 @@ class BaseAPI {
 
     this.client = settings?.client ?? axios.create({
       baseURL: this.host,
+    });
+
+    this.credentialManager = settings?.credentialManager ?? new CredentialManager();
+
+    this.client.interceptors.request.use((request) => {
+      if (!request.headers) {
+        request.headers = {};
+      }
+      const { token } = this.credentialManager.credentials;
+      if (!request.headers.Authorization && token) {
+        request.headers.Authorization = `Token ${token}`;
+      }
+      return request;
     });
 
     this.client.interceptors.response.use((resp) => {
@@ -115,7 +139,7 @@ class BaseAPI {
   }
 
   protected getFullPath(path: string) {
-    return urljoin(this.basePath, path);
+    return urljoin(this.basePath, path, '/');
   }
 
   async get<T = Record<string, unknown>, Qs = Record<string, unknown>>({

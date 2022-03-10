@@ -35,4 +35,20 @@ describe('hooks/useCommonForm', () => {
     await tick(1);
     expect(mutationFn).toHaveBeenCalledTimes(1);
   });
+
+  it('invokes the onSuccess function after mutation success', async () => {
+    const onSuccess = jest.fn();
+    const { result } = renderHook(() => useCommonForm({
+      mutationId,
+      mutationFn,
+      onSuccess,
+    }), { wrapper });
+    await result.current.onSubmit({
+      preventDefault: () => {},
+      persist: () => {},
+    } as SyntheticEvent);
+    await tick(1);
+    expect(mutationFn).toHaveBeenCalledTimes(1);
+    expect(onSuccess).toHaveBeenCalledTimes(1);
+  });
 });

@@ -12,7 +12,7 @@ exports[`components/FormField renders correctly with the right set of attributes
     for="field"
     id="field-label"
   >
-    field
+    customlabel
   </label>
   <div
     class="chakra-input__group css-4302v8"
@@ -22,6 +22,7 @@ exports[`components/FormField renders correctly with the right set of attributes
       class="chakra-input css-0"
       data-testid="field"
       id="field"
+      placeholder="testplaceholder"
       type="email"
     />
   </div>

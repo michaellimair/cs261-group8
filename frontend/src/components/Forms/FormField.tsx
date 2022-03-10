@@ -12,16 +12,7 @@ import React, {
 } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useTranslation } from 'react-i18next';
-import { Path, UseFormRegister } from 'react-hook-form';
-
-interface IFormFieldProps<T> {
-  name: Path<T>;
-  autoComplete: string;
-  register: UseFormRegister<T>;
-  error?: string | string[] | undefined;
-  required?: boolean,
-  type?: React.HTMLInputTypeAttribute;
-}
+import { IFieldProps } from 'customTypes/form';
 
 const FormField = <T extends any>({
   name,
@@ -29,8 +20,10 @@ const FormField = <T extends any>({
   register,
   error,
   required,
+  label: formLabel,
   type = 'text',
-}: PropsWithChildren<IFormFieldProps<T>>) => {
+  placeholder,
+}: PropsWithChildren<IFieldProps<T>>) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [fieldType, setFieldType] = useState<React.HTMLInputTypeAttribute>(type);
   const { t } = useTranslation();
@@ -48,15 +41,16 @@ const FormField = <T extends any>({
 
   return (
     <FormControl id={name} data-testid={`${name}-formcontrol`} isRequired={required} mb={2} isInvalid={Boolean(error)}>
-      <FormLabel data-testid={`${name}-label`}>{t(name)}</FormLabel>
+      <FormLabel data-testid={`${name}-label`}>{formLabel ?? t(name)}</FormLabel>
       <InputGroup>
         <Input
           type={fieldType}
           data-testid={name}
           autoComplete={autoComplete}
           {...register(name, {
-            required: required ? t('no_blank', { field: t(name) }) as any : undefined,
+            required: required ? t('no_blank', { field: formLabel ?? t(name) }) as any : undefined,
           })}
+          placeholder={placeholder}
         />
         {type === 'password' && (
         <InputRightElement h="full" data-testid="show-password-toggle">

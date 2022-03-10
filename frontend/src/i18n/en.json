@@ -5,6 +5,7 @@
   "forgot_password": "Forgot password?",
   "last_name": "Last Name",
   "login": "Login",
+  "logout": "Logout",
   "login_description": "Log in to your mentoring platform account now!",
   "logging_in": "Logging you in...",
   "mentoring_platform": "Mentoring Platform",
@@ -13,6 +14,7 @@
   "not_found": {
     "title": "Page not found."
   },
+  "initializing_app": "The application is currently being initialized, please wait.",
   "password": "Password",
   "register": "Register",
   "register_description": "Register to your mentoring platform account and start getting mentorship or start mentoring others!",
@@ -22,5 +24,100 @@
   "username": "Username",
   "verify_password": "Verify Password",
   "internal_error": "An error has occurred in the server, please try again later.",
-  "register_success": "Registration is successful, logging you in..."
+  "register_success": "Registration is successful, logging you in...",
+  "dashboard": {
+    "home": {
+      "title": "Home",
+      "description": "Home page of the dasboard for all users."
+    },
+    "mentor_only": {
+      "title": "Mentor Only",
+      "description": "This page can only be viewed by a mentor."
+    },
+    "mentee_only": {
+      "title": "Mentee Only",
+      "description": "This page can only be viewed by a mentee."
+    },
+    "feedback": {
+      "title": "Feedback",
+      "description": "Give us feedback and take part in improving our application!",
+      "no_feedback": "You have not submitted any feedback yet.",
+      "your_feedbacks": "Your Feedbacks",
+      "type": "Feedback Type",
+      "bug": "Bug",
+      "improvement": "Improvement",
+      "question": "Question",
+      "select": "Select a feedback type",
+      "invalid": "Unable to obtain your feedback(s). Please try again later.",
+      "back_to_all": "Back to all feedbacks",
+      "admin_reply": "Reply from Administrator",
+      "replied_on": "Administrator replied on {{replied}}"
+    },
+    "create_feedback": {
+      "title": "Create Feedback",
+      "description": "Give us feedback and take part in improving our application!",
+      "loading": "Creating feedback...",
+      "placeholder": "Write the content of your feedback here"
+    },
+    "edit_feedback": {
+      "title": "Edit Feedback",
+      "description": "Something wrong with the feedback that you created? Edit it here!",
+      "loading": "Editing feedback...",
+      "cancel": "Cancel Editing"
+    },
+    "mentee_milestones": {
+      "title": "Mentee Milestones",
+      "description": "Milestones for mentees set out in the mentoring arrangement."
+    },
+    "meetings": {
+      "past_meetings": "Past Meetings",
+      "requested_meetings": "Requested Meetings",
+      "upcoming_meetings": "Upcoming Meetings"
+    },
+    "mentee_meetings": {
+      "title": "Meetings (Mentee)",
+      "description": "See all the meetings that you have scheduled with your mentor here."
+    },
+    "mentor_meetings": {
+      "title": "Meetings (Mentor)",
+      "description": "See all the meetings that you have scheduled with your mentee here."
+    },
+    "profile": {
+      "title": "Profile",
+      "description": "Make changes to your user profile in this page."
+    }
+  },
+  "title": "Title",
+  "content": "Content",
+  "created": "Created at {{created}}",
+  "modified": "Last modified at {{modified}}",
+  "view": "View",
+  "edit": "Edit",
+  "delete": "Delete",
+  "accept": "Accept",
+  "reschedule": "Reschedule",
+  "date": "Date",
+  "time": "Time",
+  "am": "AM",
+  "pm": "PM",
+  "accepted": "Accepted",
+  "description": "Description",
+  "create_meeting": "Create a new meeting",
+  "create": "Create",
+  "give_feedback": "Give Feedback",
+  "link_to_meeting": "Link to meeting",
+  "submit_feedback": "Submit feedback",
+  "write_feedback_here": "Write your feedback here",
+  "local_time": "Local time",
+  "meeting_requested": "Meeting requested",
+  "mentee_dashboard": "Mentee Dashboard",
+  "mentor_dashboard": "Mentor Dashboard",
+  "meetings": {
+    "accepted": "Accepted Meetings",
+    "requested": "Requested Meetings",
+    "new_requests": "New Meeting Requests"
+  },
+  "feedback_required": "Feedback Required",
+  "select_alternative_time": "Select an alternative time",
+  "or": "or"
 }

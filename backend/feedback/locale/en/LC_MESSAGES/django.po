@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-16 02:29+0000\n"
+"POT-Creation-Date: 2022-03-08 10:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\feedback\models.py:10
+#: feedback/models.py:18
 msgid "bug_fixes"
 msgstr "Bug Fixes"
 
-#: .\feedback\models.py:11
+#: feedback/models.py:19
 msgid "improvements"
 msgstr "Improvements"
 
-#: .\feedback\models.py:12
+#: feedback/models.py:20
 msgid "question"
 msgstr "Question"
 
-#: .\feedback\test_views.py:129 .\feedback\views.py:46
+#: feedback/test_views.py:136 feedback/views.py:65
 msgid "reply_once_only"
 msgstr "You are only allowed to reply to a feedback once."
