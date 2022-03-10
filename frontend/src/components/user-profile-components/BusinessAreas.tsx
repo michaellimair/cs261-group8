@@ -1,46 +1,43 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   FormControl, FormLabel, Select,
 } from '@chakra-ui/react';
 import { httpClient } from 'api';
-import { IBusinessArea } from 'customTypes/auth';
 import { useUser } from 'hooks/useUser';
-import {
-  FC, useEffect, useState,
-} from 'react';
+import { FC } from 'react';
+import { useQuery } from 'react-query';
 
-const BusinessAreas: FC = () => {
-  const [items, setItems] = useState([]);
+const fetchBusinessAreas = () => httpClient.businessArea.listBusinessAreas();
+
+interface Props {
+  idChangeHandler: any
+}
+
+const BusinessAreas: FC<Props> = ({ idChangeHandler }) => {
   const { user } = useUser();
-  const [areaID, setAreaID] = useState<number>(0);
-  const [businessAreaList, setBusinessAreaList] = useState<IBusinessArea[]>([]);
+  const userBusinessAreaLabel = user?.profile.business_area?.label;
 
-  useEffect(() => {
-    const id = user?.profile.business_area?.id;
-    if (id) {
-      httpClient.businessArea.getBusinessAreaById(id)
-        .then((response) => {
-          setAreaID(response.id);
-        });
-    }
-  });
+  const onChangeHandler = (event:any) => {
+    idChangeHandler(event.target.value);
+  };
 
-  useEffect(() => {
-    httpClient.businessArea.listBusinessAreas()
-      .then((response) => {
-        setBusinessAreaList(response);
-      });
-  }, []);
+  const { data, status } = useQuery('businessAreaList', fetchBusinessAreas);
+
+  if (status === 'loading') {
+    return <h2>Loading...</h2>;
+  }
 
   return (
     <FormControl id="business-area">
-      <FormLabel>Business area</FormLabel>
+      <FormLabel>{`Business area: ${userBusinessAreaLabel}`}</FormLabel>
       <Select
         id="business-area"
+        defaultValue={userBusinessAreaLabel}
+        onChange={onChangeHandler}
       >
-        {businessAreaList.map((item) => (
+        {data?.map((item) => (
           <option
             key={item.id}
+            value={item.id}
           >
             {item.label}
           </option>

@@ -1,85 +1,80 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Button,
   Flex,
-  FormControl,
   FormLabel,
   Heading,
   Input,
   Stack,
-  useColorModeValue,
   Avatar,
-  AvatarBadge,
-  IconButton,
   Center,
   ListItem,
   UnorderedList,
-  List,
-  Select,
 } from '@chakra-ui/react';
 
-import { SmallCloseIcon } from '@chakra-ui/icons';
 import {
-  FC, useCallback, useEffect, useState,
+  FC, useState,
 } from 'react';
 import BusinessAreas from 'components/user-profile-components/BusinessAreas';
-import { useTranslation } from 'react-i18next';
 import { useUser } from 'hooks/useUser';
 import {
-  ILoginResult, IUser, IUserProfile, JobTitle,
+  IUserProfile, IUserProfileDTO, JobTitle,
 } from 'customTypes/auth';
 import { httpClient } from 'api';
+import { useQuery } from 'react-query';
+import useCommonForm from 'hooks/useCommonForm';
+import ApiError from 'api/error/ApiError';
+import { useNavigate } from 'react-router-dom';
+
+const fetchCountry = (countryCode:string) => httpClient.country.getCountryByCode(countryCode);
 
 const UserProfile: FC = () => {
-  const { t } = useTranslation();
   const { user } = useUser();
-  const [skillItems, setSkillItems] = useState<string[]>([]);
-  const [seniority, setSeniority] = useState<string>('');
-  const [country, setCountry] = useState<string>('');
-  const [flag, setFlag] = useState<string>('');
-  const [businessLabel, setBusinessLabel] = useState('');
+  const [businessID, setBusinessID] = useState<number>(user?.profile.business_area?.id!);
+  const countryCode:string = user?.profile.country!;
+  const skillList:string[] = user?.profile.skills!;
+  const seniority:JobTitle = user?.profile.title!;
 
-  const onSubmitHandler = () => {
-  };
+  const { data } = useQuery('country', () => fetchCountry(countryCode));
 
-  useEffect(() => {
-    const countryCode = user?.profile.country;
-    if (countryCode) {
-      httpClient.country.getCountryByCode(countryCode)
-        .then((response) => {
-          setCountry(response.name);
-          setFlag(response.flag);
-        });
-    }
-  }, [user?.profile.country]);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const skillList = user?.profile.skills;
-    if (skillList) {
-      setSkillItems(skillList);
-    }
-  }, [user?.profile.skills]);
-
-  useEffect(() => {
-    const title = user?.profile.title;
-    if (title) {
-      setSeniority(title);
-    }
-  }, [user?.profile.title]);
+  const {
+    onSubmit,
+  } = useCommonForm<IUserProfileDTO, ApiError<any>, IUserProfile>({
+    defaultValues: {
+      business_area_id: businessID!,
+      avatar: null!,
+      completed: user?.profile.completed!,
+      pronoun: user?.profile.pronoun!,
+      years_experience: user?.profile.years_experience,
+      title: user?.profile.title,
+      country: user?.profile.country,
+      timezone: user?.profile.timezone,
+      skills: user?.profile.skills,
+    },
+    mutationFn: () => httpClient.profile.updateProfile(
+      businessID!,
+      null!,
+    ),
+    mutationId: ['profile', user?.id!, 'update'],
+    onSuccess: () => {
+      navigate('/profile');
+    },
+  });
 
   return (
-    <FormControl id="frm-profile" onSubmit={onSubmitHandler}>
+    <form id="frm-profile" onSubmit={onSubmit}>
       <Flex
         minH="100vh"
         align="center"
         justify="center"
-        bg={useColorModeValue('gray.50', 'gray.800')}
+        bg="white"
       >
         <Stack
           spacing={4}
           w="full"
           maxW="md"
-          bg={useColorModeValue('white', 'gray.700')}
+          bg="white"
           rounded="xl"
           boxShadow="lg"
           p={6}
@@ -88,94 +83,66 @@ const UserProfile: FC = () => {
           <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
             My Profile
           </Heading>
-          <FormControl id="userName">
-            <Stack direction={['column', 'row']} spacing={6}>
+          <Stack direction={['column', 'row']} spacing={6}>
+            <Center>
+              <Avatar size="xl" />
+            </Center>
+            <Stack m="20px" spacing={6} direction="row">
               <Center>
-                <Avatar size="xl">
-                  <AvatarBadge
-                    as={IconButton}
-                    size="sm"
-                    rounded="full"
-                    top="-10px"
-                    colorScheme="red"
-                    aria-label="remove Image"
-                    icon={<SmallCloseIcon />}
-                  />
-                </Avatar>
+                <Avatar src="https://thumbs.dreamstime.com/z/globe-grid-vector-icon-isolated-white-background-181317661.jpg" />
+                <Stack m="20px" spacing={2} direction="column">
+                  <Heading size="xs">
+                    Country:
+                    {data?.name}
+                  </Heading>
+                  <Heading size="xs">
+                    Timezone:
+                    {user?.profile.timezone}
+                  </Heading>
+                </Stack>
               </Center>
-              <Stack m="20px" spacing={6} direction="row">
-                <Center>
-                  <Avatar src="https://thumbs.dreamstime.com/z/globe-grid-vector-icon-isolated-white-background-181317661.jpg" />
-                  <Stack m="20px" spacing={2} direction="column">
-                    <Heading size="xs">
-                      Country:
-                      {country}
-                    </Heading>
-                    <Heading size="xs">
-                      Timezone:
-                      {user?.profile.timezone}
-                    </Heading>
-                  </Stack>
-                </Center>
-              </Stack>
             </Stack>
-          </FormControl>
-          <FormControl id="userName">
-            <FormLabel>User name</FormLabel>
-            <Input
-              placeholder="UserName"
-              value={user?.username}
-              readOnly
-              _placeholder={{ color: 'gray.500' }}
-              type="text"
-            />
-          </FormControl>
-          <FormControl id="email">
-            <FormLabel>Email address</FormLabel>
-            <Input
-              placeholder="your-email@example.com"
-              value={user?.email}
-              readOnly
-              _placeholder={{ color: 'gray.500' }}
-              type="email"
-            />
-          </FormControl>
-          <BusinessAreas />
+          </Stack>
+          <FormLabel>User name</FormLabel>
+          <Input
+            placeholder="UserName"
+            value={user?.username}
+            readOnly
+            _placeholder={{ color: 'gray.500' }}
+            type="text"
+          />
+
+          <FormLabel>Email address</FormLabel>
+          <Input
+            placeholder="your-email@example.com"
+            value={user?.email}
+            readOnly
+            _placeholder={{ color: 'gray.500' }}
+            type="email"
+          />
+
+          <BusinessAreas idChangeHandler={setBusinessID} />
+
           <FormLabel>Skills</FormLabel>
           <UnorderedList m="20px" spacing={3} id="skills">
-            {skillItems.map((skill) => <ListItem>{skill}</ListItem>)}
+            {skillList.map((skill) => <ListItem>{skill}</ListItem>)}
           </UnorderedList>
-          <FormControl id="seniority">
-            <FormLabel>Seniority</FormLabel>
-            <Select
-              _placeholder={{ color: 'gray.500' }}
-            >
-              {Object.keys(JobTitle).map((key) => (
-                <option>{key}</option>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl id="years-of-experience">
-            <FormLabel>Years of experience</FormLabel>
-            <Input
-              placeholder="years of experience"
-              value={user?.profile.years_experience?.toString()}
-              readOnly
-              _placeholder={{ color: 'gray.500' }}
-            />
-          </FormControl>
+
+          <FormLabel>Seniority</FormLabel>
+          <Input
+            defaultValue={seniority}
+            readOnly
+          />
+
+          <FormLabel>Years of experience</FormLabel>
+          <Input
+            placeholder="years of experience"
+            value={user?.profile.years_experience?.toString()}
+            readOnly
+            _placeholder={{ color: 'gray.500' }}
+          />
+
           <Stack spacing={6} direction={['column', 'row']}>
-            <Button
-              bg="red.400"
-              color="white"
-              w="full"
-              _hover={{
-                bg: 'red.500',
-              }}
-              type="submit"
-            >
-              Cancel
-            </Button>
             <Button
               bg="blue.400"
               color="white"
@@ -190,7 +157,7 @@ const UserProfile: FC = () => {
           </Stack>
         </Stack>
       </Flex>
-    </FormControl>
+    </form>
 
   );
 };
