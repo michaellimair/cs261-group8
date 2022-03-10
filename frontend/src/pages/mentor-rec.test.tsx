@@ -1,24 +1,14 @@
-import { QueryRouterWrapper } from 'libs/testing';
+/* eslint-disable no-console */
 import { render, RenderResult } from '@testing-library/react';
-import { QueryClient, setLogger, QueryClientProvider } from 'react-query';
+import { setLogger } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import MentorRec from './mentor-rec';
 
 describe('mentor-rec', () => {
-  let queryClient: QueryClient;
   let result: RenderResult<typeof import('@testing-library/dom/types/queries'), HTMLElement>;
   let submitButton: HTMLElement;
 
   beforeAll(() => {
-    queryClient = new QueryClient({
-      defaultOptions: {
-        queries: {
-          retry: false,
-          cacheTime: Infinity,
-        },
-      },
-    });
-
     setLogger({
       log: console.log,
       warn: console.warn,

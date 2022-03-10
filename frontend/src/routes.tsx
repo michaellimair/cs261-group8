@@ -120,7 +120,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     layout: RouteLayout.USER,
     icon: FiHome,
     index: true,
-    description: 'dashboard.home.descriptiogin',
+    description: 'dashboard.home.description',
     allowedGroups: ALLOW_ALL_USERS,
   },
   {

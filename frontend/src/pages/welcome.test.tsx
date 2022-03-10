@@ -9,7 +9,7 @@ import { QueryRouterWrapper, tick } from 'libs/testing';
 import {
   IWelcomeError, UserGroup,
 } from 'customTypes/auth';
-import { QueryClient, setLogger } from 'react-query';
+import { setLogger } from 'react-query';
 import { useUser } from 'hooks/useUser';
 import useCommonForm from 'hooks/useCommonForm';
 import WelcomeForm from './welcome';
@@ -26,20 +26,10 @@ jest.mock('react-query');
 jest.mock('api');
 jest.mock('hooks/useCommonForm', () => jest.fn().mockImplementation(() => mockCommonForm));
 describe('welcome', () => {
-  let queryClient: QueryClient;
   let result: RenderResult<typeof import('@testing-library/dom/types/queries'), HTMLElement>;
   let submitButton: HTMLElement;
 
   beforeAll(() => {
-    queryClient = new QueryClient({
-      defaultOptions: {
-        queries: {
-          retry: false,
-          cacheTime: Infinity,
-        },
-      },
-    });
-
     setLogger({
       log: console.log,
       warn: console.warn,
