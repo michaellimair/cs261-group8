@@ -32,6 +32,9 @@ from users.views import (
     UserProfileViewSet,
 )
 from business_area.views import BusinessAreaView
+from matching.views import (
+    MatchingSuggestionView
+)
 
 user_patterns = [
     path(
@@ -78,5 +81,6 @@ urlpatterns = [
             version="1.0.0"
         ), name='openapi-schema'),
         re_path(r'^admin/', include(admin_patterns)),
+        path(r'matching-suggestion/', MatchingSuggestionView.as_view(), name='matching_suggestions')
     ]))
 ]
