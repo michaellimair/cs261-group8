@@ -35,7 +35,8 @@ from users.views import (
 )
 from business_area.views import BusinessAreaView
 from matching.views import (
-    MatchingSuggestionView
+    MenteeMatchView,
+    MentorMatchView
 )
 from country.views import CountryViewSet
 
@@ -44,9 +45,9 @@ user_patterns = [
         r'<int:user_pk>/profile',
         UserProfileViewSet.as_view({
             'get': 'retrieve',
-            'patch': 'update',
+            'patch': 'partial_update',
         }),
-        name="my_profile")
+        name="my_profile"),
 ]
 
 router = routers.DefaultRouter()
@@ -56,6 +57,8 @@ router.register(r'profiles', UserProfileViewSet, basename='profile')
 router.register(r'countries', CountryViewSet, basename='country')
 router.register(r'timezones', TimezoneViewSet, basename='timezone')
 router.register(r'skills', SkillViewSet, basename='skill')
+router.register(r'mentee-matches', MenteeMatchView, basename='mentee-matches')
+router.register(r'mentor-matches', MentorMatchView, basename='mentor-matches')
 
 admin_router = routers.DefaultRouter()
 admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)
@@ -87,6 +90,5 @@ urlpatterns = [
             version="1.0.0"
         ), name='openapi-schema'),
         re_path(r'^admin/', include(admin_patterns)),
-        path(r'matching-suggestion/', MatchingSuggestionView.as_view(), name='matching_suggestions')
     ]))
 ]

@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 from matching.models import MentoringPair
 from users.serializers import UserSerializer
+from users.permissions import MENTEE_GROUP, MENTOR_GROUP
 
 class MentoringPairSerializer(serializers.ModelSerializer):
     """
@@ -13,15 +14,15 @@ class MentoringPairSerializer(serializers.ModelSerializer):
         read_only = True
     )
     mentor_id = serializers.PrimaryKeyRelatedField(
-        queryset=get_user_model().objects.all(),
+        queryset=get_user_model().objects.filter(groups__name=MENTOR_GROUP),
         source='mentor')
 
     mentee = UserSerializer(
         read_only = True
     )
     mentee_id = serializers.PrimaryKeyRelatedField(
-        queryset=get_user_model().objects.all(),
-        source='mentor')
+        queryset=get_user_model().objects.filter(groups__name=MENTEE_GROUP),
+        source='mentee')
     class Meta:
         """
         Metadata for mentoring pair serializer.
@@ -29,7 +30,3 @@ class MentoringPairSerializer(serializers.ModelSerializer):
         model = MentoringPair
         exclude = ()
         
-    def create(self, validated_data):
-        request = self.context.get("request")
-        return super().create(validated_data)
-    

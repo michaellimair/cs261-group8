@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'users',
     'feedback',
     'safedelete',
-    'django_extensions'
+    'django_extensions',
+    'matching'
 ]
 
 REST_FRAMEWORK = {
