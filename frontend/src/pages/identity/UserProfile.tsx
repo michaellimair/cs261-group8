@@ -132,6 +132,11 @@ const UserProfile: FC = () => {
             _placeholder={{ color: 'gray.500' }}
             type="email"
           />
+          <FormField<IUserProfileDTO>
+            register={register}
+            name="pronoun"
+            error={errors?.pronoun}
+          />
           <FormSelectField
             name="timezone"
             label={t('timezone')}
