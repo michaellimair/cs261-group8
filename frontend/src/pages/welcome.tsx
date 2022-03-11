@@ -21,9 +21,6 @@ import { useTranslation } from 'react-i18next';
 import AddInterest from 'components/Interests/AddInterest';
 import InterestList from 'components/Interests/InterestList';
 import { IInterest } from 'customTypes/interest';
-import { timezones } from 'components/Forms/WelcomeForm/timezones';
-import { countries } from 'components/Forms/WelcomeForm/countries';
-import { businessAreas } from 'components/Forms/WelcomeForm/welcomeOptions';
 import { FormField, FormSelectField } from 'components/Forms';
 import {
   IUserProfile,
@@ -35,6 +32,9 @@ import { httpClient } from 'api';
 
 import SubmitButton from 'components/Forms/SubmitButton';
 import { useUser } from 'hooks/useUser';
+import useBusinessAreaOptions from 'hooks/useBusinessAreaOptions';
+import useCountries from 'hooks/useCountries';
+import useTimezoneOptions from 'hooks/useTimezoneOptions';
 
 const interestList : IInterest[] = [];
 
@@ -56,6 +56,9 @@ const WelcomeForm: FC = () => {
     const newInterests = interests.filter((item: { id: number; }) => item.id !== interestId);
     setInterests(newInterests);
   };
+  const businessAreaOptions = useBusinessAreaOptions();
+  const countryOptions = useCountries();
+  const timezoneOptions = useTimezoneOptions();
 
   const addInterest = (newInterest: IInterest) => {
     setInterests([...interests, newInterest]);
@@ -134,7 +137,7 @@ const WelcomeForm: FC = () => {
                   register={register}
                   error={errors?.profile?.business_area}
                   required
-                  options={createOptions(businessAreas)}
+                  options={businessAreaOptions}
                   label={t('business_area')}
                 />
               </Stack>
@@ -174,7 +177,7 @@ const WelcomeForm: FC = () => {
                   register={register}
                   error={errors?.profile?.timezone}
                   required
-                  options={createOptions(timezones)}
+                  options={timezoneOptions}
                   label={t('time_zone')}
                 />
               </Stack>
@@ -185,7 +188,7 @@ const WelcomeForm: FC = () => {
                   register={register}
                   error={errors?.profile?.countries}
                   required
-                  options={createOptions(countries)}
+                  options={countryOptions}
                   label={t('country')}
                 />
               </Stack>

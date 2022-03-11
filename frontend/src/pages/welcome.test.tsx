@@ -12,6 +12,9 @@ import {
 import { setLogger } from 'react-query';
 import { useUser } from 'hooks/useUser';
 import useCommonForm from 'hooks/useCommonForm';
+import useBusinessAreaOptions from 'hooks/useBusinessAreaOptions';
+import useTimezoneOptions from 'hooks/useTimezoneOptions';
+import useCountries from 'hooks/useCountries';
 import WelcomeForm from './welcome';
 
 const mockCommonForm = {
@@ -22,6 +25,10 @@ const mockCommonForm = {
 };
 
 jest.mock('hooks/useUser');
+jest.mock('hooks/useBusinessAreaOptions');
+jest.mock('hooks/useCountries');
+jest.mock('hooks/useTimezoneOptions');
+
 jest.mock('react-query');
 jest.mock('api');
 jest.mock('hooks/useCommonForm', () => jest.fn().mockImplementation(() => mockCommonForm));
@@ -40,6 +47,24 @@ describe('welcome', () => {
 
   beforeEach(() => {
     (useCommonForm as jest.Mock).mockImplementation(() => mockCommonForm);
+    (useBusinessAreaOptions as jest.Mock).mockImplementation(() => ([
+      {
+        label: '',
+        value: '',
+      },
+    ]));
+    (useCountries as jest.Mock).mockImplementation(() => ([
+      {
+        value: 'CU',
+        label: 'Cuba',
+      },
+    ]));
+    (useTimezoneOptions as jest.Mock).mockImplementation(() => ([
+      {
+        label: 'Europe/London',
+        value: 'GMT',
+      },
+    ]));
     result = render(
       <QueryRouterWrapper>
         <WelcomeForm />
