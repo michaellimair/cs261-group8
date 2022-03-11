@@ -5,7 +5,7 @@ import BaseAPI from './base.api';
 class StubBaseAPI extends BaseAPI {
   public get = jest.fn();
 
-  public post = jest.fn();
+  public patch = jest.fn();
 }
 
 describe('profile.api.ts', () => {
@@ -37,8 +37,8 @@ describe('profile.api.ts', () => {
     it('updates profile successfully', async () => {
       await userProfileApi.updateProfile(id, { years_experience: 20 });
 
-      expect(api.post).toHaveBeenCalledTimes(1);
-      expect(api.post).toHaveBeenCalledWith({
+      expect(api.patch).toHaveBeenCalledTimes(1);
+      expect(api.patch).toHaveBeenCalledWith({
         path: `/users/${id}/profile/`,
         body: {
           years_experience: 20,
