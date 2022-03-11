@@ -1,8 +1,9 @@
 from django.db import models
 from users.models import UserProfile
+from django_extensions.db.models import TimeStampedModel
 
 # Create your models here.
-class MentoringPair(models.Model):
+class MentoringPair(TimeStampedModel):
     """
     Model for a pairing between mentor and mentee.
     """
@@ -14,4 +15,9 @@ class MentoringPair(models.Model):
         UserProfile,
         on_delete=models.CASCADE
     )
-    created = models.DateTimeField(auto_now_add=True)
+    class PairStatus(models.TextChoices):
+        """
+        Different types of pairing status.
+        """
+        ACCEPTED = 'accepted'
+        REJECTED = 'rejected'
