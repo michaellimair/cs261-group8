@@ -8,11 +8,11 @@ def count_ops(mentor_info: List[int]):
     """Count the number of occurences of non zeros in a list of numbers"""
     return np.count_nonzero(mentor_info)
 
-def _skill_to_binary(skill_set: set(str)):
+def _skill_to_binary(skill_set: set[str]):
     """Convert skills to numpy array"""
     return np.array([1 if x in skill_set else 0 for x in get_skills()])
 
-def _language_to_binary(language_set: set(str)):
+def _language_to_binary(language_set: set[str]):
     """Convert skills to numpy array"""
     return np.array([1 if x in language_set else 0 for x in ALL_LANGS])
 
