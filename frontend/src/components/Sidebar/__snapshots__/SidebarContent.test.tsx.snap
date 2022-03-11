@@ -65,6 +65,30 @@ Object {
         </div>
         <a
           class="chakra-link css-jgup0q"
+          href="/welcome"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            dashboard.welcome.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/mentor-rec"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            dashboard.mentor-rec.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
           href="/dashboard"
           style="text-decoration: none;"
         >
@@ -378,6 +402,30 @@ Object {
           </svg>
         </button>
       </div>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/welcome"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          dashboard.welcome.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/mentor-rec"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          dashboard.mentor-rec.title
+        </div>
+      </a>
       <a
         class="chakra-link css-jgup0q"
         href="/dashboard"
