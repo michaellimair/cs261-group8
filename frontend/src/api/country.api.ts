@@ -1,20 +1,16 @@
 import { ICountry } from 'customTypes/country';
-import urljoin from 'url-join';
 import BaseAPI from './base.api';
+import CommonAPI from './common.api';
 
 /**
  * API class which wraps all authentication methods.
  */
-class CountryAPI {
-  private basePath: string;
-
+class CountryAPI extends CommonAPI {
   constructor(
     private readonly api: BaseAPI,
   ) {
-    this.basePath = '/countries';
+    super('/countries');
   }
-
-  private getPath = (path: string) => urljoin(this.basePath, path);
 
   listCountries = (query?: string): Promise<ICountry[]> => this.api.get<ICountry[]>({
     path: this.getPath(''),
