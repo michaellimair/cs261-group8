@@ -90,7 +90,10 @@ const UserProfile: FC = () => {
   };
 
   return (
-    <form id="frm-profile" onSubmit={onSubmit}>
+    <form
+      id="frm-profile"
+      onSubmit={onSubmit}
+    >
       <Flex
         minH="100vh"
         align="center"
