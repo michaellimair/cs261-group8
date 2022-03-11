@@ -5,7 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 import './App.css';
-import { authRoutes, userRoutes } from 'routes';
+import { authRoutes } from 'routes';
 import AuthLayout from 'layouts/AuthLayout';
 import UserLayout from 'layouts/UserLayout';
 import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
