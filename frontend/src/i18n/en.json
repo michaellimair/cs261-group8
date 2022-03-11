@@ -25,6 +25,7 @@
   "verify_password": "Verify Password",
   "internal_error": "An error has occurred in the server, please try again later.",
   "register_success": "Registration is successful, logging you in...",
+  "select_option": "Select option",
   "dashboard": {
     "home": {
       "title": "Home",
@@ -68,6 +69,16 @@
     "mentee_milestones": {
       "title": "Mentee Milestones",
       "description": "Milestones for mentees set out in the mentoring arrangement."
+    },
+    "group_sessions": {
+      "title": "Group Sessions",
+      "description": "See proposed group sessions",
+      "propose_group": "Propose a new group session",
+      "available_groups": "Available group sessions",
+      "tutoring": "Group Tutoring",
+      "group_session": "Group Session",
+      "select_topics": "Select topics which you would be interested in",
+      "propose_sessions": "Propose Sessions"
     },
     "meetings": {
       "past_meetings": "Past Meetings",
