@@ -1,5 +1,4 @@
 import {
-  StackDivider,
   Flex,
   Box,
   Text,
@@ -28,7 +27,6 @@ const CreateMeetingCard = () => {
       borderBottomRadius="lg"
       borderTopRadius="0"
       bg="white"
-      divider={<StackDivider borderColor="gray.200" />}
     >
       <Box flex="1.25">
         <VStack align="left">

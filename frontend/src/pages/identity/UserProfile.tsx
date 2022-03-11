@@ -30,6 +30,7 @@ import useCountries from 'hooks/useCountries';
 import useTitleOptions from 'hooks/useTitleOptions';
 import useTimezoneOptions from 'hooks/useTimezoneOptions';
 import useBusinessAreaOptions from 'hooks/useBusinessAreaOptions';
+import useSkillsOptions from 'hooks/useSkillsOptions';
 
 const UserProfile: FC = () => {
   const { user } = useUser();
@@ -37,6 +38,7 @@ const UserProfile: FC = () => {
   const titleOptions = useTitleOptions();
   const timezoneOptions = useTimezoneOptions();
   const businessAreaOptions = useBusinessAreaOptions();
+  const skillsOptions = useSkillsOptions();
 
   const { t } = useTranslation();
 
@@ -174,6 +176,14 @@ const UserProfile: FC = () => {
             name="years_experience"
             error={errors?.years_experience}
             type="number"
+          />
+
+          <FormSelectField
+            name="skills"
+            label={t('skills')}
+            error={errors?.title}
+            register={register}
+            options={skillsOptions}
           />
           <FormControl id="non-field" isInvalid={Boolean(errors?.non_field_errors)} mt={['0 !important']}>
             <FormErrorMessage>{errors?.non_field_errors}</FormErrorMessage>
