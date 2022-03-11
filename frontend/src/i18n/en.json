@@ -25,10 +25,35 @@
   "verify_password": "Verify Password",
   "internal_error": "An error has occurred in the server, please try again later.",
   "register_success": "Registration is successful, logging you in...",
+  "welcome": "Welcome",
+  "welcome_description": "Fill in your details to get started on the mentoring platform",
+  "change_avatar": "Change Avatar",
+  "pronoun": "Pronouns",
+  "mentor": "mentor",
+  "mentee": "mentee",
+  "select_mentor_mentee": "Are you a...",
+  "business_area": "Your business area",
+  "select_option": "Select an option",
+  "seniority": "Title",
+  "years_of_experience": "Years of experience",
+  "time_zone": "Time zone",
+  "country": "Country",
+  "submit_form": "Submit",
+  "mentor_recs": "Select a mentor",
+  "select_mentors": "Select Mentors",
+  "submit_mentors": "Submit",  
   "dashboard": {
     "home": {
       "title": "Home",
       "description": "Home page of the dasboard for all users."
+    },
+    "welcome": {
+      "title": "Welcome",
+      "description": "Welcome form for new all users"
+    },
+    "mentor-rec": {
+      "title": "Mentor Recommendations",
+      "description": "Vote from a list of recommended mentors"
     },
     "mentor_only": {
       "title": "Mentor Only",

@@ -5,6 +5,8 @@ import DashboardMentorOnlyPage from 'pages/dashboard/mentor-only';
 import FeedbackPage from 'pages/feedback';
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
+import WelcomeForm from 'pages/welcome';
+import MentorRec from 'pages/mentor-rec';
 import MenteeMeetingsPage from 'pages/dashboard/mentee-meetings';
 import MentorMeetingsPage from 'pages/dashboard/mentor-meetings';
 import { ReactElement } from 'react';
@@ -76,7 +78,42 @@ export const authRoutes: IRoute[] = [
   },
 ];
 
+export const userRoutes: IRoute[] = [
+  {
+    name: 'welcome',
+    element: <WelcomeForm />,
+    layout: RouteLayout.USER,
+    path: 'welcome',
+    description: 'welcome_description',
+  },
+  {
+    name: 'recommendations',
+    element: <MentorRec />,
+    layout: RouteLayout.USER,
+    path: 'mentor-recs',
+    description: 'mentor_recs',
+  },
+];
+
 export const dashboardRoutes: IDashboardRoute[] = [
+  {
+    name: 'welcome',
+    element: <WelcomeForm />,
+    layout: RouteLayout.USER,
+    path: 'welcome',
+    description: 'dashboard.welcome.description',
+    allowedGroups: ALLOW_ALL_USERS,
+    hide: true,
+  },
+  {
+    name: 'mentor-rec',
+    element: <MentorRec />,
+    layout: RouteLayout.USER,
+    path: 'mentor-rec',
+    description: 'dashboard.mentor-rec.description',
+    allowedGroups: MENTEE_ONLY,
+    hide: true,
+  },
   {
     name: 'home',
     element: <DashboardHomePage />,
