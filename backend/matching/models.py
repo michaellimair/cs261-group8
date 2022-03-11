@@ -11,12 +11,12 @@ class MentoringPair(TimeStampedModel):
     mentor = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
-        related_name='mentor'
+        related_name='mentor_pairs'
     )
     mentee = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
-        related_name='mentee'
+        related_name='mentee_pairs'
     )
     class PairStatus(models.TextChoices):
         """

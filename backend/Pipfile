@@ -35,6 +35,9 @@ pytz = "*"
 thefuzz = "*"
 python-levenshtein = "*"
 pillow = "*"
+django-seed = "*"
+faker = "*"
+django-pandas = "*"
 
 [dev-packages]
 

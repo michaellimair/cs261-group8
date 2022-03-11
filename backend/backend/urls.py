@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework.schemas import get_schema_view
 from rest_framework_nested import routers
+from language.views import LanguageViewSet
 from timezone.views import TimezoneViewSet
 from skill.views import SkillViewSet
 
@@ -36,7 +37,8 @@ from users.views import (
 from business_area.views import BusinessAreaView
 from matching.views import (
     MenteeMatchView,
-    MentorMatchView
+    MentorMatchView,
+    MenteeMatchSuggestionView,
 )
 from country.views import CountryViewSet
 
@@ -45,7 +47,7 @@ user_patterns = [
         r'<int:user_pk>/profile',
         UserProfileViewSet.as_view({
             'get': 'retrieve',
-            'patch': 'partial_update',
+            'patch': 'update',
         }),
         name="my_profile"),
 ]
@@ -55,10 +57,12 @@ router.register(r'feedbacks', UserFeedbackViewSet, basename='my_feedbacks')
 router.register(r'business-areas', BusinessAreaView, basename='business_area')
 router.register(r'profiles', UserProfileViewSet, basename='profile')
 router.register(r'countries', CountryViewSet, basename='country')
+router.register(r'languages', LanguageViewSet, basename='language')
 router.register(r'timezones', TimezoneViewSet, basename='timezone')
 router.register(r'skills', SkillViewSet, basename='skill')
-router.register(r'mentee-matches', MenteeMatchView, basename='mentee-matches')
-router.register(r'mentor-matches', MentorMatchView, basename='mentor-matches')
+router.register(r'mentee-matches', MenteeMatchView, basename='mentee_matches')
+router.register(r'mentee-match-suggestions', MenteeMatchSuggestionView, basename='mentee_match_suggestions')
+router.register(r'mentor-matches', MentorMatchView, basename='mentor_matches')
 
 admin_router = routers.DefaultRouter()
 admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)

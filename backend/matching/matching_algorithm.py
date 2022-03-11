@@ -212,8 +212,3 @@ def match(menteeN, startpar = 0, par1 = 5, par2 = 7, par3 = 10, w1 =1, w2 =1, w3
     temp = reorder(temp)
     
     return temp.iloc[:10, 10: ]
-
-
-
-
-

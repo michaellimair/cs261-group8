@@ -1,10 +1,14 @@
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseBadRequest
-
+from users.models import UserProfile
+from django_pandas.io import read_frame
 from users.permission_constants import MENTOR_GROUP
 from .models import MentoringPair
 from .serializers import MentoringPairSerializer
+from django.db.models import Count, Q
 from django.contrib.auth import get_user_model
+from users.utils import get_higher_titles
+from users.serializers import UserSerializer
 from rest_framework import mixins, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -12,6 +16,7 @@ from rest_framework.decorators import permission_classes
 from users.permissions import IsMentor
 from users.permissions import IsMentee
 from django.utils.translation import gettext_lazy as _
+from .utils import match_score_it
 import json
 
 # Create your views here.
@@ -65,3 +70,52 @@ class MentorMatchView(mixins.ListModelMixin, mixins.UpdateModelMixin, viewsets.G
         serializer.save(update_fields=["status"])
 
         return Response(serializer.data)
+
+class MenteeMatchSuggestionView(mixins.ListModelMixin, viewsets.GenericViewSet):
+    permission_classes = [IsMentee]
+
+    def list(self, request):
+        mentee = self.request.user
+        mentee_profile = UserProfile.objects.filter(user=mentee).first()
+        mentors_queryset = get_user_model().objects.filter(
+            groups__name=MENTOR_GROUP,
+            profile__years_experience__gt=mentee_profile.years_experience,
+            profile__languages__overlap=mentee_profile.languages,
+            profile__title__in=get_higher_titles(mentee_profile.title)
+        ).exclude(
+            profile__business_area=mentee_profile.business_area
+        ).prefetch_related('mentor_pairs').annotate(
+            mentees_count=Count('mentor_pairs', filter=Q(mentor_pairs__status=MentoringPair.PairStatus.ACCEPTED))
+        )
+
+        df = read_frame(mentors_queryset, fieldnames=['id', 'profile__skills', 'profile__languages', 'mentees_count'])
+
+        df = match_score_it(mentee_profile.skills, mentee_profile.languages, mentors=df)
+
+        df.set_index('id', inplace=True)
+
+        df.sort_values(by=['score', 'mentees_count'], ascending=[False, True], inplace=True)
+
+        serializer = UserSerializer(mentors_queryset, many=True)
+
+        results = []
+
+        data_by_id = {}
+
+        for data in serializer.data:
+            data_by_id[data.get('id')] = data
+
+        for (id, row) in df.iterrows():
+            # TODO: Add ranking for a given mentor in the ordering
+            # For now, just order descending by score and 
+            updated_data = {
+                "id": id,
+                "score": row.score,
+                "mentees_count": row.mentees_count,
+                "mentor": data_by_id.get(id)
+            }
+            results.append(updated_data)
+
+        sorted_results = sorted(results, key=lambda x: x['score'], reverse=True)
+
+        return Response(sorted_results)

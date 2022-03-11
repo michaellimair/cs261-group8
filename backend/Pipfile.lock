@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c36517c43e270ad433656f0de7adbfd736c34bea2c62d5b9ef983f6e4b65331d"
+            "sha256": "4511e19f917a95c19e83b9d688903a5861f78c81d3c5cac66d8dd01de9997086"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -260,6 +260,14 @@
             "index": "pypi",
             "version": "==6.6"
         },
+        "django-pandas": {
+            "hashes": [
+                "sha256:11bd3261e81f191f264410f2827cea5f08e4b9ec5f1dad6c6d40fe793ec2994c",
+                "sha256:514d701452e85fed8f8efa28bd8a650a1c3e995f0cd550884df174a0ca90d71f"
+            ],
+            "index": "pypi",
+            "version": "==0.6.6"
+        },
         "django-postgres-extra": {
             "hashes": [
                 "sha256:5c5d35e1edc0d6aa5374a72f92b0d4858ca35f9772c540e3fa8280c086a8c7f7",
@@ -283,6 +291,13 @@
             ],
             "index": "pypi",
             "version": "==1.1.2"
+        },
+        "django-seed": {
+            "hashes": [
+                "sha256:93e65d2c10449c464b83e9031be02763ec10e786aa064d649c4dd5ad06fa0eea"
+            ],
+            "index": "pypi",
+            "version": "==0.3.1"
         },
         "django-storages": {
             "extras": [
@@ -332,7 +347,7 @@
                 "sha256:c88c8b5ee9376a242deca8fe829f9a3215ffa43c31da6f66d9594531fb344453",
                 "sha256:fa060e331ffffb57cfa4c07f95d54911e339984ed72596ba6a9e7b6fa569d799"
             ],
-            "markers": "python_version >= '3.6'",
+            "index": "pypi",
             "version": "==13.3.1"
         },
         "fastdiff": {
@@ -1001,6 +1016,13 @@
             ],
             "markers": "python_version >= '2.6' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==0.10.2"
+        },
+        "toposort": {
+            "hashes": [
+                "sha256:8ed8e109e96ae30bf66da2d2155e4eb9989d9c5c743c837e37d9774a4eddd804",
+                "sha256:ddc2182c42912a440511bd7ff5d3e6a1cabc3accbc674a3258c8c41cbfbb2125"
+            ],
+            "version": "==1.7"
         },
         "typing-extensions": {
             "hashes": [
