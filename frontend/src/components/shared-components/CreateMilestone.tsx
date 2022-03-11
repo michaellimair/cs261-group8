@@ -4,22 +4,37 @@ import {
 import { FC } from 'react';
 
 const CreateMilestone: FC = () => (
-  <Box m="20px" maxWidth="300px">
-    <Box m="10px" backgroundColor="purple" color="white">
+  <Stack
+    m="20px"
+    rounded="xl"
+    boxShadow="lg"
+    width="fit-content"
+    height="fit-content"
+  >
+    <Box
+      m="20px"
+      rounded="xl"
+      boxShadow="lg"
+      backgroundColor="purple"
+      color="white"
+      width="500px"
+    >
       <Center><Heading size="md">Create new milestone</Heading></Center>
     </Box>
-    <Box border="1px">
+    <Box
+      m="20px"
+    >
       <Stack m="20px">
         <Box>
           <Heading size="sm">Title</Heading>
           <Center>
-            <Input p="10px" />
-            <Button m="5px" size="sm" maxW="100px" colorScheme="blue">Create</Button>
+            <Input p="10px" width="400px" />
+            <Button m="5px" size="sm" width="100px" colorScheme="blue">Create</Button>
           </Center>
         </Box>
       </Stack>
     </Box>
-  </Box>
+  </Stack>
 );
 
 export default CreateMilestone;

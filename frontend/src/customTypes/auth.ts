@@ -10,6 +10,7 @@ export enum JobTitle {
 }
 
 export interface IBusinessArea {
+  id: number;
   name: string;
   label: string;
 }
@@ -20,10 +21,15 @@ export interface IUserProfile {
   years_experience: number | null;
   title: JobTitle | null;
   business_area: IBusinessArea | null;
+  country: string | null;
+  timezone: string | null;
+  skills: string[] | null;
+  avatar: string | null;
 }
 
-export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area'> {
+export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area' | 'avatar'> {
   business_area_id: number;
+  avatar: File;
 }
 
 export enum UserGroup {

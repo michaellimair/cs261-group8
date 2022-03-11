@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import * as hooks from 'hooks';
 import useUserDashboardRoutes from 'hooks/useUserDashboardRoutes';
+import { QueryRouterWrapper } from 'libs/testing';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { dashboardRoutes } from 'routes';
 import SidebarMobileNav from './SidebarMobileNav';
@@ -20,9 +21,11 @@ describe('SidebarMobileNav', () => {
 
   it('renders properly', () => {
     const result = render(
-      <QueryClientProvider client={queryClient}>
-        <SidebarMobileNav onOpen={onOpen} />
-      </QueryClientProvider>,
+      <QueryRouterWrapper>
+        <QueryClientProvider client={queryClient}>
+          <SidebarMobileNav onOpen={onOpen} />
+        </QueryClientProvider>
+      </QueryRouterWrapper>,
     );
 
     expect(result).toMatchSnapshot();
@@ -30,9 +33,11 @@ describe('SidebarMobileNav', () => {
 
   it('invokes the onOpen function properly', () => {
     const result = render(
-      <QueryClientProvider client={queryClient}>
-        <SidebarMobileNav onOpen={onOpen} />
-      </QueryClientProvider>,
+      <QueryRouterWrapper>
+        <QueryClientProvider client={queryClient}>
+          <SidebarMobileNav onOpen={onOpen} />
+        </QueryClientProvider>
+      </QueryRouterWrapper>,
     );
 
     const openButton = result.queryByTestId('openButton')!;

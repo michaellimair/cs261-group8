@@ -27,6 +27,14 @@ class UserProfileFactory(factory.django.DjangoModelFactory):
     years_experience = 10
     business_area = factory.SubFactory(BusinessAreaFactory)
     pronoun = "he"
+    country = "ID"
+    timezone = "Asia/Hong_Kong"
+    avatar = factory.django.ImageField(filename='the_file.jpg')
+    skills = ["Real Estate Transactions",
+        "Sales Management",
+        "Sales Operations",
+        "Transportation Management",
+]
 
 
 class UserFactory(factory.django.DjangoModelFactory):

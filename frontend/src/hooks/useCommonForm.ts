@@ -26,7 +26,12 @@ TData extends any,
     onSuccess?: (data: TData, variables: TVariables, context: unknown) => void | Promise<unknown>
   }) => {
   const {
-    register, handleSubmit, formState: { errors: formErrors }, reset,
+    register,
+    handleSubmit,
+    formState: { errors: formErrors },
+    reset,
+    setValue,
+    watch,
   } = useForm<TVariables>({
     defaultValues,
   });
@@ -50,6 +55,8 @@ TData extends any,
     isLoading,
     isSuccess,
     reset,
+    setValue,
+    watch,
   };
 };
 

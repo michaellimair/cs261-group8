@@ -1,12 +1,12 @@
 import CreateMilestone from 'components/shared-components/CreateMilestone';
 import { FC } from 'react';
-import MenteeMilestoneEdit from 'components/mentee-milestone/MenteeMilestoneEdit';
+import MenteeMilestone from 'components/mentee-milestone/MenteeMilestone';
 
 const MenteeMilestonePage: FC = () => (
   <>
     <CreateMilestone />
-    <MenteeMilestoneEdit />
-    <MenteeMilestoneEdit />
+    <MenteeMilestone />
+    <MenteeMilestone />
   </>
 );
 

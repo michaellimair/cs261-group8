@@ -29,6 +29,12 @@ autoflake = "*"
 hypercorn = "*"
 numpy = "*"
 pandas = "*"
+pycountry = "*"
+snapshottest = "*"
+pytz = "*"
+thefuzz = "*"
+python-levenshtein = "*"
+pillow = "*"
 
 [dev-packages]
 
