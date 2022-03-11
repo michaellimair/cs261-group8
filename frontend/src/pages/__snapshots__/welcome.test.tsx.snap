@@ -1,0 +1,1194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`welcome renders properly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div
+      id="chakra-toast-portal"
+    >
+      <ul
+        id="chakra-toast-manager-top"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-top-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-top-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-left"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <ul
+        id="chakra-toast-manager-bottom-right"
+        style="position: fixed; z-index: 5500; pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
+    <div>
+      <div
+        class="chakra-stack css-owjkmg"
+      >
+        <h2
+          class="chakra-heading css-1gjuw9l"
+        >
+          welcome
+        </h2>
+      </div>
+      <form
+        data-testid="welcomeForm"
+      >
+        <div
+          class="css-1e7ly1j"
+        >
+          <div
+            class="chakra-stack css-1y5c2ms"
+          >
+            <div
+              class="chakra-stack css-12l9mwo"
+            >
+              <div
+                class="css-gmuwbf"
+              >
+                <span
+                  class="chakra-avatar css-1ruhx4w"
+                >
+                  <svg
+                    aria-label=" avatar"
+                    class="chakra-avatar__svg css-16ite8i"
+                    role="img"
+                    viewBox="0 0 128 128"
+                  >
+                    <path
+                      d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <button
+                    align="center"
+                    aria-label="remove Image"
+                    class="chakra-button chakra-avatar__badge css-li6vby"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="chakra-icon css-onkibi"
+                      focusable="false"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M9.41 8l2.29-2.29c.19-.18.3-.43.3-.71a1.003 1.003 0 0 0-1.71-.71L8 6.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42L6.59 8 4.3 10.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71L8 9.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71L9.41 8z"
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </span>
+              </div>
+              <div
+                class="css-gmuwbf"
+              >
+                <button
+                  class="chakra-button css-l01cow"
+                  type="button"
+                >
+                  change_avatar
+                </button>
+              </div>
+              <div
+                class="chakra-form-control css-wlea3r"
+                data-testid="pronoun-formcontrol"
+                role="group"
+              >
+                <label
+                  class="chakra-form__label css-uvho5g"
+                  data-testid="pronoun-label"
+                  for="pronoun"
+                  id="pronoun-label"
+                >
+                  pronoun
+                  <span
+                    aria-hidden="true"
+                    class="chakra-form__required-indicator css-0"
+                    role="presentation"
+                  >
+                    *
+                  </span>
+                </label>
+                <div
+                  class="chakra-input__group css-4302v8"
+                >
+                  <input
+                    aria-required="true"
+                    autocomplete="pronoun"
+                    class="chakra-input css-0"
+                    data-testid="pronoun"
+                    id="pronoun"
+                    required=""
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="chakra-stack css-1vzrui3"
+          >
+            <div
+              class="chakra-stack css-mrv709"
+            >
+              <div
+                class="chakra-stack css-1nne8pa"
+              >
+                <h2
+                  class="chakra-heading css-cewpam"
+                >
+                  select_mentor_mentee
+                </h2>
+                <div
+                  class="chakra-stack css-mrv709"
+                >
+                  <label
+                    class="chakra-checkbox css-1uiwwan"
+                  >
+                    <input
+                      class="chakra-checkbox__input"
+                      style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                      type="checkbox"
+                      value=""
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="chakra-checkbox__control css-dnty2r"
+                    />
+                    <span
+                      class="chakra-checkbox__label css-1oeb2oe"
+                    >
+                      mentor
+                    </span>
+                  </label>
+                  <label
+                    class="chakra-checkbox css-1uiwwan"
+                  >
+                    <input
+                      class="chakra-checkbox__input"
+                      style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                      type="checkbox"
+                      value=""
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="chakra-checkbox__control css-dnty2r"
+                    />
+                    <span
+                      class="chakra-checkbox__label css-1oeb2oe"
+                    >
+                      mentee
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div
+                class="chakra-stack css-1nne8pa"
+              >
+                <div
+                  class="chakra-form-control css-wlea3r"
+                  data-testid="business_area_id-formcontrol"
+                  role="group"
+                >
+                  <label
+                    class="chakra-form__label css-uvho5g"
+                    data-testid="business_area_id-label"
+                    for="business_area_id"
+                    id="business_area_id-label"
+                  >
+                    business_area
+                    <span
+                      aria-hidden="true"
+                      class="chakra-form__required-indicator css-0"
+                      role="presentation"
+                    >
+                      *
+                    </span>
+                  </label>
+                  <div
+                    class="chakra-select__wrapper css-42b2qy"
+                  >
+                    <select
+                      aria-required="true"
+                      autocomplete="business"
+                      class="chakra-select css-1ik61og"
+                      id="business_area_id"
+                      required=""
+                    >
+                      <option
+                        value=""
+                      />
+                    </select>
+                    <div
+                      class="chakra-select__icon-wrapper css-162mkon"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="chakra-select__icon"
+                        focusable="false"
+                        role="presentation"
+                        style="width: 1em; height: 1em; color: currentColor;"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h2
+              class="chakra-heading css-cewpam"
+            >
+              Interests
+            </h2>
+            <p
+              class="chakra-text css-0"
+            >
+              Add interests
+            </p>
+            <div
+              class="chakra-stack css-137fd6w"
+            >
+              <div
+                class="chakra-select__wrapper css-18bsdw1"
+              >
+                <select
+                  class="chakra-select css-1ik61og"
+                >
+                  <option
+                    value=""
+                  >
+                    select_option
+                  </option>
+                  <option
+                    value="interest 1"
+                  >
+                    interest 1
+                  </option>
+                  <option
+                    value="interest 2"
+                  >
+                    interest 2
+                  </option>
+                  <option
+                    value="interest 3"
+                  >
+                    interest 3
+                  </option>
+                </select>
+                <div
+                  class="chakra-select__icon-wrapper css-162mkon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="chakra-select__icon"
+                    focusable="false"
+                    role="presentation"
+                    style="width: 1em; height: 1em; color: currentColor;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <button
+                class="chakra-button css-zldj5s"
+                type="button"
+              >
+                Add Interest
+              </button>
+            </div>
+            <div
+              class="chakra-stack css-mrv709"
+            >
+              <div
+                class="chakra-stack css-1nne8pa"
+              >
+                <div
+                  class="chakra-form-control css-wlea3r"
+                  data-testid="title-formcontrol"
+                  role="group"
+                >
+                  <label
+                    class="chakra-form__label css-uvho5g"
+                    data-testid="title-label"
+                    for="title"
+                    id="title-label"
+                  >
+                    seniority
+                    <span
+                      aria-hidden="true"
+                      class="chakra-form__required-indicator css-0"
+                      role="presentation"
+                    >
+                      *
+                    </span>
+                  </label>
+                  <div
+                    class="chakra-select__wrapper css-42b2qy"
+                  >
+                    <select
+                      aria-required="true"
+                      autocomplete="title"
+                      class="chakra-select css-1ik61og"
+                      id="title"
+                      required=""
+                    >
+                      <option
+                        value="anlst"
+                      >
+                        anlst
+                      </option>
+                      <option
+                        value="assoc"
+                      >
+                        assoc
+                      </option>
+                      <option
+                        value="avp"
+                      >
+                        avp
+                      </option>
+                      <option
+                        value="vp"
+                      >
+                        vp
+                      </option>
+                      <option
+                        value="dir"
+                      >
+                        dir
+                      </option>
+                      <option
+                        value="md"
+                      >
+                        md
+                      </option>
+                    </select>
+                    <div
+                      class="chakra-select__icon-wrapper css-162mkon"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="chakra-select__icon"
+                        focusable="false"
+                        role="presentation"
+                        style="width: 1em; height: 1em; color: currentColor;"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="chakra-stack css-1nne8pa"
+              >
+                <div
+                  class="chakra-form-control css-wlea3r"
+                  data-testid="years_experience-formcontrol"
+                  role="group"
+                >
+                  <label
+                    class="chakra-form__label css-uvho5g"
+                    data-testid="years_experience-label"
+                    for="years_experience"
+                    id="years_experience-label"
+                  >
+                    years_of_experience
+                    <span
+                      aria-hidden="true"
+                      class="chakra-form__required-indicator css-0"
+                      role="presentation"
+                    >
+                      *
+                    </span>
+                  </label>
+                  <div
+                    class="chakra-input__group css-4302v8"
+                  >
+                    <input
+                      aria-required="true"
+                      autocomplete="years_of_experience"
+                      class="chakra-input css-0"
+                      data-testid="years_experience"
+                      id="years_experience"
+                      required=""
+                      type="number"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="chakra-stack css-mrv709"
+            >
+              <div
+                class="chakra-stack css-1nne8pa"
+              >
+                <div
+                  class="chakra-form-control css-wlea3r"
+                  data-testid="timezone-formcontrol"
+                  role="group"
+                >
+                  <label
+                    class="chakra-form__label css-uvho5g"
+                    data-testid="timezone-label"
+                    for="timezone"
+                    id="timezone-label"
+                  >
+                    time_zone
+                    <span
+                      aria-hidden="true"
+                      class="chakra-form__required-indicator css-0"
+                      role="presentation"
+                    >
+                      *
+                    </span>
+                  </label>
+                  <div
+                    class="chakra-select__wrapper css-42b2qy"
+                  >
+                    <select
+                      aria-required="true"
+                      autocomplete="timezone"
+                      class="chakra-select css-1ik61og"
+                      id="timezone"
+                      required=""
+                    >
+                      <option
+                        value="GMT"
+                      >
+                        Europe/London
+                      </option>
+                    </select>
+                    <div
+                      class="chakra-select__icon-wrapper css-162mkon"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="chakra-select__icon"
+                        focusable="false"
+                        role="presentation"
+                        style="width: 1em; height: 1em; color: currentColor;"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="chakra-stack css-1nne8pa"
+              >
+                <div
+                  class="chakra-form-control css-wlea3r"
+                  data-testid="country-formcontrol"
+                  role="group"
+                >
+                  <label
+                    class="chakra-form__label css-uvho5g"
+                    data-testid="country-label"
+                    for="country"
+                    id="country-label"
+                  >
+                    country
+                    <span
+                      aria-hidden="true"
+                      class="chakra-form__required-indicator css-0"
+                      role="presentation"
+                    >
+                      *
+                    </span>
+                  </label>
+                  <div
+                    class="chakra-select__wrapper css-42b2qy"
+                  >
+                    <select
+                      aria-required="true"
+                      autocomplete="Country"
+                      class="chakra-select css-1ik61og"
+                      id="country"
+                      required=""
+                    >
+                      <option
+                        value="CU"
+                      >
+                        Cuba
+                      </option>
+                    </select>
+                    <div
+                      class="chakra-select__icon-wrapper css-162mkon"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="chakra-select__icon"
+                        focusable="false"
+                        role="presentation"
+                        style="width: 1em; height: 1em; color: currentColor;"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="chakra-stack css-qf6f4s"
+            >
+              <button
+                class="chakra-button css-18dry65"
+                data-testid="submitButton"
+                type="submit"
+              >
+                submit_form
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="chakra-stack css-owjkmg"
+    >
+      <h2
+        class="chakra-heading css-1gjuw9l"
+      >
+        welcome
+      </h2>
+    </div>
+    <form
+      data-testid="welcomeForm"
+    >
+      <div
+        class="css-1e7ly1j"
+      >
+        <div
+          class="chakra-stack css-1y5c2ms"
+        >
+          <div
+            class="chakra-stack css-12l9mwo"
+          >
+            <div
+              class="css-gmuwbf"
+            >
+              <span
+                class="chakra-avatar css-1ruhx4w"
+              >
+                <svg
+                  aria-label=" avatar"
+                  class="chakra-avatar__svg css-16ite8i"
+                  role="img"
+                  viewBox="0 0 128 128"
+                >
+                  <path
+                    d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                    fill="currentColor"
+                  />
+                </svg>
+                <button
+                  align="center"
+                  aria-label="remove Image"
+                  class="chakra-button chakra-avatar__badge css-li6vby"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="chakra-icon css-onkibi"
+                    focusable="false"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9.41 8l2.29-2.29c.19-.18.3-.43.3-.71a1.003 1.003 0 0 0-1.71-.71L8 6.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42L6.59 8 4.3 10.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71L8 9.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71L9.41 8z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </span>
+            </div>
+            <div
+              class="css-gmuwbf"
+            >
+              <button
+                class="chakra-button css-l01cow"
+                type="button"
+              >
+                change_avatar
+              </button>
+            </div>
+            <div
+              class="chakra-form-control css-wlea3r"
+              data-testid="pronoun-formcontrol"
+              role="group"
+            >
+              <label
+                class="chakra-form__label css-uvho5g"
+                data-testid="pronoun-label"
+                for="pronoun"
+                id="pronoun-label"
+              >
+                pronoun
+                <span
+                  aria-hidden="true"
+                  class="chakra-form__required-indicator css-0"
+                  role="presentation"
+                >
+                  *
+                </span>
+              </label>
+              <div
+                class="chakra-input__group css-4302v8"
+              >
+                <input
+                  aria-required="true"
+                  autocomplete="pronoun"
+                  class="chakra-input css-0"
+                  data-testid="pronoun"
+                  id="pronoun"
+                  required=""
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="chakra-stack css-1vzrui3"
+        >
+          <div
+            class="chakra-stack css-mrv709"
+          >
+            <div
+              class="chakra-stack css-1nne8pa"
+            >
+              <h2
+                class="chakra-heading css-cewpam"
+              >
+                select_mentor_mentee
+              </h2>
+              <div
+                class="chakra-stack css-mrv709"
+              >
+                <label
+                  class="chakra-checkbox css-1uiwwan"
+                >
+                  <input
+                    class="chakra-checkbox__input"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-checkbox__control css-dnty2r"
+                  />
+                  <span
+                    class="chakra-checkbox__label css-1oeb2oe"
+                  >
+                    mentor
+                  </span>
+                </label>
+                <label
+                  class="chakra-checkbox css-1uiwwan"
+                >
+                  <input
+                    class="chakra-checkbox__input"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-checkbox__control css-dnty2r"
+                  />
+                  <span
+                    class="chakra-checkbox__label css-1oeb2oe"
+                  >
+                    mentee
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div
+              class="chakra-stack css-1nne8pa"
+            >
+              <div
+                class="chakra-form-control css-wlea3r"
+                data-testid="business_area_id-formcontrol"
+                role="group"
+              >
+                <label
+                  class="chakra-form__label css-uvho5g"
+                  data-testid="business_area_id-label"
+                  for="business_area_id"
+                  id="business_area_id-label"
+                >
+                  business_area
+                  <span
+                    aria-hidden="true"
+                    class="chakra-form__required-indicator css-0"
+                    role="presentation"
+                  >
+                    *
+                  </span>
+                </label>
+                <div
+                  class="chakra-select__wrapper css-42b2qy"
+                >
+                  <select
+                    aria-required="true"
+                    autocomplete="business"
+                    class="chakra-select css-1ik61og"
+                    id="business_area_id"
+                    required=""
+                  >
+                    <option
+                      value=""
+                    />
+                  </select>
+                  <div
+                    class="chakra-select__icon-wrapper css-162mkon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="chakra-select__icon"
+                      focusable="false"
+                      role="presentation"
+                      style="width: 1em; height: 1em; color: currentColor;"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2
+            class="chakra-heading css-cewpam"
+          >
+            Interests
+          </h2>
+          <p
+            class="chakra-text css-0"
+          >
+            Add interests
+          </p>
+          <div
+            class="chakra-stack css-137fd6w"
+          >
+            <div
+              class="chakra-select__wrapper css-18bsdw1"
+            >
+              <select
+                class="chakra-select css-1ik61og"
+              >
+                <option
+                  value=""
+                >
+                  select_option
+                </option>
+                <option
+                  value="interest 1"
+                >
+                  interest 1
+                </option>
+                <option
+                  value="interest 2"
+                >
+                  interest 2
+                </option>
+                <option
+                  value="interest 3"
+                >
+                  interest 3
+                </option>
+              </select>
+              <div
+                class="chakra-select__icon-wrapper css-162mkon"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="chakra-select__icon"
+                  focusable="false"
+                  role="presentation"
+                  style="width: 1em; height: 1em; color: currentColor;"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+            <button
+              class="chakra-button css-zldj5s"
+              type="button"
+            >
+              Add Interest
+            </button>
+          </div>
+          <div
+            class="chakra-stack css-mrv709"
+          >
+            <div
+              class="chakra-stack css-1nne8pa"
+            >
+              <div
+                class="chakra-form-control css-wlea3r"
+                data-testid="title-formcontrol"
+                role="group"
+              >
+                <label
+                  class="chakra-form__label css-uvho5g"
+                  data-testid="title-label"
+                  for="title"
+                  id="title-label"
+                >
+                  seniority
+                  <span
+                    aria-hidden="true"
+                    class="chakra-form__required-indicator css-0"
+                    role="presentation"
+                  >
+                    *
+                  </span>
+                </label>
+                <div
+                  class="chakra-select__wrapper css-42b2qy"
+                >
+                  <select
+                    aria-required="true"
+                    autocomplete="title"
+                    class="chakra-select css-1ik61og"
+                    id="title"
+                    required=""
+                  >
+                    <option
+                      value="anlst"
+                    >
+                      anlst
+                    </option>
+                    <option
+                      value="assoc"
+                    >
+                      assoc
+                    </option>
+                    <option
+                      value="avp"
+                    >
+                      avp
+                    </option>
+                    <option
+                      value="vp"
+                    >
+                      vp
+                    </option>
+                    <option
+                      value="dir"
+                    >
+                      dir
+                    </option>
+                    <option
+                      value="md"
+                    >
+                      md
+                    </option>
+                  </select>
+                  <div
+                    class="chakra-select__icon-wrapper css-162mkon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="chakra-select__icon"
+                      focusable="false"
+                      role="presentation"
+                      style="width: 1em; height: 1em; color: currentColor;"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="chakra-stack css-1nne8pa"
+            >
+              <div
+                class="chakra-form-control css-wlea3r"
+                data-testid="years_experience-formcontrol"
+                role="group"
+              >
+                <label
+                  class="chakra-form__label css-uvho5g"
+                  data-testid="years_experience-label"
+                  for="years_experience"
+                  id="years_experience-label"
+                >
+                  years_of_experience
+                  <span
+                    aria-hidden="true"
+                    class="chakra-form__required-indicator css-0"
+                    role="presentation"
+                  >
+                    *
+                  </span>
+                </label>
+                <div
+                  class="chakra-input__group css-4302v8"
+                >
+                  <input
+                    aria-required="true"
+                    autocomplete="years_of_experience"
+                    class="chakra-input css-0"
+                    data-testid="years_experience"
+                    id="years_experience"
+                    required=""
+                    type="number"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="chakra-stack css-mrv709"
+          >
+            <div
+              class="chakra-stack css-1nne8pa"
+            >
+              <div
+                class="chakra-form-control css-wlea3r"
+                data-testid="timezone-formcontrol"
+                role="group"
+              >
+                <label
+                  class="chakra-form__label css-uvho5g"
+                  data-testid="timezone-label"
+                  for="timezone"
+                  id="timezone-label"
+                >
+                  time_zone
+                  <span
+                    aria-hidden="true"
+                    class="chakra-form__required-indicator css-0"
+                    role="presentation"
+                  >
+                    *
+                  </span>
+                </label>
+                <div
+                  class="chakra-select__wrapper css-42b2qy"
+                >
+                  <select
+                    aria-required="true"
+                    autocomplete="timezone"
+                    class="chakra-select css-1ik61og"
+                    id="timezone"
+                    required=""
+                  >
+                    <option
+                      value="GMT"
+                    >
+                      Europe/London
+                    </option>
+                  </select>
+                  <div
+                    class="chakra-select__icon-wrapper css-162mkon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="chakra-select__icon"
+                      focusable="false"
+                      role="presentation"
+                      style="width: 1em; height: 1em; color: currentColor;"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="chakra-stack css-1nne8pa"
+            >
+              <div
+                class="chakra-form-control css-wlea3r"
+                data-testid="country-formcontrol"
+                role="group"
+              >
+                <label
+                  class="chakra-form__label css-uvho5g"
+                  data-testid="country-label"
+                  for="country"
+                  id="country-label"
+                >
+                  country
+                  <span
+                    aria-hidden="true"
+                    class="chakra-form__required-indicator css-0"
+                    role="presentation"
+                  >
+                    *
+                  </span>
+                </label>
+                <div
+                  class="chakra-select__wrapper css-42b2qy"
+                >
+                  <select
+                    aria-required="true"
+                    autocomplete="Country"
+                    class="chakra-select css-1ik61og"
+                    id="country"
+                    required=""
+                  >
+                    <option
+                      value="CU"
+                    >
+                      Cuba
+                    </option>
+                  </select>
+                  <div
+                    class="chakra-select__icon-wrapper css-162mkon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="chakra-select__icon"
+                      focusable="false"
+                      role="presentation"
+                      style="width: 1em; height: 1em; color: currentColor;"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="chakra-stack css-qf6f4s"
+          >
+            <button
+              class="chakra-button css-18dry65"
+              data-testid="submitButton"
+              type="submit"
+            >
+              submit_form
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
