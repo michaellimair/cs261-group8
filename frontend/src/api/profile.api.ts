@@ -1,6 +1,7 @@
 import {
   IUserProfile, IUserProfileDTO,
 } from 'customTypes/auth';
+import { serialize } from 'object-to-formdata';
 import BaseAPI from './base.api';
 import CommonAPI from './common.api';
 
@@ -21,9 +22,11 @@ class UserProfileAPI extends CommonAPI {
   updateProfile = async (
     id: number,
     payload: Partial<IUserProfileDTO>,
-  ): Promise<IUserProfile> => this.api.post<IUserProfile, Partial<IUserProfileDTO>>({
+  ): Promise<IUserProfile> => this.api.patch<IUserProfile, FormData>({
     path: this.getPathById(id, '/'),
-    body: payload,
+    body: serialize(payload, {
+      nullsAsUndefineds: true,
+    }),
   });
 }
 

@@ -44,7 +44,7 @@ from country.views import CountryViewSet
 
 user_patterns = [
     path(
-        r'<int:user_pk>/profile',
+        r'<int:user_pk>/profile/',
         UserProfileViewSet.as_view({
             'get': 'retrieve',
             'patch': 'update',

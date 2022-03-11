@@ -53,6 +53,7 @@ describe('components/FormField', () => {
     expect(registerFn).toHaveBeenCalledTimes(1);
     expect(registerFn).toHaveBeenCalledWith(fieldName, {
       required: undefined,
+      valueAsNumber: false,
     });
   });
 
@@ -72,6 +73,7 @@ describe('components/FormField', () => {
     expect(registerFn).toHaveBeenCalledTimes(1);
     expect(registerFn).toHaveBeenCalledWith(fieldName, {
       required: 'no_blank',
+      valueAsNumber: false,
     });
   });
 
