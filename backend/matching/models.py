@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django_extensions.db.models import TimeStampedModel
-from users.permission_constants import MENTEE_GROUP, MENTOR_GROUP
 
 # Create your models here.
 class MentoringPair(TimeStampedModel):

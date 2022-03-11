@@ -61,7 +61,9 @@ router.register(r'languages', LanguageViewSet, basename='language')
 router.register(r'timezones', TimezoneViewSet, basename='timezone')
 router.register(r'skills', SkillViewSet, basename='skill')
 router.register(r'mentee/matches', MenteeMatchView, basename='mentee_matches')
-router.register(r'mentee/match-suggestions', MenteeMatchSuggestionView, basename='mentee_match_suggestions')
+router.register(r'mentee/match-suggestions',
+    MenteeMatchSuggestionView,
+    basename='mentee_match_suggestions')
 router.register(r'mentor/matches', MentorMatchView, basename='mentor_matches')
 
 admin_router = routers.DefaultRouter()

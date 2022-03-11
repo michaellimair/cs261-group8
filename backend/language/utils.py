@@ -7,12 +7,14 @@ LANGS_WITH_CODE = filter(lambda x: hasattr(x, 'alpha_2'), pycountry.languages)
 ALL_LANGS = set(lang.alpha_2 for lang in LANGS_WITH_CODE)
 
 def language_to_json(language):
+    """Convert pycountry language data to JSON format."""
     return {
         "code": language.alpha_2,
         "name": language.name,
     }
 
 def languages_to_json(languages):
+    """Convert a list of pycountry language data to JSON format."""
     results = []
     for language in languages:
         results.append(language_to_json(language))
