@@ -1,6 +1,6 @@
-import CreateMilestone from 'components/shared-components/CreateMilestone';
+import CreateMilestone from 'components/PlanOfAction/shared-components/CreateMilestone';
 import { FC } from 'react';
-import MenteeMilestone from 'components/mentee-milestone/MenteeMilestone';
+import MenteeMilestone from 'components/PlanOfAction/mentee-milestone/MenteeMilestone';
 
 const MenteeMilestonePage: FC = () => (
   <>

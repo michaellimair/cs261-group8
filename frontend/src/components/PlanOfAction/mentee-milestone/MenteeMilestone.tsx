@@ -2,13 +2,13 @@ import {
   Accordion,
   Box,
   Button,
-  Center,
-  Heading, Input, Progress, Stack,
+  Heading, Progress, Stack,
 } from '@chakra-ui/react';
-import PlanOfAction from 'components/shared-components/PlanOfAction';
+import PlanOfAction from 'components/PlanOfAction/shared-components/PlanOfAction';
 import { FC } from 'react';
+import MentorComment from './MentorComment';
 
-const MentorMilestone: FC = () => (
+const MenteeMilestone: FC = () => (
   <Stack
     m="20px"
     rounded="xl"
@@ -35,18 +35,9 @@ const MentorMilestone: FC = () => (
           <Button colorScheme="red">-</Button>
         </Box>
       </Stack>
-      <Stack m="20px" direction="row">
-        <Center>
-          <Input type="text" width="500px" m="10px" placeholder="Add comment here" />
-        </Center>
-        <Center>
-          <Button className="comment-btn-milestone" width="150px" size="sm" colorScheme="blue">
-            Comment
-          </Button>
-        </Center>
-      </Stack>
+      <MentorComment />
     </Box>
   </Stack>
 );
 
-export default MentorMilestone;
+export default MenteeMilestone;
