@@ -119,5 +119,19 @@
   },
   "feedback_required": "Feedback Required",
   "select_alternative_time": "Select an alternative time",
-  "or": "or"
+  "or": "or",
+  "years_experience": "Years of Experience",
+  "job_title": {
+    "null": "-",
+    "anlst": "Analyst",
+    "assoc": "Associate",
+    "avp": "Assistant Vice President",
+    "vp": "Vice President",
+    "dir": "Director",
+    "md": "Managing Director"
+  },
+  "business_area": "Business Area",
+  "country": "Country",
+  "timezone": "Timezone",
+  "change_avatar": "Change Avatar"
 }

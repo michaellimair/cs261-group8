@@ -7,60 +7,69 @@ import {
   Stack,
   Avatar,
   Center,
-  ListItem,
-  UnorderedList,
+  FormErrorMessage,
+  FormControl,
+  InputGroup,
 } from '@chakra-ui/react';
 
 import {
-  FC, useState,
+  FC, useCallback, useEffect, useRef,
 } from 'react';
-import BusinessAreas from 'components/user-profile-components/BusinessAreas';
 import { useUser } from 'hooks/useUser';
 import {
-  IUserProfile, IUserProfileDTO, JobTitle,
+  IUserProfile, IUserProfileDTO,
 } from 'customTypes/auth';
 import { httpClient } from 'api';
 import { useQuery } from 'react-query';
 import useCommonForm from 'hooks/useCommonForm';
 import ApiError from 'api/error/ApiError';
-import { useNavigate } from 'react-router-dom';
-
-const fetchCountry = (countryCode:string) => httpClient.country.getCountryByCode(countryCode);
+import { FormField, FormSelectField } from 'components/Forms';
+import { useTranslation } from 'react-i18next';
+import { omit } from 'lodash';
+import useCountries from 'hooks/useCountries';
+import useTitleOptions from 'hooks/useTitleOptions';
+import useTimezoneOptions from 'hooks/useTimezoneOptions';
+import useBusinessAreaOptions from 'hooks/useBusinessAreaOptions';
 
 const UserProfile: FC = () => {
   const { user } = useUser();
-  const [businessID, setBusinessID] = useState<number>(user?.profile.business_area?.id!);
-  const countryCode:string = user?.profile.country!;
-  const skillList:string[] = user?.profile.skills!;
-  const seniority:JobTitle = user?.profile.title!;
+  const countryOptions = useCountries();
+  const titleOptions = useTitleOptions();
+  const timezoneOptions = useTimezoneOptions();
+  const businessAreaOptions = useBusinessAreaOptions();
 
-  const { data } = useQuery('country', () => fetchCountry(countryCode));
+  const { t } = useTranslation();
 
-  const navigate = useNavigate();
-
+  const { data: userProfile, refetch } = useQuery(['profile', user?.id], () => httpClient.profile.getProfile(user?.id!));
+  const avatarInputRef = useRef<HTMLInputElement>();
+  const onAvatarClick = useCallback(() => {
+    avatarInputRef.current?.click();
+  }, []);
   const {
+    register,
     onSubmit,
+    errors,
+    watch,
+    reset,
+    setValue,
   } = useCommonForm<IUserProfileDTO, ApiError<any>, IUserProfile>({
-    defaultValues: {
-      business_area_id: businessID!,
-      avatar: null!,
-      completed: user?.profile.completed!,
-      pronoun: user?.profile.pronoun!,
-      years_experience: user?.profile.years_experience,
-      title: user?.profile.title,
-      country: user?.profile.country,
-      timezone: user?.profile.timezone,
-      skills: user?.profile.skills,
-    },
-    mutationFn: () => httpClient.profile.updateProfile(
-      businessID!,
-      null!,
+    mutationFn: async (values) => httpClient.profile.updateProfile(
+      user?.id!,
+      values,
     ),
     mutationId: ['profile', user?.id!, 'update'],
     onSuccess: () => {
-      navigate('/profile');
+      refetch();
     },
   });
+
+  useEffect(() => {
+    if (userProfile) {
+      reset(omit(userProfile, ['avatar', 'business_area']));
+    }
+  }, [userProfile, reset]);
+
+  const avatarFile = watch('avatar');
 
   return (
     <form id="frm-profile" onSubmit={onSubmit}>
@@ -83,32 +92,34 @@ const UserProfile: FC = () => {
           <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
             My Profile
           </Heading>
-          <Stack direction={['column', 'row']} spacing={6}>
-            <Center>
-              <Avatar size="xl" />
-            </Center>
-            <Stack m="20px" spacing={6} direction="row">
-              <Center>
-                <Avatar src="https://thumbs.dreamstime.com/z/globe-grid-vector-icon-isolated-white-background-181317661.jpg" />
-                <Stack m="20px" spacing={2} direction="column">
-                  <Heading size="xs">
-                    Country:
-                    {data?.name}
-                  </Heading>
-                  <Heading size="xs">
-                    Timezone:
-                    {user?.profile.timezone}
-                  </Heading>
-                </Stack>
-              </Center>
-            </Stack>
-          </Stack>
+          <Center>
+            <Avatar className="mx-auto" size="xl" src={avatarFile ? URL.createObjectURL(avatarFile) : userProfile?.avatar!} name={user?.full_name!} />
+          </Center>
+          <InputGroup alignItems="center" justifyContent="center">
+            <Button onClick={onAvatarClick}>
+              <Input
+                type="file"
+                multiple={false}
+                {...register('avatar')}
+                ref={avatarInputRef as any}
+                hidden
+                accept="image/*"
+                onChange={(e) => {
+                  if (e.target.files) {
+                    setValue('avatar', e.target.files[0]);
+                  }
+                }}
+              />
+              {t('change_avatar')}
+            </Button>
+          </InputGroup>
           <FormLabel>User name</FormLabel>
           <Input
             placeholder="UserName"
             value={user?.username}
             readOnly
             _placeholder={{ color: 'gray.500' }}
+            disabled
             type="text"
           />
 
@@ -117,31 +128,51 @@ const UserProfile: FC = () => {
             placeholder="your-email@example.com"
             value={user?.email}
             readOnly
+            disabled
             _placeholder={{ color: 'gray.500' }}
             type="email"
           />
-
-          <BusinessAreas idChangeHandler={setBusinessID} />
-
-          <FormLabel>Skills</FormLabel>
-          <UnorderedList m="20px" spacing={3} id="skills">
-            {skillList.map((skill) => <ListItem>{skill}</ListItem>)}
-          </UnorderedList>
-
-          <FormLabel>Seniority</FormLabel>
-          <Input
-            defaultValue={seniority}
-            readOnly
+          <FormSelectField
+            name="timezone"
+            label={t('timezone')}
+            required
+            error={errors?.timezone}
+            register={register}
+            options={timezoneOptions}
           />
-
-          <FormLabel>Years of experience</FormLabel>
-          <Input
-            placeholder="years of experience"
-            value={user?.profile.years_experience?.toString()}
-            readOnly
-            _placeholder={{ color: 'gray.500' }}
+          <FormSelectField
+            name="country"
+            label={t('country')}
+            required
+            error={errors?.country}
+            register={register}
+            options={countryOptions}
           />
-
+          <FormSelectField
+            name="business_area_id"
+            label={t('business_area')}
+            required
+            error={errors?.business_area_id}
+            register={register}
+            valueAsNumber
+            options={businessAreaOptions}
+          />
+          <FormSelectField
+            name="title"
+            label={t('title')}
+            error={errors?.title}
+            register={register}
+            options={titleOptions}
+          />
+          <FormField<IUserProfileDTO>
+            register={register}
+            name="years_experience"
+            error={errors?.years_experience}
+            type="number"
+          />
+          <FormControl id="non-field" isInvalid={Boolean(errors?.non_field_errors)} mt={['0 !important']}>
+            <FormErrorMessage>{errors?.non_field_errors}</FormErrorMessage>
+          </FormControl>
           <Stack spacing={6} direction={['column', 'row']}>
             <Button
               bg="blue.400"
