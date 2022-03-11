@@ -19,7 +19,7 @@ const FeedbackList: FC<IFeedbackListProps> = ({
     <LoadingComponent
       isLoading={isLoading}
       hasData={Boolean(!isLoading && feedbacks && feedbacks.length)}
-      noDataText={t('description.feedback.no_feedback')}
+      noDataText={t('dashboard.feedback.no_feedback')}
     >
       {feedbacks?.map((feedback) => (
         <FeedbackRow feedback={feedback} key={feedback.id} />
