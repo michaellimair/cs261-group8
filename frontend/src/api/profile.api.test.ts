@@ -1,4 +1,5 @@
 /* eslint-disable max-classes-per-file */
+import { serialize } from 'object-to-formdata';
 import UserProfileAPI from './profile.api';
 import BaseAPI from './base.api';
 
@@ -40,9 +41,9 @@ describe('profile.api.ts', () => {
       expect(api.patch).toHaveBeenCalledTimes(1);
       expect(api.patch).toHaveBeenCalledWith({
         path: `/users/${id}/profile/`,
-        body: {
+        body: serialize({
           years_experience: 20,
-        },
+        }),
       });
     });
   });

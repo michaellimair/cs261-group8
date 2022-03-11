@@ -27,7 +27,7 @@ class UserProfileAPI {
     id: number,
     payload: Partial<IUserProfileDTO>,
   ): Promise<IUserProfile> => this.api.patch<IUserProfile, FormData>({
-    path: this.getPath(id, ''),
+    path: this.getPath(id, '/'),
     body: serialize(payload, {
       nullsAsUndefineds: true,
     }),
