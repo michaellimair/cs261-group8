@@ -4,19 +4,58 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
+from business_area.models import BusinessArea
+from business_area.serializers import BusinessAreaSerializer
 from .models import UserProfile
 
+class GroupSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Group objects which indicate different user groups.
+    """
+    class Meta:
+        """
+        Metadata for serializing user groups.
+        """
+        model = Group
+        fields = ('id', 'name')
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the UserProfile model.
-    """
+    """Serializer for UserProfile objects."""
+    business_area = BusinessAreaSerializer()
+    business_area_id = serializers.PrimaryKeyRelatedField(
+        queryset=BusinessArea.objects.all(),
+        source='business_area')
+
     class Meta:
         """
         Metadata for the UserProfile serializer.
         """
         model = UserProfile
         exclude = ('id', 'user')
+        read_only_fields = ('completed',)
+
+
+    def update(self, instance, validated_data):
+        """Update user profile"""
+        super().update(instance, validated_data)
+
+        # Automatically populate completed field if all data is updated properly
+        is_complete: bool = (instance.pronoun
+            and instance.years_experience
+            and instance.title
+            and instance.skills
+            and len(instance.skills) > 0
+            and instance.country
+            and instance.timezone
+            and instance.business_area)
+
+        # TODO: Refactor if statement
+        if is_complete:
+            instance.completed = True
+
+        instance.save()
+
+        return instance
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -26,6 +65,20 @@ class UserSerializer(serializers.ModelSerializer):
     profile = UserProfileSerializer(
         read_only=True
     )
+    groups = GroupSerializer(many=True)
+    full_name = serializers.SerializerMethodField('get_full_name')
+
+    # pylint: disable=no-self-use
+    def get_full_name(self, obj: get_user_model()) -> str:
+        """_summary_
+
+        Args:
+            obj (User): User object
+
+        Returns:
+            str: Full name of the user
+        """
+        return obj.get_full_name()
 
     class Meta:
         """
@@ -105,15 +158,3 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
-
-
-class GroupSerializer(serializers.ModelSerializer):
-    """
-    Serializer for Group objects which indicate different user groups.
-    """
-    class Meta:
-        """
-        Metadata for serializing user groups.
-        """
-        model = Group
-        fields = ('id', 'name')

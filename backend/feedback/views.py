@@ -1,9 +1,9 @@
 import json
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.utils.translation import gettext_lazy as _
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, mixins
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser
 from users.permissions import IsOwner, IsNotSuperuser
@@ -13,26 +13,23 @@ from .serializers import (UserFeedbackSerializer,
                             UserFeedbackReplyAdminSerializer)
 
 
-class UserFeedbackViewSet(viewsets.ModelViewSet):
+class UserFeedbackViewSet(mixins.CreateModelMixin,
+                   mixins.RetrieveModelMixin,
+                   mixins.UpdateModelMixin,
+                   mixins.ListModelMixin,
+                   viewsets.GenericViewSet):
     """
     Create, read, and update views for user feedback. Only accessible by users.
     """
     serializer_class = UserFeedbackSerializer
     permission_classes = [IsNotSuperuser, IsOwner]
 
-    # pylint: disable=arguments-differ
-    def destroy(self, _):
-        """
-        User is not allowed to delete feedback.
-        """
-        return HttpResponseForbidden()
-
     def get_queryset(self):
         """
         Limit queryset to feedback created by a specific user.
         """
         user = self.request.user
-        return UserFeedback.objects.filter(user=user)
+        return UserFeedback.objects.filter(user=user).order_by('-modified')
 
 
 class UserFeedbackAdminViewSet(viewsets.ReadOnlyModelViewSet):

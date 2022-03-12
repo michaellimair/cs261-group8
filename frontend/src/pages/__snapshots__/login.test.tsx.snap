@@ -150,37 +150,8 @@ Object {
               </div>
             </div>
             <div
-              class="chakra-stack css-1lyzlj9"
+              class="chakra-stack css-jsoi3a"
             >
-              <div
-                class="chakra-stack css-1bnf7oa"
-              >
-                <label
-                  class="chakra-checkbox css-1uiwwan"
-                >
-                  <input
-                    class="chakra-checkbox__input"
-                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
-                    type="checkbox"
-                    value=""
-                  />
-                  <span
-                    aria-hidden="true"
-                    class="chakra-checkbox__control css-dnty2r"
-                  />
-                  <span
-                    class="chakra-checkbox__label css-1oeb2oe"
-                  >
-                    remember_me
-                  </span>
-                </label>
-                <a
-                  class="chakra-link css-p03q1r"
-                  href="/forgot-password"
-                >
-                  forgot_password
-                </a>
-              </div>
               <button
                 class="chakra-button css-18dry65"
                 data-testid="loginButton"
@@ -333,37 +304,8 @@ Object {
             </div>
           </div>
           <div
-            class="chakra-stack css-1lyzlj9"
+            class="chakra-stack css-jsoi3a"
           >
-            <div
-              class="chakra-stack css-1bnf7oa"
-            >
-              <label
-                class="chakra-checkbox css-1uiwwan"
-              >
-                <input
-                  class="chakra-checkbox__input"
-                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
-                  type="checkbox"
-                  value=""
-                />
-                <span
-                  aria-hidden="true"
-                  class="chakra-checkbox__control css-dnty2r"
-                />
-                <span
-                  class="chakra-checkbox__label css-1oeb2oe"
-                >
-                  remember_me
-                </span>
-              </label>
-              <a
-                class="chakra-link css-p03q1r"
-                href="/forgot-password"
-              >
-                forgot_password
-              </a>
-            </div>
             <button
               class="chakra-button css-18dry65"
               data-testid="loginButton"

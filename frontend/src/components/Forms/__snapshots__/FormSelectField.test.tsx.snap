@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/FormSelectField renders correctly with the right set of attributes 1`] = `
+<div
+  class="chakra-form-control css-wlea3r"
+  data-testid="field-formcontrol"
+  role="group"
+>
+  <label
+    class="chakra-form__label css-uvho5g"
+    data-testid="field-label"
+    for="field"
+    id="field-label"
+  >
+    customlabel
+  </label>
+  <div
+    class="chakra-select__wrapper css-42b2qy"
+  >
+    <select
+      autocomplete="email"
+      class="chakra-select css-1ik61og"
+      id="field"
+    >
+      <option
+        value=""
+      >
+        testplaceholder
+      </option>
+      <option
+        value="test"
+      >
+        test
+      </option>
+      <option
+        value="new"
+      >
+        new
+      </option>
+    </select>
+    <div
+      class="chakra-select__icon-wrapper css-162mkon"
+    >
+      <svg
+        aria-hidden="true"
+        class="chakra-select__icon"
+        focusable="false"
+        role="presentation"
+        style="width: 1em; height: 1em; color: currentColor;"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/FormSelectField renders correctly with the right set of attributes 2`] = `
+<select
+  autocomplete="email"
+  class="chakra-select css-1ik61og"
+  id="field"
+>
+  <option
+    value=""
+  >
+    testplaceholder
+  </option>
+  <option
+    value="test"
+  >
+    test
+  </option>
+  <option
+    value="new"
+  >
+    new
+  </option>
+</select>
+`;

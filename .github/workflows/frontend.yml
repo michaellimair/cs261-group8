@@ -7,6 +7,7 @@ on:
     branches: [ main ]
     paths-ignore:
       - '**/README.md'
+      - '.vscode/**'
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
@@ -45,7 +46,7 @@ jobs:
       uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        threshold: 90 # Require at least 90% code coverage
+        threshold: 70 # Require at least 70% code coverage
         annotations: none
         skip-step: all
         coverage-file: ./frontend/report.json

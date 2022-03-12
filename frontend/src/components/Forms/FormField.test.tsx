@@ -8,6 +8,8 @@ interface ISampleForm {
 describe('components/FormField', () => {
   const fieldName: keyof ISampleForm = 'field';
   const autoComplete = 'email';
+  const label = 'customlabel';
+  const placeholder = 'testplaceholder';
   const type: React.HTMLInputTypeAttribute = 'email';
   let result: RenderResult<typeof import('@testing-library/dom/types/queries'), HTMLElement>;
   let registerFn: jest.Mock;
@@ -20,6 +22,8 @@ describe('components/FormField', () => {
         type={type}
         autoComplete={autoComplete}
         register={registerFn}
+        label={label}
+        placeholder={placeholder}
       />,
     );
   });
@@ -36,7 +40,7 @@ describe('components/FormField', () => {
 
     const inputLabelField = inputFormControl.querySelector('label')!;
     expect(inputLabelField).toBeTruthy();
-    expect(inputLabelField.innerHTML).toEqual(fieldName);
+    expect(inputLabelField.innerHTML).toEqual(label);
 
     const inputField = inputFormControl.querySelector('input')!;
     expect(inputField).toBeTruthy();
@@ -49,6 +53,7 @@ describe('components/FormField', () => {
     expect(registerFn).toHaveBeenCalledTimes(1);
     expect(registerFn).toHaveBeenCalledWith(fieldName, {
       required: undefined,
+      valueAsNumber: false,
     });
   });
 
@@ -68,6 +73,7 @@ describe('components/FormField', () => {
     expect(registerFn).toHaveBeenCalledTimes(1);
     expect(registerFn).toHaveBeenCalledWith(fieldName, {
       required: 'no_blank',
+      valueAsNumber: false,
     });
   });
 

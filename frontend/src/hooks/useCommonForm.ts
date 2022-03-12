@@ -1,7 +1,11 @@
-import { MutationFunction, useMutation } from 'react-query';
+import { MutationFunction, MutationKey, useMutation } from 'react-query';
 import ApiError from 'api/error/ApiError';
 import {
-  FieldValues, SubmitHandler, UnpackNestedValue, useForm,
+  DeepPartial,
+  FieldValues,
+  SubmitHandler,
+  UnpackNestedValue,
+  useForm,
 } from 'react-hook-form';
 import { useCallback } from 'react';
 import { merge } from 'lodash';
@@ -13,14 +17,27 @@ TData extends any,
 >({
     mutationId,
     mutationFn,
+    onSuccess,
+    defaultValues,
   }: {
     mutationFn: MutationFunction<TData, TVariables>;
-    mutationId: string;
+    mutationId: MutationKey;
+    defaultValues?: UnpackNestedValue<DeepPartial<TVariables>>;
+    onSuccess?: (data: TData, variables: TVariables, context: unknown) => void | Promise<unknown>
   }) => {
-  const { register, handleSubmit, formState: { errors: formErrors } } = useForm<TVariables>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors: formErrors },
+    reset,
+    setValue,
+    watch,
+  } = useForm<TVariables>({
+    defaultValues,
+  });
   const {
     mutate, isLoading, error: mutationErrors, isSuccess,
-  } = useMutation<TData, TError, TVariables>(mutationId, mutationFn);
+  } = useMutation<TData, TError, TVariables>(mutationId, mutationFn, { onSuccess });
 
   const errors = merge({}, formErrors, mutationErrors?.data);
 
@@ -37,6 +54,9 @@ TData extends any,
     errors,
     isLoading,
     isSuccess,
+    reset,
+    setValue,
+    watch,
   };
 };
 

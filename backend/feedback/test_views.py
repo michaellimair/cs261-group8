@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from rest_framework.test import force_authenticate, APIRequestFactory
-from users.factories import AdminFactory, UserFactory
+from users.factories import AdminFactory, UserFactory, UserProfileFactory
 from .models import UserFeedback, UserFeedbackReply
 from .views import UserFeedbackAdminReplyView, UserFeedbackViewSet
 from .factories import UserFeedbackFactory, UserFeedbackReplyFactory
@@ -26,22 +26,6 @@ class TestUserFeedbackViewSet(TestCase):
             type=self.feedback_type
         )
         return super().setUp()
-
-    def test_destroy(self):
-        """
-        Deletion of feedback by a user should not be allowed.
-        """
-        feedback_id = self.feedback.id
-
-        url = reverse('my_feedbacks-detail', kwargs={'pk': feedback_id})
-        request = self.request_factory.delete(url)
-        request.user = self.user
-        force_authenticate(request, user=self.user)
-
-        feedback_detail = UserFeedbackViewSet.as_view({'delete': 'destroy'})
-        response = feedback_detail(request)
-
-        self.assertEqual(response.status_code, 403)
 
     def test_list_otheruser(self):
         """
@@ -94,7 +78,9 @@ class TestUserFeedbackAdminReplyView(TestCase):
     """
     def setUp(self) -> None:
         self.admin = AdminFactory()
+        UserProfileFactory(user=self.admin)
         self.other_admin = AdminFactory()
+        UserProfileFactory(user=self.other_admin)
         self.feedback = UserFeedbackFactory()
         self.feedback_reply = UserFeedbackReplyFactory(
             feedback=self.feedback, admin=self.admin)

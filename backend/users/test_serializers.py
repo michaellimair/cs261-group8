@@ -1,8 +1,48 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from .serializers import RegisterSerializer
-from .factories import UserFactory
 
+from business_area.factories import BusinessAreaFactory
+from .serializers import RegisterSerializer, UserProfileSerializer, UserSerializer
+from .factories import UserFactory, UserProfileFactory
+
+class TestUserProfileSerializer(TestCase):
+    """Test methods for the UserSerializer serializer class."""
+    def setUp(self) -> None:
+        """Setup user serializer tests"""
+        self.user = UserFactory(username = 'testuser1', email = "testuser1@test.com")
+        self.business_area = BusinessAreaFactory()
+        self.profile = UserProfileFactory(
+            user=self.user,
+            completed=False,
+            years_experience=None,
+            pronoun=None,
+            business_area=None)
+        self.serializer = UserProfileSerializer(self.profile)
+
+    def test_update(self) -> None:
+        """Completed field will be automatically populated"""
+        data = {
+            "years_experience": 20,
+            "pronoun": "she",
+            "business_area": self.business_area,
+        }
+
+        self.serializer.update(self.profile, validated_data=data)
+
+        self.assertEqual(self.profile.business_area, self.business_area)
+        self.assertTrue(self.profile.completed)
+
+class TestUserSerializer(TestCase):
+    """Test methods for the UserSerializer serializer class."""
+    def setUp(self) -> None:
+        """Setup user serializer tests"""
+        self.user = UserFactory(username = 'testuser1', email = "testuser1@test.com")
+        self.serializer = UserSerializer(data=self.user)
+
+    def test_get_full_name(self) -> None:
+        """Ensure user full name is displayed as intended
+        """
+        self.assertEqual(self.serializer.get_full_name(self.user), self.user.get_full_name())
 
 class TestRegisterSerializer(TestCase):
     """
