@@ -13,7 +13,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update \
-    && apt-get install gcc python3-dev curl musl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev g++ gfortran openssl-dev libxml2 libxml2-dev py-pip build-base wget freetype-dev libpng-dev openblas-dev libxslt libxslt-dev libjpeg-turbo-dev libpq
+    && apt-get install gcc python3-dev curl musl-dev libffi-dev g++ gfortran libxml2 libxml2-dev wget libpng-dev libxslt-dev
 
 RUN pip install --upgrade pip
 RUN pip install --upgrade cython
