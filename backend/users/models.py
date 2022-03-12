@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.postgres.fields import ArrayField
 from django.utils.translation import gettext_lazy as _
 from annoying.fields import AutoOneToOneField
+from language.utils import is_valid_language
 from country.utils import is_valid_country
 from timezone.utils import is_valid_timezone
 from skill.utils import validate_skill
@@ -58,5 +59,10 @@ class UserProfile(models.Model):
     )
     skills = ArrayField(
         models.CharField(max_length=512, validators=[validate_skill]),
+        default=list()
+    )
+    languages = ArrayField(
+        models.CharField(max_length=2, validators=[is_valid_language]),
+        default=list()
     )
     avatar = models.ImageField(upload_to='files/avatar/', null=True)

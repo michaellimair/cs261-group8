@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 def _to_timezone_data(timezones: List[str]) -> List[Dict]:
+    """Convert list of timezones to JSON-serializable metadata"""
     results = []
     for zone in timezones:
         prefix = datetime.datetime.now(pytz.timezone(zone)).strftime('%Z')
@@ -21,8 +22,12 @@ def _to_timezone_data(timezones: List[str]) -> List[Dict]:
 # Create your views here.
 class TimezoneViewSet(viewsets.ViewSet):
     """View sets for listing and searching countries"""
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
+        self.timezones = pytz.all_timezones
+
     permission_classes = [IsAuthenticated]
 
     def list(self, _):
         """Retrieves a list of available timezones"""
-        return Response(_to_timezone_data(pytz.all_timezones))
+        return Response(_to_timezone_data(self.timezones))
