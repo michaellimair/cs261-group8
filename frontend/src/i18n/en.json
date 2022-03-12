@@ -94,8 +94,11 @@
       "title": "Mentee Milestones",
       "description": "Milestones for mentees set out in the mentoring arrangement."
     },
+    "group_meetings_mentor": {
+      "title": "Group Meetings (Mentors)"
+    },
     "group_meetings": {
-      "title": "Group Meetings",
+      "title": "Group Meetings (Mentees)",
       "description": "See proposed group meetings",
       "propose_group": "Propose a new group meeting",
       "available_groups": "Available group meetings",

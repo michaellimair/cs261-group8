@@ -181,7 +181,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     allowedGroups: MENTEE_ONLY,
   },
   {
-    name: 'group_meetings',
+    name: 'group_meetings_mentor',
     element: <MentorGroupPage />,
     layout: RouteLayout.USER,
     path: 'mentor-groups',
