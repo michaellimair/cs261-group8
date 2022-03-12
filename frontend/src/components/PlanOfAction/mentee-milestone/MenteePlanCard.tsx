@@ -4,11 +4,11 @@ import {
   Flex,
   Heading, HStack, Progress, Stack,
 } from '@chakra-ui/react';
-import PlanOfAction from 'components/PlanOfAction/shared-components/PlanOfAction';
+import Milestone from 'components/PlanOfAction/shared-components/Milestone';
 import React, { FC, useCallback } from 'react';
 import MentorComment from './MentorComment';
 
-const MenteeMilestoneCard: FC = () => {
+const MenteePlanCard: FC = () => {
   const [value, setValue] = React.useState(0);
   const handlePlusClick = useCallback(() => {
     setValue(value >= 90 ? 100 : value + 10);
@@ -27,8 +27,8 @@ const MenteeMilestoneCard: FC = () => {
         <Stack>
           <HStack m="20px" mt="40px" spacing={6} style={{ alignItems: 'end' }}>
             <Accordion allowMultiple>
-              <PlanOfAction />
-              <PlanOfAction />
+              <Milestone />
+              <Milestone />
             </Accordion>
             <Button id="add-btn" colorScheme="green" onClick={handlePlusClick}>+</Button>
             <Button id="remove-btn" colorScheme="red" onClick={handleMinusClick}>-</Button>
@@ -41,4 +41,4 @@ const MenteeMilestoneCard: FC = () => {
   );
 };
 
-export default MenteeMilestoneCard;
+export default MenteePlanCard;
