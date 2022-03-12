@@ -1,20 +1,16 @@
 import { IBusinessArea } from 'customTypes/auth';
-import urljoin from 'url-join';
 import BaseAPI from './base.api';
+import CommonAPI from './common.api';
 
 /**
  * API class for business area.
  */
-class BusinessAreaAPI {
-  private basePath: string;
-
+class BusinessAreaAPI extends CommonAPI {
   constructor(
     private readonly api: BaseAPI,
   ) {
-    this.basePath = '/business-areas';
+    super('/business-areas');
   }
-
-  private getPath = (path: string) => urljoin(this.basePath, path);
 
   listBusinessAreas = (): Promise<IBusinessArea[]> => this.api.get<IBusinessArea[]>({
     path: this.getPath(''),

@@ -3,7 +3,7 @@
 ###########
 
 # using python 3.9
-FROM python:3.9.10-alpine
+FROM python:3.9.10-slim-buster
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /usr/src/app
@@ -12,10 +12,11 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apk update \
-    && apk add gcc python3-dev curl musl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev
+RUN apt-get update \
+    && apt-get install --assume-yes gcc python3-dev curl musl-dev libffi-dev g++ gfortran libxml2 libxml2-dev wget libpng-dev libxslt-dev
 
 RUN pip install --upgrade pip
+RUN pip install --upgrade cython
 RUN pip install pipenv
 
 COPY Pipfile .
@@ -25,8 +26,5 @@ RUN pipenv lock --keep-outdated --requirements > requirements.txt
 RUN pip install -r requirements.txt
 
 COPY . .
-
-# install dependencies
-RUN apk update && apk add libpq
 
 ENTRYPOINT [ "sh", "./entrypoint.sh" ]

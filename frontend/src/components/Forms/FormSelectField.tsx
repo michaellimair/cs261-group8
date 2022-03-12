@@ -1,4 +1,6 @@
-import { FormControl, FormLabel, Select } from '@chakra-ui/react';
+import {
+  FormControl, FormErrorMessage, FormLabel, Select,
+} from '@chakra-ui/react';
 import { IFieldProps } from 'customTypes/form';
 import { PropsWithChildren } from 'react';
 
@@ -9,6 +11,7 @@ interface IFormSelectFieldProps<T> extends Omit<IFieldProps<T>, 'type'> {
   }[];
   placeholder?: string;
   label: string;
+  valueAsNumber?: boolean;
 }
 
 const FormSelectField = <T extends any>({
@@ -20,6 +23,7 @@ const FormSelectField = <T extends any>({
   options,
   placeholder,
   label: formLabel,
+  valueAsNumber,
 }: PropsWithChildren<IFormSelectFieldProps<T>>) => (
   <FormControl
     id={name}
@@ -29,11 +33,20 @@ const FormSelectField = <T extends any>({
     mb={2}
   >
     <FormLabel data-testid={`${name}-label`}>{formLabel}</FormLabel>
-    <Select placeholder={placeholder} {...register(name)} autoComplete={autoComplete}>
+    <Select
+      placeholder={placeholder}
+      {...register(name, {
+        valueAsNumber,
+      })}
+      autoComplete={autoComplete}
+    >
       {options.map(({ label, value }) => (
         <option value={value as any} key={value as any}>{label}</option>
       ))}
     </Select>
+    <FormErrorMessage>
+      {error}
+    </FormErrorMessage>
   </FormControl>
   );
 

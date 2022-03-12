@@ -1,20 +1,16 @@
 import { IFeedback, IFeedbackDTO } from 'customTypes/feedback';
-import urljoin from 'url-join';
 import BaseAPI from './base.api';
+import CommonAPI from './common.api';
 
 /**
  * API class which wraps all authentication methods.
  */
-class FeedbackAPI {
-  private basePath: string;
-
+class FeedbackAPI extends CommonAPI {
   constructor(
     private readonly api: BaseAPI,
   ) {
-    this.basePath = '/feedbacks';
+    super('/feedbacks');
   }
-
-  private getPath = (path: string) => urljoin(this.basePath, path);
 
   createFeedback = (
     feedback: IFeedbackDTO,

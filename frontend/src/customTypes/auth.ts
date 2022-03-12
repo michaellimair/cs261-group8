@@ -80,3 +80,5 @@ export interface ILoginResult {
 export type ILoginError = IApiBadRequestErrorData<Partial<ILogin>>;
 
 export type IRegistrationError = IApiBadRequestErrorData<Partial<IRegistration>>;
+
+export type IWelcomeError = IApiBadRequestErrorData<Partial<IUserProfileDTO>>;

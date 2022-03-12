@@ -49,6 +49,7 @@ const FormField = <T extends any>({
           autoComplete={autoComplete}
           {...register(name, {
             required: required ? t('no_blank', { field: formLabel ?? t(name) }) as any : undefined,
+            valueAsNumber: type === 'number',
           })}
           placeholder={placeholder}
         />

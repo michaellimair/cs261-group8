@@ -30,6 +30,7 @@ class UserProfileFactory(factory.django.DjangoModelFactory):
     country = "ID"
     timezone = "Asia/Hong_Kong"
     avatar = factory.django.ImageField(filename='the_file.jpg')
+    languages = ["en", "id", "zh"]
     skills = ["Real Estate Transactions",
         "Sales Management",
         "Sales Operations",

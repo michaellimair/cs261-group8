@@ -5,11 +5,13 @@ from thefuzz import process
 
 from .utils import get_skills
 
-all_skills = get_skills()
-
 # Create your views here.
 class SkillViewSet(viewsets.ViewSet):
-    """View sets for listing and searching skills"""
+    """View set for listing and searching skills"""
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
+        self.skills = get_skills()
+
     permission_classes = [IsAuthenticated]
 
     def list(self, request):
@@ -17,6 +19,6 @@ class SkillViewSet(viewsets.ViewSet):
         # TODO: Use speedup version of fuzz
         search_query = request.query_params.get('q')
         if search_query:
-            search_result = process.extract(search_query, all_skills, limit=2)
+            search_result = process.extract(search_query, self.skills, limit=2)
             return Response([val for (val, _) in search_result])
-        return Response(all_skills)
+        return Response(self.skills)

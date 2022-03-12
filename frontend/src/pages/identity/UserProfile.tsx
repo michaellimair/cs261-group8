@@ -1,140 +1,208 @@
 import {
   Button,
   Flex,
-  FormControl,
   FormLabel,
   Heading,
   Input,
   Stack,
-  useColorModeValue,
   Avatar,
-  AvatarBadge,
-  IconButton,
   Center,
-  ListItem,
-  UnorderedList,
+  FormErrorMessage,
+  FormControl,
+  InputGroup,
 } from '@chakra-ui/react';
 
-import { SmallCloseIcon } from '@chakra-ui/icons';
-import { FC } from 'react';
-import BusinessAreas from 'components/user-profile-components/BusinessAreas';
+import {
+  FC, useCallback, useEffect, useRef,
+} from 'react';
+import { useUser } from 'hooks/useUser';
+import {
+  IUserProfile, IUserProfileDTO,
+} from 'customTypes/auth';
+import { httpClient } from 'api';
+import { useQuery } from 'react-query';
+import useCommonForm from 'hooks/useCommonForm';
+import ApiError from 'api/error/ApiError';
+import { FormField, FormSelectField } from 'components/Forms';
+import { useTranslation } from 'react-i18next';
+import { omit } from 'lodash';
+import useCountries from 'hooks/useCountries';
+import useTitleOptions from 'hooks/useTitleOptions';
+import useTimezoneOptions from 'hooks/useTimezoneOptions';
+import useBusinessAreaOptions from 'hooks/useBusinessAreaOptions';
+import Skills from 'components/user-profile-components/Skills';
 
-const UserProfile: FC = () => (
-  <Flex
-    minH="100vh"
-    align="center"
-    justify="center"
-    bg={useColorModeValue('gray.50', 'gray.800')}
-  >
-    <Stack
-      spacing={4}
-      w="full"
-      maxW="md"
-      bg={useColorModeValue('white', 'gray.700')}
-      rounded="xl"
-      boxShadow="lg"
-      p={6}
-      my={12}
+const UserProfile: FC = () => {
+  const { user } = useUser();
+  const countryOptions = useCountries();
+  const titleOptions = useTitleOptions();
+  const timezoneOptions = useTimezoneOptions();
+  const businessAreaOptions = useBusinessAreaOptions();
+
+  const { t } = useTranslation();
+
+  const { data: userProfile, refetch } = useQuery(['profile', user?.id], () => httpClient.profile.getProfile(user?.id!));
+  const avatarInputRef = useRef<HTMLInputElement>();
+  const onAvatarClick = useCallback(() => {
+    avatarInputRef.current?.click();
+  }, []);
+  const {
+    register,
+    onSubmit,
+    errors,
+    watch,
+    reset,
+    setValue,
+  } = useCommonForm<IUserProfileDTO, ApiError<any>, IUserProfile>({
+    mutationFn: async (values) => httpClient.profile.updateProfile(
+      user?.id!,
+      values,
+    ),
+    mutationId: ['profile', user?.id!, 'update'],
+    onSuccess: () => {
+      refetch();
+    },
+  });
+
+  useEffect(() => {
+    if (userProfile) {
+      reset(omit(userProfile, ['avatar', 'business_area']));
+    }
+  }, [userProfile, reset]);
+
+  const avatarFile = watch('avatar');
+
+  return (
+    <form
+      id="frm-profile"
+      onSubmit={onSubmit}
     >
-      <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
-        My Profile
-      </Heading>
-      <FormControl id="userName">
-        <Stack direction={['column', 'row']} spacing={6}>
+      <Flex
+        minH="100vh"
+        align="center"
+        justify="center"
+        bg="white"
+      >
+        <Stack
+          spacing={4}
+          w="full"
+          maxW="md"
+          bg="white"
+          rounded="xl"
+          boxShadow="lg"
+          p={6}
+          my={12}
+        >
+          <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
+            My Profile
+          </Heading>
           <Center>
-            <Avatar size="xl">
-              <AvatarBadge
-                as={IconButton}
-                size="sm"
-                rounded="full"
-                top="-10px"
-                colorScheme="red"
-                aria-label="remove Image"
-                icon={<SmallCloseIcon />}
-              />
-            </Avatar>
+            <Avatar className="mx-auto" size="xl" src={avatarFile ? URL.createObjectURL(avatarFile) : userProfile?.avatar!} name={user?.full_name!} />
           </Center>
-          <Stack m="20px" spacing={6} direction="row">
-            <Center>
-              <Avatar src="https://thumbs.dreamstime.com/z/globe-grid-vector-icon-isolated-white-background-181317661.jpg" />
-              <Stack m="20px" spacing={2} direction="column">
-                <Heading size="xs">
-                  Location:
-                </Heading>
-                <Heading size="xs">
-                  Timezone:
-                </Heading>
-              </Stack>
-            </Center>
+          <InputGroup alignItems="center" justifyContent="center">
+            <Button onClick={onAvatarClick}>
+              <Input
+                type="file"
+                multiple={false}
+                {...register('avatar')}
+                ref={avatarInputRef as any}
+                hidden
+                accept="image/*"
+                onChange={(e) => {
+                  if (e.target.files) {
+                    setValue('avatar', e.target.files[0]);
+                  }
+                }}
+              />
+              {t('change_avatar')}
+            </Button>
+          </InputGroup>
+          <FormLabel>User name</FormLabel>
+          <Input
+            placeholder="UserName"
+            value={user?.username}
+            readOnly
+            _placeholder={{ color: 'gray.500' }}
+            disabled
+            type="text"
+          />
+
+          <FormLabel>Email address</FormLabel>
+          <Input
+            placeholder="your-email@example.com"
+            value={user?.email}
+            readOnly
+            disabled
+            _placeholder={{ color: 'gray.500' }}
+            type="email"
+          />
+          <FormField<IUserProfileDTO>
+            register={register}
+            name="pronoun"
+            error={errors?.pronoun}
+          />
+          <FormSelectField
+            name="timezone"
+            label={t('timezone')}
+            required
+            error={errors?.timezone}
+            register={register}
+            options={timezoneOptions}
+          />
+          <FormSelectField
+            name="country"
+            label={t('country')}
+            required
+            error={errors?.country}
+            register={register}
+            options={countryOptions}
+          />
+          <FormSelectField
+            name="business_area_id"
+            label={t('business_area')}
+            required
+            error={errors?.business_area_id}
+            register={register}
+            valueAsNumber
+            options={businessAreaOptions}
+          />
+          <FormSelectField
+            name="title"
+            label={t('title')}
+            error={errors?.title}
+            register={register}
+            options={titleOptions}
+          />
+          <FormField<IUserProfileDTO>
+            register={register}
+            name="years_experience"
+            error={errors?.years_experience}
+            type="number"
+          />
+
+          <Skills />
+
+          <FormControl id="non-field" isInvalid={Boolean(errors?.non_field_errors)} mt={['0 !important']}>
+            <FormErrorMessage>{errors?.non_field_errors}</FormErrorMessage>
+          </FormControl>
+          <Stack spacing={6} direction={['column', 'row']}>
+            <Button
+              bg="blue.400"
+              color="white"
+              w="full"
+              _hover={{
+                bg: 'blue.500',
+              }}
+              type="submit"
+            >
+              Submit
+            </Button>
           </Stack>
         </Stack>
-      </FormControl>
-      <FormControl id="userName">
-        <FormLabel>User name</FormLabel>
-        <Input
-          placeholder="UserName"
-          readOnly
-          _placeholder={{ color: 'gray.500' }}
-          type="text"
-        />
-      </FormControl>
-      <FormControl id="email">
-        <FormLabel>Email address</FormLabel>
-        <Input
-          placeholder="your-email@example.com"
-          readOnly
-          _placeholder={{ color: 'gray.500' }}
-          type="email"
-        />
-      </FormControl>
-      <BusinessAreas />
-      <FormLabel>Areas of interest</FormLabel>
-      <UnorderedList m="20px" spacing={3} id="areas-of-interest">
-        <ListItem>First interest</ListItem>
-        <ListItem>Second interest</ListItem>
-        <ListItem>Third interest</ListItem>
-        <ListItem>Fourth interest</ListItem>
-      </UnorderedList>
-      <FormControl id="seniority">
-        <FormLabel>Seniority</FormLabel>
-        <Input
-          placeholder="seniority"
-          readOnly
-          _placeholder={{ color: 'gray.500' }}
-        />
-      </FormControl>
-      <FormControl id="years-of-experience">
-        <FormLabel>Years of experience</FormLabel>
-        <Input
-          placeholder="years of experience"
-          readOnly
-          _placeholder={{ color: 'gray.500' }}
-        />
-      </FormControl>
-      <Stack spacing={6} direction={['column', 'row']}>
-        <Button
-          bg="red.400"
-          color="white"
-          w="full"
-          _hover={{
-            bg: 'red.500',
-          }}
-        >
-          Cancel
-        </Button>
-        <Button
-          bg="blue.400"
-          color="white"
-          w="full"
-          _hover={{
-            bg: 'blue.500',
-          }}
-        >
-          Submit
-        </Button>
-      </Stack>
-    </Stack>
-  </Flex>
-);
+      </Flex>
+    </form>
+
+  );
+};
 
 export default UserProfile;
