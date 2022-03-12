@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'matching',
     'django_seed',
     'language',
+    'meeting',
 ]
 
 REST_FRAMEWORK = {
