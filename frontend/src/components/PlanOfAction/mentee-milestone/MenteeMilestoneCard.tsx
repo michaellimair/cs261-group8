@@ -21,7 +21,7 @@ const MenteeMilestoneCard: FC = () => {
     <Flex align="center" p="4" pl="8" pr="8" boxShadow="lg" m="4" borderRadius="lg" bg="white" width="fit-content" height="fit-content">
       <Stack>
         <HStack spacing={6}>
-          <Heading size="md">Milestone</Heading>
+          <Heading size="md">Plan of Action</Heading>
           <Progress width="400px" height="30px" colorScheme="red" value={value} />
         </HStack>
         <Stack>

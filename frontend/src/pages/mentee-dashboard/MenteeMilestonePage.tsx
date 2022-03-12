@@ -21,11 +21,11 @@ const MenteeMilestonePage: FC = () => {
   return (
     <Stack p="4" spacing="24px">
       <Center>
-        <Heading size="2xl">{t('mentee_milestone')}</Heading>
+        <Heading size="2xl">{t('mentee_plan')}</Heading>
       </Center>
       <VStack spacing="0" align="stretch">
         <Button colorScheme="purple" size="lg" borderBottomRadius={isShow ? ('0') : 'lg'} onClick={handleClick}>
-          {t('create_milestone')}
+          {t('create_plan')}
           {' '}
           {isShow ? (<ChevronDownIcon />) : (<ChevronRightIcon />)}
         </Button>

@@ -91,8 +91,8 @@
       "cancel": "Cancel Editing"
     },
     "mentee_milestones": {
-      "title": "Mentee Milestones",
-      "description": "Milestones for mentees set out in the mentoring arrangement."
+      "title": "My Plans of Action",
+      "description": "My plans of action set out in the mentoring arrangement."
     },
     "meetings": {
       "past_meetings": "Past Meetings",
@@ -156,7 +156,7 @@
     "md": "Managing Director"
   },
   "timezone": "Timezone",
-  "mentee_milestone": "My Milestones",
-  "create_milestone": "Create new milestone",
-  "create_milestone_title": "Milestone title:"
+  "mentee_plan": "My Plans of Action",
+  "create_plan": "Create new plan of action",
+  "create_plan_title": "Plan of action title:"
 }

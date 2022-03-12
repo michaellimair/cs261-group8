@@ -8,7 +8,7 @@ const PlanOfAction: FC = () => (
     <h2>
       <AccordionButton>
         <Box flex="1" textAlign="left">
-          Plan of Action
+          Milestone
           {' '}
           <Checkbox colorScheme="green" />
         </Box>
