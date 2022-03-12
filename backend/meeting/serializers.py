@@ -51,3 +51,10 @@ class MeetingSerializer(serializers.ModelSerializer):
         }
 
         return super().create(meeting_data)
+
+    def update(self, instance, validated_data):
+        if instance.status == MeetingStatus.ACCEPTED:
+            raise serializers.ValidationError({
+                "status": ["Accepted meetings cannot be updated."]
+            })
+        return super().update(instance, validated_data)
