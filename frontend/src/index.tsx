@@ -9,6 +9,8 @@ import { UserContextProvider } from 'context/UserContext';
 import { queryClient } from 'libs/query-client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'react-calendar/dist/Calendar.css';
+import './CustomCalendar.css';
 
 ReactDOM.render(
   <React.StrictMode>
