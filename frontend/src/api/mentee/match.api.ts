@@ -1,6 +1,6 @@
 import { IInitiateMatchDTO, IMatch, IMatchSuggestion } from 'customTypes/matching';
-import BaseAPI from './base.api';
-import CommonAPI from './common.api';
+import BaseAPI from '../base.api';
+import CommonAPI from '../common.api';
 
 class MenteeAPI extends CommonAPI {
   constructor(private readonly api: BaseAPI) {
