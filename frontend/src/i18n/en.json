@@ -155,9 +155,8 @@
     "dir": "Director",
     "md": "Managing Director"
   },
-  "business_area": "Business Area",
-  "country": "Country",
   "timezone": "Timezone",
-  "change_avatar": "Change Avatar",
-  "pronoun": "Pronoun"
+  "mentee_milestone": "My Milestones",
+  "create_milestone": "Create new milestone",
+  "create_milestone_title": "Milestone title:"
 }
