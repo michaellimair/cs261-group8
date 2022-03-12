@@ -74,10 +74,10 @@ class Command(BaseCommand):
                 user=user,
                 country=np.random.choice(avail_countries),
                 timezone=np.random.choice(avail_timezones),
-                skills=random.sample(user_skill_options, 5),
+                skills=random.sample(user_skill_options, k=5),
                 years_experience=np.random.randint(1, 20),
                 title=np.random.choice(avail_titles),
-                languages=random.sample(avail_languages, 5),
+                languages=random.sample(avail_languages, k=5),
                 business_area=np.random.choice(business_areas),
                 pronoun=np.random.choice(avail_pronouns)
             )

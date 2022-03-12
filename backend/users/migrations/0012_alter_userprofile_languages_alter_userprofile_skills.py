@@ -16,11 +16,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='userprofile',
             name='languages',
-            field=django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=2, validators=[language.utils.is_valid_language]), default=list(), size=None),
+            field=django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=2, validators=[language.utils.is_valid_language]), default=list, size=None),
         ),
         migrations.AlterField(
             model_name='userprofile',
             name='skills',
-            field=django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=512, validators=[skill.utils.validate_skill]), default=list(), size=None),
+            field=django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=512, validators=[skill.utils.validate_skill]), default=list, size=None),
         ),
     ]

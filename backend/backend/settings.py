@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'django_seed',
     'language',
     'meeting',
+    'group_session',
+    'event'
 ]
 
 REST_FRAMEWORK = {

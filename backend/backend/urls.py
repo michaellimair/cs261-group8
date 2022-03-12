@@ -40,6 +40,7 @@ from matching.views import (
     MentorMatchView,
     MenteeMatchSuggestionView,
 )
+from event.views import EventViewSet
 from country.views import CountryViewSet
 from plan_of_action.views import (
     PlanOfActionMentorViewSet,
@@ -49,6 +50,7 @@ from plan_of_action.views import (
     CommentMenteeViewSet,
     CommentMentorViewSet,
 )
+from meeting.views import MeetingMenteeViewSet
 
 user_patterns = [
     path(
@@ -67,7 +69,9 @@ router.register(r'profiles', UserProfileViewSet, basename='profile')
 router.register(r'countries', CountryViewSet, basename='country')
 router.register(r'languages', LanguageViewSet, basename='language')
 router.register(r'timezones', TimezoneViewSet, basename='timezone')
+router.register(r'events', EventViewSet, basename='event')
 router.register(r'skills', SkillViewSet, basename='skill')
+router.register(r'mentee/meetings', MeetingMenteeViewSet, basename='meeting')
 router.register(r'mentee/matches', MenteeMatchView, basename='mentee_matches')
 router.register(r'mentee/match-suggestions',
     MenteeMatchSuggestionView,

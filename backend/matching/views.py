@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from users.models import UserProfile
 from users.permission_constants import MENTOR_GROUP
 from users.serializers import UserSerializer
-from users.permissions import IsMentor, IsMentee
+from users.permissions import IsMentor, IsMentee, IsProfileCompleted
 from users.utils import get_higher_titles
 from .utils import match_score_it
 from .models import MentoringPair
@@ -85,7 +85,7 @@ class MenteeMatchSuggestionView(
         mixins.ListModelMixin,
         viewsets.GenericViewSet):
     """View related to providing match suggestions for mentee"""
-    permission_classes = [IsMentee]
+    permission_classes = [IsMentee, IsProfileCompleted]
 
     # pylint: disable=arguments-differ
     def list(self, request):
