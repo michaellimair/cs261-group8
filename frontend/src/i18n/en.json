@@ -94,15 +94,22 @@
       "title": "Mentee Milestones",
       "description": "Milestones for mentees set out in the mentoring arrangement."
     },
-    "group_sessions": {
-      "title": "Group Sessions",
-      "description": "See proposed group sessions",
-      "propose_group": "Propose a new group session",
-      "available_groups": "Available group sessions",
+    "group_meetings": {
+      "title": "Group Meetings",
+      "description": "See proposed group meetings",
+      "propose_group": "Propose a new group meeting",
+      "available_groups": "Available group meetings",
       "tutoring": "Group Tutoring",
       "group_session": "Group Session",
+      "group_tutoring": "Group Tutoring",
       "select_topics": "Select topics which you would be interested in",
-      "propose_sessions": "Propose Sessions"
+      "propose_sessions": "Propose Meeting Topics",
+      "in_demand_topics": "In Demand Topics",
+      "proposed_topic": "Proposed topic:",
+      "run_group": "Run group",
+      "create_meeting": "Create a new group meeting",
+      "meeting_type": "Meeting Type",
+      "accepted_meetings": "Accepted Meetings"
     },
     "meetings": {
       "past_meetings": "Past Meetings",

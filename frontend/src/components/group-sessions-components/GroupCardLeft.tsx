@@ -10,7 +10,7 @@ import {
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { t } from 'i18next';
 import { IGroupCardProps } from 'customTypes/group';
-import MeetingCardDateTime from 'components/Meetings/MeetingCardDateTime';
+import GroupMeetingCardDateTime from './GroupMeetingCardDateTime';
 
 const GroupCardLeft: FC<IGroupCardProps> = ({
   title,
@@ -18,12 +18,13 @@ const GroupCardLeft: FC<IGroupCardProps> = ({
   isTutoring,
   linkToMeeting,
   meetingTime,
+  mentor,
 }) => (
   <Flex align="center">
     <Box flex="4">
       <VStack align="left">
         <Heading>{title}</Heading>
-        <Heading as="h4" size="md">{isTutoring ? t('dashboard.group_sessions.tutoring') : t('dashboard.group_sessions.group_session')}</Heading>
+        <Heading as="h4" size="md">{isTutoring ? t('dashboard.group_meetings.tutoring') : t('dashboard.group_meetings.group_session')}</Heading>
         <Text fontSize={{ base: 'lg' }} textAlign="left" maxW="4xl">
           {body}
         </Text>
@@ -35,8 +36,9 @@ const GroupCardLeft: FC<IGroupCardProps> = ({
       </VStack>
     </Box>
     <Box flex="2">
-      <MeetingCardDateTime
+      <GroupMeetingCardDateTime
         meetingTime={meetingTime}
+        mentor={mentor}
       />
     </Box>
   </Flex>

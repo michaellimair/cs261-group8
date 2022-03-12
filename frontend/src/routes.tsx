@@ -26,6 +26,7 @@ import EditFeedbackPage from 'pages/feedback/[id]/edit';
 import MenteeMilestonePage from 'pages/mentee-dashboard/MenteeMilestonePage';
 import UserProfile from 'pages/identity/UserProfile';
 import MenteeGroupPage from 'pages/groups/mentee-groups';
+import MentorGroupPage from 'pages/groups/mentor-groups';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -171,13 +172,22 @@ export const dashboardRoutes: IDashboardRoute[] = [
     allowedGroups: MENTEE_ONLY,
   },
   {
-    name: 'group_sessions',
+    name: 'group_meetings',
     element: <MenteeGroupPage />,
     layout: RouteLayout.USER,
-    path: 'group-sessions',
+    path: 'mentee-groups',
     icon: TiGroupOutline,
-    description: 'group_sessions.description',
+    description: 'dashboard.group_meetings.description',
     allowedGroups: MENTEE_ONLY,
+  },
+  {
+    name: 'group_meetings',
+    element: <MentorGroupPage />,
+    layout: RouteLayout.USER,
+    path: 'mentor-groups',
+    icon: TiGroupOutline,
+    description: 'dashboard.group_meetings.description',
+    allowedGroups: MENTOR_ONLY,
   },
   {
     name: 'create_feedback',

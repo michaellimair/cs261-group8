@@ -20,6 +20,26 @@ const groups : IGroupCardProps[] = [
     isTutoring: false,
     linkToMeeting: '#',
     meetingTime: dt,
+    mentor: {
+      id: 2,
+      username: '',
+      email: '',
+      first_name: 'string',
+      last_name: 'string',
+      full_name: 'Full Name',
+      profile: {
+        completed: false,
+        pronoun: null,
+        years_experience: null,
+        title: null,
+        business_area: null,
+        country: null,
+        timezone: null,
+        skills: null,
+        avatar: 'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9',
+      },
+      groups: [],
+    },
   },
 ];
 
@@ -33,17 +53,17 @@ const MenteeGroupPage: FC = () => {
   return (
     <Stack p="4" spacing="24px">
       <Center>
-        <Heading size="2xl">{t('dashboard.group_sessions.title')}</Heading>
+        <Heading size="2xl">{t('dashboard.group_meetings.title')}</Heading>
       </Center>
       <VStack spacing="0" align="stretch">
         <Button colorScheme="blue" size="lg" borderBottomRadius={isShow ? ('0') : 'lg'} onClick={handleClick}>
-          {t('dashboard.group_sessions.propose_group')}
+          {t('dashboard.group_meetings.propose_group')}
           {' '}
           {isShow ? (<ChevronDownIcon />) : (<ChevronRightIcon />)}
         </Button>
         {isShow && <ProposeGroupSession />}
       </VStack>
-      <Heading>{t('dashboard.group_sessions.available_groups')}</Heading>
+      <Heading>{t('dashboard.group_meetings.available_groups')}</Heading>
       {groups.map((group) => (
         <MenteeAvailableGroupCard
           title={group.title}
@@ -51,6 +71,7 @@ const MenteeGroupPage: FC = () => {
           isTutoring={group.isTutoring}
           linkToMeeting={group.linkToMeeting}
           meetingTime={group.meetingTime}
+          mentor={group.mentor}
         />
       ))}
     </Stack>

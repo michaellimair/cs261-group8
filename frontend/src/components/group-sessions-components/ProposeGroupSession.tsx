@@ -40,7 +40,7 @@ const ProposeGroupSession = () => {
     >
       <Box w="75%">
         <VStack align="left">
-          <Text>{t('dashboard.group_sessions.select_topics')}</Text>
+          <Text>{t('dashboard.group_meetings.select_topics')}</Text>
           <InterestList interests={interests} deleteInterest={deleteInterest} />
           <AddInterest addInterest={addInterest} />
         </VStack>
@@ -48,7 +48,7 @@ const ProposeGroupSession = () => {
       <Box w="25%">
         <VStack align="stretch" pl="8">
           <Button colorScheme="blue" variant="outline">
-            {t('dashboard.group_sessions.propose_sessions')}
+            {t('dashboard.group_meetings.propose_sessions')}
           </Button>
         </VStack>
       </Box>

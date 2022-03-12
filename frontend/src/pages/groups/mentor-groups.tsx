@@ -6,8 +6,9 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import MentorPotentialGroupCard from 'components/group-sessions-components/MentorPotentialGroupCard';
-import { IGroupCardProps, ITopicProps } from 'customTypes/group';
+
 import MentorAcceptedGroupCard from 'components/group-sessions-components/MentorAcceptedGroupCard';
+import { IGroupCardProps, ITopicProps } from 'customTypes/group';
 
 const dt = new Date('2022-04-02T18:00:00Z');
 const acceptedMeetings : IGroupCardProps[] = [

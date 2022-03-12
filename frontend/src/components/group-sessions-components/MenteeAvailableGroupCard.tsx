@@ -16,6 +16,7 @@ const MenteeAvailableGroupCard: FC<IGroupCardProps> = ({
   isTutoring,
   linkToMeeting,
   meetingTime,
+  mentor,
 }) => (
   <Flex align="center" p="4" pl="8" pr="8" boxShadow="lg" m="4" borderRadius="lg" bg="white" divider={<StackDivider borderColor="gray.200" />}>
     <Box flex="5">
@@ -25,6 +26,7 @@ const MenteeAvailableGroupCard: FC<IGroupCardProps> = ({
         isTutoring={isTutoring}
         linkToMeeting={linkToMeeting}
         meetingTime={meetingTime}
+        mentor={mentor}
       />
     </Box>
     <Box flex="1.5">
