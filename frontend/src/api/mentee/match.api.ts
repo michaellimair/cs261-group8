@@ -2,7 +2,7 @@ import { IInitiateMatchDTO, IMatch, IMatchSuggestion } from 'customTypes/matchin
 import BaseAPI from '../base.api';
 import CommonAPI from '../common.api';
 
-class MenteeAPI extends CommonAPI {
+class MenteeMatchAPI extends CommonAPI {
   constructor(private readonly api: BaseAPI) {
     super('/mentee');
   }
@@ -21,4 +21,4 @@ class MenteeAPI extends CommonAPI {
   });
 }
 
-export default MenteeAPI;
+export default MenteeMatchAPI;

@@ -11,7 +11,7 @@ import CommonAPI from '../common.api';
 /**
  * API class which wraps all authentication methods.
  */
-class MenteePlanOfActionAPI extends CommonAPI {
+class MentorPlanOfActionAPI extends CommonAPI {
   constructor(
     private readonly api: BaseAPI,
   ) {
@@ -61,4 +61,4 @@ class MenteePlanOfActionAPI extends CommonAPI {
   });
 }
 
-export default MenteePlanOfActionAPI;
+export default MentorPlanOfActionAPI;
