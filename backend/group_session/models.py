@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from django.db import models
 from django.contrib.auth import get_user_model
 from django_extensions.db.models import TimeStampedModel, TitleDescriptionModel
@@ -19,9 +20,13 @@ class GroupSession(TimeStampedModel, TitleDescriptionModel):
     )
 
 class GroupSessionRequest(TimeStampedModel):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    skills = ArrayField(
-        models.CharField(max_length=512, validators=[validate_skill]),
-        default=list
-    )
-    type = models.CharField(max_length=64, choices=GroupSessionType.choices)
+    # One user can only request a group session once
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, unique_for_date="created")
+
+    @property
+    def skills(self):
+        return self.requested_skills_set.all()
+
+class GroupSessionRequestedSkill(models.Model):
+    request = models.ForeignKey(GroupSessionRequest, on_delete=models.CASCADE, related_name="requested_skills")
+    skill = models.CharField(max_length=512, validators=[validate_skill])

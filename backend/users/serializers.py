@@ -7,6 +7,12 @@ from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
 from business_area.models import BusinessArea
 from business_area.serializers import BusinessAreaSerializer
+
+from country.utils import is_valid_country
+from timezone.utils import is_valid_timezone
+from skill.utils import validate_skill
+from language.utils import is_valid_language
+
 from .models import UserProfile
 
 class GroupSerializer(serializers.ModelSerializer):
@@ -26,6 +32,18 @@ class UserProfileSerializer(serializers.ModelSerializer):
     business_area_id = serializers.PrimaryKeyRelatedField(
         queryset=BusinessArea.objects.all(),
         source='business_area')
+    skills = serializers.ListField(
+        child=serializers.CharField(validators=[validate_skill])
+    )
+    interests = serializers.ListField(
+        child=serializers.CharField(validators=[validate_skill]),
+    )
+    languages = serializers.ListField(
+        child=serializers.CharField(validators=[is_valid_language]),
+        allow_empty=False
+    )
+    timezone = serializers.CharField(validators=[is_valid_timezone])
+    country = serializers.CharField(validators=[is_valid_country])
 
     class Meta:
         """

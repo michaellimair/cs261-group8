@@ -12,6 +12,9 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
 # pylint: disable=imported-auth-user
 from django.contrib.auth.models import Group, User
+from django.contrib.auth.hashers import make_password
+
+from group_session.models import GroupSessionRequest, GroupSessionRequestedSkill
 from matching.models import MentoringPair
 from rating.models import MentorRating, MentorRatingEntry
 from language.utils import LANGS_WITH_CODE
@@ -19,7 +22,6 @@ from users.models import UserProfile
 from users.permission_constants import MENTOR_GROUP, MENTEE_GROUP
 from business_area.models import BusinessArea
 from skill.utils import get_skills
-from django.contrib.auth.hashers import make_password
 
 fake = Faker()
 
@@ -169,5 +171,30 @@ class Command(BaseCommand):
                 rating_value=rating_value,
                 description=description)
             rating_entry.save()
+        
+        session_requests = []
+        print("Adding dummy data for requests to create a group session...")
+        for mentee in tqdm(all_mentees):
+            session_requests.append(
+                GroupSessionRequest(
+                    user=mentee,
+                )
+            )
+
+        session_requests = GroupSessionRequest.objects.bulk_create(session_requests)
+
+        requested_skills_objs = []
+
+        for request in session_requests:
+            requested_skills = np.random.choice(user_skill_options, 2)
+            for skill in requested_skills:
+                requested_skills_objs.append(
+                    GroupSessionRequestedSkill(
+                        skill=skill,
+                        request=request
+                    )
+                )
+
+        GroupSessionRequestedSkill.objects.bulk_create(requested_skills_objs)
 
         print("Created default users.")
