@@ -14,7 +14,7 @@ from users.permissions import IsMentor, IsMentee, IsProfileCompleted
 from users.utils import get_higher_titles
 from .utils import match_score_it
 from .models import MentoringPair
-from .serializers import MentoringPairSerializer
+from .serializers import MentorSerializer, MentoringPairSerializer
 
 # Create your views here.
 
@@ -79,7 +79,23 @@ class MentorMatchView(
 
         return Response(serializer.data)
 
+class MenteeMyMentorView(
+        mixins.ListModelMixin,
+        viewsets.GenericViewSet):
+    """View related to providing match suggestions for mentee"""
+    permission_classes = [IsMentee]
+    serializer_class = MentorSerializer
 
+    def get_queryset(self):
+        return MentoringPair.objects.filter(mentee=self.request.user)
+
+    # pylint: disable=arguments-differ
+    def list(self, request):
+        mentee = request.user
+        mentoring_pair = self.get_queryset().filter(
+            status=MentoringPair.PairStatus.ACCEPTED
+        ).first()
+        return Response(self.get_serializer(mentoring_pair).data)
 
 class MenteeMatchSuggestionView(
         mixins.ListModelMixin,
@@ -110,6 +126,8 @@ class MenteeMatchSuggestionView(
                 'id',
                 'profile__skills',
                 'profile__languages',
+                'rating__rating',
+                'rating__rating_count',
                 'mentees_count'])
 
         filtered_mentors_df = match_score_it(
@@ -119,8 +137,8 @@ class MenteeMatchSuggestionView(
 
         filtered_mentors_df.set_index('id', inplace=True)
 
-        filtered_mentors_df.sort_values(by=['score', 'mentees_count'],
-                       ascending=[False, True], inplace=True)
+        filtered_mentors_df.sort_values(by=['score', 'mentees_count', 'rating__rating'],
+                       ascending=[False, True, False], inplace=True)
 
         serializer = UserSerializer(mentors_queryset, many=True)
 
@@ -138,13 +156,10 @@ class MenteeMatchSuggestionView(
                 "id": mentor_id,
                 "score": row.score,
                 "mentees_count": row.mentees_count,
-                "mentor": data_by_id.get(mentor_id)
+                "mentor": data_by_id.get(mentor_id),
+                "rating": row.rating__rating,
+                "rating_count": row.rating__rating_count,
             }
             results.append(updated_data)
 
-        sorted_results = sorted(
-            results,
-            key=lambda x: x['score'],
-            reverse=True)
-
-        return Response(sorted_results)
+        return Response(results)

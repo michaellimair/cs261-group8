@@ -37,6 +37,7 @@ from users.views import (
 from business_area.views import BusinessAreaView
 from matching.views import (
     MenteeMatchView,
+    MenteeMyMentorView,
     MentorMatchView,
     MenteeMatchSuggestionView,
 )
@@ -50,7 +51,13 @@ from plan_of_action.views import (
     CommentMenteeViewSet,
     CommentMentorViewSet,
 )
-from meeting.views import MeetingMenteeViewSet, MeetingMentorViewSet
+from meeting.views import (
+    MeetingMenteeViewSet,
+    MeetingMentorViewSet
+)
+from rating.views import (
+    MenteeRatingViewSet
+)
 
 user_patterns = [
     path(
@@ -76,6 +83,9 @@ router.register(r'mentee/matches', MenteeMatchView, basename='mentee_matches')
 router.register(r'mentee/match-suggestions',
     MenteeMatchSuggestionView,
     basename='mentee_match_suggestions')
+router.register(r'mentee/my-mentor', MenteeMyMentorView, basename='mentee_my_mentor')
+router.register(r'mentee/my-mentor/rate', MenteeRatingViewSet, basename='mentee_my_mentor_rating')
+
 router.register(r'mentee/plans-of-action', PlanOfActionMenteeViewSet, basename='mentee_plans_of_action')
 router.register(r'mentor/matches', MentorMatchView, basename='mentor_matches')
 router.register(r'mentor/plans-of-action', PlanOfActionMentorViewSet, basename='mentor_plans_of_action')

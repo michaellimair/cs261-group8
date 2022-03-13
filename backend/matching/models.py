@@ -24,6 +24,7 @@ class MentoringPair(TimeStampedModel):
         ACCEPTED = 'accepted'
         PENDING = 'pending'
         REJECTED = 'rejected'
+        EXPIRED = 'expired' # Used if mentor/mentee pair is no longer valid
     status = models.CharField(max_length=20, choices=PairStatus.choices, default=PairStatus.PENDING)
 
     class Meta:

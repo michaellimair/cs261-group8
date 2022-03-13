@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 def _to_timezone_data(timezones: List[str]) -> List[Dict]:
     """Convert list of timezones to JSON-serializable metadata"""
     results = []
-    for zone in timezones:
+    for zone in sorted(timezones):
         prefix = datetime.datetime.now(pytz.timezone(zone)).strftime('%Z')
         offset = datetime.datetime.now(pytz.timezone(zone)).strftime('%z')
         results.append({

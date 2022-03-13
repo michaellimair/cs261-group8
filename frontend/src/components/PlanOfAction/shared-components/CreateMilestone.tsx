@@ -19,7 +19,7 @@ const CreateMilestone: FC = () => (
       color="white"
       width="500px"
     >
-      <Center><Heading size="md">Create new milestone</Heading></Center>
+      <Center><Heading size="md">Create new plan of action</Heading></Center>
     </Box>
     <Box
       m="20px"

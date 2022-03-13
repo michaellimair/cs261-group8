@@ -2,7 +2,8 @@ import pycountry
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-LANGS_WITH_CODE = list(filter(lambda x: hasattr(x, 'alpha_2'), list(pycountry.languages)))
+LANGS_WITH_CODE = list(filter(lambda x: hasattr(x, 'alpha_2'), pycountry.languages))
+
 ALL_LANGS = set(lang.alpha_2 for lang in LANGS_WITH_CODE)
 
 def language_to_json(language):
