@@ -136,6 +136,20 @@ const UserProfile: FC = () => {
             _placeholder={{ color: 'gray.500' }}
             type="email"
           />
+
+          <FormLabel>Change password</FormLabel>
+          <Input
+            placeholder="change-password"
+            _placeholder={{ color: 'gray.500' }}
+            type="password"
+          />
+          <FormLabel>Confirm password</FormLabel>
+          <Input
+            placeholder="confirm-password"
+            _placeholder={{ color: 'gray.500' }}
+            type="password"
+          />
+
           <FormField<IUserProfileDTO>
             register={register}
             name="pronoun"
