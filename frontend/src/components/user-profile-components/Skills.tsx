@@ -52,7 +52,6 @@ const Skills: FC = () => {
         </Select>
         <Button onClick={() => addSkillHandler()} size="sm" colorScheme="green">Add</Button>
       </Stack>
-      <Button>Submit skills</Button>
     </Stack>
   );
 };
