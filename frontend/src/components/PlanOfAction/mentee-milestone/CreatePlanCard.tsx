@@ -39,30 +39,6 @@ const CreatePlanCard = () => {
         <CreatePlanButton isLoading={isLoading} />
       </form>
     </Stack>
-  // <Flex
-  //   verticalAlign="top"
-  //   align="center"
-  //   p="4"
-  //   boxShadow="lg"
-  //   m="4"
-  //   borderBottomRadius="lg"
-  //   borderTopRadius="0"
-  //   bg="white"
-  // >
-  //   <Box
-  //     m="20px"
-  //   >
-  //     <Stack m="20px">
-  //       <Box>
-  //         <Heading size="sm">{t('create_plan_title')}</Heading>
-  //         <Center>
-  //           <Input placeholder="Plan of Action title" p="10px" width="400px" />
-  //           <Button m="5px" size="sm" width="100px" colorScheme="blue">Create</Button>
-  //         </Center>
-  //       </Box>
-  //     </Stack>
-  //   </Box>
-  // </Flex>
   );
 };
 
