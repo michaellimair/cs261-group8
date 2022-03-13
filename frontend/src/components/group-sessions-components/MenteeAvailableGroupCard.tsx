@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import {
-  StackDivider,
   Flex,
   Box,
   Button,
@@ -18,7 +17,7 @@ const MenteeAvailableGroupCard: FC<IGroupCardProps> = ({
   meetingTime,
   mentor,
 }) => (
-  <Flex align="center" p="4" pl="8" pr="8" boxShadow="lg" m="4" borderRadius="lg" bg="white" divider={<StackDivider borderColor="gray.200" />}>
+  <Flex align="center" p="4" pl="8" pr="8" boxShadow="lg" m="4" borderRadius="lg" bg="white">
     <Box flex="5">
       <GroupCardLeft
         title={title}

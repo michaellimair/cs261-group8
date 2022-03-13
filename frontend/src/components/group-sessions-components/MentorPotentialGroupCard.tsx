@@ -1,6 +1,5 @@
 import React, { FC, useCallback } from 'react';
 import {
-  StackDivider,
   Heading,
   Flex,
   Text,
@@ -27,7 +26,7 @@ const MentorPotentialGroupCard: FC<ITopicProps> = ({
 
   return (
     <VStack spacing="0" align="stretch">
-      <Flex align="center" p="4" pl="8" pr="8" boxShadow="lg" m="0" borderRadius="lg" borderBottomRadius={isShow ? ('0') : 'lg'} bg="white" divider={<StackDivider borderColor="gray.200" />}>
+      <Flex align="center" p="4" pl="8" pr="8" boxShadow="lg" m="0" borderRadius="lg" borderBottomRadius={isShow ? ('0') : 'lg'} bg="white">
         <VStack>
           <HStack>
             <Box flex="5">
@@ -56,7 +55,6 @@ const MentorPotentialGroupCard: FC<ITopicProps> = ({
           borderBottomRadius="lg"
           borderTopRadius="0"
           bg="white"
-          divider={<StackDivider borderColor="gray.200" />}
         >
           <Box flex="1.25">
             <VStack align="left">
