@@ -59,6 +59,7 @@ from rating.views import (
     MenteeRatingViewSet
 )
 from group_session.views import (
+    GroupSessionMentorViewSet,
     GroupSessionRequestMenteeViewSet,
     GroupSessionSuggestionsMentorViewSet,
 )
@@ -96,7 +97,8 @@ router.register(r'mentee/plans-of-action', PlanOfActionMenteeViewSet, basename='
 router.register(r'mentor/matches', MentorMatchView, basename='mentor_matches')
 router.register(r'mentor/plans-of-action', PlanOfActionMentorViewSet, basename='mentor_plans_of_action')
 router.register(r'mentor/meetings', MeetingMentorViewSet, basename='mentor_meeting')
-router.register(r'mentor/group-sessions/suggestions', GroupSessionSuggestionsMentorViewSet, basename='mentor_meeting')
+router.register(r'mentor/group-sessions/suggestions', GroupSessionSuggestionsMentorViewSet, basename='mentor_group_session_suggestions')
+router.register(r'mentor/group-sessions', GroupSessionMentorViewSet, basename='mentor_group_sessions')
 
 plan_of_action_mentee_router = routers.NestedSimpleRouter(router, r'mentee/plans-of-action', lookup='plan_of_action')
 plan_of_action_mentee_router.register(r'milestones', MilestoneMenteeViewSet, basename='plan_of_action-mentee-milestones')

@@ -1,12 +1,11 @@
 from django.db import models
-from django.db.models import Q
 from django.forms import ValidationError
 from django_extensions.db.models import TimeStampedModel
 from django.contrib.auth import get_user_model
 
 class Event(TimeStampedModel):
     title = models.TextField()
-    description = models.TextField()
+    description = models.TextField(null=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     hosts = models.ManyToManyField(get_user_model(), related_name="hosted_events")

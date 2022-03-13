@@ -19,6 +19,10 @@ class GroupSession(TimeStampedModel, TitleDescriptionModel):
         default=list
     )
 
+    def delete(self, *args, **kwargs):
+        self.event.delete()
+        return super().delete(*args, **kwargs)
+
 class GroupSessionRequest(TimeStampedModel):
     # One user can only request a group session once
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, unique_for_date="created")

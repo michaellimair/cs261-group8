@@ -2,15 +2,55 @@ import datetime
 from rest_framework import serializers
 from skill.utils import validate_skill
 from users.serializers import UserSerializer
-from django.db import transaction
+from event.utils import has_clashing_events
+from event.serializers import EventSerializer
 
-from .models import GroupSession, GroupSessionRequest, GroupSessionRequestedSkill
+from .models import (
+    GroupSession,
+    GroupSessionRequest,
+    GroupSessionRequestedSkill,
+    GroupSessionType
+)
 
 class GroupSessionSerializer(serializers.ModelSerializer):
+    hosts = UserSerializer(read_only=True, many=True, source="event__hosts")
+    max_attendees = serializers.IntegerField(
+        min_value=0
+    )
+    event = EventSerializer()
+    type = serializers.ChoiceField(choices=GroupSessionType.choices)
+    related_skills = serializers.ListField(
+        child=serializers.CharField(validators=[validate_skill])
+    )
+
     class Meta:
         """Metadata for group session serializer."""
         model = GroupSession
-        fields = ('id', 'title', 'description', 'created', 'modified', 'hosts', 'max_attendees', 'related_skills')
+        fields = ('id', 'event', 'created', 'modified', 'hosts', 'max_attendees', 'related_skills', 'type')
+
+    def validate_event(self, value):
+        mentor = self.context.get("request").user
+        if has_clashing_events(
+            mentor,
+            value['start_time'],
+            value['end_time'],
+            self.instance.event.id if self.instance else None
+        ):
+            raise serializers.ValidationError("Event time clashes with one of your other events.")
+        value['hosts'] = [mentor]
+        return value
+
+    def create(self, validated_data):
+        event = EventSerializer().create(validated_data['event'])
+        data = validated_data.copy()
+        data['event'] = event
+        return super().create(data)
+
+    def update(self, instance, validated_data):
+        if validated_data.get("event"):
+            event = EventSerializer().update(self.instance.event, validated_data.get("event"))
+            validated_data['event'] = event
+        return super().update(instance, validated_data)
 
 class GroupSessionDetailSerializer(serializers.ModelSerializer):
     attendees = UserSerializer(read_only=True, many=True)
@@ -57,24 +97,8 @@ class GroupSessionRequestSerializer(serializers.ModelSerializer):
                     request=session_request,
                 )
             )
-        requested_skills = GroupSessionRequestedSkill.objects.bulk_create(requested_skills_obj)
+        GroupSessionRequestedSkill.objects.bulk_create(requested_skills_obj)
         return session_request
-
-    # def create(self, validated_data):
-    #     with transaction.atomic():
-    #         session_request = super().create({
-    #             "user": validated_data['user']    
-    #         })
-    #         skill_objs = []
-    #         for skill in validated_data['skills']:
-    #             skill_objs.append(
-    #                 GroupSessionRequestedSkill(
-    #                     request=session_request,
-    #                     skill=skill
-    #                 )
-    #             )
-    #         GroupSessionRequestedSkill.objects.bulk_create(skill_objs)
-    #         return session_request
 
 class GroupSessionSuggestionSerializer(serializers.Serializer):
     skill = serializers.CharField(validators=[validate_skill], read_only=True)
