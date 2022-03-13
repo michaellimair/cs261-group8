@@ -9,14 +9,6 @@ import PlanFormFields from './PlanFormFields';
 import CreatePlanButton from './CreatePlanButton';
 
 const CreatePlanCard = () => {
-  // eslint-disable-next-line no-empty-pattern
-  const { } = useCommonForm<IPlanOfActionCreateDTO, ApiError<any>, IPlanOfAction>({
-    mutationFn: async (values) => {
-      console.log(values);
-      return {} as any;
-    },
-    mutationId: 'create-plan-of-action',
-  });
   const {
     onSubmit,
     errors,

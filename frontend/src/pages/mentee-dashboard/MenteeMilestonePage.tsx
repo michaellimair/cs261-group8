@@ -17,7 +17,7 @@ import PlanList from 'components/PlanOfAction/mentee-milestone/PlanList';
 const MenteeMilestonePage: FC = () => {
   const { t } = useTranslation();
   const { data, isLoading } = useQuery(
-    ['plans', 'list'],
+    ['plan', 'list'],
     () => httpClient.menteePlanOfAction.listPlansOfAction(),
   );
   const [isShow, setIsShow] = React.useState(false);

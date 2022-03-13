@@ -168,5 +168,8 @@
     "description": "Create a new plan of action",
     "loading": "Creating plan...",
     "placeholder": "Write a description of your plan here..."
-  }
+  },
+  "plan_professional": "Professional",
+  "plan_personal": "Personal",
+  "plan_type": "Plan of Action Type"
 }

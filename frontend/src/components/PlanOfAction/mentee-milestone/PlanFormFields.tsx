@@ -1,9 +1,10 @@
 import { FormControl, FormErrorMessage } from '@chakra-ui/react';
-import { FormField, FormTextareaField } from 'components/Forms';
+import { FormField, FormSelectField, FormTextareaField } from 'components/Forms';
 import { IPlanOfActionCreateDTO } from 'customTypes/plan-of-action';
 import { FC } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import usePlanTypeOptions from 'hooks/usePlanTypeOptions';
 
 interface IPlanFormProps {
   register: UseFormRegister<IPlanOfActionCreateDTO>;
@@ -15,6 +16,7 @@ const PlanFormFields: FC<IPlanFormProps> = ({
   errors,
 }) => {
   const { t } = useTranslation();
+  const planTypeOptions = usePlanTypeOptions();
 
   return (
     <>
@@ -24,12 +26,14 @@ const PlanFormFields: FC<IPlanFormProps> = ({
         error={errors?.title}
         register={register}
       />
-      {/* <FormSelectField
+      <FormSelectField
         name="type"
         required
         error={errors?.type}
         register={register}
-      /> */}
+        label={t('plan_type')}
+        options={planTypeOptions}
+      />
       <FormTextareaField
         name="description"
         required
