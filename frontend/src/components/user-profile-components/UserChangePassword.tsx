@@ -45,10 +45,12 @@ const UserChangePassword: FC = () => {
           <FormField<IUserUpdateDTO>
             name="password"
             register={register}
+            type="password"
           />
           <FormField<IUserUpdateDTO>
             name="verify_password"
             register={register}
+            type="password"
           />
           <Heading size="sm">{}</Heading>
           <Button type="submit" colorScheme="blue">Confirm new password</Button>
