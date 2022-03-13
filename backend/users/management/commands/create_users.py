@@ -4,6 +4,7 @@ import random
 import pytz
 from tqdm import tqdm
 import pycountry
+import math
 import numpy as np
 from typing import List
 from faker import Faker
@@ -107,7 +108,7 @@ class Command(BaseCommand):
         for i in range(num_users):
             user = created_users[i]
             # Create more mentors than mentees
-            user_group = np.random.choice([mentor_group, mentee_group], p=[4/7, 3/7])
+            user_group = np.random.choice([mentor_group, mentee_group], p=[1/5, 4/5])
             user.groups.add(user_group)
 
             # Append entry for creating rating
@@ -143,9 +144,16 @@ class Command(BaseCommand):
 
         mentoring_pairs: List[MentoringPair] = []
 
-        for mentee, mentor in tqdm(zip(all_mentees, all_mentors)):
-            mentoring_pairs.append(MentoringPair(mentor=mentor, mentee=mentee, status=MentoringPair.PairStatus.ACCEPTED))
-        
+        for (index, mentee) in tqdm(enumerate(all_mentees)):
+            mentor_idx = index % len(all_mentors)
+            mentor = all_mentors[mentor_idx]
+            mentoring_pairs.append(
+                MentoringPair(
+                    mentor=mentor,
+                    mentee=mentee,
+                    status=MentoringPair.PairStatus.ACCEPTED)
+            )
+
         print("Pairing mentors with mentees...")
         created_mentoring_pairs = MentoringPair.objects.bulk_create(mentoring_pairs)
 
