@@ -20,4 +20,3 @@ class TestTimezoneViewSet(TestCase):
         response = TimezoneViewSet.as_view({'get': 'list'})(request)
 
         self.assertEqual(response.status_code, 200)
-        self.assertMatchSnapshot(response.data)
