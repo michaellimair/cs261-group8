@@ -9,9 +9,3 @@ global.beforeEach(() => {
   faker.seed(0);
   process.env.TZ = 'UTC';
 });
-
-describe('Timezones', () => {
-  it('should always be UTC', () => {
-    expect(new Date().getTimezoneOffset()).toBe(0);
-  });
-});
