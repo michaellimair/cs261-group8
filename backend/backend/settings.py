@@ -105,6 +105,8 @@ PASSWORD_HASHERS = (
 
 ROOT_URLCONF = 'backend.urls'
 
+TEST_RUNNER = 'snapshottest.django.TestRunner'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

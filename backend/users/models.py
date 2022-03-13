@@ -59,7 +59,7 @@ class UserProfile(models.Model):
     )
     skills = ArrayField(
         models.CharField(max_length=512, validators=[validate_skill]),
-        default=list()
+        default=list
     )
     interests = ArrayField(
         models.CharField(max_length=512, validators=[validate_skill]),
@@ -67,7 +67,7 @@ class UserProfile(models.Model):
     )
     languages = ArrayField(
         models.CharField(max_length=2, validators=[is_valid_language]),
-        default=list()
+        default=list
     )
     avatar = models.ImageField(upload_to='files/avatar/', null=True)
 
