@@ -28,6 +28,7 @@ import UserProfile from 'pages/identity/UserProfile';
 import MenteeGroupPage from 'pages/groups/mentee-groups';
 import MentorGroupPage from 'pages/groups/mentor-groups';
 import MyCalendarPage from 'pages/my-calendar';
+import UserChangePassword from 'components/user-profile-components/UserChangePassword';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -234,6 +235,15 @@ export const dashboardRoutes: IDashboardRoute[] = [
     hide: true,
     icon: FaUserCircle,
     description: 'dashboard.profile.description',
+    allowedGroups: ALLOW_ALL_USERS,
+  },
+  {
+    name: 'change-password',
+    element: <UserChangePassword />,
+    layout: RouteLayout.USER,
+    path: 'profile/change-password',
+    hide: true,
+    description: 'dashboard.change-password.description',
     allowedGroups: ALLOW_ALL_USERS,
   },
   {

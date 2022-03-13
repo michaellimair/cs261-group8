@@ -31,6 +31,7 @@ import useTitleOptions from 'hooks/useTitleOptions';
 import useTimezoneOptions from 'hooks/useTimezoneOptions';
 import useBusinessAreaOptions from 'hooks/useBusinessAreaOptions';
 import Skills from 'components/user-profile-components/Skills';
+import RouterLink from 'components/RouterLink';
 
 const UserProfile: FC = () => {
   const { user } = useUser();
@@ -138,18 +139,7 @@ const UserProfile: FC = () => {
           />
 
           <FormLabel>Change password</FormLabel>
-          <Input
-            placeholder="change-password"
-            _placeholder={{ color: 'gray.500' }}
-            type="password"
-          />
-          <FormLabel>Confirm password</FormLabel>
-          <Input
-            placeholder="confirm-password"
-            _placeholder={{ color: 'gray.500' }}
-            type="password"
-          />
-
+          <Button as={RouterLink} to="../profile/change-password">Click here to change password</Button>
           <FormField<IUserProfileDTO>
             register={register}
             name="pronoun"
