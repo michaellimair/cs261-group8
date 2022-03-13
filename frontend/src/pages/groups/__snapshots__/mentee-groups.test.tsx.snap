@@ -141,19 +141,12 @@ Object {
                   <h2
                     class="chakra-heading css-0"
                   >
-                    19:00
-                     
-                    GMT
+                    mentor_time: 02:00
                   </h2>
                   <p
                     class="chakra-text css-1909u0b"
                   >
-                    (
-                    local_time
-                    :
-                     
-                    19:00
-                    )
+                    (local_time: 19:00)
                   </p>
                   <p
                     class="chakra-text css-z32800"
@@ -317,19 +310,12 @@ Object {
                 <h2
                   class="chakra-heading css-0"
                 >
-                  19:00
-                   
-                  GMT
+                  mentor_time: 02:00
                 </h2>
                 <p
                   class="chakra-text css-1909u0b"
                 >
-                  (
-                  local_time
-                  :
-                   
-                  19:00
-                  )
+                  (local_time: 19:00)
                 </p>
                 <p
                   class="chakra-text css-z32800"

@@ -39,6 +39,7 @@ const GroupCardLeft: FC<IGroupCardProps> = ({
       <GroupMeetingCardDateTime
         meetingTime={meetingTime}
         mentor={mentor}
+        hostTimezone={mentor.profile.timezone ?? undefined}
       />
     </Box>
   </Flex>
