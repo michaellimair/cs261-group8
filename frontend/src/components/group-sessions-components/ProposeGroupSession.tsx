@@ -1,6 +1,7 @@
 import {
   Text,
   Flex,
+  StackDivider,
   Box,
   VStack,
   Button,
@@ -35,6 +36,7 @@ const ProposeGroupSession = () => {
       borderBottomRadius="lg"
       borderTopRadius="0"
       bg="white"
+      divider={<StackDivider borderColor="gray.200" />}
     >
       <Box w="75%">
         <VStack align="left">
