@@ -8763,6 +8763,13 @@ serve-static@1.14.2:
     parseurl "~1.3.3"
     send "0.17.2"
 
+set-tz@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/set-tz/-/set-tz-0.2.0.tgz#6b76a710aebda6808bc2ca39c4d4f243f597d21d"
+  integrity sha512-LDEBBYjFt57i83bqWN5MFpff++56Q7VfY/m0/GpSfF9BgmjqnLO3Izaf44PDC5dsUDPy4kx1ZV2QDtuBq7MP+g==
+  dependencies:
+    windows-iana "^3.0.0"
+
 setprototypeof@1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.1.0.tgz"
@@ -9837,6 +9844,11 @@ which@^2.0.1:
   integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
   dependencies:
     isexe "^2.0.0"
+
+windows-iana@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/windows-iana/-/windows-iana-3.1.0.tgz#156b1d7faef085068383827ac2884f1656cff217"
+  integrity sha512-rCPf3AakAAgvapnbYVvG2bQyI3g6EDbPpjDJ72fdAu+XTzB1qvX4ZC6OnZ0I2+thaspjTb+8KwdyhdBl8Lt/QA==
 
 word-wrap@^1.2.3, word-wrap@~1.2.3:
   version "1.2.3"
