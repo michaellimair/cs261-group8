@@ -3,12 +3,12 @@ import {
 } from '@chakra-ui/react';
 import { FC } from 'react';
 
-const PlanOfAction: FC = () => (
+const Milestone: FC = () => (
   <AccordionItem width="500px">
     <h2>
       <AccordionButton>
         <Box flex="1" textAlign="left">
-          Plan of Action
+          Milestone
           {' '}
           <Checkbox colorScheme="green" />
         </Box>
@@ -24,4 +24,4 @@ const PlanOfAction: FC = () => (
   </AccordionItem>
 );
 
-export default PlanOfAction;
+export default Milestone;

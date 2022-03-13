@@ -4,11 +4,11 @@ import {
   Button,
   Heading, Progress, Stack,
 } from '@chakra-ui/react';
-import PlanOfAction from 'components/PlanOfAction/shared-components/PlanOfAction';
+import PlanOfAction from 'components/PlanOfAction/shared-components/Milestone';
 import { FC } from 'react';
 import MentorComment from './MentorComment';
 
-const MenteeMilestone: FC = () => (
+const MenteePlan: FC = () => (
   <Stack
     m="20px"
     rounded="xl"
@@ -40,4 +40,4 @@ const MenteeMilestone: FC = () => (
   </Stack>
 );
 
-export default MenteeMilestone;
+export default MenteePlan;
