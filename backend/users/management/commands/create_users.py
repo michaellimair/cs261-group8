@@ -52,7 +52,7 @@ user_skill_options = [
     "Kotlin",
     "DJ"
 ] + get_skills()[0:100]
-avail_timezones = pytz.all_timezones[0:10]
+avail_timezones = sorted(["Europe/Berlin", "Asia/Hong_Kong", "Europe/London", "Asia/Jakarta"])
 avail_countries = [x.alpha_2 for x in list(pycountry.countries)[0:10]]
 avail_pronouns = [
     "she/her",

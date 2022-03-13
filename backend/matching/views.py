@@ -126,6 +126,8 @@ class MenteeMatchSuggestionView(
                 'id',
                 'profile__skills',
                 'profile__languages',
+                'rating__rating',
+                'rating__rating_count',
                 'mentees_count'])
 
         filtered_mentors_df = match_score_it(
@@ -135,8 +137,8 @@ class MenteeMatchSuggestionView(
 
         filtered_mentors_df.set_index('id', inplace=True)
 
-        filtered_mentors_df.sort_values(by=['score', 'mentees_count'],
-                       ascending=[False, True], inplace=True)
+        filtered_mentors_df.sort_values(by=['score', 'mentees_count', 'rating__rating'],
+                       ascending=[False, True, False], inplace=True)
 
         serializer = UserSerializer(mentors_queryset, many=True)
 
@@ -154,13 +156,10 @@ class MenteeMatchSuggestionView(
                 "id": mentor_id,
                 "score": row.score,
                 "mentees_count": row.mentees_count,
-                "mentor": data_by_id.get(mentor_id)
+                "mentor": data_by_id.get(mentor_id),
+                "rating": row.rating__rating,
+                "rating_count": row.rating__rating_count,
             }
             results.append(updated_data)
 
-        sorted_results = sorted(
-            results,
-            key=lambda x: x['score'],
-            reverse=True)
-
-        return Response(sorted_results)
+        return Response(results)
