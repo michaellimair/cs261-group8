@@ -1,3 +1,4 @@
+from typing import Dict
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth import get_user_model
@@ -93,12 +94,9 @@ class UserSerializer(serializers.ModelSerializer):
             'is_active']
 
 
-class RegisterSerializer(serializers.ModelSerializer):
-    """
-    Serializer used to handle registration.
-    """
+class UserUpdateSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
-        required=True,
+        required=False,
         validators=[
             UniqueValidator(
                 queryset=get_user_model().objects.all(),
@@ -106,7 +104,7 @@ class RegisterSerializer(serializers.ModelSerializer):
                 lookup='iexact')]
     )
     username = serializers.CharField(
-        required=True,
+        required=False,
         validators=[
             UniqueValidator(
                 queryset=get_user_model().objects.all(),
@@ -115,9 +113,77 @@ class RegisterSerializer(serializers.ModelSerializer):
     )
     password = serializers.CharField(
         write_only=True,
-        required=True,
+        required=False,
+        validators=[validate_password])
+    verify_password = serializers.CharField(write_only=True, required=False)
+    first_name = serializers.CharField(required=False)
+    last_name = serializers.CharField(required=False)
+
+    class Meta:
+        """
+        Metadata for the user update serializer.
+        """
+        model = get_user_model()
+        fields = (
+            'username',
+            'password',
+            'verify_password',
+            'email',
+            'first_name',
+            'last_name')
+
+    def validate_email(self, value: str):
+        return value.lower()
+
+    def validate_username(self, value: str):
+        return value.lower()
+
+    def validate(self, attrs):
+        if attrs.get('password') and attrs.get('password') != attrs.get('verify_password'):
+            raise serializers.ValidationError(
+                {'verify_password': _('password_not_match')})
+
+        return attrs
+
+    def update(self, instance, validated_data: Dict):
+        super().update(instance, validated_data)
+        if validated_data.get('password'):
+            instance.set_password(validated_data['password'])
+            instance.save()
+        return instance
+
+class RegisterSerializer(serializers.ModelSerializer):
+    """
+    Serializer used to handle registration.
+    """
+    email = serializers.EmailField(
+        validators=[
+            UniqueValidator(
+                queryset=get_user_model().objects.all(),
+                message=_("email_taken"),
+                lookup='iexact')]
+    )
+    username = serializers.CharField(
+        validators=[
+            UniqueValidator(
+                queryset=get_user_model().objects.all(),
+                message=_("username_taken"),
+                lookup='iexact')],
+    )
+    password = serializers.CharField(
+        write_only=True,
         validators=[validate_password])
     verify_password = serializers.CharField(write_only=True, required=True)
+
+    def validate(self, attrs):
+        if attrs['password'] and attrs['password'] != attrs['verify_password']:
+            raise serializers.ValidationError(
+                {'verify_password': _('password_not_match')})
+
+        attrs['email'] = attrs['email'].lower()
+        attrs['username'] = attrs['username'].lower()
+
+        return attrs
 
     class Meta:
         """
