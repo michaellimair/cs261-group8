@@ -9,7 +9,9 @@ describe('MenteeGroupPage', () => {
     (useUser as jest.Mock).mockImplementation(() => ({
       user: {
         id: 1,
-        timezone: 'Europe/London',
+        profile: {
+          timezone: 'Asia/Jakarta',
+        },
       },
     }));
     const result = render(<MentorGroupPage />);
