@@ -1,4 +1,5 @@
 import { IUser } from './auth';
+import { IRating } from './rating';
 
 export enum IMatchStatus {
   PENDING = 'pending',
@@ -28,4 +29,10 @@ export interface IMatchSuggestion {
   score: number;
   mentees_count: number;
   mentor: IUser;
+}
+
+export interface IMyMentor {
+  mentor: IUser;
+  mentor_id: number;
+  mentor_rating: IRating;
 }

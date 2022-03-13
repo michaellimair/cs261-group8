@@ -14,7 +14,7 @@ from users.permissions import IsMentor, IsMentee
 from users.utils import get_higher_titles
 from .utils import match_score_it
 from .models import MentoringPair
-from .serializers import MentoringPairSerializer
+from .serializers import MentorSerializer, MentoringPairSerializer
 
 # Create your views here.
 
@@ -79,7 +79,23 @@ class MentorMatchView(
 
         return Response(serializer.data)
 
+class MenteeMyMentorView(
+        mixins.ListModelMixin,
+        viewsets.GenericViewSet):
+    """View related to providing match suggestions for mentee"""
+    permission_classes = [IsMentee]
+    serializer_class = MentorSerializer
 
+    def get_queryset(self):
+        return MentoringPair.objects.filter(mentee=self.request.user)
+
+    # pylint: disable=arguments-differ
+    def list(self, request):
+        mentee = request.user
+        mentoring_pair = self.get_queryset().filter(
+            status=MentoringPair.PairStatus.ACCEPTED
+        ).first()
+        return Response(self.get_serializer(mentoring_pair).data)
 
 class MenteeMatchSuggestionView(
         mixins.ListModelMixin,

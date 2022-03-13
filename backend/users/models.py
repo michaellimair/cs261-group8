@@ -61,8 +61,26 @@ class UserProfile(models.Model):
         models.CharField(max_length=512, validators=[validate_skill]),
         default=list()
     )
+    interests = ArrayField(
+        models.CharField(max_length=512, validators=[validate_skill]),
+        default=list()
+    )
     languages = ArrayField(
         models.CharField(max_length=2, validators=[is_valid_language]),
         default=list()
     )
     avatar = models.ImageField(upload_to='files/avatar/', null=True)
+
+from django.contrib.auth import get_user_model
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .permission_constants import MENTOR_GROUP
+from rating.models import MentorRating
+
+@receiver(post_save, sender=get_user_model())
+def add_rating_model(sender, instance, **kwargs):
+    is_mentor = instance.groups.filter(name=MENTOR_GROUP).exists()
+    has_rating_model = MentorRating.objects.filter(mentor=instance).exists()
+    if is_mentor and not has_rating_model:
+        rating = MentorRating.objects.create(mentor=instance)
+        rating.save()
