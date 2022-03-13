@@ -130,6 +130,10 @@
     "profile": {
       "title": "Profile",
       "description": "Make changes to your user profile in this page."
+    },
+    "my_calendar": {
+      "title": "My Calendar",
+      "description": "See all the events that you have"
     }
   },
   "title": "Title",

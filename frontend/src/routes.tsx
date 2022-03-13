@@ -15,7 +15,7 @@ import {
   FiHome,
   FiShield,
 } from 'react-icons/fi';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaCalendar, FaUserCircle } from 'react-icons/fa';
 import { VscFeedback } from 'react-icons/vsc';
 import { IoSchool } from 'react-icons/io5';
 import { MdComputer } from 'react-icons/md';
@@ -27,6 +27,7 @@ import MenteeMilestonePage from 'pages/mentee-dashboard/MenteeMilestonePage';
 import UserProfile from 'pages/identity/UserProfile';
 import MenteeGroupPage from 'pages/groups/mentee-groups';
 import MentorGroupPage from 'pages/groups/mentor-groups';
+import MyCalendarPage from 'pages/my-calendar';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -233,6 +234,15 @@ export const dashboardRoutes: IDashboardRoute[] = [
     hide: true,
     icon: FaUserCircle,
     description: 'dashboard.profile.description',
+    allowedGroups: ALLOW_ALL_USERS,
+  },
+  {
+    name: 'my_calendar',
+    element: <MyCalendarPage />,
+    layout: RouteLayout.USER,
+    path: 'my-calendar',
+    icon: FaCalendar,
+    description: 'dashboard.my_calendar.description',
     allowedGroups: ALLOW_ALL_USERS,
   },
 ];
