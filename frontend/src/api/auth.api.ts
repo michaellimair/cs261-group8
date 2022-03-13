@@ -1,5 +1,5 @@
 import {
-  IUser, IRegistration, ILogin, ILoginResult,
+  IUser, IRegistration, ILogin, ILoginResult, IUserUpdateDTO,
 } from 'customTypes/auth';
 import CredentialManager from 'libs/credential-manager';
 import BaseAPI from './base.api';
@@ -44,6 +44,11 @@ class AuthAPI extends CommonAPI {
 
   me = (): Promise<IUser> => this.api.get({
     path: this.getPath(''),
+  });
+
+  update = (data: IUserUpdateDTO): Promise<IUser> => this.api.patch<IUser, IUserUpdateDTO>({
+    path: this.getPath(''),
+    body: data,
   });
 }
 
