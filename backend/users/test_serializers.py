@@ -24,6 +24,8 @@ class TestUserProfileSerializer(TestCase):
         data = {
             "years_experience": 20,
             "pronoun": "she",
+            "skills": ["Python"],
+            "interests": ["JavaScript", "React"],
             "business_area": self.business_area,
         }
 
