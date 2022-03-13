@@ -45,7 +45,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
             and instance.years_experience
             and instance.title
             and instance.skills
-            and len(instance.skills) > 0
+            and instance.interests
+            and len(instance.skills) + len(instance.interests) > 0
             and instance.country
             and instance.timezone
             and instance.business_area)
@@ -92,7 +93,6 @@ class UserSerializer(serializers.ModelSerializer):
             'user_permissions',
             'is_staff',
             'is_active']
-
 
 class UserUpdateSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
