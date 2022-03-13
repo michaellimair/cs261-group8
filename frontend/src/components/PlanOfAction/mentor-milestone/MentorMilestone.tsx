@@ -5,7 +5,7 @@ import {
   Center,
   Heading, Input, Progress, Stack,
 } from '@chakra-ui/react';
-import PlanOfAction from 'components/PlanOfAction/shared-components/PlanOfAction';
+import PlanOfAction from 'components/PlanOfAction/shared-components/Milestone';
 import { FC } from 'react';
 
 const MentorMilestone: FC = () => (

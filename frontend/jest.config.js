@@ -22,4 +22,5 @@ module.exports = {
     statements: 90,
   },
   resetMocks: false,
+  globalSetup: ['set-tz/utc'],
 };

@@ -91,8 +91,28 @@
       "cancel": "Cancel Editing"
     },
     "mentee_milestones": {
-      "title": "Mentee Milestones",
-      "description": "Milestones for mentees set out in the mentoring arrangement."
+      "title": "My Plans of Action",
+      "description": "My plans of action set out in the mentoring arrangement."
+    },
+    "group_meetings_mentor": {
+      "title": "Group Meetings (Mentors)"
+    },
+    "group_meetings": {
+      "title": "Group Meetings (Mentees)",
+      "description": "See proposed group meetings",
+      "propose_group": "Propose a new group meeting",
+      "available_groups": "Available group meetings",
+      "tutoring": "Group Tutoring",
+      "group_session": "Group Workshop",
+      "group_tutoring": "Group Tutoring",
+      "select_topics": "Select topics which you would be interested in",
+      "propose_sessions": "Propose Meeting Topics",
+      "in_demand_topics": "In Demand Topics",
+      "proposed_topic": "Proposed topic:",
+      "run_group": "Run group",
+      "create_meeting": "Create a new group meeting",
+      "meeting_type": "Meeting Type",
+      "accepted_meetings": "Accepted Meetings"
     },
     "meetings": {
       "past_meetings": "Past Meetings",
@@ -159,9 +179,22 @@
     "dir": "Director",
     "md": "Managing Director"
   },
-  "business_area": "Business Area",
-  "country": "Country",
   "timezone": "Timezone",
-  "change_avatar": "Change Avatar",
-  "pronoun": "Pronoun"
+  "mentee_plan_title": "Plans of Action",
+  "mentee_plan": "My Plans of Action",
+  "create_plan_button": "Create new plan of action",
+  "create_plan_title": "Plan of action title:",
+  "no_plans": "You have not created any plans of action yet.",
+  "no_milestones": "You have not created any milestones for this plan of action yet.",
+  "milestone_description": "Description of milestone",
+  "create_plan": {
+    "title": "Create Plan of Action",
+    "description": "Create a new plan of action",
+    "loading": "Creating plan...",
+    "placeholder": "Write a description of your plan here..."
+  },
+  "plan_professional": "Professional",
+  "plan_personal": "Personal",
+  "plan_type": "Plan of Action Type",
+  "mentor_time": "Mentor Time"
 }
