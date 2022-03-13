@@ -1,8 +1,8 @@
 import { IMatch, IRespondMatchDTO, IMatchStatus } from 'customTypes/matching';
-import BaseAPI from './base.api';
-import CommonAPI from './common.api';
+import BaseAPI from '../base.api';
+import CommonAPI from '../common.api';
 
-class MentorAPI extends CommonAPI {
+class MentorMatchAPI extends CommonAPI {
   constructor(private readonly api: BaseAPI) {
     super('/mentor');
   }
@@ -20,4 +20,4 @@ class MentorAPI extends CommonAPI {
   });
 }
 
-export default MentorAPI;
+export default MentorMatchAPI;

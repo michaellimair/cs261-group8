@@ -22,7 +22,7 @@ class PlanOfActionMentorViewSet(mixins.RetrieveModelMixin,
         return PlanOfAction.objects.filter(
             mentoring_pair__mentor=user,
             mentoring_pair__mentee_id=mentee_id
-        ).order_by('modified')
+        ).order_by('created')
 
 class PlanOfActionMenteeViewSet(viewsets.ModelViewSet):
     serializer_class = PlanOfActionSerializer
@@ -35,7 +35,7 @@ class PlanOfActionMenteeViewSet(viewsets.ModelViewSet):
         mentee = self.request.user
         return PlanOfAction.objects.filter(
             mentoring_pair__mentee=mentee,
-        ).order_by('modified')
+        ).order_by('created')
 
     def create(self, request):
         mentoring_pair = MentoringPair.objects.filter(mentee=request.user).first()
@@ -59,7 +59,7 @@ class MilestoneMenteeViewSet(viewsets.ModelViewSet):
         return Milestone.objects.filter(
             plan_of_action__mentoring_pair__mentee=mentee,
             plan_of_action=self.kwargs['plan_of_action_pk']
-        ).order_by('modified')
+        ).order_by('created')
 
 class MilestoneMentorViewSet(viewsets.ReadOnlyModelViewSet):
     """Viewset for milestones of plan of action. Limits mentor to read-only permissions."""
@@ -74,7 +74,7 @@ class MilestoneMentorViewSet(viewsets.ReadOnlyModelViewSet):
         return Comment.objects.filter(
             plan_of_action__mentoring_pair__mentee=mentee,
             plan_of_action=self.kwargs['plan_of_action_pk']
-        ).order_by('modified')
+        ).order_by('created')
 
 class CommentMenteeViewSet(viewsets.ReadOnlyModelViewSet):
     """Viewset for comments of plan of action. Mentor can give comments to mentee."""
@@ -89,7 +89,7 @@ class CommentMenteeViewSet(viewsets.ReadOnlyModelViewSet):
         return Comment.objects.filter(
             plan_of_action__mentoring_pair__mentor=mentor,
             plan_of_action=self.kwargs['plan_of_action_pk']
-        ).order_by('modified')
+        ).order_by('created')
 
 class CommentMentorViewSet(viewsets.ModelViewSet):
     """Viewset for comments of plan of action. Mentor can give comments to mentee."""
@@ -104,4 +104,4 @@ class CommentMentorViewSet(viewsets.ModelViewSet):
         return Comment.objects.filter(
             plan_of_action__mentoring_pair__mentor=mentor,
             plan_of_action=self.kwargs['plan_of_action_pk']
-        ).order_by('modified')
+        ).order_by('created')
