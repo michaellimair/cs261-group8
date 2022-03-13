@@ -63,7 +63,7 @@ class UserProfile(models.Model):
     )
     interests = ArrayField(
         models.CharField(max_length=512, validators=[validate_skill]),
-        default=list()
+        default=list
     )
     languages = ArrayField(
         models.CharField(max_length=2, validators=[is_valid_language]),
