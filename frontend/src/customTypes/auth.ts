@@ -53,6 +53,11 @@ export interface IUser {
   groups: IUserGroup[];
 }
 
+export interface IUserUpdateDTO extends Pick<Partial<IUser>, 'first_name' | 'last_name' | 'groups'> {
+  password?: string;
+  verify_password?: string;
+}
+
 export interface IRegistration {
   first_name: string;
   last_name: string;

@@ -27,12 +27,18 @@ autopep8 = "*"
 pycodestyle = "*"
 autoflake = "*"
 hypercorn = "*"
+numpy = "*"
+pandas = "*"
 pycountry = "*"
 snapshottest = "*"
 pytz = "*"
 thefuzz = "*"
 python-levenshtein = "*"
 pillow = "*"
+django-seed = "*"
+faker = "*"
+django-pandas = "*"
+tqdm = "*"
 
 [dev-packages]
 

@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework.schemas import get_schema_view
 from rest_framework_nested import routers
+from language.views import LanguageViewSet
 from timezone.views import TimezoneViewSet
 from skill.views import SkillViewSet
 
@@ -34,7 +35,24 @@ from users.views import (
     UserProfileViewSet,
 )
 from business_area.views import BusinessAreaView
+from matching.views import (
+    MenteeMatchView,
+    MenteeMyMentorView,
+    MentorMatchView,
+    MenteeMatchSuggestionView,
+)
 from country.views import CountryViewSet
+from plan_of_action.views import (
+    PlanOfActionMentorViewSet,
+    PlanOfActionMenteeViewSet,
+    MilestoneMenteeViewSet,
+    MilestoneMentorViewSet,
+    CommentMenteeViewSet,
+    CommentMentorViewSet,
+)
+from rating.views import (
+    MenteeRatingViewSet
+)
 
 user_patterns = [
     path(
@@ -43,7 +61,7 @@ user_patterns = [
             'get': 'retrieve',
             'patch': 'update',
         }),
-        name="my_profile")
+        name="my_profile"),
 ]
 
 router = routers.DefaultRouter()
@@ -51,8 +69,27 @@ router.register(r'feedbacks', UserFeedbackViewSet, basename='my_feedbacks')
 router.register(r'business-areas', BusinessAreaView, basename='business_area')
 router.register(r'profiles', UserProfileViewSet, basename='profile')
 router.register(r'countries', CountryViewSet, basename='country')
+router.register(r'languages', LanguageViewSet, basename='language')
 router.register(r'timezones', TimezoneViewSet, basename='timezone')
 router.register(r'skills', SkillViewSet, basename='skill')
+router.register(r'mentee/matches', MenteeMatchView, basename='mentee_matches')
+router.register(r'mentee/match-suggestions',
+    MenteeMatchSuggestionView,
+    basename='mentee_match_suggestions')
+router.register(r'mentee/my-mentor', MenteeMyMentorView, basename='mentee_my_mentor')
+router.register(r'mentee/my-mentor/rate', MenteeRatingViewSet, basename='mentee_my_mentor_rating')
+
+router.register(r'mentee/plans-of-action', PlanOfActionMenteeViewSet, basename='mentee_plans_of_action')
+router.register(r'mentor/matches', MentorMatchView, basename='mentor_matches')
+router.register(r'mentor/plans-of-action', PlanOfActionMentorViewSet, basename='mentor_plans_of_action')
+
+plan_of_action_mentee_router = routers.NestedSimpleRouter(router, r'mentee/plans-of-action', lookup='plan_of_action')
+plan_of_action_mentee_router.register(r'milestones', MilestoneMenteeViewSet, basename='plan_of_action-mentee-milestones')
+plan_of_action_mentee_router.register(r'comments', CommentMenteeViewSet, basename='plan_of_action-mentee-milestones')
+
+plan_of_action_mentor_router = routers.NestedSimpleRouter(router, r'mentor/plans-of-action', lookup='plan_of_action')
+plan_of_action_mentor_router.register(r'milestones', MilestoneMentorViewSet, basename='plan_of_action-mentor-milestones')
+plan_of_action_mentor_router.register(r'comments', CommentMentorViewSet, basename='plan_of_action-mentee-comments')
 
 admin_router = routers.DefaultRouter()
 admin_router.register(r'feedbacks', UserFeedbackAdminViewSet)
@@ -71,6 +108,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include([
         path('', include(router.urls)),
+        path(r'', include(plan_of_action_mentee_router.urls)),
+        path(r'', include(plan_of_action_mentor_router.urls)),
         path(r'groups/', GroupView.as_view(), name='group'),
         path(r'auth/', MyDataView.as_view(), name='me'),
         path(r'auth/login/', LoginView.as_view(), name='knox_login'),

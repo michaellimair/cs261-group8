@@ -78,9 +78,9 @@ class TestUserFeedbackAdminReplyView(TestCase):
     """
     def setUp(self) -> None:
         self.admin = AdminFactory()
-        self.admin_profile = UserProfileFactory(user=self.admin)
+        UserProfileFactory(user=self.admin)
         self.other_admin = AdminFactory()
-        self.other_admin_profile = UserProfileFactory(user=self.other_admin)
+        UserProfileFactory(user=self.other_admin)
         self.feedback = UserFeedbackFactory()
         self.feedback_reply = UserFeedbackReplyFactory(
             feedback=self.feedback, admin=self.admin)

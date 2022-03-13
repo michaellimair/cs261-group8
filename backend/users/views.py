@@ -12,7 +12,7 @@ from knox.views import LoginView as KnoxLoginView
 from business_area.models import BusinessArea
 
 from .models import UserProfile
-from .serializers import UserSerializer, RegisterSerializer, GroupSerializer, UserProfileSerializer
+from .serializers import UserSerializer, RegisterSerializer, GroupSerializer, UserProfileSerializer, UserUpdateSerializer
 
 # Create your views here.
 
@@ -71,6 +71,13 @@ class MyDataView(APIView):
         """
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+
+    def patch(self, request):
+        """Methods to update the user data"""
+        serializer = UserUpdateSerializer(request.user, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(UserSerializer(serializer.instance).data)
 
 
 class GroupView(generics.ListAPIView):
