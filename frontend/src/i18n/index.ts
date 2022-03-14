@@ -8,8 +8,8 @@ const resources = {
   en: {
     translation: enTranslation,
   },
-  zh-Hans: {
-	  translation: zhsTranslation
+  'zh-Hans' : {
+	  translation: zhsTranslation,
   },
 };
 
