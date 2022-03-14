@@ -4,6 +4,9 @@ from event.utils import has_clashing_events
 from event.serializers import EventSerializer
 from matching.models import MentoringPair
 
+from plan_of_action.models import PlanOfAction
+from plan_of_action.serializers import PlanOfActionSerializer
+
 from .models import Meeting, MeetingRecord, MeetingStatus
 
 class MeetingRecordSerializer(serializers.ModelSerializer):
@@ -14,15 +17,21 @@ class MeetingRecordSerializer(serializers.ModelSerializer):
 class MeetingSerializer(serializers.ModelSerializer):
     record = MeetingRecordSerializer(read_only=True)
     event = EventSerializer()
+    plans_of_action = PlanOfActionSerializer(many=True, read_only=True)
+    plan_of_action_ids = serializers.PrimaryKeyRelatedField(
+        queryset=PlanOfAction.objects.all(),
+        many=True,
+        source='plans_of_action')
 
     class Meta:
         model = Meeting
-        fields = ('id', 'event', 'plans_of_action', 'status', 'record')
+        fields = ('id', 'event', 'plans_of_action', 'plan_of_action_ids', 'status', 'record')
 
     def _get_mentoring_pair(self) -> MentoringPair:
         request = self.context.get("request")
-        mentee = request.user
-        return MentoringPair.objects.filter(mentee=mentee).first()
+        if self.instance:
+            return self.instance.mentoring_pair
+        return MentoringPair.objects.filter(mentee=request.user).first()
 
     def validate_event(self, value):
         mentoring_pair = self._get_mentoring_pair()
@@ -34,6 +43,14 @@ class MeetingSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Event time clashes with another event of mentor.")
         value['hosts'] = [mentoring_pair.mentor]
         value['attendees'] = [mentoring_pair.mentee]
+        return value
+
+    def validate_plan_of_action_ids(self, value):
+        mentoring_pair = self._get_mentoring_pair()
+        for plan_of_action in value:
+            # Should only be able to select one's own plan of action
+            if plan_of_action.mentoring_pair != mentoring_pair:
+                raise serializers.ValidationError("Invalid plan of action.")
         return value
 
     def create(self, validated_data):
