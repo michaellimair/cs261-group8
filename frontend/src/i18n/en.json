@@ -139,6 +139,11 @@
       "title": "My Mentor",
       "description": "See mentor for a given mentee.",
       "no_mentor": "You currently do not have a mentor."
+    },
+    "mentor_match_requests": {
+      "title": "Matching Requests",
+      "description": "See all your requests to match as a mentor.",
+      "no_requests": "You currently do not have any match requests."
     }
   },
   "title": "Title",

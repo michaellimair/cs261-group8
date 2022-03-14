@@ -1,4 +1,4 @@
-import { IMatch, IRespondMatchDTO, IMatchStatus } from 'customTypes/matching';
+import { IMatch, IRespondMatchDTO } from 'customTypes/matching';
 import BaseAPI from '../base.api';
 import CommonAPI from '../common.api';
 
@@ -12,11 +12,10 @@ class MentorMatchAPI extends CommonAPI {
   });
 
   respondToMatch = (
-    id: number,
-    status: IMatchStatus.ACCEPTED | IMatchStatus.REJECTED,
+    data: IRespondMatchDTO & { id: number },
   ): Promise<IMatch> => this.api.patch<IMatch, IRespondMatchDTO>({
-    path: this.getPath(`/matches/${id}`),
-    body: { status },
+    path: this.getPath(`/matches/${data.id}`),
+    body: { status: data.status },
   });
 }
 

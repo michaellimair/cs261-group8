@@ -77,7 +77,13 @@ const MentorList: FC<IMentorListProps> = ({
               </VStack>
               <VStack flex="1" align="left" spacing="5px" ml={2}>
                 <Heading size="md" alignContent="left">{mentor.full_name}</Heading>
-                <Heading size="sm" alignContent="left">{mentor.profile.business_area?.label}</Heading>
+                <Heading size="sm" alignContent="left">
+                  {t(`job_title.${mentor.profile.title}`)}
+                  {' '}
+                  -
+                  {' '}
+                  {mentor.profile.business_area?.label}
+                </Heading>
                 <Text align="left">{mentor.profile.skills?.join(', ')}</Text>
                 <CountryText countryCode={mentor.profile.country!} />
                 <TimezoneText timezone={mentor.profile.timezone!} />

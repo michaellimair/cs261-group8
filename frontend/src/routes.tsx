@@ -29,6 +29,7 @@ import MyCalendarPage from 'pages/my-calendar';
 import UserChangePassword from 'components/user-profile-components/UserChangePassword';
 import MyMentorPage from 'pages/my-mentor';
 import { IMatchStatus } from 'customTypes/matching';
+import MentorMatchRequestsPage from 'pages/mentor-match-requests';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -146,6 +147,15 @@ export const dashboardRoutes: (IDashboardRoute | IMenteeDashboardRoute)[] = [
     icon: FaAddressCard,
     description: 'dashboard.my_mentor.description',
     allowedGroups: MENTEE_ONLY,
+  },
+  {
+    name: 'mentor_match_requests',
+    element: <MentorMatchRequestsPage />,
+    layout: RouteLayout.USER,
+    icon: HiUserGroup,
+    path: 'mentor-recommendations',
+    description: 'dashboard.mentor_match_requests.description',
+    allowedGroups: MENTOR_ONLY,
   },
   {
     name: 'mentor_meetings',
