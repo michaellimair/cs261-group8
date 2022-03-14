@@ -1,0 +1,200 @@
+{
+  "already_a_user": "已有帐号？",
+  "email": "Email 地址",
+  "first_name": "名",
+  "forgot_password": "忘记密码？",
+  "last_name": "姓",
+  "login": "登录",
+  "logout": "登出",
+  "login_description": "立即登录到您的学习平台帐户！",
+  "logging_in": "正在登录……",
+  "mentoring_platform": "学习平台",
+  "no_account": "尚未拥有账户？",
+  "no_blank": "{{field}} 不能为空",
+  "not_found": {
+    "title": "网页未找到."
+  },
+  "initializing_app": "正在初始化应用，请等待。",
+  "password": "密码",
+  "register": "注册",
+  "register_description": "注册您的学习平台帐户，并开始学习或指导他人！",
+  "registering": "正在注册中……",
+  "remember_me": "记住我",
+  "submitting": "提交",
+  "username": "用户名",
+  "verify_password": "验证密码",
+  "internal_error": "服务器出现错误，请稍后重试。",
+  "register_success": "注册成功，正在登录……",
+  "welcome": "欢迎",
+  "welcome_description": "填写您的详细信息以开始使用学习平台",
+  "change_avatar": "更换头像",
+  "pronoun": "Pronouns",
+  "mentor": "导师",
+  "mentee": "学习者",
+  "select_mentor_mentee": "你是一个……",
+  "business_area": "你的商业领域",
+  "select_option": "选择一个选项",
+  "seniority": "头衔",
+  "years_of_experience": "从业年数",
+  "time_zone": "时区",
+  "country": "国家",
+  "submit_form": "提交",
+  "mentor_recs": "选择一个导师",
+  "select_mentors": "选择几个导师",
+  "submit_mentors": "提交",  
+  "dashboard": {
+    "home": {
+      "title": "主页",
+      "description": "所有用户的仪表盘主页。"
+    },
+    "welcome": {
+      "title": "欢迎",
+      "description": "所有新用户的欢迎表单"
+    },
+    "mentor-rec": {
+      "title": "导师推荐",
+      "description": "从推荐导师名单中投票"
+    },
+    "mentor_only": {
+      "title": "仅限导师",
+      "description": "这个界面仅限导师进入。"
+    },
+    "mentee_only": {
+      "title": "仅限学习者",
+      "description": "这个界面仅限学习者进入。"
+    },
+    "feedback": {
+      "title": "反馈",
+      "description": "给我们提供反馈并参与改进我们的应用程序！",
+      "no_feedback": "您尚未提交任何反馈。",
+      "your_feedbacks": "您的反馈",
+      "type": "反馈类型",
+      "bug": "漏洞",
+      "improvement": "改进",
+      "question": "问题",
+      "select": "选择您的反馈类型",
+      "invalid": "无法获得您的反馈，请稍后再试。",
+      "back_to_all": "返回到所有反馈",
+      "admin_reply": "管理员的回复",
+      "replied_on": "管理员对 {{replied}} 回复"
+    },
+    "create_feedback": {
+      "title": "创建回复",
+      "description": "给我们提供反馈并参与改进我们的应用程序！",
+      "loading": "创建反馈中……",
+      "placeholder": "在此输入内容"
+    },
+    "edit_feedback": {
+      "title": "修改反馈",
+      "description": "您创建的反馈有问题吗？ 在这里修改！",
+      "loading": "修改反馈中……",
+      "cancel": "取消修改"
+    },
+    "mentee_milestones": {
+      "title": "我的行动计划",
+      "description": "在辅导中安排的行动计划"
+    },
+    "group_meetings_mentor": {
+      "title": "小组会议（导师）"
+    },
+    "group_meetings": {
+      "title": "小组会议（学习者）",
+      "description": "查看申请的会议时间",
+      "propose_group": "申请一次新的会议",
+      "available_groups": "确定的小组会议",
+      "tutoring": "小组辅导",
+      "group_session": "小组研讨会",
+      "group_tutoring": "小组辅导",
+      "select_topics": "选择您感兴趣的主题",
+      "propose_sessions": "提出主题",
+      "in_demand_topics": "热门主题",
+      "proposed_topic": "提议的主题：",
+      "run_group": "组织小组",
+      "create_meeting": "创建一个新的小组会议",
+      "meeting_type": "会议类型",
+      "accepted_meetings": "接受的会议"
+    },
+    "meetings": {
+      "past_meetings": "过往的会议",
+      "requested_meetings": "要求的会议",
+      "upcoming_meetings": "即将到来的会议"
+    },
+    "mentee_meetings": {
+      "title": "会议（学习者）",
+      "description": "在此处查看您与导师安排的所有会议。."
+    },
+    "mentor_meetings": {
+      "title": "会议",
+      "description": "在此处查看您与您的学生安排的所有会议"
+    },
+    "profile": {
+      "title": "简介",
+      "description": "在此页修改您的简介"
+    },
+    "my_calendar": {
+      "title": "我的日历",
+      "description": "查看您的所有事件"
+    }
+  },
+  "title": "头衔",
+  "content": "内容",
+  "created": "在 {{created}} 创建",
+  "modified": "最后修改于 {{modified}}",
+  "view": "查看",
+  "edit": "编辑",
+  "delete": "删除",
+  "accept": "接受",
+  "reschedule": "重新规划",
+  "date": "日期",
+  "time": "时间",
+  "am": "AM",
+  "pm": "PM",
+  "accepted": "已接受",
+  "description": "描述",
+  "create_meeting": "创建新的会议",
+  "create": "创建",
+  "give_feedback": "给予反馈",
+  "link_to_meeting": "与会议关联",
+  "submit_feedback": "提交反馈",
+  "write_feedback_here": "在此处写入反馈",
+  "local_time": "本地时间",
+  "meeting_requested": "会议请求",
+  "mentee_dashboard": "学习者仪表盘",
+  "mentor_dashboard": "导师仪表盘",
+  "meetings": {
+    "accepted": "已接受的会议",
+    "requested": "申请接受的会议",
+    "new_requests": "新的会议请求"
+  },
+  "feedback_required": "需要反馈",
+  "select_alternative_time": "选择替代时间",
+  "or": "或者",
+  "years_experience": "工作经验年数",
+  "job_title": {
+    "null": "-",
+    "anlst": "经理",
+    "assoc": "高级经理",
+    "avp": "副总监助理",
+    "vp": "副总监",
+    "dir": "总监",
+    "md": "董事总经理"
+  },
+  "timezone": "时区",
+  "mentee_plan_title": "行动计划",
+  "mentee_plan": "我的行动计划",
+  "create_plan_button": "创建新的行动计划",
+  "create_plan_title": "行动计划标题：",
+  "no_plans": "您尚未制定任何行动计划。",
+  "no_milestones": "您尚未为此行动计划创建任何里程碑。",
+  "milestone_description": "里程碑描述",
+  "create_plan": {
+    "title": "创建行动计划",
+    "description": "创建新的行动计划",
+    "loading": "创建计划",
+    "placeholder": "在此处写入您的行动计划描述……"
+  },
+  "plan_professional": "专业",
+  "plan_personal": "个人",
+  "plan_type": "行动计划类型",
+  "mentor_time": "学习者时间"
+}
