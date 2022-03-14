@@ -6,3 +6,5 @@ export interface IEvent {
   end_time: Date;
   location: string;
 }
+
+export interface IEventCreateDTO extends Omit<IEvent, 'id'> {}
