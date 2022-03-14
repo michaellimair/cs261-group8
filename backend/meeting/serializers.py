@@ -14,6 +14,18 @@ class MeetingRecordSerializer(serializers.ModelSerializer):
         model = MeetingRecord
         fields = ('meeting_id', 'description', 'attachments', 'approved')
 
+    def create(self, validated_data):
+        # Approved should only be through update
+        data = validated_data.copy()
+        data.pop('approved')
+        meeting = self.context.get("meeting")
+
+        existing_entry = MeetingRecord.objects.filter(meeting=meeting).first()
+        if existing_entry:
+            return super().update(existing_entry, data)
+
+        return super().create(data)
+
 class MeetingSerializer(serializers.ModelSerializer):
     record = MeetingRecordSerializer(read_only=True)
     event = EventSerializer()

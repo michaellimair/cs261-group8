@@ -53,7 +53,8 @@ from plan_of_action.views import (
 )
 from meeting.views import (
     MeetingMenteeViewSet,
-    MeetingMentorViewSet
+    MeetingMentorViewSet,
+    MeetingRecordMenteeViewSet
 )
 from rating.views import (
     MenteeRatingViewSet
@@ -85,6 +86,9 @@ router.register(r'events', EventViewSet, basename='event')
 router.register(r'skills', SkillViewSet, basename='skill')
 
 router.register(r'mentee/meetings', MeetingMenteeViewSet, basename='mentee_meeting')
+meeting_mentee_router = routers.NestedSimpleRouter(router, r'mentee/meetings', lookup='meeting')
+meeting_mentee_router.register(r'records', MeetingRecordMenteeViewSet, basename='meeting-mentee-records')
+
 router.register(r'mentee/matches', MenteeMatchView, basename='mentee_matches')
 router.register(r'mentee/match-suggestions',
     MenteeMatchSuggestionView,
@@ -127,6 +131,7 @@ urlpatterns = [
         path('', include(router.urls)),
         path(r'', include(plan_of_action_mentee_router.urls)),
         path(r'', include(plan_of_action_mentor_router.urls)),
+        path(r'', include(meeting_mentee_router.urls)),
         path(r'groups/', GroupView.as_view(), name='group'),
         path(r'auth/', MyDataView.as_view(), name='me'),
         path(r'auth/login/', LoginView.as_view(), name='knox_login'),
