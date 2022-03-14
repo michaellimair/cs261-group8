@@ -43,8 +43,7 @@ Object {
         </h2>
       </div>
       <div
-        align="center"
-        class="css-119p7p7"
+        class="css-1u9b1ym"
       >
         <button
           class="chakra-button css-5c2176"
@@ -90,14 +89,12 @@ Object {
                 class="chakra-stack css-mjhbcv"
               >
                 <h2
-                  align="left"
-                  class="chakra-heading css-0"
+                  class="chakra-heading css-1d92c1"
                 >
                   Full name 4
                 </h2>
                 <h2
-                  align="left"
-                  class="chakra-heading css-0"
+                  class="chakra-heading css-1d92c1"
                 />
                 <p
                   class="chakra-text css-13brihr"
@@ -139,8 +136,7 @@ Object {
       </h2>
     </div>
     <div
-      align="center"
-      class="css-119p7p7"
+      class="css-1u9b1ym"
     >
       <button
         class="chakra-button css-5c2176"
@@ -186,14 +182,12 @@ Object {
               class="chakra-stack css-mjhbcv"
             >
               <h2
-                align="left"
-                class="chakra-heading css-0"
+                class="chakra-heading css-1d92c1"
               >
                 Full name 4
               </h2>
               <h2
-                align="left"
-                class="chakra-heading css-0"
+                class="chakra-heading css-1d92c1"
               />
               <p
                 class="chakra-text css-13brihr"

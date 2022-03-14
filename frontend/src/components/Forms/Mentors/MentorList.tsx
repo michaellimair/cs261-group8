@@ -36,8 +36,8 @@ const MentorList: FC<IMentorListProps> = ({ mentors, voteMentor }) => (
                 <Avatar size="xl" />
               </VStack>
               <VStack w="70%" align="left" spacing="5px">
-                <Heading size="md" align="left">{mentor.user.full_name}</Heading>
-                <Heading size="md" align="left">{mentor.user.profile.business_area?.label}</Heading>
+                <Heading size="md" alignContent="left">{mentor.user.full_name}</Heading>
+                <Heading size="md" alignContent="left">{mentor.user.profile.business_area?.label}</Heading>
                 <Text align="left">{mentor.user.profile.skills?.join(', ')}</Text>
                 <Text align="left">{mentor.user.profile.country}</Text>
                 <Text align="left">{mentor.user.profile.timezone}</Text>

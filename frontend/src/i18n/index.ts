@@ -2,10 +2,14 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import enTranslation from './en.json';
+import zhsTranslation from './zh-Hans.json';
 
 const resources = {
   en: {
     translation: enTranslation,
+  },
+  'zh-Hans': {
+    translation: zhsTranslation,
   },
 };
 

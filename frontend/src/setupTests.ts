@@ -7,4 +7,5 @@ import faker from '@faker-js/faker';
 
 global.beforeEach(() => {
   faker.seed(0);
+  process.env.TZ = 'UTC';
 });

@@ -38,6 +38,9 @@ jobs:
       run: |
         cd frontend
         yarn --prefer-offline
+
+    - name: Set timezone to UTC
+      uses: szenius/set-timezone@v1.0
     - name: Run tests with Jest
       run: |
         cd frontend

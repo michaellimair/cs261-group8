@@ -19,12 +19,16 @@ import { FaCalendar, FaUserCircle } from 'react-icons/fa';
 import { VscFeedback } from 'react-icons/vsc';
 import { IoSchool } from 'react-icons/io5';
 import { MdComputer } from 'react-icons/md';
+import { TiGroupOutline } from 'react-icons/ti';
 import CreateFeedbackPage from 'pages/feedback/create';
 import ViewFeedbackPage from 'pages/feedback/[id]';
 import EditFeedbackPage from 'pages/feedback/[id]/edit';
 import MenteeMilestonePage from 'pages/mentee-dashboard/MenteeMilestonePage';
 import UserProfile from 'pages/identity/UserProfile';
+import MenteeGroupPage from 'pages/groups/mentee-groups';
+import MentorGroupPage from 'pages/groups/mentor-groups';
 import MyCalendarPage from 'pages/my-calendar';
+import UserChangePassword from 'components/user-profile-components/UserChangePassword';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -170,6 +174,24 @@ export const dashboardRoutes: IDashboardRoute[] = [
     allowedGroups: MENTEE_ONLY,
   },
   {
+    name: 'group_meetings',
+    element: <MenteeGroupPage />,
+    layout: RouteLayout.USER,
+    path: 'mentee-groups',
+    icon: TiGroupOutline,
+    description: 'dashboard.group_meetings.description',
+    allowedGroups: MENTEE_ONLY,
+  },
+  {
+    name: 'group_meetings_mentor',
+    element: <MentorGroupPage />,
+    layout: RouteLayout.USER,
+    path: 'mentor-groups',
+    icon: TiGroupOutline,
+    description: 'dashboard.group_meetings.description',
+    allowedGroups: MENTOR_ONLY,
+  },
+  {
     name: 'create_feedback',
     element: <CreateFeedbackPage />,
     layout: RouteLayout.USER,
@@ -213,6 +235,15 @@ export const dashboardRoutes: IDashboardRoute[] = [
     hide: true,
     icon: FaUserCircle,
     description: 'dashboard.profile.description',
+    allowedGroups: ALLOW_ALL_USERS,
+  },
+  {
+    name: 'change-password',
+    element: <UserChangePassword />,
+    layout: RouteLayout.USER,
+    path: 'profile/change-password',
+    hide: true,
+    description: 'dashboard.change-password.description',
     allowedGroups: ALLOW_ALL_USERS,
   },
   {

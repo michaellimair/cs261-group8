@@ -94,6 +94,26 @@
       "title": "My Plans of Action",
       "description": "My plans of action set out in the mentoring arrangement."
     },
+    "group_meetings_mentor": {
+      "title": "Group Meetings (Mentors)"
+    },
+    "group_meetings": {
+      "title": "Group Meetings (Mentees)",
+      "description": "See proposed group meetings",
+      "propose_group": "Propose a new group meeting",
+      "available_groups": "Available group meetings",
+      "tutoring": "Group Tutoring",
+      "group_session": "Group Workshop",
+      "group_tutoring": "Group Tutoring",
+      "select_topics": "Select topics which you would be interested in",
+      "propose_sessions": "Propose Meeting Topics",
+      "in_demand_topics": "In Demand Topics",
+      "proposed_topic": "Proposed topic:",
+      "run_group": "Run group",
+      "create_meeting": "Create a new group meeting",
+      "meeting_type": "Meeting Type",
+      "accepted_meetings": "Accepted Meetings"
+    },
     "meetings": {
       "past_meetings": "Past Meetings",
       "requested_meetings": "Requested Meetings",
@@ -175,5 +195,6 @@
   },
   "plan_professional": "Professional",
   "plan_personal": "Personal",
-  "plan_type": "Plan of Action Type"
+  "plan_type": "Plan of Action Type",
+  "mentor_time": "Mentor Time"
 }
