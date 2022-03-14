@@ -4,7 +4,12 @@ from matching.permissions import IsMenteePaired
 from .models import Meeting
 from .serializers import MeetingSerializer
 
-class MeetingMenteeViewSet(viewsets.ModelViewSet):
+class MeetingMenteeViewSet(
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    viewsets.GenericViewSet
+):
     serializer_class = MeetingSerializer
     permission_classes = [IsMentee, IsMenteePaired]
 
@@ -12,10 +17,13 @@ class MeetingMenteeViewSet(viewsets.ModelViewSet):
         user = self.request.user
         return Meeting.objects.filter(mentoring_pair__mentee=user)
 
-class MeetingMentorViewSet(mixins.UpdateModelMixin,
-        mixins.ListModelMixin,
-        mixins.RetrieveModelMixin,
-        viewsets.GenericViewSet):
+class MeetingMentorViewSet(
+    mixins.UpdateModelMixin,
+    # Once a meeting is created, only the mentor has access to modify them
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.DestroyModelMixin,
+    viewsets.GenericViewSet):
     serializer_class = MeetingSerializer
     permission_classes = [IsMentor]
 
