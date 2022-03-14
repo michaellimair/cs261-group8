@@ -12,8 +12,8 @@ import { merge } from 'lodash';
 
 const useCommonForm = <
 TVariables extends FieldValues,
-TError extends ApiError<any>,
-TData extends any,
+TError extends ApiError<any> = ApiError<any>,
+TData = any,
 >({
     mutationId,
     mutationFn,
@@ -32,6 +32,7 @@ TData extends any,
     reset,
     setValue,
     watch,
+    control,
   } = useForm<TVariables>({
     defaultValues,
   });
@@ -56,6 +57,7 @@ TData extends any,
     isSuccess,
     reset,
     setValue,
+    control,
     watch,
   };
 };

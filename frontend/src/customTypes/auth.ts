@@ -1,4 +1,5 @@
 import { IApiBadRequestErrorData } from './api';
+import { ILanguage } from './language';
 
 export enum JobTitle {
   ANALYST = 'anlst',
@@ -25,6 +26,7 @@ export interface IUserProfile {
   timezone: string | null;
   skills: string[] | null;
   avatar: string | null;
+  languages: ILanguage[];
 }
 
 export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area' | 'avatar'> {
@@ -35,6 +37,7 @@ export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area' | 'a
 export enum UserGroup {
   MENTOR = 'mentor',
   MENTEE = 'mentee',
+  UNDECLARED = 'undeclared',
 }
 
 export interface IUserGroup {

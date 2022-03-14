@@ -2,9 +2,9 @@
 import { render, RenderResult } from '@testing-library/react';
 import { setLogger } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
-import MentorRec from './mentor-rec';
+import MentorRecommendationsPage from './mentor-recommendations';
 
-describe('mentor-rec', () => {
+describe('mentor-recommendations', () => {
   let result: RenderResult<typeof import('@testing-library/dom/types/queries'), HTMLElement>;
   let submitButton: HTMLElement;
 
@@ -20,7 +20,7 @@ describe('mentor-rec', () => {
   beforeEach(() => {
     result = render(
       <BrowserRouter>
-        <MentorRec />
+        <MentorRecommendationsPage />
       </BrowserRouter>,
     );
     submitButton = result.queryByTestId('submitButton')!;

@@ -1,19 +1,21 @@
 # Derived from
 # https://stackoverflow.com/questions/22250352/programmatically-create-a-django-group-with-permissions
 import random
-import pytz
+import os
 from tqdm import tqdm
 import pycountry
-import math
+import requests
+import tempfile
 import numpy as np
 from typing import List
 from faker import Faker
+from urllib.parse import urlparse
 from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
 # pylint: disable=imported-auth-user
 from django.contrib.auth.models import Group, User
 from django.contrib.auth.hashers import make_password
-
+from django.core.files import File
 from group_session.models import GroupSessionRequest, GroupSessionRequestedSkill
 from matching.models import MentoringPair
 from rating.models import MentorRating, MentorRatingEntry
@@ -72,6 +74,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         user_model: User = get_user_model()
+        user_response = requests.get(f"https://randomuser.me/api/?results={num_users}")
+        random_users = user_response.json()['results']
 
         print("Deleting existing users...")
         # Clearing existing users
@@ -120,10 +124,21 @@ class Command(BaseCommand):
         print("Initializing mentor ratings...")
         MentorRating.objects.bulk_create(all_ratings)
 
+        file_ref = []
+
+        print("Creating user profiles...")
         # Attach a user profile to the users
-        for user in tqdm(created_users):
+        for index in tqdm(range(num_users)):
+            user = created_users[index]
+            image_url = random_users[index]['picture']['large']
+            response = requests.get(image_url)
+            file_name = os.path.basename(urlparse(image_url).path)
+            image = tempfile.TemporaryFile()
+            image.write(response.content)
+            file_ref.append(image)
             all_profiles.append(UserProfile(
                 user=user,
+                avatar=File(image, name=file_name),
                 country=np.random.choice(avail_countries),
                 timezone=np.random.choice(avail_timezones),
                 skills=random.sample(user_skill_options, 5),
@@ -135,9 +150,11 @@ class Command(BaseCommand):
                 pronoun=np.random.choice(avail_pronouns)
             ))
 
-        print("Creating user profiles...")
         UserProfile.objects.bulk_create(all_profiles)
         
+        for file in file_ref:
+            file.close()
+
         all_mentees = list(filter(lambda u : u.groups.filter(name=MENTEE_GROUP).exists(), created_users))
         all_mentors = list(filter(lambda u : u.groups.filter(name=MENTOR_GROUP).exists(), created_users))
 

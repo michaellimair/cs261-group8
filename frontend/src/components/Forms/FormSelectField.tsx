@@ -12,6 +12,7 @@ interface IFormSelectFieldProps<T> extends Omit<IFieldProps<T>, 'type'> {
   placeholder?: string;
   label: string;
   valueAsNumber?: boolean;
+  multiple?: boolean;
 }
 
 const FormSelectField = <T extends any>({
@@ -24,6 +25,8 @@ const FormSelectField = <T extends any>({
   placeholder,
   label: formLabel,
   valueAsNumber,
+  multiple,
+  disabled,
 }: PropsWithChildren<IFormSelectFieldProps<T>>) => (
   <FormControl
     id={name}
@@ -39,6 +42,8 @@ const FormSelectField = <T extends any>({
         valueAsNumber,
       })}
       autoComplete={autoComplete}
+      multiple={multiple}
+      disabled={disabled}
     >
       {options.map(({ label, value }) => (
         <option value={value as any} key={value as any}>{label}</option>

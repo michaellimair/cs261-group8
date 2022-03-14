@@ -94,7 +94,7 @@ router.register(r'mentee/match-suggestions',
     MenteeMatchSuggestionView,
     basename='mentee_match_suggestions')
 router.register(r'mentee/my-mentor', MenteeMyMentorView, basename='mentee_my_mentor')
-router.register(r'mentee/my-mentor/rate', MenteeRatingViewSet, basename='mentee_my_mentor_rating')
+router.register(r'mentee/my-mentor/rating', MenteeRatingViewSet, basename='mentee_my_mentor_rating')
 router.register(r'mentee/group-sessions/request-session', GroupSessionRequestMenteeViewSet, basename='mentee_group_session_request')
 router.register(r'mentee/plans-of-action', PlanOfActionMenteeViewSet, basename='mentee_plans_of_action')
 

@@ -29,10 +29,13 @@ export interface IMatchSuggestion {
   score: number;
   mentees_count: number;
   mentor: IUser;
+  rating: number;
+  rating_count: number;
 }
 
 export interface IMyMentor {
   mentor: IUser;
   mentor_id: number;
   mentor_rating: IRating;
+  status: IMatchStatus;
 }

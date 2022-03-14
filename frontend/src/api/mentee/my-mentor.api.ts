@@ -14,10 +14,14 @@ class MenteeMyMentorAPI extends CommonAPI {
     path: this.getPath(''),
   });
 
+  getMyRating = (): Promise<IRatingEntry> => this.api.get<IRatingEntry>({
+    path: this.getPath('/rating'),
+  });
+
   rateMentor = (
     data: IRatingEntryDTO,
   ): Promise<IRatingEntry> => this.api.post<IRatingEntry, IRatingEntryDTO>({
-    path: this.getPath('/matches'),
+    path: this.getPath('/rating'),
     body: data,
   });
 }

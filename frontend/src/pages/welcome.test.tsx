@@ -118,6 +118,7 @@ describe('welcome', () => {
       country: ['country cannot be blank'],
       timezone: ['timezone cannot be blank'],
       skills: ['skills cannot be blank'],
+      languages: ['languages cannot be blank'],
       business_area_id: ['business_area_id cannot be blank'],
       non_field_errors: ['Your form contains invalid inputs'],
       avatar: ['avatar cannot be blank'],

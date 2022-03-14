@@ -5,6 +5,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.8.1",
+    "@choc-ui/chakra-autocomplete": "^4.20.0",
     "@emotion/react": "11",
     "@emotion/styled": "11",
     "@faker-js/faker": "^6.0.0-alpha.7",
@@ -36,6 +37,7 @@
     "set-tz": "^0.2.0",
     "typescript": "^4.5.4",
     "url-join": "^4.0.1",
+    "use-debounce": "^7.0.1",
     "web-vitals": "^2.1.0"
   },
   "scripts": {

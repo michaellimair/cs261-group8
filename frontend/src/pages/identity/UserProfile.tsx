@@ -151,7 +151,10 @@ const UserProfile: FC = () => {
             required
             error={errors?.timezone}
             register={register}
-            options={timezoneOptions}
+            options={timezoneOptions.map(({ code, name }) => ({
+              label: name,
+              value: code,
+            }))}
           />
           <FormSelectField
             name="country"

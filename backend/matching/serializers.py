@@ -43,4 +43,4 @@ class MentorSerializer(serializers.ModelSerializer):
         Metadata for mentoring pair serializer.
         """
         model = MentoringPair
-        fields = ('mentor', 'mentor_rating', 'mentor_id')
+        fields = ('mentor', 'mentor_rating', 'mentor_id', 'status')

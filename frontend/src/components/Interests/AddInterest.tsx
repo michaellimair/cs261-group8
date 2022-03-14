@@ -1,55 +1,45 @@
 import {
-  Stack, Select, Button, useToast,
+  Stack,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
-import CreateSelect from 'components/Forms/WelcomeForm/CreateSelect';
+import useSkillsOptions from 'hooks/useSkillsOptions';
+import {
+  AutoComplete,
+  AutoCompleteInput,
+  AutoCompleteItem,
+  AutoCompleteList,
+} from '@choc-ui/chakra-autocomplete';
 
-const interestOptions = [
-  'interest 1',
-  'interest 2',
-  'interest 3',
-];
-
-const AddInterest = ({ addInterest } : { addInterest:any }) => {
+const AddInterest = ({ addInterest } : { addInterest: any }) => {
   const { t } = useTranslation();
-  const toast = useToast();
-  const [value, setValue] = useState('');
-
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    if (value === null) {
-      toast({
-        title: 'Please enter the text.',
-        status: 'warning',
-        duration: 2000,
-        isClosable: true,
-      });
-      return;
-    }
-
-    const interest = {
-      id: nanoid(),
-      text: value,
-    };
-
-    addInterest(interest);
-    setValue('');
-  };
+  const [value, setValue] = useState<string>('');
+  const interestOptions = useSkillsOptions(value);
 
   return (
     <Stack spacing={5}>
-      <Select
+      <AutoComplete
         placeholder={t('select_option')}
-        maxW="200px"
-        size="md"
-        onChange={(e) => setValue(e.target.value)}
-        value={value}
+        openOnFocus
+        shouldRenderSuggestions={(query) => query.length > 3}
+        onSelectOption={({ item }) => {
+          addInterest(item.value);
+          setValue('');
+        }}
       >
-        <CreateSelect options={interestOptions} />
-      </Select>
-      <Button w="200px" colorScheme="teal" onClick={handleSubmit}>Add Interest</Button>
+        <AutoCompleteInput variant="filled" value={value} onChange={(e) => setValue(e.target.value)} />
+        <AutoCompleteList>
+          {(interestOptions ?? []).map(({ value: interestValue, label }) => (
+            <AutoCompleteItem
+              key={`option-${interestValue}`}
+              value={interestValue ?? ''}
+              textTransform="capitalize"
+            >
+              {label}
+            </AutoCompleteItem>
+          ))}
+        </AutoCompleteList>
+      </AutoComplete>
     </Stack>
   );
 };

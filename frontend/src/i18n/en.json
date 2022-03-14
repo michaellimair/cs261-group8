@@ -51,7 +51,7 @@
       "title": "Welcome",
       "description": "Welcome form for new all users"
     },
-    "mentor-rec": {
+    "mentor_recommendations": {
       "title": "Mentor Recommendations",
       "description": "Vote from a list of recommended mentors"
     },
@@ -134,6 +134,11 @@
     "my_calendar": {
       "title": "My Calendar",
       "description": "See all the events that you have"
+    },
+    "my_mentor": {
+      "title": "My Mentor",
+      "description": "See mentor for a given mentee.",
+      "no_mentor": "You currently do not have a mentor."
     }
   },
   "title": "Title",
@@ -196,5 +201,40 @@
   "plan_professional": "Professional",
   "plan_personal": "Personal",
   "plan_type": "Plan of Action Type",
-  "mentor_time": "Mentor Time"
+  "mentor_time": "Mentor Time",
+  "no_matches": "Sorry, we could not find the right mentors for you right now. Please come back at a later time!",
+  "languages": "Languages",
+  "select_language": "Select Language",
+  "event": {
+    "start_time": "Start Time",
+    "end_time": "End Time",
+    "location": "Location",
+    "location_help": "If you are holding an online meeting, paste the meeting URL in this box."  
+  },
+  "plan_of_action": {
+    "title": {
+      "one": "Plan of Action",
+      "other": "Plans of Action"
+    }
+  },
+  "request_match": "Request a Match",
+  "select": "Select",
+  "selected": "Selected",
+  "my_calendar": {
+    "no_events": "You have no events on this date."
+  },
+  "find_me_a_mentor": "Find Me a Mentor",
+  "rate_mentor": {
+    "title": "Rate Mentor",
+    "success": "Your mentor rating has been submitted. Thank you for helping us improve the platform!",
+    "add_comments": "Add Comments",
+    "submit": "Save Rating"
+  },
+  "skills": "Skills",
+  "match_status": {
+    "title": "Matching Status",
+    "accepted": "Accepted",
+    "pending": "Pending",
+    "rejected": "Rejected"
+  }
 }

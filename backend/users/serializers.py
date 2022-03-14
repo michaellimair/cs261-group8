@@ -62,9 +62,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
         is_complete: bool = (instance.pronoun
             and instance.years_experience
             and instance.title
-            and instance.skills
-            and instance.interests
-            and len(instance.skills) + len(instance.interests) > 0
+            and (instance.skills or instance.interests)
+            and (len(instance.skills) + len(instance.interests)) > 0
             and instance.country
             and instance.timezone
             and instance.business_area)
@@ -136,6 +135,12 @@ class UserUpdateSerializer(serializers.ModelSerializer):
     verify_password = serializers.CharField(write_only=True, required=False)
     first_name = serializers.CharField(required=False)
     last_name = serializers.CharField(required=False)
+    groups = GroupSerializer(many=True, read_only=True)
+    group_ids = serializers.PrimaryKeyRelatedField(
+        queryset=Group.objects.all(),
+        many=True,
+        required=False,
+        source='groups')
 
     class Meta:
         """
@@ -145,10 +150,12 @@ class UserUpdateSerializer(serializers.ModelSerializer):
         fields = (
             'username',
             'password',
+            'groups',
             'verify_password',
             'email',
             'first_name',
-            'last_name')
+            'last_name',
+            'group_ids')
 
     def validate_email(self, value: str):
         return value.lower()

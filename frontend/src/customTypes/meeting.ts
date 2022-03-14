@@ -1,3 +1,4 @@
+import { DeepPartial } from '@chakra-ui/react';
 import { IEvent, IEventCreateDTO } from './event';
 import { IPlanOfAction } from './plan-of-action';
 
@@ -26,3 +27,5 @@ export interface IMeeting {
   status: IMeetingStatus;
   record: null | IMeetingRecord;
 }
+
+export interface IMeetingMentorUpdateDTO extends DeepPartial<IMeetingCreateDTO>, Partial<Pick<IMeeting, 'status'>> {}

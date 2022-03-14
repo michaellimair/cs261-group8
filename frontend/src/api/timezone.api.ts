@@ -15,6 +15,15 @@ class TimezoneAPI extends CommonAPI {
   listTimezones = (): Promise<ITimezone[]> => this.api.get<ITimezone[]>({
     path: this.getPath(''),
   });
+
+  getByTimezoneName = (name: string): Promise<ITimezone> => this.api.get<
+  ITimezone,
+  { name: string }>({
+    path: this.getPath(''),
+    query: {
+      name,
+    },
+  });
 }
 
 export default TimezoneAPI;

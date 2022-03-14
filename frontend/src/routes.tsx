@@ -1,23 +1,21 @@
 import { UserGroup } from 'customTypes/auth';
 import DashboardHomePage from 'pages/dashboard/dashboard';
-import DashboardMenteeOnlyPage from 'pages/dashboard/mentee-only';
-import DashboardMentorOnlyPage from 'pages/dashboard/mentor-only';
 import FeedbackPage from 'pages/feedback';
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
 import WelcomeForm from 'pages/welcome';
-import MentorRec from 'pages/mentor-rec';
+import MentorRecomendationsPage from 'pages/mentor-recommendations';
 import MenteeMeetingsPage from 'pages/dashboard/mentee-meetings';
 import MentorMeetingsPage from 'pages/dashboard/mentor-meetings';
 import { ReactElement } from 'react';
 import { IconType } from 'react-icons';
 import {
   FiHome,
-  FiShield,
 } from 'react-icons/fi';
-import { FaCalendar, FaUserCircle } from 'react-icons/fa';
+import { FaAddressCard, FaCalendar, FaUserCircle } from 'react-icons/fa';
 import { VscFeedback } from 'react-icons/vsc';
 import { IoSchool } from 'react-icons/io5';
+import { HiOutlineClipboardList, HiUserGroup } from 'react-icons/hi';
 import { MdComputer } from 'react-icons/md';
 import { TiGroupOutline } from 'react-icons/ti';
 import CreateFeedbackPage from 'pages/feedback/create';
@@ -29,6 +27,7 @@ import MenteeGroupPage from 'pages/groups/mentee-groups';
 import MentorGroupPage from 'pages/groups/mentor-groups';
 import MyCalendarPage from 'pages/my-calendar';
 import UserChangePassword from 'components/user-profile-components/UserChangePassword';
+import MyMentorPage from 'pages/my-mentor';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -62,6 +61,12 @@ export interface IDashboardRoute extends IRoute {
   children?: IDashboardRoute[];
 }
 
+export interface IWelcomeDashboardRoute extends IDashboardRoute {
+  /** Require that a user completed their profile for the route to be shown. */
+  requireCompleted: boolean;
+}
+
+const UNDECLARED_ONLY: UserGroup[] = [UserGroup.UNDECLARED];
 const ALLOW_ALL_USERS: UserGroup[] = [UserGroup.MENTOR, UserGroup.MENTEE];
 const MENTOR_ONLY: UserGroup[] = [UserGroup.MENTOR];
 const MENTEE_ONLY: UserGroup[] = [UserGroup.MENTEE];
@@ -83,42 +88,26 @@ export const authRoutes: IRoute[] = [
   },
 ];
 
-export const userRoutes: IRoute[] = [
+export const welcomeRoutes: IWelcomeDashboardRoute[] = [
   {
     name: 'welcome',
     element: <WelcomeForm />,
     layout: RouteLayout.USER,
-    path: 'welcome',
-    description: 'welcome_description',
-  },
-  {
-    name: 'recommendations',
-    element: <MentorRec />,
-    layout: RouteLayout.USER,
-    path: 'mentor-recs',
-    description: 'mentor_recs',
+    index: true,
+    requireCompleted: false,
+    icon: HiOutlineClipboardList,
+    description: 'dashboard.welcome.description',
+    allowedGroups: UNDECLARED_ONLY,
   },
 ];
 
-export const dashboardRoutes: IDashboardRoute[] = [
-  {
-    name: 'welcome',
-    element: <WelcomeForm />,
-    layout: RouteLayout.USER,
-    path: 'welcome',
-    description: 'dashboard.welcome.description',
-    allowedGroups: ALLOW_ALL_USERS,
-    hide: true,
-  },
-  {
-    name: 'mentor-rec',
-    element: <MentorRec />,
-    layout: RouteLayout.USER,
-    path: 'mentor-rec',
-    description: 'dashboard.mentor-rec.description',
-    allowedGroups: MENTEE_ONLY,
-    hide: true,
-  },
+export interface IMenteeDashboardRoute extends IDashboardRoute {
+  requiresMentor: boolean;
+}
+
+export const isMenteeDashboardRoute = (route: IDashboardRoute): route is IMenteeDashboardRoute => 'requiresMentor' in route;
+
+export const dashboardRoutes: (IDashboardRoute | IMenteeDashboardRoute)[] = [
   {
     name: 'home',
     element: <DashboardHomePage />,
@@ -129,21 +118,13 @@ export const dashboardRoutes: IDashboardRoute[] = [
     allowedGroups: ALLOW_ALL_USERS,
   },
   {
-    name: 'mentor_only',
-    element: <DashboardMentorOnlyPage />,
+    name: 'mentor_recommendations',
+    element: <MentorRecomendationsPage />,
     layout: RouteLayout.USER,
-    path: 'mentor-only',
-    icon: FiShield,
-    description: 'dashboard.mentor_only.description',
-    allowedGroups: MENTOR_ONLY,
-  },
-  {
-    name: 'mentee_only',
-    element: <DashboardMenteeOnlyPage />,
-    layout: RouteLayout.USER,
-    path: 'mentee-only',
-    icon: IoSchool,
-    description: 'dashboard.mentee_only.description',
+    icon: HiUserGroup,
+    path: 'mentor-recommendations',
+    description: 'dashboard.mentor_recommendations.description',
+    requiresMentor: false,
     allowedGroups: MENTEE_ONLY,
   },
   {
@@ -153,6 +134,16 @@ export const dashboardRoutes: IDashboardRoute[] = [
     path: 'mentee-meetings',
     icon: MdComputer,
     description: 'dashboard.mentee_meetings.description',
+    allowedGroups: MENTEE_ONLY,
+    requiresMentor: true,
+  },
+  {
+    name: 'my_mentor',
+    element: <MyMentorPage />,
+    layout: RouteLayout.USER,
+    path: 'my-mentor',
+    icon: FaAddressCard,
+    description: 'dashboard.my_mentor.description',
     allowedGroups: MENTEE_ONLY,
   },
   {
@@ -172,6 +163,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     icon: IoSchool,
     description: 'dashboard.mentee_milestones.description',
     allowedGroups: MENTEE_ONLY,
+    requiresMentor: true,
   },
   {
     name: 'group_meetings',
@@ -181,6 +173,7 @@ export const dashboardRoutes: IDashboardRoute[] = [
     icon: TiGroupOutline,
     description: 'dashboard.group_meetings.description',
     allowedGroups: MENTEE_ONLY,
+    requiresMentor: true,
   },
   {
     name: 'group_meetings_mentor',
