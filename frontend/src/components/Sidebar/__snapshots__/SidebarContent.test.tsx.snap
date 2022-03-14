@@ -430,6 +430,18 @@ Object {
         </a>
         <a
           class="chakra-link css-jgup0q"
+          href="/profile/change-password"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            dashboard.change-password.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
           href="/my-calendar"
           style="text-decoration: none;"
         >
@@ -853,6 +865,18 @@ Object {
             />
           </svg>
           dashboard.profile.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/profile/change-password"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          dashboard.change-password.title
         </div>
       </a>
       <a

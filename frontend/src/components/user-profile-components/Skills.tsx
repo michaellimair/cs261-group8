@@ -1,6 +1,7 @@
 import {
   FormLabel, Stack, Button, Select,
 } from '@chakra-ui/react';
+
 import useSkillsOptions from 'hooks/useSkillsOptions';
 import { useUser } from 'hooks/useUser';
 import { FC, useState } from 'react';
@@ -16,8 +17,8 @@ const Skills: FC = () => {
     setSkillList(filtered);
   };
 
-  const addSkillHandler = () => {
-    if (userSkillList.includes(addedArea) || addedArea === '') {
+  const addSkillHandler = async () => {
+    if (userSkillList.includes(addedArea) || addedArea === '-' || (!addedArea)) {
       return;
     }
     const newList = userSkillList.concat([addedArea]);

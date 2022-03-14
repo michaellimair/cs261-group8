@@ -148,7 +148,7 @@ const MentorRec: FC = () => {
       </Stack>
       <Box
         w="100%"
-        align="center"
+        alignContent="center"
         rounded="lg"
         bg={useColorModeValue('white', 'gray.700')}
         boxShadow="lg"
