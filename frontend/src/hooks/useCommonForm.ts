@@ -28,7 +28,7 @@ TData = any,
   const {
     register,
     handleSubmit,
-    formState: { errors: formErrors },
+    formState,
     reset,
     setValue,
     watch,
@@ -39,6 +39,8 @@ TData = any,
   const {
     mutate, isLoading, error: mutationErrors, isSuccess,
   } = useMutation<TData, TError, TVariables>(mutationId, mutationFn, { onSuccess });
+
+  const { errors: formErrors } = formState;
 
   const errors = merge({}, formErrors, mutationErrors?.data);
 

@@ -94,7 +94,7 @@ const MyMentorPage: FC = () => {
             <Divider />
             <RateMentor
               mentor_id={data?.mentor_id!}
-              disabled={data?.status === IMatchStatus.ACCEPTED}
+              disabled={false}
             />
           </>
           )}

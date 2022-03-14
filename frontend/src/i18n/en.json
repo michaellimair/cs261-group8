@@ -233,7 +233,8 @@
     "title": "Rate Mentor",
     "success": "Your mentor rating has been submitted. Thank you for helping us improve the platform!",
     "add_comments": "Add Comments",
-    "submit": "Save Rating"
+    "submit": "Save Rating",
+    "rating": "Rating"
   },
   "skills": "Skills",
   "match_status": {

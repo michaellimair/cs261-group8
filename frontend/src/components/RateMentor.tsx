@@ -1,4 +1,6 @@
-import { Button, Heading, Text } from '@chakra-ui/react';
+import {
+  Button, FormControl, FormLabel, Heading, Text,
+} from '@chakra-ui/react';
 import { httpClient } from 'api';
 import ApiError from 'api/error/ApiError';
 import { IApiBadRequestErrorData } from 'customTypes/api';
@@ -9,6 +11,7 @@ import { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import FormTextAreaField from './Forms/FormTextareaField';
+import RatingStars from './RatingStars';
 
 interface IRateMentorProps {
   mentor_id: number;
@@ -23,7 +26,6 @@ const RateMentor: FC<IRateMentorProps> = ({
   const {
     data: currentRating,
     isFetching: isGettingCurrentRating,
-    refetch,
   } = useQuery(
     ['my-mentor', 'rating'],
     () => httpClient.menteeMyMentor.getMyRating(),
@@ -34,6 +36,8 @@ const RateMentor: FC<IRateMentorProps> = ({
     reset,
     onSubmit,
     register,
+    setValue,
+    watch,
   } = useCommonForm<
   IRatingEntryDTO,
   ApiError<IApiBadRequestErrorData<IRatingEntry>>,
@@ -41,9 +45,6 @@ const RateMentor: FC<IRateMentorProps> = ({
     mutationId: `my-mentor-rate-${mentor_id}`,
     defaultValues: {
       description: null,
-    },
-    onSuccess: () => {
-      refetch();
     },
     mutationFn: (values: IRatingEntryDTO) => httpClient.menteeMyMentor.rateMentor(values),
   });
@@ -61,6 +62,13 @@ const RateMentor: FC<IRateMentorProps> = ({
         {t('rate_mentor.title')}
       </Heading>
       <form onSubmit={onSubmit}>
+        <FormControl>
+          <FormLabel>{t('rate_mentor.rating')}</FormLabel>
+          <RatingStars
+            watch={watch}
+            setValue={setValue}
+          />
+        </FormControl>
         <FormTextAreaField
           register={register}
           name="description"
@@ -70,6 +78,7 @@ const RateMentor: FC<IRateMentorProps> = ({
         <Button
           disabled={isLoading || disabled || isGettingCurrentRating}
           colorScheme="blue"
+          type="submit"
           mt={4}
         >
           {t('rate_mentor.submit')}
