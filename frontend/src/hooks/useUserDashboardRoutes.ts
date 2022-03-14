@@ -19,7 +19,7 @@ const checkMatchRequirement = (
   requirement: IMatchStatus | null,
 ) => matchRequirementHierarchy.indexOf(
   currentStatus,
-) > matchRequirementHierarchy.indexOf(requirement);
+) >= matchRequirementHierarchy.indexOf(requirement);
 
 const useUserDashboardRoutes = (shouldHide?: boolean): IDashboardRoute[] => {
   const { user, isMentee } = useUser();

@@ -11,4 +11,6 @@ export interface IGroupCardProps {
 
 export interface ITopicProps {
   title: string;
+  count: number;
+  refetch: () => void;
 }

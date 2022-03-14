@@ -111,6 +111,7 @@ describe('welcome', () => {
 
   it.skip('displays errors properly when there are errors in form submission', async () => {
     const err: IWelcomeError = {
+      groups: ['groups cannot be blank'],
       completed: ['completed cannot be blank'],
       pronoun: ['pronoun cannot be blank'],
       years_experience: ['years_experience cannot be blank'],

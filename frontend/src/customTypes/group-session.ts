@@ -1,4 +1,4 @@
-import { IEventCreateDTO } from './event';
+import { IEvent, IEventCreateDTO } from './event';
 
 export interface IGroupSessionSuggestion {
   count: number;
@@ -8,6 +8,13 @@ export interface IGroupSessionSuggestion {
 export enum GroupSessionType {
   WORKSHOP = 'workshop',
   TUTORING_SESSION = 'tutoring_session',
+}
+
+export interface IGroupSession {
+  max_attendees: number;
+  event: IEvent;
+  type: GroupSessionType;
+  related_skills: string[];
 }
 
 export interface IGroupSessionCreateDTO {

@@ -1,4 +1,7 @@
 import {
+  InputGroup,
+  InputLeftElement,
+  Spinner,
   Stack,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
@@ -10,14 +13,15 @@ import {
   AutoCompleteItem,
   AutoCompleteList,
 } from '@choc-ui/chakra-autocomplete';
+import { SearchIcon } from '@chakra-ui/icons';
 
 const AddInterest = ({ addInterest } : { addInterest: any }) => {
   const { t } = useTranslation();
   const [value, setValue] = useState<string>('');
-  const interestOptions = useSkillsOptions(value);
+  const { options: interestOptions, isFetching } = useSkillsOptions(value);
 
   return (
-    <Stack spacing={5}>
+    <Stack spacing={5} mb={4}>
       <AutoComplete
         placeholder={t('select_option')}
         openOnFocus
@@ -27,7 +31,12 @@ const AddInterest = ({ addInterest } : { addInterest: any }) => {
           setValue('');
         }}
       >
-        <AutoCompleteInput variant="filled" value={value} onChange={(e) => setValue(e.target.value)} />
+        <InputGroup>
+          <InputLeftElement h="full">
+            {isFetching ? <Spinner /> : <SearchIcon />}
+          </InputLeftElement>
+          <AutoCompleteInput variant="filled" value={value} onChange={(e) => setValue(e.target.value)} />
+        </InputGroup>
         <AutoCompleteList>
           {(interestOptions ?? []).map(({ value: interestValue, label }) => (
             <AutoCompleteItem

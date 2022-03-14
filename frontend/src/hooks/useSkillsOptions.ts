@@ -1,11 +1,10 @@
 import { useQuery } from 'react-query';
-import { useMemo } from 'react';
 import { httpClient } from 'api';
 import { useDebounce } from 'use-debounce';
 
 const useSkillsOptions = (query?: string) => {
   const [value] = useDebounce(query, 100);
-  const { data: skills } = useQuery(['skills', value], async () => {
+  const { data: skills, isFetching } = useQuery(['skills', value], async () => {
     const results = await httpClient.skill.listSkills(value);
 
     if (!query) {
@@ -16,15 +15,12 @@ const useSkillsOptions = (query?: string) => {
       value: item,
       label: item,
     }));
-  });
+  }, { cacheTime: 0 });
 
-  return useMemo(() => [
-    {
-      value: null,
-      label: '-',
-    },
-    ...(skills ?? []),
-  ], [skills]);
+  return {
+    options: skills ?? [],
+    isFetching,
+  };
 };
 
 export default useSkillsOptions;

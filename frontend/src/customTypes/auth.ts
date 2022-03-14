@@ -32,6 +32,7 @@ export interface IUserProfile {
 export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area' | 'avatar'> {
   business_area_id: number;
   avatar: File;
+  groups: number[]
 }
 
 export enum UserGroup {

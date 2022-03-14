@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Center,
@@ -8,7 +8,10 @@ import {
 import MentorPotentialGroupCard from 'components/group-sessions-components/MentorPotentialGroupCard';
 
 import MentorAcceptedGroupCard from 'components/group-sessions-components/MentorAcceptedGroupCard';
-import { IGroupCardProps, ITopicProps } from 'customTypes/group';
+import { IGroupCardProps } from 'customTypes/group';
+import { useQuery } from 'react-query';
+import { httpClient } from 'api';
+import LoadingComponent from 'components/LoadingComponent';
 
 const acceptedMeetings : IGroupCardProps[] = [
   {
@@ -41,32 +44,58 @@ const acceptedMeetings : IGroupCardProps[] = [
   },
 ];
 
-const proposedTopics : ITopicProps[] = [
-  { title: 'Topic' },
-];
-
 const MentorGroupPage: FC = () => {
   const { t } = useTranslation();
+  const { data, isFetching, refetch: refetchInDemandTopics } = useQuery(
+    ['in_demand_topics'],
+    () => httpClient.mentorGroupSession.getSuggestions(),
+  );
+  const {
+    data: mySessionData,
+    isFetching: isLoadingSessions,
+    refetch: refetchMySessions,
+  } = useQuery(
+    ['my_group_sessions'],
+    () => httpClient.mentorGroupSession.listMySessions(),
+  );
+
+  const refetch = useCallback(() => {
+    refetchMySessions();
+    refetchInDemandTopics();
+  }, [refetchMySessions, refetchInDemandTopics]);
+
   return (
     <Stack p="4" spacing="24px">
       <Center>
         <Heading size="2xl">{t('dashboard.group_meetings.title')}</Heading>
       </Center>
-      <Heading>{t('dashboard.group_meetings.accepted_meetings')}</Heading>
-      {acceptedMeetings.map((topic) => (
-        <MentorAcceptedGroupCard
-          title={topic.title}
-          body={topic.body}
-          isTutoring={topic.isTutoring}
-          linkToMeeting={topic.linkToMeeting}
-          meetingTime={topic.meetingTime}
-          mentor={topic.mentor}
-        />
-      ))}
+      <Heading>{t('dashboard.group_meetings.my_upcoming_sessions')}</Heading>
+      <LoadingComponent
+        isLoading={isLoadingSessions}
+        hasData={Boolean(mySessionData && mySessionData.length > 0)}
+        noDataText={t('dashboard.group_meetings.no_upcoming_sessions')}
+      >
+        {acceptedMeetings.map((topic) => (
+          <MentorAcceptedGroupCard
+            title={topic.title}
+            body={topic.body}
+            isTutoring={topic.isTutoring}
+            linkToMeeting={topic.linkToMeeting}
+            meetingTime={topic.meetingTime}
+            mentor={topic.mentor}
+          />
+        ))}
+      </LoadingComponent>
       <Heading>{t('dashboard.group_meetings.in_demand_topics')}</Heading>
-      {proposedTopics.map((topic) => (
-        <MentorPotentialGroupCard title={topic.title} />
-      ))}
+      <LoadingComponent
+        isLoading={isFetching}
+        hasData={Boolean(data && data.length > 0)}
+        noDataText={t('dashboard.group_meetings.no_suggestions')}
+      >
+        {data?.map((topic) => (
+          <MentorPotentialGroupCard refetch={refetch} title={topic.skill} count={topic.count} />
+        ))}
+      </LoadingComponent>
     </Stack>
   );
 };

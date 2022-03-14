@@ -60,6 +60,8 @@ from rating.views import (
     MenteeRatingViewSet
 )
 from group_session.views import (
+    GroupSessionMenteeSignupViewSet,
+    GroupSessionMenteeViewSet,
     GroupSessionMentorViewSet,
     GroupSessionRequestMenteeViewSet,
     GroupSessionSuggestionsMentorViewSet,
@@ -95,7 +97,9 @@ router.register(r'mentee/match-suggestions',
     basename='mentee_match_suggestions')
 router.register(r'mentee/my-mentor', MenteeMyMentorView, basename='mentee_my_mentor')
 router.register(r'mentee/my-mentor/rating', MenteeRatingViewSet, basename='mentee_my_mentor_rating')
+router.register(r'mentee/group-sessions', GroupSessionMenteeViewSet, basename='mentee_group_sessions')
 router.register(r'mentee/group-sessions/request-session', GroupSessionRequestMenteeViewSet, basename='mentee_group_session_request')
+router.register(r'mentee/group-sessions/<int:pk>/signup', GroupSessionMenteeSignupViewSet, basename='mentor_group_session_signup')
 router.register(r'mentee/plans-of-action', PlanOfActionMenteeViewSet, basename='mentee_plans_of_action')
 
 router.register(r'mentor/matches', MentorMatchView, basename='mentor_matches')

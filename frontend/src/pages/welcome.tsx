@@ -1,7 +1,6 @@
 import {
   Button,
   Flex,
-  Checkbox,
   Stack,
   Heading,
   useColorModeValue,
@@ -149,11 +148,25 @@ const WelcomeForm: FC = () => {
 
         <Stack spacing="36px">
           <Stack mt={4}>
-            <Heading fontSize="1xl">{t('select_mentor_mentee')}</Heading>
-            <Stack direction={['column', 'row']} spacing={6}>
-              <Checkbox textTransform="capitalize">{t('mentor')}</Checkbox>
-              <Checkbox textTransform="capitalize">{t('mentee')}</Checkbox>
-            </Stack>
+            <FormSelectField
+              name="groups"
+              multiple
+              register={register}
+              error={errors?.profile?.business_area}
+              required
+              valueAsNumber
+              options={[
+                {
+                  value: 1,
+                  label: 'mentor',
+                },
+                {
+                  value: 2,
+                  label: 'mentee',
+                },
+              ]}
+              label={t('select_mentor_mentee')}
+            />
           </Stack>
           <Stack>
             <FormSelectField

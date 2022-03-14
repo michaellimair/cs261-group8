@@ -8,7 +8,7 @@ import { FC, useState } from 'react';
 
 const Skills: FC = () => {
   const { user } = useUser();
-  const skillsOptions = useSkillsOptions()!;
+  const { options: skillsOptions } = useSkillsOptions()!;
   const [userSkillList, setSkillList] = useState(user?.profile.skills!);
   const [addedArea, setAddedArea] = useState('-');
 

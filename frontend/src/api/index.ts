@@ -6,10 +6,12 @@ import CountryAPI from './country.api';
 import EventAPI from './event.api';
 import FeedbackAPI from './feedback.api';
 import LanguageAPI from './language.api';
+import MenteeGroupSessionAPI from './mentee/group-session';
 import MenteeMatchAPI from './mentee/match.api';
 import MenteeMeetingAPI from './mentee/meeting.api';
 import MenteeMyMentorAPI from './mentee/my-mentor.api';
 import MenteePlanOfActionAPI from './mentee/plan-of-action.api';
+import MentorGroupSessionAPI from './mentor/group-session';
 import MentorMatchAPI from './mentor/match.api';
 import MentorPlanOfActionAPI from './mentor/plan-of-action.api';
 import UserProfileAPI from './profile.api';
@@ -36,6 +38,8 @@ class HttpClient {
     readonly menteeMeeting: MenteeMeetingAPI = new MenteeMeetingAPI(baseApi),
     readonly events: EventAPI = new EventAPI(baseApi),
     readonly menteeMyMentor: MenteeMyMentorAPI = new MenteeMyMentorAPI(baseApi),
+    readonly menteeGroupSession: MenteeGroupSessionAPI = new MenteeGroupSessionAPI(baseApi),
+    readonly mentorGroupSession: MentorGroupSessionAPI = new MentorGroupSessionAPI(baseApi),
   ) {}
 }
 

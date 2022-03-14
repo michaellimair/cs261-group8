@@ -25,7 +25,7 @@ class UserProfileAPI extends CommonAPI {
     const formData = new FormData();
 
     Object.entries(payload).forEach(([k, v]) => {
-      if (k === 'languages') {
+      if (k === 'languages' || k === 'skills') {
         payload.languages!.forEach((language) => {
           formData.append('languages', language.code);
         });
@@ -33,10 +33,22 @@ class UserProfileAPI extends CommonAPI {
         if (v) {
           formData.append('avatar', v as File);
         }
+      // eslint-disable-next-line no-empty
+      } else if (k === 'groups') {
+
       } else if (v !== undefined || v !== null) {
         formData.append(k.replace('[]', ''), v as any);
       }
     });
+
+    if (payload.groups) {
+      await this.api.patch({
+        path: '/auth',
+        body: {
+          group_ids: payload.groups,
+        },
+      });
+    }
 
     return this.api.patch<IUserProfile, FormData>({
       path: this.getPathById(id, '/'),

@@ -109,10 +109,19 @@
       "propose_sessions": "Propose Meeting Topics",
       "in_demand_topics": "In Demand Topics",
       "proposed_topic": "Proposed topic:",
-      "run_group": "Run group",
+      "run_group": "Run group session",
       "create_meeting": "Create a new group meeting",
       "meeting_type": "Meeting Type",
-      "accepted_meetings": "Accepted Meetings"
+      "session_type": "Session Type",
+      "accepted_meetings": "Accepted Meetings",
+      "my_upcoming_sessions": "Upcoming Sessions",
+      "no_upcoming_sessions": "You do not have any upcoming sessions.",
+      "propose_success": "Successfully proposed group session.",
+      "once_daily": "You are only allowed to propose a group session once every day.",
+      "no_suggestions": "We could not find any suggested group sessions for you to host.",
+      "requested_by_one": "Requested by {{count}} person in the last 30 days",
+      "requested_by_other": "Requested by {{count}} people in the last 30 days",
+      "workshop": "Workshop"
     },
     "meetings": {
       "past_meetings": "Past Meetings",
@@ -242,5 +251,6 @@
     "accepted": "Accepted",
     "pending": "Pending",
     "rejected": "Rejected"
-  }
+  },
+  "add_interests": "Add Interests"
 }

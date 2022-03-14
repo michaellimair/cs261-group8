@@ -1,3 +1,5 @@
+from django.core.exceptions import ValidationError
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, mixins
 from rest_framework.response import Response
 from users.permissions import IsMentee, IsMentor
@@ -49,3 +51,39 @@ class GroupSessionMentorViewSet(
 
     def get_serializer_class(self):
         return self.serializer_action_classes.get(self.action) or super().get_serializer_class()
+
+class GroupSessionMenteeViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    """Group sessions specific to a mentor"""
+    permission_classes = [IsMentee, IsMenteePaired]
+    serializer_class = GroupSessionSerializer
+    serializer_action_classes = {
+        'retrieve': GroupSessionDetailSerializer
+    }
+    ordering = ('-event.start_time')
+
+    def get_queryset(self):
+        return GroupSession.objects.all()
+
+    def get_serializer_class(self):
+        return self.serializer_action_classes.get(self.action) or super().get_serializer_class()
+
+class GroupSessionMenteeSignupViewSet(viewsets.GenericViewSet):
+    """Viewset for signing up to a group session"""
+    permission_classes = [IsMentee, IsMenteePaired]
+    serializer_class = GroupSessionDetailSerializer
+
+    def get_queryset(self):
+        return GroupSession.objects.filter(
+            pk=self.kwargs['pk']
+        )
+
+    def get_serializer_class(self):
+        return self.serializer_action_classes.get(self.action) or super().get_serializer_class()
+
+    def create(self, request):
+        session = get_object_or_404(self.get_queryset())
+        if len(session.event.attendees) > session.max_attendees:
+            raise ValidationError({
+                "non_field_errors": ["Group session is already full"]
+            })
+        session.event.attendees.add(request.user)
