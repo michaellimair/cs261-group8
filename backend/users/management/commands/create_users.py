@@ -24,11 +24,14 @@ from users.models import UserProfile
 from users.permission_constants import MENTOR_GROUP, MENTEE_GROUP
 from business_area.models import BusinessArea
 from skill.utils import get_skills
+from numpy.random import MT19937
+from numpy.random import RandomState, SeedSequence
 
 fake = Faker()
 
 random.seed(0)
 Faker.seed(0)
+rs = RandomState(MT19937(SeedSequence(123456789)))
 
 avail_languages = [x.alpha_2 for x in list(LANGS_WITH_CODE)]
 avail_titles = [
@@ -147,7 +150,8 @@ class Command(BaseCommand):
                 title=np.random.choice(avail_titles),
                 languages=random.sample(avail_languages, k=5),
                 business_area=np.random.choice(business_areas),
-                pronoun=np.random.choice(avail_pronouns)
+                pronoun=np.random.choice(avail_pronouns),
+                completed=True
             ))
 
         UserProfile.objects.bulk_create(all_profiles)

@@ -28,6 +28,7 @@ import MentorGroupPage from 'pages/groups/mentor-groups';
 import MyCalendarPage from 'pages/my-calendar';
 import UserChangePassword from 'components/user-profile-components/UserChangePassword';
 import MyMentorPage from 'pages/my-mentor';
+import { IMatchStatus } from 'customTypes/matching';
 
 export enum RouteLayout {
   ADMIN = 'admin',
@@ -102,10 +103,10 @@ export const welcomeRoutes: IWelcomeDashboardRoute[] = [
 ];
 
 export interface IMenteeDashboardRoute extends IDashboardRoute {
-  requiresMentor: boolean;
+  requiredMatchStatus: IMatchStatus | null;
 }
 
-export const isMenteeDashboardRoute = (route: IDashboardRoute): route is IMenteeDashboardRoute => 'requiresMentor' in route;
+export const isMenteeDashboardRoute = (route: IDashboardRoute): route is IMenteeDashboardRoute => 'requiredMatchStatus' in route;
 
 export const dashboardRoutes: (IDashboardRoute | IMenteeDashboardRoute)[] = [
   {
@@ -124,7 +125,7 @@ export const dashboardRoutes: (IDashboardRoute | IMenteeDashboardRoute)[] = [
     icon: HiUserGroup,
     path: 'mentor-recommendations',
     description: 'dashboard.mentor_recommendations.description',
-    requiresMentor: false,
+    requiredMatchStatus: IMatchStatus.REJECTED,
     allowedGroups: MENTEE_ONLY,
   },
   {
@@ -135,7 +136,7 @@ export const dashboardRoutes: (IDashboardRoute | IMenteeDashboardRoute)[] = [
     icon: MdComputer,
     description: 'dashboard.mentee_meetings.description',
     allowedGroups: MENTEE_ONLY,
-    requiresMentor: true,
+    requiredMatchStatus: IMatchStatus.ACCEPTED,
   },
   {
     name: 'my_mentor',
@@ -163,7 +164,7 @@ export const dashboardRoutes: (IDashboardRoute | IMenteeDashboardRoute)[] = [
     icon: IoSchool,
     description: 'dashboard.mentee_milestones.description',
     allowedGroups: MENTEE_ONLY,
-    requiresMentor: true,
+    requiredMatchStatus: IMatchStatus.ACCEPTED,
   },
   {
     name: 'group_meetings',
@@ -173,7 +174,7 @@ export const dashboardRoutes: (IDashboardRoute | IMenteeDashboardRoute)[] = [
     icon: TiGroupOutline,
     description: 'dashboard.group_meetings.description',
     allowedGroups: MENTEE_ONLY,
-    requiresMentor: true,
+    requiredMatchStatus: IMatchStatus.ACCEPTED,
   },
   {
     name: 'group_meetings_mentor',
