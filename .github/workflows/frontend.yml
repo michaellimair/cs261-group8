@@ -11,6 +11,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  CI: true
 
 jobs:
   frontend:

@@ -29,6 +29,7 @@ env:
   TF_VAR_heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
   TF_VAR_heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
   TF_VAR_heroku_email: ${{ secrets.HEROKU_EMAIL }}
+  CI: true
 
 jobs:
   backend:
