@@ -73,6 +73,11 @@ const WelcomeForm: FC = () => {
   } = useCommonForm<IUserProfileDTO, BadRequestApiError<IWelcomeError>, IUserProfile>({
     mutationId: 'welcome',
     mutationFn,
+    onSuccess: ({ completed }) => {
+      if (completed) {
+        window.location.reload();
+      }
+    },
   });
 
   return (
