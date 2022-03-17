@@ -1,5 +1,4 @@
 import {
-  Stack,
   HStack,
   Text,
   Button,
@@ -13,7 +12,7 @@ interface IInterestListProps {
 }
 
 const InterestList: FC<IInterestListProps> = ({ interests, deleteInterest }) => (
-  <Stack>
+  <>
     {interests.map((value) => (
       <HStack key={value}>
         <Text>{value}</Text>
@@ -22,6 +21,6 @@ const InterestList: FC<IInterestListProps> = ({ interests, deleteInterest }) => 
         </Button>
       </HStack>
     ))}
-  </Stack>
+  </>
 );
 export default InterestList;

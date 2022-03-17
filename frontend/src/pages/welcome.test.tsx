@@ -18,6 +18,7 @@ import useCountries from 'hooks/useCountries';
 import useSkillsOptions from 'hooks/useSkillsOptions';
 import useLanguages from 'hooks/useLanguages';
 import { useFieldArray } from 'react-hook-form';
+import useGroupOptions from 'hooks/useGroupOptions';
 import WelcomeForm from './welcome';
 
 const mockCommonForm = {
@@ -36,6 +37,7 @@ jest.mock('hooks/useCountries');
 jest.mock('hooks/useSkillsOptions');
 jest.mock('hooks/useTimezoneOptions');
 jest.mock('hooks/useLanguages');
+jest.mock('hooks/useGroupOptions');
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),
   useFieldArray: jest.fn(),
@@ -85,6 +87,10 @@ describe('welcome', () => {
     (useLanguages as jest.Mock).mockImplementation(() => ([{
       code: 'id',
       name: 'Indonesian',
+    }]));
+    (useGroupOptions as jest.Mock).mockImplementation(() => ([{
+      id: 1,
+      name: 'mentor',
     }]));
     (useSkillsOptions as jest.Mock).mockImplementation(() => ({
       options: ([
@@ -149,6 +155,7 @@ describe('welcome', () => {
       country: ['country cannot be blank'],
       timezone: ['timezone cannot be blank'],
       skills: ['skills cannot be blank'],
+      interests: ['interests cannot be blank'],
       languages: ['languages cannot be blank'],
       business_area_id: ['business_area_id cannot be blank'],
       non_field_errors: ['Your form contains invalid inputs'],

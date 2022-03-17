@@ -1,28 +1,33 @@
 import {
-  FormLabel, Stack, Button, Select,
+  FormLabel, Stack, Button,
 } from '@chakra-ui/react';
-
-import useSkillsOptions from 'hooks/useSkillsOptions';
+import AddInterest from 'components/Interests/AddInterest';
+import { UseFormSetValue } from 'react-hook-form';
 import { useUser } from 'hooks/useUser';
 import { FC, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { IUserProfileDTO } from 'customTypes/auth';
 
-const Skills: FC = () => {
+const Skills: FC<{ setValue: UseFormSetValue<IUserProfileDTO> }> = ({
+  setValue,
+}) => {
   const { user } = useUser();
-  const { options: skillsOptions } = useSkillsOptions()!;
   const [userSkillList, setSkillList] = useState(user?.profile.skills!);
-  const [addedArea, setAddedArea] = useState('-');
+  const { t } = useTranslation();
 
   const deleteSkillHandler = (item:any) => {
     const filtered = userSkillList.filter((value: any) => value !== item);
     setSkillList(filtered);
+    setValue('skills', filtered);
   };
 
-  const addSkillHandler = async () => {
+  const addSkillHandler = async (addedArea: string) => {
     if (userSkillList.includes(addedArea) || addedArea === '-' || (!addedArea)) {
       return;
     }
     const newList = userSkillList.concat([addedArea]);
     setSkillList(newList);
+    setValue('skills', newList);
   };
 
   return (
@@ -37,20 +42,9 @@ const Skills: FC = () => {
             </Stack>
           ))}
       </Stack>
-      <FormLabel>Add skills from list below</FormLabel>
+      <FormLabel>{t('skills')}</FormLabel>
       <Stack direction="row">
-        <Select
-          onChange={(e) => {
-            const val = e.target.value;
-            setAddedArea(val);
-          }}
-          value={addedArea}
-        >
-          {skillsOptions.map((item) => (
-            <option key={item.value} value={item.label}>{item.value}</option>
-          ))}
-        </Select>
-        <Button onClick={() => addSkillHandler()} size="sm" colorScheme="green">Add</Button>
+        <AddInterest addInterest={addSkillHandler} />
       </Stack>
     </Stack>
   );

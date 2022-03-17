@@ -40,7 +40,7 @@ TData = any,
     mutate, isLoading, error: mutationErrors, isSuccess,
   } = useMutation<TData, TError, TVariables>(mutationId, mutationFn, { onSuccess });
 
-  const { errors: formErrors } = formState;
+  const { errors: formErrors, isDirty } = formState;
 
   const errors = merge({}, formErrors, mutationErrors?.data);
 
@@ -61,6 +61,7 @@ TData = any,
     setValue,
     control,
     watch,
+    isDirty,
   };
 };
 

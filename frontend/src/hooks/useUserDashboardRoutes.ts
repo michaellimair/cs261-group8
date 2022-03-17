@@ -30,8 +30,7 @@ const useUserDashboardRoutes = (shouldHide?: boolean): IDashboardRoute[] => {
   }
 
   if (!user.profile.completed) {
-    return welcomeRoutes
-      .filter(({ allowedGroups }) => checkAllowed({ allowedGroups, userGroups: user.groups }));
+    return welcomeRoutes;
   }
 
   let routes = dashboardRoutes

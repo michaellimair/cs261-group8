@@ -25,9 +25,13 @@ class UserProfileAPI extends CommonAPI {
     const formData = new FormData();
 
     Object.entries(payload).forEach(([k, v]) => {
-      if (k === 'languages' || k === 'skills') {
+      if (k === 'languages') {
         payload.languages!.forEach((language) => {
           formData.append('languages', language.code);
+        });
+      } else if (k === 'skills' || k === 'interests') {
+        payload[k]!.forEach((item) => {
+          formData.append(k, item);
         });
       } else if (k === 'avatar') {
         if (v) {
@@ -45,7 +49,7 @@ class UserProfileAPI extends CommonAPI {
       await this.api.patch({
         path: '/auth',
         body: {
-          group_ids: payload.groups,
+          group_ids: payload.groups.map((it) => it.id),
         },
       });
     }

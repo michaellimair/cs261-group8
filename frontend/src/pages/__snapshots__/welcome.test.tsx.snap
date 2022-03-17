@@ -152,62 +152,60 @@ Object {
               class="chakra-stack css-1ia9hbu"
             >
               <div
-                class="chakra-form-control css-wlea3r"
-                data-testid="groups-formcontrol"
-                role="group"
+                class="chakra-stack css-137fd6w"
               >
-                <label
-                  class="chakra-form__label css-uvho5g"
-                  data-testid="groups-label"
-                  for="groups"
-                  id="groups-label"
-                >
-                  select_mentor_mentee
-                  <span
-                    aria-hidden="true"
-                    class="chakra-form__required-indicator css-0"
-                    role="presentation"
-                  >
-                    *
-                  </span>
-                </label>
                 <div
-                  class="chakra-select__wrapper css-42b2qy"
+                  class="chakra-form-control css-0"
+                  role="group"
                 >
-                  <select
-                    aria-required="true"
-                    class="chakra-select css-1ik61og"
-                    id="groups"
-                    multiple=""
-                    required=""
+                  <label
+                    class="chakra-form__label css-uvho5g"
+                    data-testid="select_mentor_mentee-label"
+                    for="field-2"
+                    id="field-2-label"
                   >
-                    <option
-                      value="1"
-                    >
-                      mentor
-                    </option>
-                    <option
-                      value="2"
-                    >
-                      mentee
-                    </option>
-                  </select>
+                    select_mentor_mentee
+                  </label>
+                  <ul
+                    class="css-tu0njr"
+                    role="list"
+                  />
                   <div
-                    class="chakra-select__icon-wrapper css-162mkon"
+                    class="chakra-select__wrapper css-42b2qy"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="chakra-select__icon"
-                      focusable="false"
-                      role="presentation"
-                      style="width: 1em; height: 1em; color: currentColor;"
-                      viewBox="0 0 24 24"
+                    <select
+                      class="chakra-select css-1ik61og"
+                      id="field-2"
                     >
-                      <path
-                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                        fill="currentColor"
-                      />
-                    </svg>
+                      <option
+                        value=""
+                      >
+                        select_user_type
+                      </option>
+                      <option
+                        style="text-transform: capitalize;"
+                        value="1"
+                      >
+                        mentor
+                      </option>
+                    </select>
+                    <div
+                      class="chakra-select__icon-wrapper css-162mkon"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="chakra-select__icon"
+                        focusable="false"
+                        role="presentation"
+                        style="width: 1em; height: 1em; color: currentColor;"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -275,48 +273,41 @@ Object {
               Interests
             </h2>
             <div
-              class="chakra-stack css-n21gh5"
-            />
-            <div
-              class="chakra-stack css-14v3kfd"
+              class="css-1yrurro"
             >
               <div
-                class="css-1yrurro"
+                class="chakra-input__group css-4302v8"
               >
                 <div
-                  class="chakra-input__group css-4302v8"
+                  class="chakra-input__left-element css-nalr7p"
                 >
-                  <div
-                    class="chakra-input__left-element css-nalr7p"
+                  <svg
+                    class="chakra-icon css-onkibi"
+                    focusable="false"
+                    viewBox="0 0 24 24"
                   >
-                    <svg
-                      class="chakra-icon css-onkibi"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M23.384,21.619,16.855,15.09a9.284,9.284,0,1,0-1.768,1.768l6.529,6.529a1.266,1.266,0,0,0,1.768,0A1.251,1.251,0,0,0,23.384,21.619ZM2.75,9.5a6.75,6.75,0,1,1,6.75,6.75A6.758,6.758,0,0,1,2.75,9.5Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <input
-                    class="chakra-input css-0"
-                    value=""
-                  />
+                    <path
+                      d="M23.384,21.619,16.855,15.09a9.284,9.284,0,1,0-1.768,1.768l6.529,6.529a1.266,1.266,0,0,0,1.768,0A1.251,1.251,0,0,0,23.384,21.619ZM2.75,9.5a6.75,6.75,0,1,1,6.75,6.75A6.758,6.758,0,0,1,2.75,9.5Z"
+                      fill="currentColor"
+                    />
+                  </svg>
                 </div>
-                <div
-                  class="chakra-popover__popper css-0"
-                  style="visibility: hidden; position: absolute; min-width: max-content; inset: 0 auto auto 0;"
-                >
-                  <section
-                    class="chakra-popover__content css-bi5enp"
-                    id="popover-content-5"
-                    role="dialog"
-                    style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
-                    tabindex="-1"
-                  />
-                </div>
+                <input
+                  class="chakra-input css-0"
+                  value=""
+                />
+              </div>
+              <div
+                class="chakra-popover__popper css-0"
+                style="visibility: hidden; position: absolute; min-width: max-content; inset: 0 auto auto 0;"
+              >
+                <section
+                  class="chakra-popover__content css-bi5enp"
+                  id="popover-content-5"
+                  role="dialog"
+                  style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
+                  tabindex="-1"
+                />
               </div>
             </div>
             <div
@@ -600,6 +591,11 @@ Object {
                       id="timezone"
                       required=""
                     >
+                      <option
+                        value=""
+                      >
+                        select_timezone
+                      </option>
                       <option />
                     </select>
                     <div
@@ -759,62 +755,60 @@ Object {
             class="chakra-stack css-1ia9hbu"
           >
             <div
-              class="chakra-form-control css-wlea3r"
-              data-testid="groups-formcontrol"
-              role="group"
+              class="chakra-stack css-137fd6w"
             >
-              <label
-                class="chakra-form__label css-uvho5g"
-                data-testid="groups-label"
-                for="groups"
-                id="groups-label"
-              >
-                select_mentor_mentee
-                <span
-                  aria-hidden="true"
-                  class="chakra-form__required-indicator css-0"
-                  role="presentation"
-                >
-                  *
-                </span>
-              </label>
               <div
-                class="chakra-select__wrapper css-42b2qy"
+                class="chakra-form-control css-0"
+                role="group"
               >
-                <select
-                  aria-required="true"
-                  class="chakra-select css-1ik61og"
-                  id="groups"
-                  multiple=""
-                  required=""
+                <label
+                  class="chakra-form__label css-uvho5g"
+                  data-testid="select_mentor_mentee-label"
+                  for="field-2"
+                  id="field-2-label"
                 >
-                  <option
-                    value="1"
-                  >
-                    mentor
-                  </option>
-                  <option
-                    value="2"
-                  >
-                    mentee
-                  </option>
-                </select>
+                  select_mentor_mentee
+                </label>
+                <ul
+                  class="css-tu0njr"
+                  role="list"
+                />
                 <div
-                  class="chakra-select__icon-wrapper css-162mkon"
+                  class="chakra-select__wrapper css-42b2qy"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="chakra-select__icon"
-                    focusable="false"
-                    role="presentation"
-                    style="width: 1em; height: 1em; color: currentColor;"
-                    viewBox="0 0 24 24"
+                  <select
+                    class="chakra-select css-1ik61og"
+                    id="field-2"
                   >
-                    <path
-                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                      fill="currentColor"
-                    />
-                  </svg>
+                    <option
+                      value=""
+                    >
+                      select_user_type
+                    </option>
+                    <option
+                      style="text-transform: capitalize;"
+                      value="1"
+                    >
+                      mentor
+                    </option>
+                  </select>
+                  <div
+                    class="chakra-select__icon-wrapper css-162mkon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="chakra-select__icon"
+                      focusable="false"
+                      role="presentation"
+                      style="width: 1em; height: 1em; color: currentColor;"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
@@ -882,48 +876,41 @@ Object {
             Interests
           </h2>
           <div
-            class="chakra-stack css-n21gh5"
-          />
-          <div
-            class="chakra-stack css-14v3kfd"
+            class="css-1yrurro"
           >
             <div
-              class="css-1yrurro"
+              class="chakra-input__group css-4302v8"
             >
               <div
-                class="chakra-input__group css-4302v8"
+                class="chakra-input__left-element css-nalr7p"
               >
-                <div
-                  class="chakra-input__left-element css-nalr7p"
+                <svg
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    class="chakra-icon css-onkibi"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M23.384,21.619,16.855,15.09a9.284,9.284,0,1,0-1.768,1.768l6.529,6.529a1.266,1.266,0,0,0,1.768,0A1.251,1.251,0,0,0,23.384,21.619ZM2.75,9.5a6.75,6.75,0,1,1,6.75,6.75A6.758,6.758,0,0,1,2.75,9.5Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </div>
-                <input
-                  class="chakra-input css-0"
-                  value=""
-                />
+                  <path
+                    d="M23.384,21.619,16.855,15.09a9.284,9.284,0,1,0-1.768,1.768l6.529,6.529a1.266,1.266,0,0,0,1.768,0A1.251,1.251,0,0,0,23.384,21.619ZM2.75,9.5a6.75,6.75,0,1,1,6.75,6.75A6.758,6.758,0,0,1,2.75,9.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
               </div>
-              <div
-                class="chakra-popover__popper css-0"
-                style="visibility: hidden; position: absolute; min-width: max-content; inset: 0 auto auto 0;"
-              >
-                <section
-                  class="chakra-popover__content css-bi5enp"
-                  id="popover-content-5"
-                  role="dialog"
-                  style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
-                  tabindex="-1"
-                />
-              </div>
+              <input
+                class="chakra-input css-0"
+                value=""
+              />
+            </div>
+            <div
+              class="chakra-popover__popper css-0"
+              style="visibility: hidden; position: absolute; min-width: max-content; inset: 0 auto auto 0;"
+            >
+              <section
+                class="chakra-popover__content css-bi5enp"
+                id="popover-content-5"
+                role="dialog"
+                style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
+                tabindex="-1"
+              />
             </div>
           </div>
           <div
@@ -1207,6 +1194,11 @@ Object {
                     id="timezone"
                     required=""
                   >
+                    <option
+                      value=""
+                    >
+                      select_timezone
+                    </option>
                     <option />
                   </select>
                   <div

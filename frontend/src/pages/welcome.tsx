@@ -16,6 +16,7 @@ import React, {
   FC,
   useCallback,
   useRef,
+  useEffect,
 } from 'react';
 
 import { useTranslation } from 'react-i18next';
@@ -38,6 +39,8 @@ import useCountries from 'hooks/useCountries';
 import useTitleOptions from 'hooks/useTitleOptions';
 import LanguageList from 'components/WelcomeForm/Languages';
 import TimezoneSelect from 'components/WelcomeForm/TimezoneSelect';
+import GroupSelect from 'components/WelcomeForm/GroupSelect';
+import { omit } from 'lodash';
 
 const WelcomeForm: FC = () => {
   const { t } = useTranslation();
@@ -73,17 +76,30 @@ const WelcomeForm: FC = () => {
     watch,
     setValue,
     control,
+    reset,
+    isDirty,
   } = useCommonForm<IUserProfileDTO, BadRequestApiError<IWelcomeError>, IUserProfile>({
     mutationId: 'welcome',
     mutationFn,
   });
-  const addInterest = (newInterest: string) => {
+
+  const addInterest = useCallback((newInterest: string) => {
     const updatedInterests = [...interests, newInterest];
     setInterests(updatedInterests);
     setValue('skills', updatedInterests);
-  };
+  }, [setValue, interests]);
 
   const avatarFile = watch('avatar');
+
+  useEffect(() => {
+    if (user && !isDirty && businessAreaOptions.length > 1 && countryOptions.length > 1) {
+      reset({
+        ...omit(user.profile, ['languages', 'business_area', 'avatar']),
+        groups: user.groups,
+        languages: user.profile.languages?.map((it) => ({ code: it }) as any),
+      });
+    }
+  }, [user, reset, isDirty, businessAreaOptions, countryOptions]);
 
   return (
     <Flex
@@ -148,25 +164,7 @@ const WelcomeForm: FC = () => {
 
         <Stack spacing="36px">
           <Stack mt={4}>
-            <FormSelectField
-              name="groups"
-              multiple
-              register={register}
-              error={errors?.profile?.business_area}
-              required
-              valueAsNumber
-              options={[
-                {
-                  value: 1,
-                  label: 'mentor',
-                },
-                {
-                  value: 2,
-                  label: 'mentee',
-                },
-              ]}
-              label={t('select_mentor_mentee')}
-            />
+            <GroupSelect control={control} />
           </Stack>
           <Stack>
             <FormSelectField

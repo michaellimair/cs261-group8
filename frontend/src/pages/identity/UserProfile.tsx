@@ -53,6 +53,7 @@ const UserProfile: FC = () => {
     errors,
     watch,
     reset,
+    isDirty,
     setValue,
   } = useCommonForm<IUserProfileDTO, ApiError<any>, IUserProfile>({
     mutationFn: async (values) => httpClient.profile.updateProfile(
@@ -66,12 +67,17 @@ const UserProfile: FC = () => {
   });
 
   useEffect(() => {
-    if (userProfile) {
-      reset(omit(userProfile, ['avatar', 'business_area']));
+    if (userProfile && !isDirty && businessAreaOptions.length > 1 && countryOptions.length > 1) {
+      reset({
+        ...omit(userProfile, ['avatar', 'business_area', 'languages']),
+        languages: userProfile.languages?.map((it) => ({ code: it })) as any,
+      });
     }
-  }, [userProfile, reset]);
+  }, [userProfile, reset, businessAreaOptions, countryOptions, isDirty]);
 
   const avatarFile = watch('avatar');
+
+  const countryCode = watch('country');
 
   return (
     <form
@@ -146,23 +152,26 @@ const UserProfile: FC = () => {
             error={errors?.pronoun}
           />
           <FormSelectField
-            name="timezone"
-            label={t('timezone')}
-            required
-            error={errors?.timezone}
-            register={register}
-            options={timezoneOptions.map(({ code, name }) => ({
-              label: name,
-              value: code,
-            }))}
-          />
-          <FormSelectField
             name="country"
             label={t('country')}
             required
             error={errors?.country}
             register={register}
             options={countryOptions}
+          />
+          <FormSelectField
+            name="timezone"
+            label={t('timezone')}
+            required
+            error={errors?.timezone}
+            placeholder={t('select_timezone')}
+            register={register}
+            options={timezoneOptions
+              .filter((it) => it.country_code === countryCode)
+              .map(({ code, name }) => ({
+                label: name,
+                value: code,
+              }))}
           />
           <FormSelectField
             name="business_area_id"
@@ -187,7 +196,7 @@ const UserProfile: FC = () => {
             type="number"
           />
 
-          <Skills />
+          <Skills setValue={setValue} />
 
           <FormControl id="non-field" isInvalid={Boolean(errors?.non_field_errors)} mt={['0 !important']}>
             <FormErrorMessage>{errors?.non_field_errors}</FormErrorMessage>

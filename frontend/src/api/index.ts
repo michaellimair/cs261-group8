@@ -5,6 +5,7 @@ import BusinessAreaAPI from './business-area.api';
 import CountryAPI from './country.api';
 import EventAPI from './event.api';
 import FeedbackAPI from './feedback.api';
+import GroupAPI from './group.api';
 import LanguageAPI from './language.api';
 import MenteeGroupSessionAPI from './mentee/group-session';
 import MenteeMatchAPI from './mentee/match.api';
@@ -40,6 +41,7 @@ class HttpClient {
     readonly menteeMyMentor: MenteeMyMentorAPI = new MenteeMyMentorAPI(baseApi),
     readonly menteeGroupSession: MenteeGroupSessionAPI = new MenteeGroupSessionAPI(baseApi),
     readonly mentorGroupSession: MentorGroupSessionAPI = new MentorGroupSessionAPI(baseApi),
+    readonly group: GroupAPI = new GroupAPI(baseApi),
   ) {}
 }
 

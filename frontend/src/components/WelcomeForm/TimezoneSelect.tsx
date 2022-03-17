@@ -33,6 +33,7 @@ const TimezoneSelect: FC<ITimezoneSelectProps> = ({
       register={register}
       error={errors?.timezone}
       required
+      placeholder={t('select_timezone')}
       options={shownTimezoneOptions}
       label={t('time_zone')}
     />

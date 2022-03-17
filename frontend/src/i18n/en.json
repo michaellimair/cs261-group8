@@ -32,6 +32,7 @@
   "mentor": "mentor",
   "mentee": "mentee",
   "select_mentor_mentee": "Are you a...",
+  "select_user_type": "Select a user type (mentor or mentee)",
   "business_area": "Your business area",
   "select_option": "Select an option",
   "seniority": "Title",
@@ -252,5 +253,6 @@
     "pending": "Pending",
     "rejected": "Rejected"
   },
-  "add_interests": "Add Interests"
+  "add_interests": "Add Interests",
+  "select_timezone": "Select a Timezone"
 }

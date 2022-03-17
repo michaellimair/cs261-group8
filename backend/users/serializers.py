@@ -37,6 +37,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     )
     interests = serializers.ListField(
         child=serializers.CharField(validators=[validate_skill]),
+        allow_empty=True
     )
     languages = serializers.ListField(
         child=serializers.CharField(validators=[is_valid_language]),
