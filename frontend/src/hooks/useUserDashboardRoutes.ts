@@ -5,7 +5,7 @@ import { useUser } from 'hooks/useUser';
 import { checkAllowed } from 'libs/access-control';
 import { UserGroup } from 'customTypes/auth';
 import { IMatchStatus } from 'customTypes/matching';
-import useMyMentoringPairs from './useMyMentoringPairs';
+import { useMyMentoringPairs } from './useMyMentoringPairs';
 
 const matchRequirementHierarchy = [
   IMatchStatus.REJECTED,

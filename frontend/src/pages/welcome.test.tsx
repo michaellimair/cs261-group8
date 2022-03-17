@@ -15,6 +15,9 @@ import useCommonForm from 'hooks/useCommonForm';
 import useBusinessAreaOptions from 'hooks/useBusinessAreaOptions';
 import useTimezoneOptions from 'hooks/useTimezoneOptions';
 import useCountries from 'hooks/useCountries';
+import useSkillsOptions from 'hooks/useSkillsOptions';
+import useLanguages from 'hooks/useLanguages';
+import { useFieldArray } from 'react-hook-form';
 import WelcomeForm from './welcome';
 
 const mockCommonForm = {
@@ -22,12 +25,21 @@ const mockCommonForm = {
   errors: {},
   isLoading: false,
   register: jest.fn(),
+  watch: jest.fn(),
+  setValue: jest.fn(),
+  control: {},
 };
 
 jest.mock('hooks/useUser');
 jest.mock('hooks/useBusinessAreaOptions');
 jest.mock('hooks/useCountries');
+jest.mock('hooks/useSkillsOptions');
 jest.mock('hooks/useTimezoneOptions');
+jest.mock('hooks/useLanguages');
+jest.mock('react-hook-form', () => ({
+  ...jest.requireActual('react-hook-form'),
+  useFieldArray: jest.fn(),
+}));
 
 jest.mock('react-query');
 jest.mock('api');
@@ -53,6 +65,11 @@ describe('welcome', () => {
         value: '',
       },
     ]));
+    (useFieldArray as jest.Mock).mockImplementation(jest.fn().mockImplementation(() => ({
+      fields: [],
+      append: jest.fn(),
+      remove: jest.fn(),
+    })));
     (useCountries as jest.Mock).mockImplementation(() => ([
       {
         value: 'CU',
@@ -65,6 +82,19 @@ describe('welcome', () => {
         value: 'GMT',
       },
     ]));
+    (useLanguages as jest.Mock).mockImplementation(() => ([{
+      code: 'id',
+      name: 'Indonesian',
+    }]));
+    (useSkillsOptions as jest.Mock).mockImplementation(() => ({
+      options: ([
+        {
+          label: 'Python',
+          value: 'Python',
+        },
+      ]),
+      isFetching: false,
+    }));
     result = render(
       <QueryRouterWrapper>
         <WelcomeForm />

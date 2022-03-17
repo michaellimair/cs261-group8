@@ -9,18 +9,39 @@ snapshots = Snapshot()
 
 snapshots['TestCountryViewSet::test_list_full 1'] = [
     {
-        'alpha_2': 'AW',
-        'alpha_3': 'ABW',
-        'flag': '🇦🇼',
-        'name': 'Aruba',
-        'numeric': '533'
-    },
-    {
         'alpha_2': 'AF',
         'alpha_3': 'AFG',
         'flag': '🇦🇫',
         'name': 'Afghanistan',
         'numeric': '004'
+    },
+    {
+        'alpha_2': 'AL',
+        'alpha_3': 'ALB',
+        'flag': '🇦🇱',
+        'name': 'Albania',
+        'numeric': '008'
+    },
+    {
+        'alpha_2': 'DZ',
+        'alpha_3': 'DZA',
+        'flag': '🇩🇿',
+        'name': 'Algeria',
+        'numeric': '012'
+    },
+    {
+        'alpha_2': 'AS',
+        'alpha_3': 'ASM',
+        'flag': '🇦🇸',
+        'name': 'American Samoa',
+        'numeric': '016'
+    },
+    {
+        'alpha_2': 'AD',
+        'alpha_3': 'AND',
+        'flag': '🇦🇩',
+        'name': 'Andorra',
+        'numeric': '020'
     },
     {
         'alpha_2': 'AO',
@@ -37,32 +58,18 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '660'
     },
     {
-        'alpha_2': 'AX',
-        'alpha_3': 'ALA',
-        'flag': '🇦🇽',
-        'name': 'Åland Islands',
-        'numeric': '248'
+        'alpha_2': 'AQ',
+        'alpha_3': 'ATA',
+        'flag': '🇦🇶',
+        'name': 'Antarctica',
+        'numeric': '010'
     },
     {
-        'alpha_2': 'AL',
-        'alpha_3': 'ALB',
-        'flag': '🇦🇱',
-        'name': 'Albania',
-        'numeric': '008'
-    },
-    {
-        'alpha_2': 'AD',
-        'alpha_3': 'AND',
-        'flag': '🇦🇩',
-        'name': 'Andorra',
-        'numeric': '020'
-    },
-    {
-        'alpha_2': 'AE',
-        'alpha_3': 'ARE',
-        'flag': '🇦🇪',
-        'name': 'United Arab Emirates',
-        'numeric': '784'
+        'alpha_2': 'AG',
+        'alpha_3': 'ATG',
+        'flag': '🇦🇬',
+        'name': 'Antigua and Barbuda',
+        'numeric': '028'
     },
     {
         'alpha_2': 'AR',
@@ -79,32 +86,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '051'
     },
     {
-        'alpha_2': 'AS',
-        'alpha_3': 'ASM',
-        'flag': '🇦🇸',
-        'name': 'American Samoa',
-        'numeric': '016'
-    },
-    {
-        'alpha_2': 'AQ',
-        'alpha_3': 'ATA',
-        'flag': '🇦🇶',
-        'name': 'Antarctica',
-        'numeric': '010'
-    },
-    {
-        'alpha_2': 'TF',
-        'alpha_3': 'ATF',
-        'flag': '🇹🇫',
-        'name': 'French Southern Territories',
-        'numeric': '260'
-    },
-    {
-        'alpha_2': 'AG',
-        'alpha_3': 'ATG',
-        'flag': '🇦🇬',
-        'name': 'Antigua and Barbuda',
-        'numeric': '028'
+        'alpha_2': 'AW',
+        'alpha_3': 'ABW',
+        'flag': '🇦🇼',
+        'name': 'Aruba',
+        'numeric': '533'
     },
     {
         'alpha_2': 'AU',
@@ -128,53 +114,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '031'
     },
     {
-        'alpha_2': 'BI',
-        'alpha_3': 'BDI',
-        'flag': '🇧🇮',
-        'name': 'Burundi',
-        'numeric': '108'
-    },
-    {
-        'alpha_2': 'BE',
-        'alpha_3': 'BEL',
-        'flag': '🇧🇪',
-        'name': 'Belgium',
-        'numeric': '056'
-    },
-    {
-        'alpha_2': 'BJ',
-        'alpha_3': 'BEN',
-        'flag': '🇧🇯',
-        'name': 'Benin',
-        'numeric': '204'
-    },
-    {
-        'alpha_2': 'BQ',
-        'alpha_3': 'BES',
-        'flag': '🇧🇶',
-        'name': 'Bonaire, Sint Eustatius and Saba',
-        'numeric': '535'
-    },
-    {
-        'alpha_2': 'BF',
-        'alpha_3': 'BFA',
-        'flag': '🇧🇫',
-        'name': 'Burkina Faso',
-        'numeric': '854'
-    },
-    {
-        'alpha_2': 'BD',
-        'alpha_3': 'BGD',
-        'flag': '🇧🇩',
-        'name': 'Bangladesh',
-        'numeric': '050'
-    },
-    {
-        'alpha_2': 'BG',
-        'alpha_3': 'BGR',
-        'flag': '🇧🇬',
-        'name': 'Bulgaria',
-        'numeric': '100'
+        'alpha_2': 'BS',
+        'alpha_3': 'BHS',
+        'flag': '🇧🇸',
+        'name': 'Bahamas',
+        'numeric': '044'
     },
     {
         'alpha_2': 'BH',
@@ -184,60 +128,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '048'
     },
     {
-        'alpha_2': 'BS',
-        'alpha_3': 'BHS',
-        'flag': '🇧🇸',
-        'name': 'Bahamas',
-        'numeric': '044'
-    },
-    {
-        'alpha_2': 'BA',
-        'alpha_3': 'BIH',
-        'flag': '🇧🇦',
-        'name': 'Bosnia and Herzegovina',
-        'numeric': '070'
-    },
-    {
-        'alpha_2': 'BL',
-        'alpha_3': 'BLM',
-        'flag': '🇧🇱',
-        'name': 'Saint Barthélemy',
-        'numeric': '652'
-    },
-    {
-        'alpha_2': 'BY',
-        'alpha_3': 'BLR',
-        'flag': '🇧🇾',
-        'name': 'Belarus',
-        'numeric': '112'
-    },
-    {
-        'alpha_2': 'BZ',
-        'alpha_3': 'BLZ',
-        'flag': '🇧🇿',
-        'name': 'Belize',
-        'numeric': '084'
-    },
-    {
-        'alpha_2': 'BM',
-        'alpha_3': 'BMU',
-        'flag': '🇧🇲',
-        'name': 'Bermuda',
-        'numeric': '060'
-    },
-    {
-        'alpha_2': 'BO',
-        'alpha_3': 'BOL',
-        'flag': '🇧🇴',
-        'name': 'Bolivia, Plurinational State of',
-        'numeric': '068'
-    },
-    {
-        'alpha_2': 'BR',
-        'alpha_3': 'BRA',
-        'flag': '🇧🇷',
-        'name': 'Brazil',
-        'numeric': '076'
+        'alpha_2': 'BD',
+        'alpha_3': 'BGD',
+        'flag': '🇧🇩',
+        'name': 'Bangladesh',
+        'numeric': '050'
     },
     {
         'alpha_2': 'BB',
@@ -247,11 +142,39 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '052'
     },
     {
-        'alpha_2': 'BN',
-        'alpha_3': 'BRN',
-        'flag': '🇧🇳',
-        'name': 'Brunei Darussalam',
-        'numeric': '096'
+        'alpha_2': 'BY',
+        'alpha_3': 'BLR',
+        'flag': '🇧🇾',
+        'name': 'Belarus',
+        'numeric': '112'
+    },
+    {
+        'alpha_2': 'BE',
+        'alpha_3': 'BEL',
+        'flag': '🇧🇪',
+        'name': 'Belgium',
+        'numeric': '056'
+    },
+    {
+        'alpha_2': 'BZ',
+        'alpha_3': 'BLZ',
+        'flag': '🇧🇿',
+        'name': 'Belize',
+        'numeric': '084'
+    },
+    {
+        'alpha_2': 'BJ',
+        'alpha_3': 'BEN',
+        'flag': '🇧🇯',
+        'name': 'Benin',
+        'numeric': '204'
+    },
+    {
+        'alpha_2': 'BM',
+        'alpha_3': 'BMU',
+        'flag': '🇧🇲',
+        'name': 'Bermuda',
+        'numeric': '060'
     },
     {
         'alpha_2': 'BT',
@@ -261,11 +184,25 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '064'
     },
     {
-        'alpha_2': 'BV',
-        'alpha_3': 'BVT',
-        'flag': '🇧🇻',
-        'name': 'Bouvet Island',
-        'numeric': '074'
+        'alpha_2': 'BO',
+        'alpha_3': 'BOL',
+        'flag': '🇧🇴',
+        'name': 'Bolivia, Plurinational State of',
+        'numeric': '068'
+    },
+    {
+        'alpha_2': 'BQ',
+        'alpha_3': 'BES',
+        'flag': '🇧🇶',
+        'name': 'Bonaire, Sint Eustatius and Saba',
+        'numeric': '535'
+    },
+    {
+        'alpha_2': 'BA',
+        'alpha_3': 'BIH',
+        'flag': '🇧🇦',
+        'name': 'Bosnia and Herzegovina',
+        'numeric': '070'
     },
     {
         'alpha_2': 'BW',
@@ -275,11 +212,74 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '072'
     },
     {
-        'alpha_2': 'CF',
-        'alpha_3': 'CAF',
-        'flag': '🇨🇫',
-        'name': 'Central African Republic',
-        'numeric': '140'
+        'alpha_2': 'BV',
+        'alpha_3': 'BVT',
+        'flag': '🇧🇻',
+        'name': 'Bouvet Island',
+        'numeric': '074'
+    },
+    {
+        'alpha_2': 'BR',
+        'alpha_3': 'BRA',
+        'flag': '🇧🇷',
+        'name': 'Brazil',
+        'numeric': '076'
+    },
+    {
+        'alpha_2': 'IO',
+        'alpha_3': 'IOT',
+        'flag': '🇮🇴',
+        'name': 'British Indian Ocean Territory',
+        'numeric': '086'
+    },
+    {
+        'alpha_2': 'BN',
+        'alpha_3': 'BRN',
+        'flag': '🇧🇳',
+        'name': 'Brunei Darussalam',
+        'numeric': '096'
+    },
+    {
+        'alpha_2': 'BG',
+        'alpha_3': 'BGR',
+        'flag': '🇧🇬',
+        'name': 'Bulgaria',
+        'numeric': '100'
+    },
+    {
+        'alpha_2': 'BF',
+        'alpha_3': 'BFA',
+        'flag': '🇧🇫',
+        'name': 'Burkina Faso',
+        'numeric': '854'
+    },
+    {
+        'alpha_2': 'BI',
+        'alpha_3': 'BDI',
+        'flag': '🇧🇮',
+        'name': 'Burundi',
+        'numeric': '108'
+    },
+    {
+        'alpha_2': 'CV',
+        'alpha_3': 'CPV',
+        'flag': '🇨🇻',
+        'name': 'Cabo Verde',
+        'numeric': '132'
+    },
+    {
+        'alpha_2': 'KH',
+        'alpha_3': 'KHM',
+        'flag': '🇰🇭',
+        'name': 'Cambodia',
+        'numeric': '116'
+    },
+    {
+        'alpha_2': 'CM',
+        'alpha_3': 'CMR',
+        'flag': '🇨🇲',
+        'name': 'Cameroon',
+        'numeric': '120'
     },
     {
         'alpha_2': 'CA',
@@ -289,18 +289,25 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '124'
     },
     {
-        'alpha_2': 'CC',
-        'alpha_3': 'CCK',
-        'flag': '🇨🇨',
-        'name': 'Cocos (Keeling) Islands',
-        'numeric': '166'
+        'alpha_2': 'KY',
+        'alpha_3': 'CYM',
+        'flag': '🇰🇾',
+        'name': 'Cayman Islands',
+        'numeric': '136'
     },
     {
-        'alpha_2': 'CH',
-        'alpha_3': 'CHE',
-        'flag': '🇨🇭',
-        'name': 'Switzerland',
-        'numeric': '756'
+        'alpha_2': 'CF',
+        'alpha_3': 'CAF',
+        'flag': '🇨🇫',
+        'name': 'Central African Republic',
+        'numeric': '140'
+    },
+    {
+        'alpha_2': 'TD',
+        'alpha_3': 'TCD',
+        'flag': '🇹🇩',
+        'name': 'Chad',
+        'numeric': '148'
     },
     {
         'alpha_2': 'CL',
@@ -317,39 +324,18 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '156'
     },
     {
-        'alpha_2': 'CI',
-        'alpha_3': 'CIV',
-        'flag': '🇨🇮',
-        'name': "Côte d'Ivoire",
-        'numeric': '384'
+        'alpha_2': 'CX',
+        'alpha_3': 'CXR',
+        'flag': '🇨🇽',
+        'name': 'Christmas Island',
+        'numeric': '162'
     },
     {
-        'alpha_2': 'CM',
-        'alpha_3': 'CMR',
-        'flag': '🇨🇲',
-        'name': 'Cameroon',
-        'numeric': '120'
-    },
-    {
-        'alpha_2': 'CD',
-        'alpha_3': 'COD',
-        'flag': '🇨🇩',
-        'name': 'Congo, The Democratic Republic of the',
-        'numeric': '180'
-    },
-    {
-        'alpha_2': 'CG',
-        'alpha_3': 'COG',
-        'flag': '🇨🇬',
-        'name': 'Congo',
-        'numeric': '178'
-    },
-    {
-        'alpha_2': 'CK',
-        'alpha_3': 'COK',
-        'flag': '🇨🇰',
-        'name': 'Cook Islands',
-        'numeric': '184'
+        'alpha_2': 'CC',
+        'alpha_3': 'CCK',
+        'flag': '🇨🇨',
+        'name': 'Cocos (Keeling) Islands',
+        'numeric': '166'
     },
     {
         'alpha_2': 'CO',
@@ -366,11 +352,25 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '174'
     },
     {
-        'alpha_2': 'CV',
-        'alpha_3': 'CPV',
-        'flag': '🇨🇻',
-        'name': 'Cabo Verde',
-        'numeric': '132'
+        'alpha_2': 'CG',
+        'alpha_3': 'COG',
+        'flag': '🇨🇬',
+        'name': 'Congo',
+        'numeric': '178'
+    },
+    {
+        'alpha_2': 'CD',
+        'alpha_3': 'COD',
+        'flag': '🇨🇩',
+        'name': 'Congo, The Democratic Republic of the',
+        'numeric': '180'
+    },
+    {
+        'alpha_2': 'CK',
+        'alpha_3': 'COK',
+        'flag': '🇨🇰',
+        'name': 'Cook Islands',
+        'numeric': '184'
     },
     {
         'alpha_2': 'CR',
@@ -378,6 +378,13 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'flag': '🇨🇷',
         'name': 'Costa Rica',
         'numeric': '188'
+    },
+    {
+        'alpha_2': 'HR',
+        'alpha_3': 'HRV',
+        'flag': '🇭🇷',
+        'name': 'Croatia',
+        'numeric': '191'
     },
     {
         'alpha_2': 'CU',
@@ -394,20 +401,6 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '531'
     },
     {
-        'alpha_2': 'CX',
-        'alpha_3': 'CXR',
-        'flag': '🇨🇽',
-        'name': 'Christmas Island',
-        'numeric': '162'
-    },
-    {
-        'alpha_2': 'KY',
-        'alpha_3': 'CYM',
-        'flag': '🇰🇾',
-        'name': 'Cayman Islands',
-        'numeric': '136'
-    },
-    {
         'alpha_2': 'CY',
         'alpha_3': 'CYP',
         'flag': '🇨🇾',
@@ -422,11 +415,18 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '203'
     },
     {
-        'alpha_2': 'DE',
-        'alpha_3': 'DEU',
-        'flag': '🇩🇪',
-        'name': 'Germany',
-        'numeric': '276'
+        'alpha_2': 'CI',
+        'alpha_3': 'CIV',
+        'flag': '🇨🇮',
+        'name': "Côte d'Ivoire",
+        'numeric': '384'
+    },
+    {
+        'alpha_2': 'DK',
+        'alpha_3': 'DNK',
+        'flag': '🇩🇰',
+        'name': 'Denmark',
+        'numeric': '208'
     },
     {
         'alpha_2': 'DJ',
@@ -443,25 +443,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '212'
     },
     {
-        'alpha_2': 'DK',
-        'alpha_3': 'DNK',
-        'flag': '🇩🇰',
-        'name': 'Denmark',
-        'numeric': '208'
-    },
-    {
         'alpha_2': 'DO',
         'alpha_3': 'DOM',
         'flag': '🇩🇴',
         'name': 'Dominican Republic',
         'numeric': '214'
-    },
-    {
-        'alpha_2': 'DZ',
-        'alpha_3': 'DZA',
-        'flag': '🇩🇿',
-        'name': 'Algeria',
-        'numeric': '012'
     },
     {
         'alpha_2': 'EC',
@@ -478,25 +464,25 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '818'
     },
     {
+        'alpha_2': 'SV',
+        'alpha_3': 'SLV',
+        'flag': '🇸🇻',
+        'name': 'El Salvador',
+        'numeric': '222'
+    },
+    {
+        'alpha_2': 'GQ',
+        'alpha_3': 'GNQ',
+        'flag': '🇬🇶',
+        'name': 'Equatorial Guinea',
+        'numeric': '226'
+    },
+    {
         'alpha_2': 'ER',
         'alpha_3': 'ERI',
         'flag': '🇪🇷',
         'name': 'Eritrea',
         'numeric': '232'
-    },
-    {
-        'alpha_2': 'EH',
-        'alpha_3': 'ESH',
-        'flag': '🇪🇭',
-        'name': 'Western Sahara',
-        'numeric': '732'
-    },
-    {
-        'alpha_2': 'ES',
-        'alpha_3': 'ESP',
-        'flag': '🇪🇸',
-        'name': 'Spain',
-        'numeric': '724'
     },
     {
         'alpha_2': 'EE',
@@ -506,25 +492,18 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '233'
     },
     {
+        'alpha_2': 'SZ',
+        'alpha_3': 'SWZ',
+        'flag': '🇸🇿',
+        'name': 'Eswatini',
+        'numeric': '748'
+    },
+    {
         'alpha_2': 'ET',
         'alpha_3': 'ETH',
         'flag': '🇪🇹',
         'name': 'Ethiopia',
         'numeric': '231'
-    },
-    {
-        'alpha_2': 'FI',
-        'alpha_3': 'FIN',
-        'flag': '🇫🇮',
-        'name': 'Finland',
-        'numeric': '246'
-    },
-    {
-        'alpha_2': 'FJ',
-        'alpha_3': 'FJI',
-        'flag': '🇫🇯',
-        'name': 'Fiji',
-        'numeric': '242'
     },
     {
         'alpha_2': 'FK',
@@ -534,13 +513,6 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '238'
     },
     {
-        'alpha_2': 'FR',
-        'alpha_3': 'FRA',
-        'flag': '🇫🇷',
-        'name': 'France',
-        'numeric': '250'
-    },
-    {
         'alpha_2': 'FO',
         'alpha_3': 'FRO',
         'flag': '🇫🇴',
@@ -548,11 +520,46 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '234'
     },
     {
-        'alpha_2': 'FM',
-        'alpha_3': 'FSM',
-        'flag': '🇫🇲',
-        'name': 'Micronesia, Federated States of',
-        'numeric': '583'
+        'alpha_2': 'FJ',
+        'alpha_3': 'FJI',
+        'flag': '🇫🇯',
+        'name': 'Fiji',
+        'numeric': '242'
+    },
+    {
+        'alpha_2': 'FI',
+        'alpha_3': 'FIN',
+        'flag': '🇫🇮',
+        'name': 'Finland',
+        'numeric': '246'
+    },
+    {
+        'alpha_2': 'FR',
+        'alpha_3': 'FRA',
+        'flag': '🇫🇷',
+        'name': 'France',
+        'numeric': '250'
+    },
+    {
+        'alpha_2': 'GF',
+        'alpha_3': 'GUF',
+        'flag': '🇬🇫',
+        'name': 'French Guiana',
+        'numeric': '254'
+    },
+    {
+        'alpha_2': 'PF',
+        'alpha_3': 'PYF',
+        'flag': '🇵🇫',
+        'name': 'French Polynesia',
+        'numeric': '258'
+    },
+    {
+        'alpha_2': 'TF',
+        'alpha_3': 'ATF',
+        'flag': '🇹🇫',
+        'name': 'French Southern Territories',
+        'numeric': '260'
     },
     {
         'alpha_2': 'GA',
@@ -562,11 +569,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '266'
     },
     {
-        'alpha_2': 'GB',
-        'alpha_3': 'GBR',
-        'flag': '🇬🇧',
-        'name': 'United Kingdom',
-        'numeric': '826'
+        'alpha_2': 'GM',
+        'alpha_3': 'GMB',
+        'flag': '🇬🇲',
+        'name': 'Gambia',
+        'numeric': '270'
     },
     {
         'alpha_2': 'GE',
@@ -576,11 +583,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '268'
     },
     {
-        'alpha_2': 'GG',
-        'alpha_3': 'GGY',
-        'flag': '🇬🇬',
-        'name': 'Guernsey',
-        'numeric': '831'
+        'alpha_2': 'DE',
+        'alpha_3': 'DEU',
+        'flag': '🇩🇪',
+        'name': 'Germany',
+        'numeric': '276'
     },
     {
         'alpha_2': 'GH',
@@ -597,53 +604,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '292'
     },
     {
-        'alpha_2': 'GN',
-        'alpha_3': 'GIN',
-        'flag': '🇬🇳',
-        'name': 'Guinea',
-        'numeric': '324'
-    },
-    {
-        'alpha_2': 'GP',
-        'alpha_3': 'GLP',
-        'flag': '🇬🇵',
-        'name': 'Guadeloupe',
-        'numeric': '312'
-    },
-    {
-        'alpha_2': 'GM',
-        'alpha_3': 'GMB',
-        'flag': '🇬🇲',
-        'name': 'Gambia',
-        'numeric': '270'
-    },
-    {
-        'alpha_2': 'GW',
-        'alpha_3': 'GNB',
-        'flag': '🇬🇼',
-        'name': 'Guinea-Bissau',
-        'numeric': '624'
-    },
-    {
-        'alpha_2': 'GQ',
-        'alpha_3': 'GNQ',
-        'flag': '🇬🇶',
-        'name': 'Equatorial Guinea',
-        'numeric': '226'
-    },
-    {
         'alpha_2': 'GR',
         'alpha_3': 'GRC',
         'flag': '🇬🇷',
         'name': 'Greece',
         'numeric': '300'
-    },
-    {
-        'alpha_2': 'GD',
-        'alpha_3': 'GRD',
-        'flag': '🇬🇩',
-        'name': 'Grenada',
-        'numeric': '308'
     },
     {
         'alpha_2': 'GL',
@@ -653,18 +618,18 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '304'
     },
     {
-        'alpha_2': 'GT',
-        'alpha_3': 'GTM',
-        'flag': '🇬🇹',
-        'name': 'Guatemala',
-        'numeric': '320'
+        'alpha_2': 'GD',
+        'alpha_3': 'GRD',
+        'flag': '🇬🇩',
+        'name': 'Grenada',
+        'numeric': '308'
     },
     {
-        'alpha_2': 'GF',
-        'alpha_3': 'GUF',
-        'flag': '🇬🇫',
-        'name': 'French Guiana',
-        'numeric': '254'
+        'alpha_2': 'GP',
+        'alpha_3': 'GLP',
+        'flag': '🇬🇵',
+        'name': 'Guadeloupe',
+        'numeric': '312'
     },
     {
         'alpha_2': 'GU',
@@ -674,39 +639,39 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '316'
     },
     {
+        'alpha_2': 'GT',
+        'alpha_3': 'GTM',
+        'flag': '🇬🇹',
+        'name': 'Guatemala',
+        'numeric': '320'
+    },
+    {
+        'alpha_2': 'GG',
+        'alpha_3': 'GGY',
+        'flag': '🇬🇬',
+        'name': 'Guernsey',
+        'numeric': '831'
+    },
+    {
+        'alpha_2': 'GN',
+        'alpha_3': 'GIN',
+        'flag': '🇬🇳',
+        'name': 'Guinea',
+        'numeric': '324'
+    },
+    {
+        'alpha_2': 'GW',
+        'alpha_3': 'GNB',
+        'flag': '🇬🇼',
+        'name': 'Guinea-Bissau',
+        'numeric': '624'
+    },
+    {
         'alpha_2': 'GY',
         'alpha_3': 'GUY',
         'flag': '🇬🇾',
         'name': 'Guyana',
         'numeric': '328'
-    },
-    {
-        'alpha_2': 'HK',
-        'alpha_3': 'HKG',
-        'flag': '🇭🇰',
-        'name': 'Hong Kong',
-        'numeric': '344'
-    },
-    {
-        'alpha_2': 'HM',
-        'alpha_3': 'HMD',
-        'flag': '🇭🇲',
-        'name': 'Heard Island and McDonald Islands',
-        'numeric': '334'
-    },
-    {
-        'alpha_2': 'HN',
-        'alpha_3': 'HND',
-        'flag': '🇭🇳',
-        'name': 'Honduras',
-        'numeric': '340'
-    },
-    {
-        'alpha_2': 'HR',
-        'alpha_3': 'HRV',
-        'flag': '🇭🇷',
-        'name': 'Croatia',
-        'numeric': '191'
     },
     {
         'alpha_2': 'HT',
@@ -716,6 +681,34 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '332'
     },
     {
+        'alpha_2': 'HM',
+        'alpha_3': 'HMD',
+        'flag': '🇭🇲',
+        'name': 'Heard Island and McDonald Islands',
+        'numeric': '334'
+    },
+    {
+        'alpha_2': 'VA',
+        'alpha_3': 'VAT',
+        'flag': '🇻🇦',
+        'name': 'Holy See (Vatican City State)',
+        'numeric': '336'
+    },
+    {
+        'alpha_2': 'HN',
+        'alpha_3': 'HND',
+        'flag': '🇭🇳',
+        'name': 'Honduras',
+        'numeric': '340'
+    },
+    {
+        'alpha_2': 'HK',
+        'alpha_3': 'HKG',
+        'flag': '🇭🇰',
+        'name': 'Hong Kong',
+        'numeric': '344'
+    },
+    {
         'alpha_2': 'HU',
         'alpha_3': 'HUN',
         'flag': '🇭🇺',
@@ -723,18 +716,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '348'
     },
     {
-        'alpha_2': 'ID',
-        'alpha_3': 'IDN',
-        'flag': '🇮🇩',
-        'name': 'Indonesia',
-        'numeric': '360'
-    },
-    {
-        'alpha_2': 'IM',
-        'alpha_3': 'IMN',
-        'flag': '🇮🇲',
-        'name': 'Isle of Man',
-        'numeric': '833'
+        'alpha_2': 'IS',
+        'alpha_3': 'ISL',
+        'flag': '🇮🇸',
+        'name': 'Iceland',
+        'numeric': '352'
     },
     {
         'alpha_2': 'IN',
@@ -744,18 +730,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '356'
     },
     {
-        'alpha_2': 'IO',
-        'alpha_3': 'IOT',
-        'flag': '🇮🇴',
-        'name': 'British Indian Ocean Territory',
-        'numeric': '086'
-    },
-    {
-        'alpha_2': 'IE',
-        'alpha_3': 'IRL',
-        'flag': '🇮🇪',
-        'name': 'Ireland',
-        'numeric': '372'
+        'alpha_2': 'ID',
+        'alpha_3': 'IDN',
+        'flag': '🇮🇩',
+        'name': 'Indonesia',
+        'numeric': '360'
     },
     {
         'alpha_2': 'IR',
@@ -772,11 +751,18 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '368'
     },
     {
-        'alpha_2': 'IS',
-        'alpha_3': 'ISL',
-        'flag': '🇮🇸',
-        'name': 'Iceland',
-        'numeric': '352'
+        'alpha_2': 'IE',
+        'alpha_3': 'IRL',
+        'flag': '🇮🇪',
+        'name': 'Ireland',
+        'numeric': '372'
+    },
+    {
+        'alpha_2': 'IM',
+        'alpha_3': 'IMN',
+        'flag': '🇮🇲',
+        'name': 'Isle of Man',
+        'numeric': '833'
     },
     {
         'alpha_2': 'IL',
@@ -800,6 +786,13 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '388'
     },
     {
+        'alpha_2': 'JP',
+        'alpha_3': 'JPN',
+        'flag': '🇯🇵',
+        'name': 'Japan',
+        'numeric': '392'
+    },
+    {
         'alpha_2': 'JE',
         'alpha_3': 'JEY',
         'flag': '🇯🇪',
@@ -812,13 +805,6 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'flag': '🇯🇴',
         'name': 'Jordan',
         'numeric': '400'
-    },
-    {
-        'alpha_2': 'JP',
-        'alpha_3': 'JPN',
-        'flag': '🇯🇵',
-        'name': 'Japan',
-        'numeric': '392'
     },
     {
         'alpha_2': 'KZ',
@@ -835,20 +821,6 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '404'
     },
     {
-        'alpha_2': 'KG',
-        'alpha_3': 'KGZ',
-        'flag': '🇰🇬',
-        'name': 'Kyrgyzstan',
-        'numeric': '417'
-    },
-    {
-        'alpha_2': 'KH',
-        'alpha_3': 'KHM',
-        'flag': '🇰🇭',
-        'name': 'Cambodia',
-        'numeric': '116'
-    },
-    {
         'alpha_2': 'KI',
         'alpha_3': 'KIR',
         'flag': '🇰🇮',
@@ -856,11 +828,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '296'
     },
     {
-        'alpha_2': 'KN',
-        'alpha_3': 'KNA',
-        'flag': '🇰🇳',
-        'name': 'Saint Kitts and Nevis',
-        'numeric': '659'
+        'alpha_2': 'KP',
+        'alpha_3': 'PRK',
+        'flag': '🇰🇵',
+        'name': "Korea, Democratic People's Republic of",
+        'numeric': '408'
     },
     {
         'alpha_2': 'KR',
@@ -877,6 +849,13 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '414'
     },
     {
+        'alpha_2': 'KG',
+        'alpha_3': 'KGZ',
+        'flag': '🇰🇬',
+        'name': 'Kyrgyzstan',
+        'numeric': '417'
+    },
+    {
         'alpha_2': 'LA',
         'alpha_3': 'LAO',
         'flag': '🇱🇦',
@@ -884,11 +863,25 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '418'
     },
     {
+        'alpha_2': 'LV',
+        'alpha_3': 'LVA',
+        'flag': '🇱🇻',
+        'name': 'Latvia',
+        'numeric': '428'
+    },
+    {
         'alpha_2': 'LB',
         'alpha_3': 'LBN',
         'flag': '🇱🇧',
         'name': 'Lebanon',
         'numeric': '422'
+    },
+    {
+        'alpha_2': 'LS',
+        'alpha_3': 'LSO',
+        'flag': '🇱🇸',
+        'name': 'Lesotho',
+        'numeric': '426'
     },
     {
         'alpha_2': 'LR',
@@ -905,32 +898,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '434'
     },
     {
-        'alpha_2': 'LC',
-        'alpha_3': 'LCA',
-        'flag': '🇱🇨',
-        'name': 'Saint Lucia',
-        'numeric': '662'
-    },
-    {
         'alpha_2': 'LI',
         'alpha_3': 'LIE',
         'flag': '🇱🇮',
         'name': 'Liechtenstein',
         'numeric': '438'
-    },
-    {
-        'alpha_2': 'LK',
-        'alpha_3': 'LKA',
-        'flag': '🇱🇰',
-        'name': 'Sri Lanka',
-        'numeric': '144'
-    },
-    {
-        'alpha_2': 'LS',
-        'alpha_3': 'LSO',
-        'flag': '🇱🇸',
-        'name': 'Lesotho',
-        'numeric': '426'
     },
     {
         'alpha_2': 'LT',
@@ -947,13 +919,6 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '442'
     },
     {
-        'alpha_2': 'LV',
-        'alpha_3': 'LVA',
-        'flag': '🇱🇻',
-        'name': 'Latvia',
-        'numeric': '428'
-    },
-    {
         'alpha_2': 'MO',
         'alpha_3': 'MAC',
         'flag': '🇲🇴',
@@ -961,144 +926,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '446'
     },
     {
-        'alpha_2': 'MF',
-        'alpha_3': 'MAF',
-        'flag': '🇲🇫',
-        'name': 'Saint Martin (French part)',
-        'numeric': '663'
-    },
-    {
-        'alpha_2': 'MA',
-        'alpha_3': 'MAR',
-        'flag': '🇲🇦',
-        'name': 'Morocco',
-        'numeric': '504'
-    },
-    {
-        'alpha_2': 'MC',
-        'alpha_3': 'MCO',
-        'flag': '🇲🇨',
-        'name': 'Monaco',
-        'numeric': '492'
-    },
-    {
-        'alpha_2': 'MD',
-        'alpha_3': 'MDA',
-        'flag': '🇲🇩',
-        'name': 'Moldova, Republic of',
-        'numeric': '498'
-    },
-    {
         'alpha_2': 'MG',
         'alpha_3': 'MDG',
         'flag': '🇲🇬',
         'name': 'Madagascar',
         'numeric': '450'
-    },
-    {
-        'alpha_2': 'MV',
-        'alpha_3': 'MDV',
-        'flag': '🇲🇻',
-        'name': 'Maldives',
-        'numeric': '462'
-    },
-    {
-        'alpha_2': 'MX',
-        'alpha_3': 'MEX',
-        'flag': '🇲🇽',
-        'name': 'Mexico',
-        'numeric': '484'
-    },
-    {
-        'alpha_2': 'MH',
-        'alpha_3': 'MHL',
-        'flag': '🇲🇭',
-        'name': 'Marshall Islands',
-        'numeric': '584'
-    },
-    {
-        'alpha_2': 'MK',
-        'alpha_3': 'MKD',
-        'flag': '🇲🇰',
-        'name': 'North Macedonia',
-        'numeric': '807'
-    },
-    {
-        'alpha_2': 'ML',
-        'alpha_3': 'MLI',
-        'flag': '🇲🇱',
-        'name': 'Mali',
-        'numeric': '466'
-    },
-    {
-        'alpha_2': 'MT',
-        'alpha_3': 'MLT',
-        'flag': '🇲🇹',
-        'name': 'Malta',
-        'numeric': '470'
-    },
-    {
-        'alpha_2': 'MM',
-        'alpha_3': 'MMR',
-        'flag': '🇲🇲',
-        'name': 'Myanmar',
-        'numeric': '104'
-    },
-    {
-        'alpha_2': 'ME',
-        'alpha_3': 'MNE',
-        'flag': '🇲🇪',
-        'name': 'Montenegro',
-        'numeric': '499'
-    },
-    {
-        'alpha_2': 'MN',
-        'alpha_3': 'MNG',
-        'flag': '🇲🇳',
-        'name': 'Mongolia',
-        'numeric': '496'
-    },
-    {
-        'alpha_2': 'MP',
-        'alpha_3': 'MNP',
-        'flag': '🇲🇵',
-        'name': 'Northern Mariana Islands',
-        'numeric': '580'
-    },
-    {
-        'alpha_2': 'MZ',
-        'alpha_3': 'MOZ',
-        'flag': '🇲🇿',
-        'name': 'Mozambique',
-        'numeric': '508'
-    },
-    {
-        'alpha_2': 'MR',
-        'alpha_3': 'MRT',
-        'flag': '🇲🇷',
-        'name': 'Mauritania',
-        'numeric': '478'
-    },
-    {
-        'alpha_2': 'MS',
-        'alpha_3': 'MSR',
-        'flag': '🇲🇸',
-        'name': 'Montserrat',
-        'numeric': '500'
-    },
-    {
-        'alpha_2': 'MQ',
-        'alpha_3': 'MTQ',
-        'flag': '🇲🇶',
-        'name': 'Martinique',
-        'numeric': '474'
-    },
-    {
-        'alpha_2': 'MU',
-        'alpha_3': 'MUS',
-        'flag': '🇲🇺',
-        'name': 'Mauritius',
-        'numeric': '480'
     },
     {
         'alpha_2': 'MW',
@@ -1115,11 +947,130 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '458'
     },
     {
+        'alpha_2': 'MV',
+        'alpha_3': 'MDV',
+        'flag': '🇲🇻',
+        'name': 'Maldives',
+        'numeric': '462'
+    },
+    {
+        'alpha_2': 'ML',
+        'alpha_3': 'MLI',
+        'flag': '🇲🇱',
+        'name': 'Mali',
+        'numeric': '466'
+    },
+    {
+        'alpha_2': 'MT',
+        'alpha_3': 'MLT',
+        'flag': '🇲🇹',
+        'name': 'Malta',
+        'numeric': '470'
+    },
+    {
+        'alpha_2': 'MH',
+        'alpha_3': 'MHL',
+        'flag': '🇲🇭',
+        'name': 'Marshall Islands',
+        'numeric': '584'
+    },
+    {
+        'alpha_2': 'MQ',
+        'alpha_3': 'MTQ',
+        'flag': '🇲🇶',
+        'name': 'Martinique',
+        'numeric': '474'
+    },
+    {
+        'alpha_2': 'MR',
+        'alpha_3': 'MRT',
+        'flag': '🇲🇷',
+        'name': 'Mauritania',
+        'numeric': '478'
+    },
+    {
+        'alpha_2': 'MU',
+        'alpha_3': 'MUS',
+        'flag': '🇲🇺',
+        'name': 'Mauritius',
+        'numeric': '480'
+    },
+    {
         'alpha_2': 'YT',
         'alpha_3': 'MYT',
         'flag': '🇾🇹',
         'name': 'Mayotte',
         'numeric': '175'
+    },
+    {
+        'alpha_2': 'MX',
+        'alpha_3': 'MEX',
+        'flag': '🇲🇽',
+        'name': 'Mexico',
+        'numeric': '484'
+    },
+    {
+        'alpha_2': 'FM',
+        'alpha_3': 'FSM',
+        'flag': '🇫🇲',
+        'name': 'Micronesia, Federated States of',
+        'numeric': '583'
+    },
+    {
+        'alpha_2': 'MD',
+        'alpha_3': 'MDA',
+        'flag': '🇲🇩',
+        'name': 'Moldova, Republic of',
+        'numeric': '498'
+    },
+    {
+        'alpha_2': 'MC',
+        'alpha_3': 'MCO',
+        'flag': '🇲🇨',
+        'name': 'Monaco',
+        'numeric': '492'
+    },
+    {
+        'alpha_2': 'MN',
+        'alpha_3': 'MNG',
+        'flag': '🇲🇳',
+        'name': 'Mongolia',
+        'numeric': '496'
+    },
+    {
+        'alpha_2': 'ME',
+        'alpha_3': 'MNE',
+        'flag': '🇲🇪',
+        'name': 'Montenegro',
+        'numeric': '499'
+    },
+    {
+        'alpha_2': 'MS',
+        'alpha_3': 'MSR',
+        'flag': '🇲🇸',
+        'name': 'Montserrat',
+        'numeric': '500'
+    },
+    {
+        'alpha_2': 'MA',
+        'alpha_3': 'MAR',
+        'flag': '🇲🇦',
+        'name': 'Morocco',
+        'numeric': '504'
+    },
+    {
+        'alpha_2': 'MZ',
+        'alpha_3': 'MOZ',
+        'flag': '🇲🇿',
+        'name': 'Mozambique',
+        'numeric': '508'
+    },
+    {
+        'alpha_2': 'MM',
+        'alpha_3': 'MMR',
+        'flag': '🇲🇲',
+        'name': 'Myanmar',
+        'numeric': '104'
     },
     {
         'alpha_2': 'NA',
@@ -1129,60 +1080,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '516'
     },
     {
-        'alpha_2': 'NC',
-        'alpha_3': 'NCL',
-        'flag': '🇳🇨',
-        'name': 'New Caledonia',
-        'numeric': '540'
-    },
-    {
-        'alpha_2': 'NE',
-        'alpha_3': 'NER',
-        'flag': '🇳🇪',
-        'name': 'Niger',
-        'numeric': '562'
-    },
-    {
-        'alpha_2': 'NF',
-        'alpha_3': 'NFK',
-        'flag': '🇳🇫',
-        'name': 'Norfolk Island',
-        'numeric': '574'
-    },
-    {
-        'alpha_2': 'NG',
-        'alpha_3': 'NGA',
-        'flag': '🇳🇬',
-        'name': 'Nigeria',
-        'numeric': '566'
-    },
-    {
-        'alpha_2': 'NI',
-        'alpha_3': 'NIC',
-        'flag': '🇳🇮',
-        'name': 'Nicaragua',
-        'numeric': '558'
-    },
-    {
-        'alpha_2': 'NU',
-        'alpha_3': 'NIU',
-        'flag': '🇳🇺',
-        'name': 'Niue',
-        'numeric': '570'
-    },
-    {
-        'alpha_2': 'NL',
-        'alpha_3': 'NLD',
-        'flag': '🇳🇱',
-        'name': 'Netherlands',
-        'numeric': '528'
-    },
-    {
-        'alpha_2': 'NO',
-        'alpha_3': 'NOR',
-        'flag': '🇳🇴',
-        'name': 'Norway',
-        'numeric': '578'
+        'alpha_2': 'NR',
+        'alpha_3': 'NRU',
+        'flag': '🇳🇷',
+        'name': 'Nauru',
+        'numeric': '520'
     },
     {
         'alpha_2': 'NP',
@@ -1192,11 +1094,18 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '524'
     },
     {
-        'alpha_2': 'NR',
-        'alpha_3': 'NRU',
-        'flag': '🇳🇷',
-        'name': 'Nauru',
-        'numeric': '520'
+        'alpha_2': 'NL',
+        'alpha_3': 'NLD',
+        'flag': '🇳🇱',
+        'name': 'Netherlands',
+        'numeric': '528'
+    },
+    {
+        'alpha_2': 'NC',
+        'alpha_3': 'NCL',
+        'flag': '🇳🇨',
+        'name': 'New Caledonia',
+        'numeric': '540'
     },
     {
         'alpha_2': 'NZ',
@@ -1204,6 +1113,62 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'flag': '🇳🇿',
         'name': 'New Zealand',
         'numeric': '554'
+    },
+    {
+        'alpha_2': 'NI',
+        'alpha_3': 'NIC',
+        'flag': '🇳🇮',
+        'name': 'Nicaragua',
+        'numeric': '558'
+    },
+    {
+        'alpha_2': 'NE',
+        'alpha_3': 'NER',
+        'flag': '🇳🇪',
+        'name': 'Niger',
+        'numeric': '562'
+    },
+    {
+        'alpha_2': 'NG',
+        'alpha_3': 'NGA',
+        'flag': '🇳🇬',
+        'name': 'Nigeria',
+        'numeric': '566'
+    },
+    {
+        'alpha_2': 'NU',
+        'alpha_3': 'NIU',
+        'flag': '🇳🇺',
+        'name': 'Niue',
+        'numeric': '570'
+    },
+    {
+        'alpha_2': 'NF',
+        'alpha_3': 'NFK',
+        'flag': '🇳🇫',
+        'name': 'Norfolk Island',
+        'numeric': '574'
+    },
+    {
+        'alpha_2': 'MK',
+        'alpha_3': 'MKD',
+        'flag': '🇲🇰',
+        'name': 'North Macedonia',
+        'numeric': '807'
+    },
+    {
+        'alpha_2': 'MP',
+        'alpha_3': 'MNP',
+        'flag': '🇲🇵',
+        'name': 'Northern Mariana Islands',
+        'numeric': '580'
+    },
+    {
+        'alpha_2': 'NO',
+        'alpha_3': 'NOR',
+        'flag': '🇳🇴',
+        'name': 'Norway',
+        'numeric': '578'
     },
     {
         'alpha_2': 'OM',
@@ -1220,6 +1185,20 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '586'
     },
     {
+        'alpha_2': 'PW',
+        'alpha_3': 'PLW',
+        'flag': '🇵🇼',
+        'name': 'Palau',
+        'numeric': '585'
+    },
+    {
+        'alpha_2': 'PS',
+        'alpha_3': 'PSE',
+        'flag': '🇵🇸',
+        'name': 'Palestine, State of',
+        'numeric': '275'
+    },
+    {
         'alpha_2': 'PA',
         'alpha_3': 'PAN',
         'flag': '🇵🇦',
@@ -1227,11 +1206,18 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '591'
     },
     {
-        'alpha_2': 'PN',
-        'alpha_3': 'PCN',
-        'flag': '🇵🇳',
-        'name': 'Pitcairn',
-        'numeric': '612'
+        'alpha_2': 'PG',
+        'alpha_3': 'PNG',
+        'flag': '🇵🇬',
+        'name': 'Papua New Guinea',
+        'numeric': '598'
+    },
+    {
+        'alpha_2': 'PY',
+        'alpha_3': 'PRY',
+        'flag': '🇵🇾',
+        'name': 'Paraguay',
+        'numeric': '600'
     },
     {
         'alpha_2': 'PE',
@@ -1248,18 +1234,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '608'
     },
     {
-        'alpha_2': 'PW',
-        'alpha_3': 'PLW',
-        'flag': '🇵🇼',
-        'name': 'Palau',
-        'numeric': '585'
-    },
-    {
-        'alpha_2': 'PG',
-        'alpha_3': 'PNG',
-        'flag': '🇵🇬',
-        'name': 'Papua New Guinea',
-        'numeric': '598'
+        'alpha_2': 'PN',
+        'alpha_3': 'PCN',
+        'flag': '🇵🇳',
+        'name': 'Pitcairn',
+        'numeric': '612'
     },
     {
         'alpha_2': 'PL',
@@ -1269,20 +1248,6 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '616'
     },
     {
-        'alpha_2': 'PR',
-        'alpha_3': 'PRI',
-        'flag': '🇵🇷',
-        'name': 'Puerto Rico',
-        'numeric': '630'
-    },
-    {
-        'alpha_2': 'KP',
-        'alpha_3': 'PRK',
-        'flag': '🇰🇵',
-        'name': "Korea, Democratic People's Republic of",
-        'numeric': '408'
-    },
-    {
         'alpha_2': 'PT',
         'alpha_3': 'PRT',
         'flag': '🇵🇹',
@@ -1290,25 +1255,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '620'
     },
     {
-        'alpha_2': 'PY',
-        'alpha_3': 'PRY',
-        'flag': '🇵🇾',
-        'name': 'Paraguay',
-        'numeric': '600'
-    },
-    {
-        'alpha_2': 'PS',
-        'alpha_3': 'PSE',
-        'flag': '🇵🇸',
-        'name': 'Palestine, State of',
-        'numeric': '275'
-    },
-    {
-        'alpha_2': 'PF',
-        'alpha_3': 'PYF',
-        'flag': '🇵🇫',
-        'name': 'French Polynesia',
-        'numeric': '258'
+        'alpha_2': 'PR',
+        'alpha_3': 'PRI',
+        'flag': '🇵🇷',
+        'name': 'Puerto Rico',
+        'numeric': '630'
     },
     {
         'alpha_2': 'QA',
@@ -1316,13 +1267,6 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'flag': '🇶🇦',
         'name': 'Qatar',
         'numeric': '634'
-    },
-    {
-        'alpha_2': 'RE',
-        'alpha_3': 'REU',
-        'flag': '🇷🇪',
-        'name': 'Réunion',
-        'numeric': '638'
     },
     {
         'alpha_2': 'RO',
@@ -1346,39 +1290,18 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '646'
     },
     {
-        'alpha_2': 'SA',
-        'alpha_3': 'SAU',
-        'flag': '🇸🇦',
-        'name': 'Saudi Arabia',
-        'numeric': '682'
+        'alpha_2': 'RE',
+        'alpha_3': 'REU',
+        'flag': '🇷🇪',
+        'name': 'Réunion',
+        'numeric': '638'
     },
     {
-        'alpha_2': 'SD',
-        'alpha_3': 'SDN',
-        'flag': '🇸🇩',
-        'name': 'Sudan',
-        'numeric': '729'
-    },
-    {
-        'alpha_2': 'SN',
-        'alpha_3': 'SEN',
-        'flag': '🇸🇳',
-        'name': 'Senegal',
-        'numeric': '686'
-    },
-    {
-        'alpha_2': 'SG',
-        'alpha_3': 'SGP',
-        'flag': '🇸🇬',
-        'name': 'Singapore',
-        'numeric': '702'
-    },
-    {
-        'alpha_2': 'GS',
-        'alpha_3': 'SGS',
-        'flag': '🇬🇸',
-        'name': 'South Georgia and the South Sandwich Islands',
-        'numeric': '239'
+        'alpha_2': 'BL',
+        'alpha_3': 'BLM',
+        'flag': '🇧🇱',
+        'name': 'Saint Barthélemy',
+        'numeric': '652'
     },
     {
         'alpha_2': 'SH',
@@ -1388,46 +1311,25 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '654'
     },
     {
-        'alpha_2': 'SJ',
-        'alpha_3': 'SJM',
-        'flag': '🇸🇯',
-        'name': 'Svalbard and Jan Mayen',
-        'numeric': '744'
+        'alpha_2': 'KN',
+        'alpha_3': 'KNA',
+        'flag': '🇰🇳',
+        'name': 'Saint Kitts and Nevis',
+        'numeric': '659'
     },
     {
-        'alpha_2': 'SB',
-        'alpha_3': 'SLB',
-        'flag': '🇸🇧',
-        'name': 'Solomon Islands',
-        'numeric': '090'
+        'alpha_2': 'LC',
+        'alpha_3': 'LCA',
+        'flag': '🇱🇨',
+        'name': 'Saint Lucia',
+        'numeric': '662'
     },
     {
-        'alpha_2': 'SL',
-        'alpha_3': 'SLE',
-        'flag': '🇸🇱',
-        'name': 'Sierra Leone',
-        'numeric': '694'
-    },
-    {
-        'alpha_2': 'SV',
-        'alpha_3': 'SLV',
-        'flag': '🇸🇻',
-        'name': 'El Salvador',
-        'numeric': '222'
-    },
-    {
-        'alpha_2': 'SM',
-        'alpha_3': 'SMR',
-        'flag': '🇸🇲',
-        'name': 'San Marino',
-        'numeric': '674'
-    },
-    {
-        'alpha_2': 'SO',
-        'alpha_3': 'SOM',
-        'flag': '🇸🇴',
-        'name': 'Somalia',
-        'numeric': '706'
+        'alpha_2': 'MF',
+        'alpha_3': 'MAF',
+        'flag': '🇲🇫',
+        'name': 'Saint Martin (French part)',
+        'numeric': '663'
     },
     {
         'alpha_2': 'PM',
@@ -1437,18 +1339,25 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '666'
     },
     {
-        'alpha_2': 'RS',
-        'alpha_3': 'SRB',
-        'flag': '🇷🇸',
-        'name': 'Serbia',
-        'numeric': '688'
+        'alpha_2': 'VC',
+        'alpha_3': 'VCT',
+        'flag': '🇻🇨',
+        'name': 'Saint Vincent and the Grenadines',
+        'numeric': '670'
     },
     {
-        'alpha_2': 'SS',
-        'alpha_3': 'SSD',
-        'flag': '🇸🇸',
-        'name': 'South Sudan',
-        'numeric': '728'
+        'alpha_2': 'WS',
+        'alpha_3': 'WSM',
+        'flag': '🇼🇸',
+        'name': 'Samoa',
+        'numeric': '882'
+    },
+    {
+        'alpha_2': 'SM',
+        'alpha_3': 'SMR',
+        'flag': '🇸🇲',
+        'name': 'San Marino',
+        'numeric': '674'
     },
     {
         'alpha_2': 'ST',
@@ -1458,11 +1367,53 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '678'
     },
     {
-        'alpha_2': 'SR',
-        'alpha_3': 'SUR',
-        'flag': '🇸🇷',
-        'name': 'Suriname',
-        'numeric': '740'
+        'alpha_2': 'SA',
+        'alpha_3': 'SAU',
+        'flag': '🇸🇦',
+        'name': 'Saudi Arabia',
+        'numeric': '682'
+    },
+    {
+        'alpha_2': 'SN',
+        'alpha_3': 'SEN',
+        'flag': '🇸🇳',
+        'name': 'Senegal',
+        'numeric': '686'
+    },
+    {
+        'alpha_2': 'RS',
+        'alpha_3': 'SRB',
+        'flag': '🇷🇸',
+        'name': 'Serbia',
+        'numeric': '688'
+    },
+    {
+        'alpha_2': 'SC',
+        'alpha_3': 'SYC',
+        'flag': '🇸🇨',
+        'name': 'Seychelles',
+        'numeric': '690'
+    },
+    {
+        'alpha_2': 'SL',
+        'alpha_3': 'SLE',
+        'flag': '🇸🇱',
+        'name': 'Sierra Leone',
+        'numeric': '694'
+    },
+    {
+        'alpha_2': 'SG',
+        'alpha_3': 'SGP',
+        'flag': '🇸🇬',
+        'name': 'Singapore',
+        'numeric': '702'
+    },
+    {
+        'alpha_2': 'SX',
+        'alpha_3': 'SXM',
+        'flag': '🇸🇽',
+        'name': 'Sint Maarten (Dutch part)',
+        'numeric': '534'
     },
     {
         'alpha_2': 'SK',
@@ -1479,6 +1430,76 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '705'
     },
     {
+        'alpha_2': 'SB',
+        'alpha_3': 'SLB',
+        'flag': '🇸🇧',
+        'name': 'Solomon Islands',
+        'numeric': '090'
+    },
+    {
+        'alpha_2': 'SO',
+        'alpha_3': 'SOM',
+        'flag': '🇸🇴',
+        'name': 'Somalia',
+        'numeric': '706'
+    },
+    {
+        'alpha_2': 'ZA',
+        'alpha_3': 'ZAF',
+        'flag': '🇿🇦',
+        'name': 'South Africa',
+        'numeric': '710'
+    },
+    {
+        'alpha_2': 'GS',
+        'alpha_3': 'SGS',
+        'flag': '🇬🇸',
+        'name': 'South Georgia and the South Sandwich Islands',
+        'numeric': '239'
+    },
+    {
+        'alpha_2': 'SS',
+        'alpha_3': 'SSD',
+        'flag': '🇸🇸',
+        'name': 'South Sudan',
+        'numeric': '728'
+    },
+    {
+        'alpha_2': 'ES',
+        'alpha_3': 'ESP',
+        'flag': '🇪🇸',
+        'name': 'Spain',
+        'numeric': '724'
+    },
+    {
+        'alpha_2': 'LK',
+        'alpha_3': 'LKA',
+        'flag': '🇱🇰',
+        'name': 'Sri Lanka',
+        'numeric': '144'
+    },
+    {
+        'alpha_2': 'SD',
+        'alpha_3': 'SDN',
+        'flag': '🇸🇩',
+        'name': 'Sudan',
+        'numeric': '729'
+    },
+    {
+        'alpha_2': 'SR',
+        'alpha_3': 'SUR',
+        'flag': '🇸🇷',
+        'name': 'Suriname',
+        'numeric': '740'
+    },
+    {
+        'alpha_2': 'SJ',
+        'alpha_3': 'SJM',
+        'flag': '🇸🇯',
+        'name': 'Svalbard and Jan Mayen',
+        'numeric': '744'
+    },
+    {
         'alpha_2': 'SE',
         'alpha_3': 'SWE',
         'flag': '🇸🇪',
@@ -1486,25 +1507,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '752'
     },
     {
-        'alpha_2': 'SZ',
-        'alpha_3': 'SWZ',
-        'flag': '🇸🇿',
-        'name': 'Eswatini',
-        'numeric': '748'
-    },
-    {
-        'alpha_2': 'SX',
-        'alpha_3': 'SXM',
-        'flag': '🇸🇽',
-        'name': 'Sint Maarten (Dutch part)',
-        'numeric': '534'
-    },
-    {
-        'alpha_2': 'SC',
-        'alpha_3': 'SYC',
-        'flag': '🇸🇨',
-        'name': 'Seychelles',
-        'numeric': '690'
+        'alpha_2': 'CH',
+        'alpha_3': 'CHE',
+        'flag': '🇨🇭',
+        'name': 'Switzerland',
+        'numeric': '756'
     },
     {
         'alpha_2': 'SY',
@@ -1514,32 +1521,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '760'
     },
     {
-        'alpha_2': 'TC',
-        'alpha_3': 'TCA',
-        'flag': '🇹🇨',
-        'name': 'Turks and Caicos Islands',
-        'numeric': '796'
-    },
-    {
-        'alpha_2': 'TD',
-        'alpha_3': 'TCD',
-        'flag': '🇹🇩',
-        'name': 'Chad',
-        'numeric': '148'
-    },
-    {
-        'alpha_2': 'TG',
-        'alpha_3': 'TGO',
-        'flag': '🇹🇬',
-        'name': 'Togo',
-        'numeric': '768'
-    },
-    {
-        'alpha_2': 'TH',
-        'alpha_3': 'THA',
-        'flag': '🇹🇭',
-        'name': 'Thailand',
-        'numeric': '764'
+        'alpha_2': 'TW',
+        'alpha_3': 'TWN',
+        'flag': '🇹🇼',
+        'name': 'Taiwan, Province of China',
+        'numeric': '158'
     },
     {
         'alpha_2': 'TJ',
@@ -1549,18 +1535,18 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '762'
     },
     {
-        'alpha_2': 'TK',
-        'alpha_3': 'TKL',
-        'flag': '🇹🇰',
-        'name': 'Tokelau',
-        'numeric': '772'
+        'alpha_2': 'TZ',
+        'alpha_3': 'TZA',
+        'flag': '🇹🇿',
+        'name': 'Tanzania, United Republic of',
+        'numeric': '834'
     },
     {
-        'alpha_2': 'TM',
-        'alpha_3': 'TKM',
-        'flag': '🇹🇲',
-        'name': 'Turkmenistan',
-        'numeric': '795'
+        'alpha_2': 'TH',
+        'alpha_3': 'THA',
+        'flag': '🇹🇭',
+        'name': 'Thailand',
+        'numeric': '764'
     },
     {
         'alpha_2': 'TL',
@@ -1568,6 +1554,20 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'flag': '🇹🇱',
         'name': 'Timor-Leste',
         'numeric': '626'
+    },
+    {
+        'alpha_2': 'TG',
+        'alpha_3': 'TGO',
+        'flag': '🇹🇬',
+        'name': 'Togo',
+        'numeric': '768'
+    },
+    {
+        'alpha_2': 'TK',
+        'alpha_3': 'TKL',
+        'flag': '🇹🇰',
+        'name': 'Tokelau',
+        'numeric': '772'
     },
     {
         'alpha_2': 'TO',
@@ -1598,25 +1598,25 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '792'
     },
     {
+        'alpha_2': 'TM',
+        'alpha_3': 'TKM',
+        'flag': '🇹🇲',
+        'name': 'Turkmenistan',
+        'numeric': '795'
+    },
+    {
+        'alpha_2': 'TC',
+        'alpha_3': 'TCA',
+        'flag': '🇹🇨',
+        'name': 'Turks and Caicos Islands',
+        'numeric': '796'
+    },
+    {
         'alpha_2': 'TV',
         'alpha_3': 'TUV',
         'flag': '🇹🇻',
         'name': 'Tuvalu',
         'numeric': '798'
-    },
-    {
-        'alpha_2': 'TW',
-        'alpha_3': 'TWN',
-        'flag': '🇹🇼',
-        'name': 'Taiwan, Province of China',
-        'numeric': '158'
-    },
-    {
-        'alpha_2': 'TZ',
-        'alpha_3': 'TZA',
-        'flag': '🇹🇿',
-        'name': 'Tanzania, United Republic of',
-        'numeric': '834'
     },
     {
         'alpha_2': 'UG',
@@ -1633,6 +1633,27 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '804'
     },
     {
+        'alpha_2': 'AE',
+        'alpha_3': 'ARE',
+        'flag': '🇦🇪',
+        'name': 'United Arab Emirates',
+        'numeric': '784'
+    },
+    {
+        'alpha_2': 'GB',
+        'alpha_3': 'GBR',
+        'flag': '🇬🇧',
+        'name': 'United Kingdom',
+        'numeric': '826'
+    },
+    {
+        'alpha_2': 'US',
+        'alpha_3': 'USA',
+        'flag': '🇺🇸',
+        'name': 'United States',
+        'numeric': '840'
+    },
+    {
         'alpha_2': 'UM',
         'alpha_3': 'UMI',
         'flag': '🇺🇲',
@@ -1647,13 +1668,6 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '858'
     },
     {
-        'alpha_2': 'US',
-        'alpha_3': 'USA',
-        'flag': '🇺🇸',
-        'name': 'United States',
-        'numeric': '840'
-    },
-    {
         'alpha_2': 'UZ',
         'alpha_3': 'UZB',
         'flag': '🇺🇿',
@@ -1661,18 +1675,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '860'
     },
     {
-        'alpha_2': 'VA',
-        'alpha_3': 'VAT',
-        'flag': '🇻🇦',
-        'name': 'Holy See (Vatican City State)',
-        'numeric': '336'
-    },
-    {
-        'alpha_2': 'VC',
-        'alpha_3': 'VCT',
-        'flag': '🇻🇨',
-        'name': 'Saint Vincent and the Grenadines',
-        'numeric': '670'
+        'alpha_2': 'VU',
+        'alpha_3': 'VUT',
+        'flag': '🇻🇺',
+        'name': 'Vanuatu',
+        'numeric': '548'
     },
     {
         'alpha_2': 'VE',
@@ -1680,6 +1687,13 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'flag': '🇻🇪',
         'name': 'Venezuela, Bolivarian Republic of',
         'numeric': '862'
+    },
+    {
+        'alpha_2': 'VN',
+        'alpha_3': 'VNM',
+        'flag': '🇻🇳',
+        'name': 'Viet Nam',
+        'numeric': '704'
     },
     {
         'alpha_2': 'VG',
@@ -1696,20 +1710,6 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '850'
     },
     {
-        'alpha_2': 'VN',
-        'alpha_3': 'VNM',
-        'flag': '🇻🇳',
-        'name': 'Viet Nam',
-        'numeric': '704'
-    },
-    {
-        'alpha_2': 'VU',
-        'alpha_3': 'VUT',
-        'flag': '🇻🇺',
-        'name': 'Vanuatu',
-        'numeric': '548'
-    },
-    {
         'alpha_2': 'WF',
         'alpha_3': 'WLF',
         'flag': '🇼🇫',
@@ -1717,11 +1717,11 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'numeric': '876'
     },
     {
-        'alpha_2': 'WS',
-        'alpha_3': 'WSM',
-        'flag': '🇼🇸',
-        'name': 'Samoa',
-        'numeric': '882'
+        'alpha_2': 'EH',
+        'alpha_3': 'ESH',
+        'flag': '🇪🇭',
+        'name': 'Western Sahara',
+        'numeric': '732'
     },
     {
         'alpha_2': 'YE',
@@ -1729,13 +1729,6 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'flag': '🇾🇪',
         'name': 'Yemen',
         'numeric': '887'
-    },
-    {
-        'alpha_2': 'ZA',
-        'alpha_3': 'ZAF',
-        'flag': '🇿🇦',
-        'name': 'South Africa',
-        'numeric': '710'
     },
     {
         'alpha_2': 'ZM',
@@ -1750,10 +1743,31 @@ snapshots['TestCountryViewSet::test_list_full 1'] = [
         'flag': '🇿🇼',
         'name': 'Zimbabwe',
         'numeric': '716'
+    },
+    {
+        'alpha_2': 'AX',
+        'alpha_3': 'ALA',
+        'flag': '🇦🇽',
+        'name': 'Åland Islands',
+        'numeric': '248'
     }
 ]
 
 snapshots['TestCountryViewSet::test_list_search 1'] = [
+    {
+        'alpha_2': 'DZ',
+        'alpha_3': 'DZA',
+        'flag': '🇩🇿',
+        'name': 'Algeria',
+        'numeric': '012'
+    },
+    {
+        'alpha_2': 'GA',
+        'alpha_3': 'GAB',
+        'flag': '🇬🇦',
+        'name': 'Gabon',
+        'numeric': '266'
+    },
     {
         'alpha_2': 'ID',
         'alpha_3': 'IDN',
@@ -1769,25 +1783,11 @@ snapshots['TestCountryViewSet::test_list_search 1'] = [
         'numeric': '608'
     },
     {
-        'alpha_2': 'DZ',
-        'alpha_3': 'DZA',
-        'flag': '🇩🇿',
-        'name': 'Algeria',
-        'numeric': '012'
-    },
-    {
         'alpha_2': 'GB',
         'alpha_3': 'GBR',
         'flag': '🇬🇧',
         'name': 'United Kingdom',
         'numeric': '826'
-    },
-    {
-        'alpha_2': 'GA',
-        'alpha_3': 'GAB',
-        'flag': '🇬🇦',
-        'name': 'Gabon',
-        'numeric': '266'
     }
 ]
 

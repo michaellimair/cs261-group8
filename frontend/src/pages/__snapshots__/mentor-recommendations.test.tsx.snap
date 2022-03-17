@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SidebarNavItem renders properly without an icon 1`] = `
+exports[`mentor-recommendations renders properly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -33,33 +33,61 @@ Object {
       />
     </div>
     <div>
-      <a
-        class="chakra-link css-jgup0q"
-        href="/dashboard"
-        style="text-decoration: none;"
+      <div
+        class="chakra-stack css-owjkmg"
       >
-        <div
-          class="css-cpuzs9"
-          role="group"
+        <h2
+          class="chakra-heading css-a13f33"
         >
-          hello
-        </div>
-      </a>
+          select_mentors
+        </h2>
+      </div>
+      <div
+        class="css-1u9b1ym"
+      >
+        <p
+          class="chakra-text css-0"
+        >
+          no_matches
+        </p>
+        <button
+          class="chakra-button css-ug24of"
+          data-testid="submitButton"
+          disabled=""
+          type="button"
+        >
+          request_match
+        </button>
+      </div>
     </div>
   </body>,
   "container": <div>
-    <a
-      class="chakra-link css-jgup0q"
-      href="/dashboard"
-      style="text-decoration: none;"
+    <div
+      class="chakra-stack css-owjkmg"
     >
-      <div
-        class="css-cpuzs9"
-        role="group"
+      <h2
+        class="chakra-heading css-a13f33"
       >
-        hello
-      </div>
-    </a>
+        select_mentors
+      </h2>
+    </div>
+    <div
+      class="css-1u9b1ym"
+    >
+      <p
+        class="chakra-text css-0"
+      >
+        no_matches
+      </p>
+      <button
+        class="chakra-button css-ug24of"
+        data-testid="submitButton"
+        disabled=""
+        type="button"
+      >
+        request_match
+      </button>
+    </div>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

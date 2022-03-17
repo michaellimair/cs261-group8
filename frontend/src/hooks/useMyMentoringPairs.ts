@@ -3,7 +3,7 @@ import { UserGroup } from 'customTypes/auth';
 import { useQuery } from 'react-query';
 import { useUser } from './useUser';
 
-const useMyMentoringPairs = (role: UserGroup) => {
+export const useMyMentoringPairs = (role: UserGroup) => {
   const { user } = useUser();
   const { data, isLoading } = useQuery(['my-pairing', role], () => {
     if (user?.groups?.find(({ name }) => name === role)) {
@@ -14,5 +14,3 @@ const useMyMentoringPairs = (role: UserGroup) => {
 
   return { data, isLoading };
 };
-
-export default useMyMentoringPairs;

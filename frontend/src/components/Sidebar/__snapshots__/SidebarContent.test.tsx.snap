@@ -65,30 +65,6 @@ Object {
         </div>
         <a
           class="chakra-link css-jgup0q"
-          href="/welcome"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            dashboard.welcome.title
-          </div>
-        </a>
-        <a
-          class="chakra-link css-jgup0q"
-          href="/mentor-rec"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            dashboard.mentor-rec.title
-          </div>
-        </a>
-        <a
-          class="chakra-link css-jgup0q"
           href="/dashboard"
           style="text-decoration: none;"
         >
@@ -122,37 +98,7 @@ Object {
         </a>
         <a
           class="chakra-link css-jgup0q"
-          href="/mentor-only"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            <svg
-              class="chakra-icon css-1b1fm3x"
-              data-testid="sidebarNavIcon"
-              fill="none"
-              focusable="false"
-              height="1em"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
-              />
-            </svg>
-            dashboard.mentor_only.title
-          </div>
-        </a>
-        <a
-          class="chakra-link css-jgup0q"
-          href="/mentee-only"
+          href="/mentor-recommendations"
           style="text-decoration: none;"
         >
           <div
@@ -167,18 +113,15 @@ Object {
               height="1em"
               stroke="currentColor"
               stroke-width="0"
-              viewBox="0 0 512 512"
+              viewBox="0 0 20 20"
               width="1em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M256 368a16 16 0 01-7.94-2.11L108 285.84a8 8 0 00-12 6.94V368a16 16 0 008.23 14l144 80a16 16 0 0015.54 0l144-80a16 16 0 008.23-14v-75.22a8 8 0 00-12-6.94l-140.06 80.05A16 16 0 01256 368z"
-              />
-              <path
-                d="M495.92 190.5v-.11a16 16 0 00-8-12.28l-224-128a16 16 0 00-15.88 0l-224 128a16 16 0 000 27.78l224 128a16 16 0 0015.88 0L461 221.28a2 2 0 013 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 00496 368V192a14.76 14.76 0 00-.08-1.5z"
+                d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
               />
             </svg>
-            dashboard.mentee_only.title
+            dashboard.mentor_recommendations.title
           </div>
         </a>
         <a
@@ -215,6 +158,34 @@ Object {
         </a>
         <a
           class="chakra-link css-jgup0q"
+          href="/mentor-recommendations"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            <svg
+              class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 20 20"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+              />
+            </svg>
+            dashboard.mentor_match_requests.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
           href="/mentor-meetings"
           style="text-decoration: none;"
         >
@@ -243,37 +214,6 @@ Object {
               />
             </svg>
             dashboard.mentor_meetings.title
-          </div>
-        </a>
-        <a
-          class="chakra-link css-jgup0q"
-          href="/mentee-milestones"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            <svg
-              class="chakra-icon css-1b1fm3x"
-              data-testid="sidebarNavIcon"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              stroke="currentColor"
-              stroke-width="0"
-              viewBox="0 0 512 512"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M256 368a16 16 0 01-7.94-2.11L108 285.84a8 8 0 00-12 6.94V368a16 16 0 008.23 14l144 80a16 16 0 0015.54 0l144-80a16 16 0 008.23-14v-75.22a8 8 0 00-12-6.94l-140.06 80.05A16 16 0 01256 368z"
-              />
-              <path
-                d="M495.92 190.5v-.11a16 16 0 00-8-12.28l-224-128a16 16 0 00-15.88 0l-224 128a16 16 0 000 27.78l224 128a16 16 0 0015.88 0L461 221.28a2 2 0 013 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 00496 368V192a14.76 14.76 0 00-.08-1.5z"
-              />
-            </svg>
-            dashboard.mentee_milestones.title
           </div>
         </a>
         <a
@@ -334,6 +274,121 @@ Object {
               />
             </svg>
             dashboard.group_meetings_mentor.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/mentee-milestones"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            <svg
+              class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 368a16 16 0 01-7.94-2.11L108 285.84a8 8 0 00-12 6.94V368a16 16 0 008.23 14l144 80a16 16 0 0015.54 0l144-80a16 16 0 008.23-14v-75.22a8 8 0 00-12-6.94l-140.06 80.05A16 16 0 01256 368z"
+              />
+              <path
+                d="M495.92 190.5v-.11a16 16 0 00-8-12.28l-224-128a16 16 0 00-15.88 0l-224 128a16 16 0 000 27.78l224 128a16 16 0 0015.88 0L461 221.28a2 2 0 013 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 00496 368V192a14.76 14.76 0 00-.08-1.5z"
+              />
+            </svg>
+            dashboard.mentee_milestones.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/my-mentor"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            <svg
+              class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 576 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-352 96c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H86.4C74 384 64 375.4 64 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2zM512 312c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16z"
+              />
+            </svg>
+            dashboard.my_mentor.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/my-calendar"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            <svg
+              class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+              />
+            </svg>
+            dashboard.my_calendar.title
+          </div>
+        </a>
+        <a
+          class="chakra-link css-jgup0q"
+          href="/profile"
+          style="text-decoration: none;"
+        >
+          <div
+            class="css-cpuzs9"
+            role="group"
+          >
+            <svg
+              class="chakra-icon css-1b1fm3x"
+              data-testid="sidebarNavIcon"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 496 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"
+              />
+            </svg>
+            dashboard.profile.title
           </div>
         </a>
         <a
@@ -402,34 +457,6 @@ Object {
         </a>
         <a
           class="chakra-link css-jgup0q"
-          href="/profile"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            <svg
-              class="chakra-icon css-1b1fm3x"
-              data-testid="sidebarNavIcon"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              stroke="currentColor"
-              stroke-width="0"
-              viewBox="0 0 496 512"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"
-              />
-            </svg>
-            dashboard.profile.title
-          </div>
-        </a>
-        <a
-          class="chakra-link css-jgup0q"
           href="/profile/change-password"
           style="text-decoration: none;"
         >
@@ -438,34 +465,6 @@ Object {
             role="group"
           >
             dashboard.change-password.title
-          </div>
-        </a>
-        <a
-          class="chakra-link css-jgup0q"
-          href="/my-calendar"
-          style="text-decoration: none;"
-        >
-          <div
-            class="css-cpuzs9"
-            role="group"
-          >
-            <svg
-              class="chakra-icon css-1b1fm3x"
-              data-testid="sidebarNavIcon"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              stroke="currentColor"
-              stroke-width="0"
-              viewBox="0 0 448 512"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
-              />
-            </svg>
-            dashboard.my_calendar.title
           </div>
         </a>
       </div>
@@ -504,30 +503,6 @@ Object {
       </div>
       <a
         class="chakra-link css-jgup0q"
-        href="/welcome"
-        style="text-decoration: none;"
-      >
-        <div
-          class="css-cpuzs9"
-          role="group"
-        >
-          dashboard.welcome.title
-        </div>
-      </a>
-      <a
-        class="chakra-link css-jgup0q"
-        href="/mentor-rec"
-        style="text-decoration: none;"
-      >
-        <div
-          class="css-cpuzs9"
-          role="group"
-        >
-          dashboard.mentor-rec.title
-        </div>
-      </a>
-      <a
-        class="chakra-link css-jgup0q"
         href="/dashboard"
         style="text-decoration: none;"
       >
@@ -561,37 +536,7 @@ Object {
       </a>
       <a
         class="chakra-link css-jgup0q"
-        href="/mentor-only"
-        style="text-decoration: none;"
-      >
-        <div
-          class="css-cpuzs9"
-          role="group"
-        >
-          <svg
-            class="chakra-icon css-1b1fm3x"
-            data-testid="sidebarNavIcon"
-            fill="none"
-            focusable="false"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
-            />
-          </svg>
-          dashboard.mentor_only.title
-        </div>
-      </a>
-      <a
-        class="chakra-link css-jgup0q"
-        href="/mentee-only"
+        href="/mentor-recommendations"
         style="text-decoration: none;"
       >
         <div
@@ -606,18 +551,15 @@ Object {
             height="1em"
             stroke="currentColor"
             stroke-width="0"
-            viewBox="0 0 512 512"
+            viewBox="0 0 20 20"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M256 368a16 16 0 01-7.94-2.11L108 285.84a8 8 0 00-12 6.94V368a16 16 0 008.23 14l144 80a16 16 0 0015.54 0l144-80a16 16 0 008.23-14v-75.22a8 8 0 00-12-6.94l-140.06 80.05A16 16 0 01256 368z"
-            />
-            <path
-              d="M495.92 190.5v-.11a16 16 0 00-8-12.28l-224-128a16 16 0 00-15.88 0l-224 128a16 16 0 000 27.78l224 128a16 16 0 0015.88 0L461 221.28a2 2 0 013 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 00496 368V192a14.76 14.76 0 00-.08-1.5z"
+              d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
             />
           </svg>
-          dashboard.mentee_only.title
+          dashboard.mentor_recommendations.title
         </div>
       </a>
       <a
@@ -654,6 +596,34 @@ Object {
       </a>
       <a
         class="chakra-link css-jgup0q"
+        href="/mentor-recommendations"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          <svg
+            class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 20 20"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+            />
+          </svg>
+          dashboard.mentor_match_requests.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
         href="/mentor-meetings"
         style="text-decoration: none;"
       >
@@ -682,37 +652,6 @@ Object {
             />
           </svg>
           dashboard.mentor_meetings.title
-        </div>
-      </a>
-      <a
-        class="chakra-link css-jgup0q"
-        href="/mentee-milestones"
-        style="text-decoration: none;"
-      >
-        <div
-          class="css-cpuzs9"
-          role="group"
-        >
-          <svg
-            class="chakra-icon css-1b1fm3x"
-            data-testid="sidebarNavIcon"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 512 512"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M256 368a16 16 0 01-7.94-2.11L108 285.84a8 8 0 00-12 6.94V368a16 16 0 008.23 14l144 80a16 16 0 0015.54 0l144-80a16 16 0 008.23-14v-75.22a8 8 0 00-12-6.94l-140.06 80.05A16 16 0 01256 368z"
-            />
-            <path
-              d="M495.92 190.5v-.11a16 16 0 00-8-12.28l-224-128a16 16 0 00-15.88 0l-224 128a16 16 0 000 27.78l224 128a16 16 0 0015.88 0L461 221.28a2 2 0 013 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 00496 368V192a14.76 14.76 0 00-.08-1.5z"
-            />
-          </svg>
-          dashboard.mentee_milestones.title
         </div>
       </a>
       <a
@@ -773,6 +712,121 @@ Object {
             />
           </svg>
           dashboard.group_meetings_mentor.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/mentee-milestones"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          <svg
+            class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M256 368a16 16 0 01-7.94-2.11L108 285.84a8 8 0 00-12 6.94V368a16 16 0 008.23 14l144 80a16 16 0 0015.54 0l144-80a16 16 0 008.23-14v-75.22a8 8 0 00-12-6.94l-140.06 80.05A16 16 0 01256 368z"
+            />
+            <path
+              d="M495.92 190.5v-.11a16 16 0 00-8-12.28l-224-128a16 16 0 00-15.88 0l-224 128a16 16 0 000 27.78l224 128a16 16 0 0015.88 0L461 221.28a2 2 0 013 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 00496 368V192a14.76 14.76 0 00-.08-1.5z"
+            />
+          </svg>
+          dashboard.mentee_milestones.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/my-mentor"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          <svg
+            class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 576 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-352 96c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H86.4C74 384 64 375.4 64 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2zM512 312c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16z"
+            />
+          </svg>
+          dashboard.my_mentor.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/my-calendar"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          <svg
+            class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 448 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
+            />
+          </svg>
+          dashboard.my_calendar.title
+        </div>
+      </a>
+      <a
+        class="chakra-link css-jgup0q"
+        href="/profile"
+        style="text-decoration: none;"
+      >
+        <div
+          class="css-cpuzs9"
+          role="group"
+        >
+          <svg
+            class="chakra-icon css-1b1fm3x"
+            data-testid="sidebarNavIcon"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 496 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"
+            />
+          </svg>
+          dashboard.profile.title
         </div>
       </a>
       <a
@@ -841,34 +895,6 @@ Object {
       </a>
       <a
         class="chakra-link css-jgup0q"
-        href="/profile"
-        style="text-decoration: none;"
-      >
-        <div
-          class="css-cpuzs9"
-          role="group"
-        >
-          <svg
-            class="chakra-icon css-1b1fm3x"
-            data-testid="sidebarNavIcon"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 496 512"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"
-            />
-          </svg>
-          dashboard.profile.title
-        </div>
-      </a>
-      <a
-        class="chakra-link css-jgup0q"
         href="/profile/change-password"
         style="text-decoration: none;"
       >
@@ -877,34 +903,6 @@ Object {
           role="group"
         >
           dashboard.change-password.title
-        </div>
-      </a>
-      <a
-        class="chakra-link css-jgup0q"
-        href="/my-calendar"
-        style="text-decoration: none;"
-      >
-        <div
-          class="css-cpuzs9"
-          role="group"
-        >
-          <svg
-            class="chakra-icon css-1b1fm3x"
-            data-testid="sidebarNavIcon"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 448 512"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"
-            />
-          </svg>
-          dashboard.my_calendar.title
         </div>
       </a>
     </div>

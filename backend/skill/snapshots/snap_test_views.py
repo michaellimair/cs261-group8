@@ -7255,5 +7255,13 @@ snapshots['TestSkillViewSet::test_list_full 1'] = [
 
 snapshots['TestSkillViewSet::test_list_search 1'] = [
     'Negotiation',
-    'Benefits Negotiation'
+    'Benefits Negotiation',
+    'Contract Negotiation',
+    'Situational Sales Negotiation',
+    'Lease Negotiations',
+    'Contract Negotiations',
+    'Supplier Negotiation',
+    'Supplier Negotiations',
+    'Multilateral Negotiations',
+    'Go'
 ]

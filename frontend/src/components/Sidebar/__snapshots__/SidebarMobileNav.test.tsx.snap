@@ -83,32 +83,6 @@ Object {
         <div
           class="chakra-stack css-1qgtx64"
         >
-          <button
-            aria-label="open menu"
-            class="chakra-button css-198bfjk"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              focusable="false"
-              height="1em"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
-              />
-              <path
-                d="M13.73 21a2 2 0 0 1-3.46 0"
-              />
-            </svg>
-          </button>
           <div
             class="css-70qvj9"
           >
@@ -265,32 +239,6 @@ Object {
       <div
         class="chakra-stack css-1qgtx64"
       >
-        <button
-          aria-label="open menu"
-          class="chakra-button css-198bfjk"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            fill="none"
-            focusable="false"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
-            />
-            <path
-              d="M13.73 21a2 2 0 0 1-3.46 0"
-            />
-          </svg>
-        </button>
         <div
           class="css-70qvj9"
         >
