@@ -27,9 +27,6 @@ def _tz_to_json(zone):
     }
 
 for zone in pytz.all_timezones:
-    country = timezone_country.get(zone)
-    prefix = datetime.datetime.now(pytz.timezone(zone)).strftime('%Z')
-    offset = datetime.datetime.now(pytz.timezone(zone)).strftime('%z')
     _results.append(_tz_to_json(zone))
 
 _cached_json = sorted(_results, key=lambda x : x['name'])
