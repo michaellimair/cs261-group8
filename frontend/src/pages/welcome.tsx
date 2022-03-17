@@ -1,7 +1,6 @@
 import {
   Button,
   Flex,
-  Checkbox,
   Stack,
   Heading,
   useColorModeValue,
@@ -9,22 +8,25 @@ import {
   AvatarBadge,
   Center,
   IconButton,
+  Input,
 } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 import React, {
   useState,
   FC,
   useCallback,
+  useRef,
+  useEffect,
 } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import AddInterest from 'components/Interests/AddInterest';
 import InterestList from 'components/Interests/InterestList';
-import { IInterest } from 'customTypes/interest';
 import { FormField, FormSelectField } from 'components/Forms';
 import {
   IUserProfile,
-  IUserProfileDTO, IWelcomeError, JobTitle,
+  IUserProfileDTO,
+  IWelcomeError,
 } from 'customTypes/auth';
 import BadRequestApiError from 'api/error/BadRequestApiError';
 import useCommonForm from 'hooks/useCommonForm';
@@ -34,178 +36,207 @@ import SubmitButton from 'components/Forms/SubmitButton';
 import { useUser } from 'hooks/useUser';
 import useBusinessAreaOptions from 'hooks/useBusinessAreaOptions';
 import useCountries from 'hooks/useCountries';
-import useTimezoneOptions from 'hooks/useTimezoneOptions';
-
-const interestList : IInterest[] = [];
+import useTitleOptions from 'hooks/useTitleOptions';
+import LanguageList from 'components/WelcomeForm/Languages';
+import TimezoneSelect from 'components/WelcomeForm/TimezoneSelect';
+import GroupSelect from 'components/WelcomeForm/GroupSelect';
+import { omit } from 'lodash';
 
 const WelcomeForm: FC = () => {
   const { t } = useTranslation();
-  const { user } = useUser() || {};
+  const { user, reauthenticate } = useUser() || {};
   const { id } = user! || {};
   const mutationFn = useCallback(
-    (values: IUserProfileDTO) => httpClient.profile.updateProfile(id, values),
-    [id],
+    async (values: IUserProfileDTO) => {
+      const result = httpClient.profile.updateProfile(id, values);
+      await reauthenticate();
+      return result;
+    },
+    [id, reauthenticate],
   );
-  function createOptions(options:string[]) {
-    return options.map((option:string) => (
-      { label: option, value: option }
-    ));
-  }
-  const [interests, setInterests] = useState<IInterest[]>(interestList);
-  const deleteInterest = (interestId: IInterest['id']) => {
-    const newInterests = interests.filter((item: { id: number; }) => item.id !== interestId);
+  const [interests, setInterests] = useState<string[]>([]);
+  const deleteInterest = (interest: string) => {
+    const newInterests = interests.filter((item) => interest !== item);
     setInterests(newInterests);
   };
   const businessAreaOptions = useBusinessAreaOptions();
   const countryOptions = useCountries();
-  const timezoneOptions = useTimezoneOptions();
+  const titleOptions = useTitleOptions();
 
-  const addInterest = (newInterest: IInterest) => {
-    setInterests([...interests, newInterest]);
-  };
+  const avatarInputRef = useRef<HTMLInputElement>();
+  const onAvatarClick = useCallback(() => {
+    avatarInputRef.current?.click();
+  }, []);
 
   const {
     register,
     onSubmit,
     errors,
     isLoading,
-    isSuccess,
+    watch,
+    setValue,
+    control,
+    reset,
+    isDirty,
   } = useCommonForm<IUserProfileDTO, BadRequestApiError<IWelcomeError>, IUserProfile>({
     mutationId: 'welcome',
     mutationFn,
   });
 
+  const addInterest = useCallback((newInterest: string) => {
+    const updatedInterests = [...interests, newInterest];
+    setInterests(updatedInterests);
+    setValue('skills', updatedInterests);
+  }, [setValue, interests]);
+
+  const avatarFile = watch('avatar');
+
+  useEffect(() => {
+    if (user && !isDirty && businessAreaOptions.length > 1 && countryOptions.length > 1) {
+      reset({
+        ...omit(user.profile, ['languages', 'business_area', 'avatar']),
+        groups: user.groups,
+        languages: user.profile.languages?.map((it) => ({ code: it }) as any),
+      });
+    }
+  }, [user, reset, isDirty, businessAreaOptions, countryOptions]);
+
   return (
-    <>
+    <Flex
+      w="100%"
+      align="center"
+      rounded="lg"
+      direction="column"
+      bg={useColorModeValue('white', 'gray.700')}
+      boxShadow="lg"
+      p={8}
+    >
       <Stack align="center">
         <Heading fontSize="4xl">
           {t('welcome')}
         </Heading>
       </Stack>
-      <form onSubmit={onSubmit} data-testid="welcomeForm">
-        <Flex
-          w="100%"
-          align="center"
-          rounded="lg"
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow="lg"
-          p={8}
-        >
-          <Stack w="250px" direction={['column', 'row']} spacing={16}>
-            <Stack h="10%">
-              <Center>
-                <Avatar size="xl">
-                  <AvatarBadge
-                    align="center"
-                    as={IconButton}
-                    size="sm"
-                    rounded="full"
-                    top="-10px"
-                    colorScheme="red"
-                    aria-label="remove Image"
-                    icon={<SmallCloseIcon />}
-                  />
-                </Avatar>
-              </Center>
-              <Center>
-                <Button w="full">{t('change_avatar')}</Button>
-              </Center>
+      <form onSubmit={onSubmit} data-testid="welcomeForm" style={{ width: '100%' }}>
+        <Stack>
+          <Center>
+            <Avatar
+              size="xl"
+              src={avatarFile ? URL.createObjectURL(avatarFile) : undefined}
+              name={user?.full_name!}
+            >
+              <AvatarBadge
+                align="center"
+                as={IconButton}
+                size="sm"
+                rounded="full"
+                top="-10px"
+                colorScheme="red"
+                aria-label="remove Image"
+                icon={<SmallCloseIcon />}
+              />
+              <Input
+                type="file"
+                multiple={false}
+                {...register('avatar')}
+                ref={avatarInputRef as any}
+                hidden
+                accept="image/*"
+                onChange={(e) => {
+                  if (e.target.files) {
+                    setValue('avatar', e.target.files[0]);
+                  }
+                }}
+              />
+            </Avatar>
+          </Center>
+          <Center>
+            <Button onClick={onAvatarClick}>{t('change_avatar')}</Button>
+          </Center>
+          <FormField
+            name="pronoun"
+            autoComplete="pronoun"
+            type="text"
+            required
+            error={errors?.pronoun}
+            register={register}
+          />
+        </Stack>
+
+        <Stack spacing="36px">
+          <Stack mt={4}>
+            <GroupSelect control={control} />
+          </Stack>
+          <Stack>
+            <FormSelectField
+              name="business_area_id"
+              autoComplete="business"
+              register={register}
+              error={errors?.profile?.business_area}
+              required
+              options={businessAreaOptions}
+              label={t('business_area')}
+            />
+          </Stack>
+          <Heading fontSize="1xl">Interests</Heading>
+          <InterestList interests={interests} deleteInterest={deleteInterest} />
+          <AddInterest addInterest={addInterest} />
+          <LanguageList control={control} />
+          <Stack direction={['column', 'row']} spacing={6}>
+            <Stack>
+              <FormSelectField
+                name="title"
+                autoComplete="title"
+                register={register}
+                error={errors?.profile?.title}
+                required
+                options={titleOptions}
+                label={t('seniority')}
+              />
+            </Stack>
+            <Stack>
               <FormField
-                name="pronoun"
-                autoComplete="pronoun"
-                type="text"
+                name="years_experience"
+                autoComplete={t('years_of_experience')}
+                type="number"
                 required
                 error={errors?.pronoun}
                 register={register}
+                label={t('years_of_experience')}
               />
             </Stack>
           </Stack>
-
-          <Stack w="80%" spacing="36px">
-            <Stack direction={['column', 'row']} spacing={6}>
-              <Stack w="200px">
-                <Heading fontSize="1xl">{t('select_mentor_mentee')}</Heading>
-                <Stack direction={['column', 'row']} spacing={6}>
-                  <Checkbox>{t('mentor')}</Checkbox>
-                  <Checkbox>{t('mentee')}</Checkbox>
-                </Stack>
-              </Stack>
-              <Stack width="200px">
-                <FormSelectField
-                  name="business_area_id"
-                  autoComplete="business"
-                  register={register}
-                  error={errors?.profile?.business_area}
-                  required
-                  options={businessAreaOptions}
-                  label={t('business_area')}
-                />
-              </Stack>
+          <Stack direction={['column', 'row']} spacing={6}>
+            <Stack>
+              <FormSelectField
+                name="country"
+                autoComplete="Country"
+                register={register}
+                error={errors?.profile?.countries}
+                required
+                options={countryOptions}
+                label={t('country')}
+              />
             </Stack>
-            <Heading fontSize="1xl">Interests</Heading>
-            <InterestList interests={interests} deleteInterest={deleteInterest} />
-            <AddInterest addInterest={addInterest} />
-            <Stack direction={['column', 'row']} spacing={6}>
-              <Stack width="200px">
-                <FormSelectField
-                  name="title"
-                  autoComplete="title"
-                  register={register}
-                  error={errors?.profile?.title}
-                  required
-                  options={createOptions(Object.values(JobTitle))}
-                  label={t('seniority')}
-                />
-              </Stack>
-              <Stack width="200px">
-                <FormField
-                  name="years_experience"
-                  autoComplete={t('years_of_experience')}
-                  type="number"
-                  required
-                  error={errors?.pronoun}
-                  register={register}
-                  label={t('years_of_experience')}
-                />
-              </Stack>
-            </Stack>
-            <Stack direction={['column', 'row']} spacing={6}>
-              <Stack width="200px">
-                <FormSelectField
-                  name="timezone"
-                  autoComplete="timezone"
-                  register={register}
-                  error={errors?.profile?.timezone}
-                  required
-                  options={timezoneOptions}
-                  label={t('time_zone')}
-                />
-              </Stack>
-              <Stack width="200px">
-                <FormSelectField
-                  name="country"
-                  autoComplete="Country"
-                  register={register}
-                  error={errors?.profile?.countries}
-                  required
-                  options={countryOptions}
-                  label={t('country')}
-                />
-              </Stack>
-            </Stack>
-            <Stack w="250px">
-              <SubmitButton
-                disabled={isLoading || isSuccess}
-                loadingText={t('submitting')}
-                testId="submitButton"
-              >
-                {t('submit_form')}
-              </SubmitButton>
+            <Stack>
+              <TimezoneSelect
+                register={register}
+                errors={errors}
+                watch={watch}
+              />
             </Stack>
           </Stack>
-        </Flex>
+          <Stack w="250px">
+            <SubmitButton
+              disabled={isLoading}
+              loadingText={t('submitting')}
+              testId="submitButton"
+            >
+              {t('submit_form')}
+            </SubmitButton>
+          </Stack>
+        </Stack>
       </form>
-    </>
+    </Flex>
   );
 };
 

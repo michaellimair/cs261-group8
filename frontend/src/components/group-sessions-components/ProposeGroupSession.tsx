@@ -1,33 +1,39 @@
 import {
   Text,
-  Flex,
   StackDivider,
-  Box,
-  VStack,
   Button,
+  Box,
 } from '@chakra-ui/react';
+import { httpClient } from 'api';
 import AddInterest from 'components/Interests/AddInterest';
 import InterestList from 'components/Interests/InterestList';
-import { IInterest } from 'customTypes/interest';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useMutation } from 'react-query';
 
 const ProposeGroupSession = () => {
   const { t } = useTranslation();
-  const [interests, setInterests] = useState<IInterest[]>([]);
-  const deleteInterest = (interestId: IInterest['id']) => {
-    const newInterests = interests?.filter((item: { id: number; }) => item.id !== interestId);
+  const [interests, setInterests] = useState<string[]>([]);
+  const {
+    isSuccess,
+    mutate,
+    isLoading,
+    error,
+  } = useMutation(
+    ['group-sessions', 'propose-session'],
+    () => httpClient.menteeGroupSession.proposeGroupSession(interests),
+  );
+  const deleteInterest = (interestId: string) => {
+    const newInterests = interests?.filter((item) => item !== interestId);
     setInterests(newInterests);
   };
-
-  const addInterest = (newInterest: IInterest) => {
+  const addInterest = (newInterest: string) => {
     setInterests([...interests, newInterest]);
   };
 
   return (
-    <Flex
+    <Box
       verticalAlign="top"
-      align="center"
       p="4"
       pl="8"
       pr="8"
@@ -38,21 +44,23 @@ const ProposeGroupSession = () => {
       bg="white"
       divider={<StackDivider borderColor="gray.200" />}
     >
-      <Box w="75%">
-        <VStack align="left">
-          <Text>{t('dashboard.group_meetings.select_topics')}</Text>
-          <InterestList interests={interests} deleteInterest={deleteInterest} />
-          <AddInterest addInterest={addInterest} />
-        </VStack>
-      </Box>
-      <Box w="25%">
-        <VStack align="stretch" pl="8">
-          <Button colorScheme="blue" variant="outline">
-            {t('dashboard.group_meetings.propose_sessions')}
-          </Button>
-        </VStack>
-      </Box>
-    </Flex>
+      <Text fontWeight="bold" mb={2}>{t('dashboard.group_meetings.select_topics')}</Text>
+      <AddInterest addInterest={addInterest} />
+      <InterestList interests={interests} deleteInterest={deleteInterest} />
+      <Button colorScheme="blue" w="full" mt={4} disabled={isLoading || isSuccess} onClick={() => mutate()}>
+        {t('dashboard.group_meetings.propose_sessions')}
+      </Button>
+      {isSuccess && (
+        <Text mt={2} color="green" fontWeight="bold">
+          {t('dashboard.group_meetings.propose_success')}
+        </Text>
+      )}
+      {(error as any)?.data?.non_field_errors && (
+      <Text mt={2} color="red" fontWeight="bold">
+        {t('dashboard.group_meetings.once_daily')}
+      </Text>
+      )}
+    </Box>
   );
 };
 

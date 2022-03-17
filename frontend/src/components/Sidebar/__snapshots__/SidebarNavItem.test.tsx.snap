@@ -35,7 +35,7 @@ Object {
     <div>
       <a
         class="chakra-link css-jgup0q"
-        href="/welcome"
+        href="/dashboard"
         style="text-decoration: none;"
       >
         <div
@@ -50,7 +50,7 @@ Object {
   "container": <div>
     <a
       class="chakra-link css-jgup0q"
-      href="/welcome"
+      href="/dashboard"
       style="text-decoration: none;"
     >
       <div

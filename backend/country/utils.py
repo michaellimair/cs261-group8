@@ -30,4 +30,4 @@ def countries_to_json(countries: List[pycountry.ExistingCountries]) -> List[Dict
     results = []
     for country in countries:
         results.append(country_to_json(country))
-    return results
+    return sorted(results, key=lambda x: x['name'])

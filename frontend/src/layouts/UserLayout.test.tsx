@@ -11,6 +11,9 @@ describe('UserLayout', () => {
       isLoggedIn: true,
       user: {
         groups: [],
+        profile: {
+          completed: true,
+        },
       },
       isLoading: false,
     } as any);

@@ -1,6 +1,10 @@
 from rest_framework import permissions
 from .permission_constants import MENTEE_GROUP, MENTOR_GROUP
+from .models import UserProfile
 
+class IsProfileCompleted(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return UserProfile.objects.filter(user=request.user).get().completed
 
 class IsOwner(permissions.BasePermission):
     """

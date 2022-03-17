@@ -46,6 +46,8 @@ def match_score_it(
         mentee_skill_count += 1
     if mentee_language_count == 0:
         mentee_language_count += 1
+    
+    mentors['score'] = 0
 
     for (index, mentor) in mentors.iterrows():
         mentor_skill_binary = _skill_to_binary(mentor['profile__skills'])

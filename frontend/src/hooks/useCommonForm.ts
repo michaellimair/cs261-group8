@@ -12,8 +12,8 @@ import { merge } from 'lodash';
 
 const useCommonForm = <
 TVariables extends FieldValues,
-TError extends ApiError<any>,
-TData extends any,
+TError extends ApiError<any> = ApiError<any>,
+TData = any,
 >({
     mutationId,
     mutationFn,
@@ -28,16 +28,19 @@ TData extends any,
   const {
     register,
     handleSubmit,
-    formState: { errors: formErrors },
+    formState,
     reset,
     setValue,
     watch,
+    control,
   } = useForm<TVariables>({
     defaultValues,
   });
   const {
     mutate, isLoading, error: mutationErrors, isSuccess,
   } = useMutation<TData, TError, TVariables>(mutationId, mutationFn, { onSuccess });
+
+  const { errors: formErrors, isDirty } = formState;
 
   const errors = merge({}, formErrors, mutationErrors?.data);
 
@@ -56,7 +59,9 @@ TData extends any,
     isSuccess,
     reset,
     setValue,
+    control,
     watch,
+    isDirty,
   };
 };
 

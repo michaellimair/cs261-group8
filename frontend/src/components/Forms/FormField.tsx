@@ -6,6 +6,7 @@ import {
   InputRightElement,
   Button,
   FormErrorMessage,
+  FormHelperText,
 } from '@chakra-ui/react';
 import React, {
   useState, useEffect, PropsWithChildren,
@@ -23,6 +24,8 @@ const FormField = <T extends any>({
   label: formLabel,
   type = 'text',
   placeholder,
+  helperText,
+  disabled,
 }: PropsWithChildren<IFieldProps<T>>) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [fieldType, setFieldType] = useState<React.HTMLInputTypeAttribute>(type);
@@ -51,6 +54,7 @@ const FormField = <T extends any>({
             required: required ? t('no_blank', { field: formLabel ?? t(name) }) as any : undefined,
             valueAsNumber: type === 'number',
           })}
+          disabled={disabled}
           placeholder={placeholder}
         />
         {type === 'password' && (
@@ -67,6 +71,9 @@ const FormField = <T extends any>({
         </InputRightElement>
         )}
       </InputGroup>
+      {helperText && (
+        <FormHelperText>{helperText}</FormHelperText>
+      )}
       <FormErrorMessage>
         {error}
       </FormErrorMessage>

@@ -3,4 +3,5 @@ export interface ITimezone {
   prefix: string;
   offset: string;
   name: string;
+  country_code: string;
 }

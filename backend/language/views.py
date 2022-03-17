@@ -13,5 +13,5 @@ class LanguageViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
 
     def list(self, _):
-        """Retrieves a list of countries, optionally given a search query"""
+        """Retrieves a list of languages"""
         return Response(languages_to_json(self.languages))

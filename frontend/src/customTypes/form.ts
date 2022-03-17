@@ -9,4 +9,6 @@ export interface IFieldProps<T> {
   type?: React.HTMLInputTypeAttribute;
   label?: string;
   placeholder?: string;
+  helperText?: string;
+  disabled?: boolean;
 }

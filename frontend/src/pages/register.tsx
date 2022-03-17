@@ -22,6 +22,7 @@ import FormField from 'components/Forms/FormField';
 import SubmitButton from 'components/Forms/SubmitButton';
 import AlternateAuthAction from 'components/AlternateAuthAction';
 import useCommonForm from 'hooks/useCommonForm';
+import useLogin from 'hooks/useLogin';
 
 interface INameFieldData {
   firstNameError: string | string[] | undefined;
@@ -59,6 +60,11 @@ const NameField: FC<INameFieldData> = ({
 const RegisterPage: FC = () => {
   const { t } = useTranslation();
   const mutationFn = useCallback((values: IRegistration) => httpClient.auth.register(values), []);
+  const { login } = useLogin();
+  const onSuccess = useCallback((_: IUser, values: IRegistration) => login({
+    username: values.username,
+    password: values.password,
+  }), [login]);
   const {
     register,
     onSubmit,
@@ -68,6 +74,7 @@ const RegisterPage: FC = () => {
   } = useCommonForm<IRegistration, BadRequestApiError<IRegistrationError>, IUser>({
     mutationId: 'register',
     mutationFn,
+    onSuccess,
   });
 
   return (

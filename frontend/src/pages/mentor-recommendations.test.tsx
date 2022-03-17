@@ -1,10 +1,16 @@
 /* eslint-disable no-console */
 import { render, RenderResult } from '@testing-library/react';
-import { setLogger } from 'react-query';
-import { BrowserRouter } from 'react-router-dom';
-import MentorRec from './mentor-rec';
+import { QueryRouterWrapper } from 'libs/testing';
+import { setLogger, useMutation, useQuery } from 'react-query';
+import MentorRecommendationsPage from './mentor-recommendations';
 
-describe('mentor-rec', () => {
+jest.mock('react-query', () => ({
+  useQuery: jest.fn(),
+  useMutation: jest.fn(),
+  setLogger: jest.fn(),
+}));
+
+describe('mentor-recommendations', () => {
   let result: RenderResult<typeof import('@testing-library/dom/types/queries'), HTMLElement>;
   let submitButton: HTMLElement;
 
@@ -18,10 +24,18 @@ describe('mentor-rec', () => {
   });
 
   beforeEach(() => {
+    (useQuery as jest.Mock).mockImplementation(() => ({
+      data: [],
+      isLoading: false,
+    }));
+    (useMutation as jest.Mock).mockImplementation(() => ({
+      mutateAsync: jest.fn(),
+      isLoading: false,
+    }));
     result = render(
-      <BrowserRouter>
-        <MentorRec />
-      </BrowserRouter>,
+      <QueryRouterWrapper>
+        <MentorRecommendationsPage />
+      </QueryRouterWrapper>,
     );
     submitButton = result.queryByTestId('submitButton')!;
     if (!submitButton) {

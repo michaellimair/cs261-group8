@@ -18,7 +18,7 @@ def languages_to_json(languages):
     results = []
     for language in languages:
         results.append(language_to_json(language))
-    return results
+    return sorted(results, key=lambda x: x["name"])
 
 def is_valid_language(lang: str) -> None:
     """Checks whether a language is valid and raises an exception if it is not.

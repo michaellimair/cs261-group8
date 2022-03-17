@@ -1,32 +1,26 @@
 import {
-  Stack,
   HStack,
   Text,
+  Button,
 } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import React, { FC } from 'react';
-import { IInterest } from 'customTypes/interest';
 
 interface IInterestListProps {
-  interests: IInterest[];
-  deleteInterest: (id: IInterest['id']) => void;
+  interests: string[];
+  deleteInterest: (id: string) => void;
 }
 
 const InterestList: FC<IInterestListProps> = ({ interests, deleteInterest }) => (
-  !interests.length
-    ? (
-      <Text>
-        Add interests
-      </Text>
-    ) : (
-      <Stack>
-        {interests.map((interest: IInterest) => (
-          <HStack>
-            <Text>{interest.text}</Text>
-            <DeleteIcon color="red.500" mr="2" onClick={() => deleteInterest(interest.id)} />
-          </HStack>
-        ))}
-      </Stack>
-    )
+  <>
+    {interests.map((value) => (
+      <HStack key={value}>
+        <Text>{value}</Text>
+        <Button onClick={() => deleteInterest(value!)} mr={2}>
+          <DeleteIcon color="red.500" />
+        </Button>
+      </HStack>
+    ))}
+  </>
 );
 export default InterestList;

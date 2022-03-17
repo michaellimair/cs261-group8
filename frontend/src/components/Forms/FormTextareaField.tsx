@@ -1,4 +1,6 @@
-import { FormControl, FormLabel, Textarea } from '@chakra-ui/react';
+import {
+  FormControl, FormHelperText, FormLabel, Textarea,
+} from '@chakra-ui/react';
 import { IFieldProps } from 'customTypes/form';
 import { PropsWithChildren } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +17,8 @@ const FormTextAreaField = <T extends any>({
   required,
   label: formLabel,
   placeholder,
+  helperText,
+  disabled,
 }: PropsWithChildren<IFormTextAreaFieldProps<T>>) => {
   const { t } = useTranslation();
 
@@ -28,12 +32,18 @@ const FormTextAreaField = <T extends any>({
     >
       <FormLabel data-testid={`${name}-label`}>{formLabel}</FormLabel>
       <Textarea
+        disabled={disabled}
         placeholder={placeholder}
         autoComplete={autoComplete}
         {...register(name, {
           required: t('no_blank', { field: t('content') }) as any,
         })}
       />
+      {helperText && (
+      <FormHelperText>
+        {helperText}
+      </FormHelperText>
+      )}
     </FormControl>
   );
 };

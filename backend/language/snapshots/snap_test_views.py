@@ -9,12 +9,12 @@ snapshots = Snapshot()
 
 snapshots['TestLanguageViewSet::test_list 1'] = [
     {
-        'code': 'aa',
-        'name': 'Afar'
-    },
-    {
         'code': 'ab',
         'name': 'Abkhazian'
+    },
+    {
+        'code': 'aa',
+        'name': 'Afar'
     },
     {
         'code': 'af',
@@ -23,6 +23,10 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
     {
         'code': 'ak',
         'name': 'Akan'
+    },
+    {
+        'code': 'sq',
+        'name': 'Albanian'
     },
     {
         'code': 'am',
@@ -35,6 +39,10 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
     {
         'code': 'an',
         'name': 'Aragonese'
+    },
+    {
+        'code': 'hy',
+        'name': 'Armenian'
     },
     {
         'code': 'as',
@@ -57,12 +65,16 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Azerbaijani'
     },
     {
+        'code': 'bm',
+        'name': 'Bambara'
+    },
+    {
         'code': 'ba',
         'name': 'Bashkir'
     },
     {
-        'code': 'bm',
-        'name': 'Bambara'
+        'code': 'eu',
+        'name': 'Basque'
     },
     {
         'code': 'be',
@@ -77,10 +89,6 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Bislama'
     },
     {
-        'code': 'bo',
-        'name': 'Tibetan'
-    },
-    {
         'code': 'bs',
         'name': 'Bosnian'
     },
@@ -93,12 +101,16 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Bulgarian'
     },
     {
+        'code': 'my',
+        'name': 'Burmese'
+    },
+    {
         'code': 'ca',
         'name': 'Catalan'
     },
     {
-        'code': 'cs',
-        'name': 'Czech'
+        'code': 'km',
+        'name': 'Central Khmer'
     },
     {
         'code': 'ch',
@@ -107,6 +119,10 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
     {
         'code': 'ce',
         'name': 'Chechen'
+    },
+    {
+        'code': 'zh',
+        'name': 'Chinese'
     },
     {
         'code': 'cu',
@@ -129,28 +145,28 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Cree'
     },
     {
-        'code': 'cy',
-        'name': 'Welsh'
+        'code': 'hr',
+        'name': 'Croatian'
+    },
+    {
+        'code': 'cs',
+        'name': 'Czech'
     },
     {
         'code': 'da',
         'name': 'Danish'
     },
     {
-        'code': 'de',
-        'name': 'German'
-    },
-    {
         'code': 'dv',
         'name': 'Dhivehi'
     },
     {
-        'code': 'dz',
-        'name': 'Dzongkha'
+        'code': 'nl',
+        'name': 'Dutch'
     },
     {
-        'code': 'el',
-        'name': 'Modern Greek (1453-)'
+        'code': 'dz',
+        'name': 'Dzongkha'
     },
     {
         'code': 'en',
@@ -165,20 +181,12 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Estonian'
     },
     {
-        'code': 'eu',
-        'name': 'Basque'
-    },
-    {
         'code': 'ee',
         'name': 'Ewe'
     },
     {
         'code': 'fo',
         'name': 'Faroese'
-    },
-    {
-        'code': 'fa',
-        'name': 'Persian'
     },
     {
         'code': 'fj',
@@ -193,28 +201,24 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'French'
     },
     {
-        'code': 'fy',
-        'name': 'Western Frisian'
-    },
-    {
         'code': 'ff',
         'name': 'Fulah'
-    },
-    {
-        'code': 'gd',
-        'name': 'Scottish Gaelic'
-    },
-    {
-        'code': 'ga',
-        'name': 'Irish'
     },
     {
         'code': 'gl',
         'name': 'Galician'
     },
     {
-        'code': 'gv',
-        'name': 'Manx'
+        'code': 'lg',
+        'name': 'Ganda'
+    },
+    {
+        'code': 'ka',
+        'name': 'Georgian'
+    },
+    {
+        'code': 'de',
+        'name': 'German'
     },
     {
         'code': 'gn',
@@ -233,10 +237,6 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Hausa'
     },
     {
-        'code': 'sh',
-        'name': 'Serbo-Croatian'
-    },
-    {
         'code': 'he',
         'name': 'Hebrew'
     },
@@ -253,64 +253,56 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Hiri Motu'
     },
     {
-        'code': 'hr',
-        'name': 'Croatian'
-    },
-    {
         'code': 'hu',
         'name': 'Hungarian'
-    },
-    {
-        'code': 'hy',
-        'name': 'Armenian'
-    },
-    {
-        'code': 'ig',
-        'name': 'Igbo'
-    },
-    {
-        'code': 'io',
-        'name': 'Ido'
-    },
-    {
-        'code': 'ii',
-        'name': 'Sichuan Yi'
-    },
-    {
-        'code': 'iu',
-        'name': 'Inuktitut'
-    },
-    {
-        'code': 'ie',
-        'name': 'Interlingue'
-    },
-    {
-        'code': 'ia',
-        'name': 'Interlingua (International Auxiliary Language Association)'
-    },
-    {
-        'code': 'id',
-        'name': 'Indonesian'
-    },
-    {
-        'code': 'ik',
-        'name': 'Inupiaq'
     },
     {
         'code': 'is',
         'name': 'Icelandic'
     },
     {
+        'code': 'io',
+        'name': 'Ido'
+    },
+    {
+        'code': 'ig',
+        'name': 'Igbo'
+    },
+    {
+        'code': 'id',
+        'name': 'Indonesian'
+    },
+    {
+        'code': 'ia',
+        'name': 'Interlingua (International Auxiliary Language Association)'
+    },
+    {
+        'code': 'ie',
+        'name': 'Interlingue'
+    },
+    {
+        'code': 'iu',
+        'name': 'Inuktitut'
+    },
+    {
+        'code': 'ik',
+        'name': 'Inupiaq'
+    },
+    {
+        'code': 'ga',
+        'name': 'Irish'
+    },
+    {
         'code': 'it',
         'name': 'Italian'
     },
     {
-        'code': 'jv',
-        'name': 'Javanese'
-    },
-    {
         'code': 'ja',
         'name': 'Japanese'
+    },
+    {
+        'code': 'jv',
+        'name': 'Javanese'
     },
     {
         'code': 'kl',
@@ -321,24 +313,16 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Kannada'
     },
     {
-        'code': 'ks',
-        'name': 'Kashmiri'
-    },
-    {
-        'code': 'ka',
-        'name': 'Georgian'
-    },
-    {
         'code': 'kr',
         'name': 'Kanuri'
     },
     {
-        'code': 'kk',
-        'name': 'Kazakh'
+        'code': 'ks',
+        'name': 'Kashmiri'
     },
     {
-        'code': 'km',
-        'name': 'Central Khmer'
+        'code': 'kk',
+        'name': 'Kazakh'
     },
     {
         'code': 'ki',
@@ -397,28 +381,12 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Lithuanian'
     },
     {
-        'code': 'lb',
-        'name': 'Luxembourgish'
-    },
-    {
         'code': 'lu',
         'name': 'Luba-Katanga'
     },
     {
-        'code': 'lg',
-        'name': 'Ganda'
-    },
-    {
-        'code': 'mh',
-        'name': 'Marshallese'
-    },
-    {
-        'code': 'ml',
-        'name': 'Malayalam'
-    },
-    {
-        'code': 'mr',
-        'name': 'Marathi'
+        'code': 'lb',
+        'name': 'Luxembourgish'
     },
     {
         'code': 'mk',
@@ -429,24 +397,40 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Malagasy'
     },
     {
+        'code': 'ms',
+        'name': 'Malay (macrolanguage)'
+    },
+    {
+        'code': 'ml',
+        'name': 'Malayalam'
+    },
+    {
         'code': 'mt',
         'name': 'Maltese'
     },
     {
-        'code': 'mn',
-        'name': 'Mongolian'
+        'code': 'gv',
+        'name': 'Manx'
     },
     {
         'code': 'mi',
         'name': 'Maori'
     },
     {
-        'code': 'ms',
-        'name': 'Malay (macrolanguage)'
+        'code': 'mr',
+        'name': 'Marathi'
     },
     {
-        'code': 'my',
-        'name': 'Burmese'
+        'code': 'mh',
+        'name': 'Marshallese'
+    },
+    {
+        'code': 'el',
+        'name': 'Modern Greek (1453-)'
+    },
+    {
+        'code': 'mn',
+        'name': 'Mongolian'
     },
     {
         'code': 'na',
@@ -457,14 +441,6 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Navajo'
     },
     {
-        'code': 'nr',
-        'name': 'South Ndebele'
-    },
-    {
-        'code': 'nd',
-        'name': 'North Ndebele'
-    },
-    {
         'code': 'ng',
         'name': 'Ndonga'
     },
@@ -473,20 +449,24 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Nepali (macrolanguage)'
     },
     {
-        'code': 'nl',
-        'name': 'Dutch'
+        'code': 'nd',
+        'name': 'North Ndebele'
     },
     {
-        'code': 'nn',
-        'name': 'Norwegian Nynorsk'
+        'code': 'se',
+        'name': 'Northern Sami'
+    },
+    {
+        'code': 'no',
+        'name': 'Norwegian'
     },
     {
         'code': 'nb',
         'name': 'Norwegian Bokmål'
     },
     {
-        'code': 'no',
-        'name': 'Norwegian'
+        'code': 'nn',
+        'name': 'Norwegian Nynorsk'
     },
     {
         'code': 'ny',
@@ -513,12 +493,16 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Ossetian'
     },
     {
+        'code': 'pi',
+        'name': 'Pali'
+    },
+    {
         'code': 'pa',
         'name': 'Panjabi'
     },
     {
-        'code': 'pi',
-        'name': 'Pali'
+        'code': 'fa',
+        'name': 'Persian'
     },
     {
         'code': 'pl',
@@ -537,12 +521,12 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Quechua'
     },
     {
-        'code': 'rm',
-        'name': 'Romansh'
-    },
-    {
         'code': 'ro',
         'name': 'Romanian'
+    },
+    {
+        'code': 'rm',
+        'name': 'Romansh'
     },
     {
         'code': 'rn',
@@ -553,12 +537,44 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Russian'
     },
     {
+        'code': 'sm',
+        'name': 'Samoan'
+    },
+    {
         'code': 'sg',
         'name': 'Sango'
     },
     {
         'code': 'sa',
         'name': 'Sanskrit'
+    },
+    {
+        'code': 'sc',
+        'name': 'Sardinian'
+    },
+    {
+        'code': 'gd',
+        'name': 'Scottish Gaelic'
+    },
+    {
+        'code': 'sr',
+        'name': 'Serbian'
+    },
+    {
+        'code': 'sh',
+        'name': 'Serbo-Croatian'
+    },
+    {
+        'code': 'sn',
+        'name': 'Shona'
+    },
+    {
+        'code': 'ii',
+        'name': 'Sichuan Yi'
+    },
+    {
+        'code': 'sd',
+        'name': 'Sindhi'
     },
     {
         'code': 'si',
@@ -573,24 +589,12 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Slovenian'
     },
     {
-        'code': 'se',
-        'name': 'Northern Sami'
-    },
-    {
-        'code': 'sm',
-        'name': 'Samoan'
-    },
-    {
-        'code': 'sn',
-        'name': 'Shona'
-    },
-    {
-        'code': 'sd',
-        'name': 'Sindhi'
-    },
-    {
         'code': 'so',
         'name': 'Somali'
+    },
+    {
+        'code': 'nr',
+        'name': 'South Ndebele'
     },
     {
         'code': 'st',
@@ -601,22 +605,6 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Spanish'
     },
     {
-        'code': 'sq',
-        'name': 'Albanian'
-    },
-    {
-        'code': 'sc',
-        'name': 'Sardinian'
-    },
-    {
-        'code': 'sr',
-        'name': 'Serbian'
-    },
-    {
-        'code': 'ss',
-        'name': 'Swati'
-    },
-    {
         'code': 'su',
         'name': 'Sundanese'
     },
@@ -625,12 +613,24 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Swahili (macrolanguage)'
     },
     {
+        'code': 'ss',
+        'name': 'Swati'
+    },
+    {
         'code': 'sv',
         'name': 'Swedish'
     },
     {
+        'code': 'tl',
+        'name': 'Tagalog'
+    },
+    {
         'code': 'ty',
         'name': 'Tahitian'
+    },
+    {
+        'code': 'tg',
+        'name': 'Tajik'
     },
     {
         'code': 'ta',
@@ -645,16 +645,12 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Telugu'
     },
     {
-        'code': 'tg',
-        'name': 'Tajik'
-    },
-    {
-        'code': 'tl',
-        'name': 'Tagalog'
-    },
-    {
         'code': 'th',
         'name': 'Thai'
+    },
+    {
+        'code': 'bo',
+        'name': 'Tibetan'
     },
     {
         'code': 'ti',
@@ -665,20 +661,20 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Tonga (Tonga Islands)'
     },
     {
-        'code': 'tn',
-        'name': 'Tswana'
-    },
-    {
         'code': 'ts',
         'name': 'Tsonga'
     },
     {
-        'code': 'tk',
-        'name': 'Turkmen'
+        'code': 'tn',
+        'name': 'Tswana'
     },
     {
         'code': 'tr',
         'name': 'Turkish'
+    },
+    {
+        'code': 'tk',
+        'name': 'Turkmen'
     },
     {
         'code': 'tw',
@@ -717,6 +713,14 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
         'name': 'Walloon'
     },
     {
+        'code': 'cy',
+        'name': 'Welsh'
+    },
+    {
+        'code': 'fy',
+        'name': 'Western Frisian'
+    },
+    {
         'code': 'wo',
         'name': 'Wolof'
     },
@@ -735,10 +739,6 @@ snapshots['TestLanguageViewSet::test_list 1'] = [
     {
         'code': 'za',
         'name': 'Zhuang'
-    },
-    {
-        'code': 'zh',
-        'name': 'Chinese'
     },
     {
         'code': 'zu',

@@ -1,17 +1,22 @@
 # Derived from
 # https://stackoverflow.com/questions/22250352/programmatically-create-a-django-group-with-permissions
 import random
-import pytz
+import os
 from tqdm import tqdm
 import pycountry
-import math
+import requests
+import tempfile
 import numpy as np
 from typing import List
 from faker import Faker
+from urllib.parse import urlparse
 from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
 # pylint: disable=imported-auth-user
 from django.contrib.auth.models import Group, User
+from django.contrib.auth.hashers import make_password
+from django.core.files import File
+from group_session.models import GroupSessionRequest, GroupSessionRequestedSkill
 from matching.models import MentoringPair
 from rating.models import MentorRating, MentorRatingEntry
 from language.utils import LANGS_WITH_CODE
@@ -19,12 +24,14 @@ from users.models import UserProfile
 from users.permission_constants import MENTOR_GROUP, MENTEE_GROUP
 from business_area.models import BusinessArea
 from skill.utils import get_skills
-from django.contrib.auth.hashers import make_password
+from numpy.random import MT19937
+from numpy.random import RandomState, SeedSequence
 
 fake = Faker()
 
 random.seed(0)
 Faker.seed(0)
+rs = RandomState(MT19937(SeedSequence(123456789)))
 
 avail_languages = [x.alpha_2 for x in list(LANGS_WITH_CODE)]
 avail_titles = [
@@ -70,6 +77,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         user_model: User = get_user_model()
+        user_response = requests.get(f"https://randomuser.me/api/?results={num_users}")
+        random_users = user_response.json()['results']
 
         print("Deleting existing users...")
         # Clearing existing users
@@ -118,24 +127,38 @@ class Command(BaseCommand):
         print("Initializing mentor ratings...")
         MentorRating.objects.bulk_create(all_ratings)
 
+        file_ref = []
+
+        print("Creating user profiles...")
         # Attach a user profile to the users
-        for user in tqdm(created_users):
+        for index in tqdm(range(num_users)):
+            user = created_users[index]
+            image_url = random_users[index]['picture']['large']
+            response = requests.get(image_url)
+            file_name = os.path.basename(urlparse(image_url).path)
+            image = tempfile.TemporaryFile()
+            image.write(response.content)
+            file_ref.append(image)
             all_profiles.append(UserProfile(
                 user=user,
+                avatar=File(image, name=file_name),
                 country=np.random.choice(avail_countries),
                 timezone=np.random.choice(avail_timezones),
                 skills=random.sample(user_skill_options, 5),
                 interests=random.sample(user_skill_options, 5),
                 years_experience=np.random.randint(1, 20),
                 title=np.random.choice(avail_titles),
-                languages=random.sample(avail_languages, 5),
+                languages=random.sample(avail_languages, k=5),
                 business_area=np.random.choice(business_areas),
-                pronoun=np.random.choice(avail_pronouns)
+                pronoun=np.random.choice(avail_pronouns),
+                completed=True
             ))
 
-        print("Creating user profiles...")
         UserProfile.objects.bulk_create(all_profiles)
         
+        for file in file_ref:
+            file.close()
+
         all_mentees = list(filter(lambda u : u.groups.filter(name=MENTEE_GROUP).exists(), created_users))
         all_mentors = list(filter(lambda u : u.groups.filter(name=MENTOR_GROUP).exists(), created_users))
 
@@ -169,5 +192,30 @@ class Command(BaseCommand):
                 rating_value=rating_value,
                 description=description)
             rating_entry.save()
+        
+        session_requests = []
+        print("Adding dummy data for requests to create a group session...")
+        for mentee in tqdm(all_mentees):
+            session_requests.append(
+                GroupSessionRequest(
+                    user=mentee,
+                )
+            )
+
+        session_requests = GroupSessionRequest.objects.bulk_create(session_requests)
+
+        requested_skills_objs = []
+
+        for request in session_requests:
+            requested_skills = np.random.choice(user_skill_options, 2)
+            for skill in requested_skills:
+                requested_skills_objs.append(
+                    GroupSessionRequestedSkill(
+                        skill=skill,
+                        request=request
+                    )
+                )
+
+        GroupSessionRequestedSkill.objects.bulk_create(requested_skills_objs)
 
         print("Created default users.")

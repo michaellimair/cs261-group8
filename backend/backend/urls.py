@@ -41,6 +41,7 @@ from matching.views import (
     MentorMatchView,
     MenteeMatchSuggestionView,
 )
+from event.views import EventViewSet
 from country.views import CountryViewSet
 from plan_of_action.views import (
     PlanOfActionMentorViewSet,
@@ -50,8 +51,20 @@ from plan_of_action.views import (
     CommentMenteeViewSet,
     CommentMentorViewSet,
 )
+from meeting.views import (
+    MeetingMenteeViewSet,
+    MeetingMentorViewSet,
+    MeetingRecordMenteeViewSet
+)
 from rating.views import (
     MenteeRatingViewSet
+)
+from group_session.views import (
+    GroupSessionMenteeSignupViewSet,
+    GroupSessionMenteeViewSet,
+    GroupSessionMentorViewSet,
+    GroupSessionRequestMenteeViewSet,
+    GroupSessionSuggestionsMentorViewSet,
 )
 
 user_patterns = [
@@ -71,17 +84,29 @@ router.register(r'profiles', UserProfileViewSet, basename='profile')
 router.register(r'countries', CountryViewSet, basename='country')
 router.register(r'languages', LanguageViewSet, basename='language')
 router.register(r'timezones', TimezoneViewSet, basename='timezone')
+router.register(r'events', EventViewSet, basename='event')
 router.register(r'skills', SkillViewSet, basename='skill')
+
+router.register(r'mentee/meetings', MeetingMenteeViewSet, basename='mentee_meeting')
+meeting_mentee_router = routers.NestedSimpleRouter(router, r'mentee/meetings', lookup='meeting')
+meeting_mentee_router.register(r'records', MeetingRecordMenteeViewSet, basename='meeting-mentee-records')
+
 router.register(r'mentee/matches', MenteeMatchView, basename='mentee_matches')
 router.register(r'mentee/match-suggestions',
     MenteeMatchSuggestionView,
     basename='mentee_match_suggestions')
 router.register(r'mentee/my-mentor', MenteeMyMentorView, basename='mentee_my_mentor')
-router.register(r'mentee/my-mentor/rate', MenteeRatingViewSet, basename='mentee_my_mentor_rating')
-
+router.register(r'mentee/my-mentor/rating', MenteeRatingViewSet, basename='mentee_my_mentor_rating')
+router.register(r'mentee/group-sessions', GroupSessionMenteeViewSet, basename='mentee_group_sessions')
+router.register(r'mentee/group-sessions/request-session', GroupSessionRequestMenteeViewSet, basename='mentee_group_session_request')
+router.register(r'mentee/group-sessions/<int:pk>/signup', GroupSessionMenteeSignupViewSet, basename='mentor_group_session_signup')
 router.register(r'mentee/plans-of-action', PlanOfActionMenteeViewSet, basename='mentee_plans_of_action')
+
 router.register(r'mentor/matches', MentorMatchView, basename='mentor_matches')
 router.register(r'mentor/plans-of-action', PlanOfActionMentorViewSet, basename='mentor_plans_of_action')
+router.register(r'mentor/meetings', MeetingMentorViewSet, basename='mentor_meeting')
+router.register(r'mentor/group-sessions/suggestions', GroupSessionSuggestionsMentorViewSet, basename='mentor_group_session_suggestions')
+router.register(r'mentor/group-sessions', GroupSessionMentorViewSet, basename='mentor_group_sessions')
 
 plan_of_action_mentee_router = routers.NestedSimpleRouter(router, r'mentee/plans-of-action', lookup='plan_of_action')
 plan_of_action_mentee_router.register(r'milestones', MilestoneMenteeViewSet, basename='plan_of_action-mentee-milestones')
@@ -110,6 +135,7 @@ urlpatterns = [
         path('', include(router.urls)),
         path(r'', include(plan_of_action_mentee_router.urls)),
         path(r'', include(plan_of_action_mentor_router.urls)),
+        path(r'', include(meeting_mentee_router.urls)),
         path(r'groups/', GroupView.as_view(), name='group'),
         path(r'auth/', MyDataView.as_view(), name='me'),
         path(r'auth/login/', LoginView.as_view(), name='knox_login'),

@@ -1,4 +1,5 @@
 import { IApiBadRequestErrorData } from './api';
+import { ILanguage } from './language';
 
 export enum JobTitle {
   ANALYST = 'anlst',
@@ -24,22 +25,26 @@ export interface IUserProfile {
   country: string | null;
   timezone: string | null;
   skills: string[] | null;
+  interests: string[] | null;
   avatar: string | null;
-}
-
-export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area' | 'avatar'> {
-  business_area_id: number;
-  avatar: File;
-}
-
-export enum UserGroup {
-  MENTOR = 'mentor',
-  MENTEE = 'mentee',
+  languages: ILanguage[];
 }
 
 export interface IUserGroup {
   id: number;
   name: UserGroup;
+}
+
+export interface IUserProfileDTO extends Omit<IUserProfile, 'business_area' | 'avatar'> {
+  business_area_id: number;
+  avatar: File;
+  groups: IUserGroup[]
+}
+
+export enum UserGroup {
+  MENTOR = 'mentor',
+  MENTEE = 'mentee',
+  UNDECLARED = 'undeclared',
 }
 
 export interface IUser {

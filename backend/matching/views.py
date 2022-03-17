@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from users.models import UserProfile
 from users.permission_constants import MENTOR_GROUP
 from users.serializers import UserSerializer
-from users.permissions import IsMentor, IsMentee
+from users.permissions import IsMentor, IsMentee, IsProfileCompleted
 from users.utils import get_higher_titles
 from .utils import match_score_it
 from .models import MentoringPair
@@ -83,7 +83,7 @@ class MenteeMyMentorView(
         mixins.ListModelMixin,
         viewsets.GenericViewSet):
     """View related to providing match suggestions for mentee"""
-    permission_classes = [IsMentee]
+    permission_classes = [IsMentee, IsProfileCompleted]
     serializer_class = MentorSerializer
 
     def get_queryset(self):
@@ -91,17 +91,14 @@ class MenteeMyMentorView(
 
     # pylint: disable=arguments-differ
     def list(self, request):
-        mentee = request.user
-        mentoring_pair = self.get_queryset().filter(
-            status=MentoringPair.PairStatus.ACCEPTED
-        ).first()
+        mentoring_pair = get_object_or_404(self.get_queryset().exclude(status=MentoringPair.PairStatus.REJECTED))
         return Response(self.get_serializer(mentoring_pair).data)
 
 class MenteeMatchSuggestionView(
         mixins.ListModelMixin,
         viewsets.GenericViewSet):
     """View related to providing match suggestions for mentee"""
-    permission_classes = [IsMentee]
+    permission_classes = [IsMentee, IsProfileCompleted]
 
     # pylint: disable=arguments-differ
     def list(self, request):
@@ -111,14 +108,16 @@ class MenteeMatchSuggestionView(
             groups__name=MENTOR_GROUP,
             profile__years_experience__gt=mentee_profile.years_experience,
             profile__languages__overlap=mentee_profile.languages,
-            profile__title__in=get_higher_titles(
-                mentee_profile.title)).exclude(
+            profile__title__in=get_higher_titles(mentee_profile.title)
+        ).exclude(
             profile__business_area=mentee_profile.business_area
         ).prefetch_related('mentor_pairs').annotate(
                 mentees_count=Count(
                     'mentor_pairs',
                     filter=Q(
                         mentor_pairs__status=MentoringPair.PairStatus.ACCEPTED)))
+
+        print(mentors_queryset)
 
         filtered_mentors_df = read_frame(
             mentors_queryset,

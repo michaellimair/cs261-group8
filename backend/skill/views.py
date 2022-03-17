@@ -19,6 +19,6 @@ class SkillViewSet(viewsets.ViewSet):
         # TODO: Use speedup version of fuzz
         search_query = request.query_params.get('q')
         if search_query:
-            search_result = process.extract(search_query, self.skills, limit=2)
+            search_result = process.extract(search_query, self.skills, limit=10)
             return Response([val for (val, _) in search_result])
         return Response(self.skills)

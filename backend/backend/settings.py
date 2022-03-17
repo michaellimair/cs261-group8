@@ -58,6 +58,9 @@ INSTALLED_APPS = [
     'matching',
     'django_seed',
     'language',
+    'meeting',
+    'group_session',
+    'event',
     'rating'
 ]
 

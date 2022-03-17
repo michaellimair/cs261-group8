@@ -8,5 +8,10 @@ export const checkAllowed = ({
 }: {
   userGroups: IUserGroup[];
   allowedGroups: UserGroup[];
-}) => allowedGroups
-  .some((groupName) => userGroups.find(({ name }) => name === groupName));
+}): boolean => {
+  if (allowedGroups.includes(UserGroup.UNDECLARED) && !userGroups.length) {
+    return true;
+  }
+  return allowedGroups
+    .some((groupName) => userGroups.find(({ name }) => name === groupName));
+};
